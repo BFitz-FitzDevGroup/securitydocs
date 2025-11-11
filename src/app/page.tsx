@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Shield, FileText, ArrowRight, Star } from 'lucide-react';
+import { Check, Shield, FileText, ArrowRight, Star, BookOpen, Download } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { BundleUpsell } from '@/components/ecommerce/BundleUpsell';
 
