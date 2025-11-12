@@ -41,29 +41,31 @@ const SecurityDocsHeader = () => {
               </button>
               
               {isProductsOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-slate-200 z-50">
-                  <div className="py-2">
-                    <a href="/products/policies" className="flex items-center px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors">
-                      <FileText className="w-5 h-5 text-blue-600 mr-3" />
-                      <div>
-                        <div className="font-medium">Policy Templates</div>
-                        <div className="text-xs text-slate-500">Ready-to-use SOC 2 policies</div>
-                      </div>
-                    </a>
-                    <a href="/products/evidence" className="flex items-center px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors">
-                      <Download className="w-5 h-5 text-emerald-600 mr-3" />
-                      <div>
-                        <div className="font-medium">Evidence Explanations</div>
-                        <div className="text-xs text-slate-500">Clear guidance for audit evidence</div>
-                      </div>
-                    </a>
-                    <a href="/products/bundles" className="flex items-center px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors">
-                      <Shield className="w-5 h-5 text-amber-600 mr-3" />
-                      <div>
-                        <div className="font-medium">Complete Bundles</div>
-                        <div className="text-xs text-slate-500">Everything you need packages</div>
-                      </div>
-                    </a>
+                <div className="absolute top-full left-0 pt-2 w-64 z-50">
+                  <div className="bg-white rounded-lg shadow-xl border border-slate-200">
+                    <div className="py-2">
+                      <a href="/products/policies" className="flex items-center px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors">
+                        <FileText className="w-5 h-5 text-blue-600 mr-3" />
+                        <div>
+                          <div className="font-medium">Policy Templates</div>
+                          <div className="text-xs text-slate-500">Ready-to-use SOC 2 policies</div>
+                        </div>
+                      </a>
+                      <a href="/products/evidence" className="flex items-center px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors">
+                        <Download className="w-5 h-5 text-emerald-600 mr-3" />
+                        <div>
+                          <div className="font-medium">Evidence Explanations</div>
+                          <div className="text-xs text-slate-500">Clear guidance for audit evidence</div>
+                        </div>
+                      </a>
+                      <a href="/products/bundles" className="flex items-center px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors">
+                        <Shield className="w-5 h-5 text-amber-600 mr-3" />
+                        <div>
+                          <div className="font-medium">Complete Bundles</div>
+                          <div className="text-xs text-slate-500">Everything you need packages</div>
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 </div>
               )}

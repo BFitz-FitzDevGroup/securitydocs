@@ -1,9 +1,11 @@
 import React from 'react';
+import { getProduct, getBundle, packages } from '@/lib/products';
 
 interface PurchaseButtonProps {
   type: 'product' | 'bundle' | 'package';
   productId?: string;
   bundleId?: string;
+  packageId?: string;
   price: number;
   label: string;
   variant?: 'primary' | 'secondary' | 'outline';
@@ -16,6 +18,7 @@ export const PurchaseButton: React.FC<PurchaseButtonProps> = ({
   type,
   productId,
   bundleId,
+  packageId,
   price,
   label,
   variant = 'primary',
@@ -23,41 +26,53 @@ export const PurchaseButton: React.FC<PurchaseButtonProps> = ({
   className = '',
   disabled = false
 }) => {
-  const handlePurchase = () => {
-    // This will be replaced with actual Lemon Squeezy integration
+  const getCheckoutUrl = () => {
     if (type === 'product' && productId) {
-      console.log(`Purchase product: ${productId} for $${price}`);
-      // window.location.href = `https://securitydocs.lemonsqueezy.com/checkout/buy/[PRODUCT_ID]`;
-    } else if (type === 'bundle' && bundleId) {
-      console.log(`Purchase bundle: ${bundleId} for $${price}`);
-      // window.location.href = `https://securitydocs.lemonsqueezy.com/checkout/buy/[BUNDLE_ID]`;
+      const product = getProduct(productId);
+      return product?.checkoutUrl;
+    }
+    if (type === 'bundle' && bundleId) {
+      const bundle = getBundle(bundleId);
+      return bundle?.checkoutUrl;
+    }
+    if (type === 'package' && packageId) {
+      const pkg = packages.find(p => p.id === packageId);
+      return pkg?.checkoutUrl;
+    }
+    return null;
+  };
+
+  const handlePurchase = () => {
+    const checkoutUrl = getCheckoutUrl();
+    if (checkoutUrl) {
+      window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      console.error('Checkout URL not found for:', { type, productId, bundleId, packageId });
     }
   };
 
-  const baseClasses = "font-semibold transition-colors rounded-lg";
-  const widthClasses = fullWidth ? "w-full" : "";
-  const sizeClasses = "py-3 px-4";
-  
-  let variantClasses = "";
-  switch (variant) {
-    case 'primary':
-      variantClasses = "bg-blue-600 hover:bg-blue-700 text-white";
-      break;
-    case 'secondary':
-      variantClasses = "bg-emerald-600 hover:bg-emerald-700 text-white";
-      break;
-    case 'outline':
-      variantClasses = "bg-slate-600 hover:bg-slate-700 text-white";
-      break;
-  }
+  const variantStyles = {
+    primary: 'bg-blue-600 hover:bg-blue-700 text-white',
+    secondary: 'bg-emerald-600 hover:bg-emerald-700 text-white',
+    outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50'
+  };
 
-  const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "";
+  const widthClass = fullWidth ? 'w-full' : '';
 
   return (
     <button
       onClick={handlePurchase}
       disabled={disabled}
-      className={`${baseClasses} ${widthClasses} ${sizeClasses} ${variantClasses} ${disabledClasses} ${className}`}
+      className={`
+        ${variantStyles[variant]}
+        ${widthClass}
+        ${className}
+        px-6 py-3 rounded-lg font-semibold
+        transition-all duration-200
+        disabled:opacity-50 disabled:cursor-not-allowed
+        hover:shadow-lg
+        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+      `}
     >
       {label}
     </button>

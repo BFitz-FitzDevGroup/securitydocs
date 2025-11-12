@@ -12,11 +12,11 @@ import { getProduct, getRelatedProducts } from '@/lib/products';
 const AccessControlPolicyPage = () => {
   const [showFullContent, setShowFullContent] = React.useState(false);
 
-  // Get product data inside the component
+  // Get product data
   const product = getProduct('access-control-policy');
   const relatedProducts = getRelatedProducts('access-control-policy');
 
-  // Handle product not found case
+  // Handle product not found
   if (!product) {
     return (
       <PageLayout>
@@ -46,35 +46,47 @@ const AccessControlPolicyPage = () => {
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
                 <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium">
-                  {product.type.charAt(0).toUpperCase() + product.type.slice(1)} Template
+                  Policy Template
                 </span>
                 <span className="bg-emerald-100 text-emerald-800 text-sm px-3 py-1 rounded-full font-medium">
-                  SOC 2 Core Requirement
+                  SOC 2 Compliant
                 </span>
               </div>
               
               <h1 className="text-4xl font-bold text-slate-900 mb-4">
-                {product.name}
+                Access Control Policy
               </h1>
               
               <p className="text-xl text-slate-600 leading-relaxed">
-                {product.description}
+                Comprehensive access control policy covering user access management, authentication, MFA, and access reviews. Includes enterprise, SMB, implementation workbook, and quick reference guide.
               </p>
             </div>
 
             {/* What's Included */}
             <div className="bg-slate-50 rounded-lg p-6 mb-8">
               <h2 className="text-xl font-semibold text-slate-900 mb-4">What's Included in This Template</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {product.features.map((feature, index) => (
-                  <div key={index} className="flex items-start">
-                    <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-medium text-slate-900">{feature}</h3>
-                      <p className="text-sm text-slate-600">Professional implementation guidance included</p>
-                    </div>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-medium text-slate-900">Complete Policy Document</h3>
+                    <p className="text-sm text-slate-600">Professional Microsoft Word template ready to customize</p>
                   </div>
-                ))}
+                </div>
+                <div className="flex items-start">
+                  <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-medium text-slate-900">Implementation Guidance</h3>
+                    <p className="text-sm text-slate-600">Step-by-step instructions for rolling out the policy</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-medium text-slate-900">Customizable Parameters</h3>
+                    <p className="text-sm text-slate-600">Bracketed placeholders for your specific requirements</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -84,15 +96,21 @@ const AccessControlPolicyPage = () => {
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
                 <div className="flex items-start">
                   <Shield className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium text-slate-900 mb-2">Trust Service Criteria Addressed:</h3>
+                  <div className="flex-1">
+                    <h3 className="font-medium text-slate-900 mb-3">Trust Service Criteria Addressed:</h3>
                     <ul className="space-y-2 text-slate-700">
-                      {product.soc2Criteria.map((criteria, index) => (
-                        <li key={index} className="flex items-center">
-                          <Check className="w-4 h-4 text-blue-600 mr-2" />
-                          <strong>{criteria}:</strong> Industry-standard compliance requirements
-                        </li>
-                      ))}
+                      <li className="flex items-start">
+                        <Check className="w-4 h-4 text-blue-600 mr-2 mt-1 flex-shrink-0" />
+                        <span><strong>CC6.1:</strong> Logical and physical access controls restrict access to authorized users</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="w-4 h-4 text-blue-600 mr-2 mt-1 flex-shrink-0" />
+                        <span><strong>CC6.2:</strong> New users are registered and authorized before access is granted</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="w-4 h-4 text-blue-600 mr-2 mt-1 flex-shrink-0" />
+                        <span><strong>CC6.3:</strong> User access is reviewed and modified when responsibilities change</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -114,37 +132,42 @@ const AccessControlPolicyPage = () => {
               
               <div className="bg-slate-50 rounded-lg p-6 border-l-4 border-blue-500">
                 <div className="prose prose-slate max-w-none">
-                  <h3 className="text-lg font-semibold mb-3">{product.name} - Example Company</h3>
+                  <h3 className="text-lg font-semibold mb-3">Access Control Policy - Example Company</h3>
                   <p className="text-slate-700 mb-4">
-                    <strong>Policy Owner:</strong> [Customizable Field]<br/>
-                    <strong>Effective Date:</strong> [Customizable Field]
+                    <strong>Document Owner:</strong> [Your Organization]<br/>
+                    <strong>Effective Date:</strong> [Customizable Field]<br/>
+                    <strong>Review Cycle:</strong> Annual
                   </p>
                   
-                  <h4 className="font-medium text-slate-900 mb-2">Policy Scope & Structure</h4>
+                  <h4 className="font-medium text-slate-900 mb-2">Template Structure</h4>
                   <p className="text-slate-700 mb-4">
-                    Professional template with comprehensive coverage and customizable parameters for your organization.
+                    Professional template with comprehensive coverage of all requirements. Includes customizable sections for your organization's specific needs.
                   </p>
                   
                   {showFullContent && (
                     <div className="mt-6 pt-6 border-t border-slate-200">
-                      <h4 className="font-medium text-slate-900 mb-2">Template Features:</h4>
+                      <h4 className="font-medium text-slate-900 mb-3">Key Features:</h4>
                       <div className="bg-white rounded p-4 border border-slate-200">
                         <ul className="space-y-2 text-slate-700 text-sm">
                           <li className="flex items-start">
                             <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                            <span><strong>Customizable Parameters:</strong> Bracketed placeholders for your specific requirements</span>
+                            <span>User access management</span>
                           </li>
                           <li className="flex items-start">
                             <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                            <span><strong>Professional Structure:</strong> Organized sections with implementation guidance</span>
+                            <span>Authorization procedures</span>
                           </li>
                           <li className="flex items-start">
                             <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                            <span><strong>SOC 2 Alignment:</strong> Content addresses specific Common Criteria requirements</span>
+                            <span>Access review processes</span>
                           </li>
                           <li className="flex items-start">
                             <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                            <span><strong>Microsoft Word Format:</strong> Easy to customize and brand for your organization</span>
+                            <span>Professional policy template</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                            <span>Customizable for your organization</span>
                           </li>
                         </ul>
                       </div>
@@ -163,9 +186,9 @@ const AccessControlPolicyPage = () => {
             {/* Bundle Upsells */}
             <BundleUpsell product={product} />
             
-            {/* Package Upsells */}
+            {/* Package Upsell (for policies only) */}
             <PackageUpsell product={product} />
-
+            
             {/* Individual Purchase */}
             <IndividualPurchase product={product} />
 
@@ -179,12 +202,14 @@ const AccessControlPolicyPage = () => {
                 </li>
                 <li className="flex items-start">
                   <Check className="w-4 h-4 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Used by companies seeking SOC 2 compliance</span>
+                  <span>Used by companies achieving SOC 2 compliance</span>
                 </li>
                 <li className="flex items-start">
+                  <Check className="w-4 h-4 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" />
                   <span>Professional Microsoft Word templates</span>
                 </li>
                 <li className="flex items-start">
+                  <Check className="w-4 h-4 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" />
                   <span>Email support for implementation questions</span>
                 </li>
               </ul>

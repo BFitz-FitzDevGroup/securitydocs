@@ -100,7 +100,7 @@ export const packages: Package[] = [
     originalPrice: 129.6,
     savings: 44.64999999999999,
     description: `Employee acceptable use package with policy (4 variants), sample policies, acknowledgment forms, and...`,
-    includes: ["[\"acceptable-use-policy\"", "\"sample-acceptable-use-policy\"", "\"policy-acknowledgement-form\""],
+    includes: ["acceptable-use-policy", "sample-acceptable-use-policy", "policy-acknowledgement-form", "employee-confidentiality-agreement-template", "training-completion-tracking-template", "policy-acknowledgement-evidence", "training-completion-evidence", "acceptable-use-monitoring-evidence"],
     itemCount: 8,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/7af510f9-cca1-4952-9929-68de92e8927d'
   },
@@ -113,7 +113,7 @@ export const packages: Package[] = [
     originalPrice: 129.6,
     savings: 44.64999999999999,
     description: `Complete access control implementation package including policy (4 variants), request/review forms, ...`,
-    includes: ["[\"access-control-policy\"", "\"access-request-ticket-form-template\"", "\"access-review-ticket-form\""],
+    includes: ["access-control-policy", "access-request-ticket-form-template", "access-review-ticket-form", "employee-termination-checklist-template", "user-onboarding-checklist", "access-review-completed", "employee-termination-checklist", "employee-termination-security-policy-evidence"],
     itemCount: 8,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/4a11d0f8-32ef-4cb9-876e-7f5b711dd751'
   },
@@ -126,7 +126,7 @@ export const packages: Package[] = [
     originalPrice: 84.75,
     savings: 28.799999999999997,
     description: `Complete asset lifecycle management package including policy (4 variants), inventory templates, disp...`,
-    includes: ["[\"asset-management-policy\"", "\"asset-inventory-template\"", "\"certificate-of-destruction-internal-template\""],
+    includes: ["asset-management-policy", "asset-inventory-template", "certificate-of-destruction-internal-template", "certificate-of-destruction-external-template", "media-device-disposal-completed-evidence"],
     itemCount: 5,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/2f5f4f8d-8a6c-4be7-a0a5-a2ded6ea7621'
   },
@@ -139,7 +139,7 @@ export const packages: Package[] = [
     originalPrice: 84.75,
     savings: 28.799999999999997,
     description: `Comprehensive disaster recovery and business continuity package with policy (4 variants), tabletop e...`,
-    includes: ["[\"business-resilience-and-recovery-plan-policy\"", "\"sample-business-continuity-plan\"", "\"sample-disaster-recovery-tabletop-exercise-template\""],
+    includes: ["business-resilience-and-recovery-plan-policy", "sample-business-continuity-plan", "sample-disaster-recovery-tabletop-exercise-template", "disaster-recovery-tabletop-exercise-evidence", "cybersecurity-insurance-policy-evidence"],
     itemCount: 5,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/9c015fee-0eb9-4dd0-8af8-542c0814b1a0'
   },
@@ -152,7 +152,7 @@ export const packages: Package[] = [
     originalPrice: 69.8,
     savings: 23.849999999999994,
     description: `Formal change management package with policy (4 variants), change request forms, communication templ...`,
-    includes: ["[\"change-management-policy\"", "\"change-request-form\"", "\"internal-communication-of-system-updates-evidence\""],
+    includes: ["change-management-policy", "change-request-form", "internal-communication-of-system-updates-evidence", "publicly-available-change-logs-evidence"],
     itemCount: 4,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/740eb59c-2143-44e2-9b37-b00ed0a5b1ca'
   },
@@ -165,7 +165,7 @@ export const packages: Package[] = [
     originalPrice: 99.7,
     savings: 34.75,
     description: `Ethics and conduct package with policy (4 variants), whistleblower procedures, ethical surveys, and ...`,
-    includes: ["[\"code-of-conduct-policy\"", "\"sample-whistleblower-policy-document\"", "\"ethical-management-survey-template\""],
+    includes: ["code-of-conduct-policy", "sample-whistleblower-policy-document", "ethical-management-survey-template", "anonymous-whistleblower-channel-evidence", "board-of-directors-charter-template", "board-of-directors-charter-evidence"],
     itemCount: 6,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/66903127-a3d6-421e-a602-1b08be463f11'
   },
@@ -178,7 +178,7 @@ export const packages: Package[] = [
     originalPrice: 39.9,
     savings: 13.95,
     description: `Encryption standards package with policy (4 variants) and removable media encryption evidence....`,
-    includes: ["[\"cryptography-policy\"", "\"removable-media-encryption-evidence\"]"],
+    includes: ["cryptography-policy", "removable-media-encryption-evidence"],
     itemCount: 2,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/0dc05702-3159-4143-ab39-1420255880e5'
   },
@@ -191,7 +191,7 @@ export const packages: Package[] = [
     originalPrice: 69.8,
     savings: 23.849999999999994,
     description: `Complete data lifecycle management package with policy (4 variants), privacy policies, deletion proc...`,
-    includes: ["[\"data-management-policy\"", "\"gdpr-sample-company-privacy-policy\"", "\"customer-data-deletion-record-evidence\""],
+    includes: ["data-management-policy", "gdpr-sample-company-privacy-policy", "customer-data-deletion-record-evidence", "publicly-available-privacy-policy-evidence"],
     itemCount: 4,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/79adbf11-2446-419a-840b-eca2b5615528'
   },
@@ -204,7 +204,7 @@ export const packages: Package[] = [
     originalPrice: 144.54999999999998,
     savings: 50.59999999999998,
     description: `Comprehensive HR security package with policy (4 variants), agreements, performance reviews, termina...`,
-    includes: ["[\"human-resources-security-policy\"", "\"employee-confidentiality-agreement-template\"", "\"employee-performance-review-form\""],
+    includes: ["human-resources-security-policy", "employee-confidentiality-agreement-template", "employee-performance-review-form", "employee-termination-checklist-template", "training-completion-tracking-template", "employee-agreements-evidence", "employee-background-checks-evidence", "employee-performance-evaluations-evidence", "confidentiality-agreement-evidence"],
     itemCount: 9,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/36670662-d2fa-4db0-bdff-41ed6d60f913'
   },
@@ -217,7 +217,7 @@ export const packages: Package[] = [
     originalPrice: 99.7,
     savings: 34.75,
     description: `Complete incident response package with policy (4 variants), procedures, tabletop exercises, reporti...`,
-    includes: ["[\"incident-response-plan-policy\"", "\"sample-incident-tabletop-exercise-template\"", "\"incident-response-program-template\""],
+    includes: ["incident-response-plan-policy", "sample-incident-tabletop-exercise-template", "incident-response-program-template", "security-incident-report-template", "incident-response-plan-test-evidence", "incident-root-cause-analysis-evidence"],
     itemCount: 6,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/d1015a9e-e9e0-4ca8-beb0-b6294b7f0233'
   },
@@ -230,7 +230,7 @@ export const packages: Package[] = [
     originalPrice: 84.75,
     savings: 28.799999999999997,
     description: `Master security policy package with policy (4 variants), public security program documentation, and ...`,
-    includes: ["[\"information-security-policy\"", "\"sample-company-security-program-document\"", "\"sample-company-security-program-template\""],
+    includes: ["information-security-policy", "sample-company-security-program-document", "sample-company-security-program-template", "sample-responsible-disclosure-policy-template", "publicly-available-security-information-page-evidence"],
     itemCount: 5,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/01948f72-a549-4b65-a39f-3dc40b1bb7a3'
   },
@@ -243,7 +243,7 @@ export const packages: Package[] = [
     originalPrice: 69.8,
     savings: 23.849999999999994,
     description: `Security governance package with policy (4 variants), job descriptions, org chart templates, and rol...`,
-    includes: ["[\"information-security-roles-and-responsibilities\"", "\"sample-job-descriptions-for-key-security-roles-document\"", "\"key-security-role-job-descriptions-evidence\""],
+    includes: ["information-security-roles-and-responsibilities", "sample-job-descriptions-for-key-security-roles-document", "key-security-role-job-descriptions-evidence", "company-org-chart-evidence"],
     itemCount: 4,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/0511ce9d-97f1-4345-bb1c-404ff2dfdb66'
   },
@@ -256,7 +256,7 @@ export const packages: Package[] = [
     originalPrice: 84.75,
     savings: 28.799999999999997,
     description: `Network security package with policy (4 variants), network diagrams, segmentation guidance, and IDS ...`,
-    includes: ["[\"network-security-policy\"", "\"network-diagram\"", "\"network-diagram-evidence\""],
+    includes: ["network-security-policy", "network-diagram", "network-diagram-evidence", "network-segregation-evidence", "intrusion-detection-system-evidence"],
     itemCount: 5,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/c5d9eb31-d996-4493-b38c-87a27ae9a264'
   },
@@ -269,7 +269,7 @@ export const packages: Package[] = [
     originalPrice: 99.7,
     savings: 34.75,
     description: `Operational security package with policy (4 variants), change management, CI/CD guidance, vulnerabil...`,
-    includes: ["[\"operations-security-policy\"", "\"change-request-form\"", "\"vulnerability-tracking-template\""],
+    includes: ["operations-security-policy", "change-request-form", "vulnerability-tracking-template", "ci-cd-system-evidence", "system-vulnerability-remediation-evidence", "internal-communication-of-system-updates-evidence"],
     itemCount: 6,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/0aff51ea-ae3c-4692-af88-53600deda1a3'
   },
@@ -282,7 +282,7 @@ export const packages: Package[] = [
     originalPrice: 84.75,
     savings: 28.799999999999997,
     description: `Physical security package with policy (4 variants), implementation checklists, network diagrams, and...`,
-    includes: ["[\"physical-security-policy\"", "\"physical-security-implementation-checklists\"", "\"network-diagram\""],
+    includes: ["physical-security-policy", "physical-security-implementation-checklists", "network-diagram", "network-diagram-evidence", "network-segregation-evidence"],
     itemCount: 5,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/72abdfd0-3a88-49dd-acb1-0b8ccc960df4'
   },
@@ -295,7 +295,7 @@ export const packages: Package[] = [
     originalPrice: 69.8,
     savings: 23.849999999999994,
     description: `Comprehensive privacy package with policy (4 variants), GDPR templates, data deletion procedures, an...`,
-    includes: ["[\"privacy-policy\"", "\"gdpr-sample-company-privacy-policy\"", "\"customer-data-deletion-record-evidence\""],
+    includes: ["privacy-policy", "gdpr-sample-company-privacy-policy", "customer-data-deletion-record-evidence", "publicly-available-privacy-policy-evidence"],
     itemCount: 4,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/77d568e2-9a60-489c-ac7f-09d16856e8ff'
   },
@@ -308,7 +308,7 @@ export const packages: Package[] = [
     originalPrice: 69.8,
     savings: 23.849999999999994,
     description: `Risk management framework package with policy (4 variants), risk register, scenario templates, and a...`,
-    includes: ["[\"risk-management-policy\"", "\"risk-scenario-identification-template\"", "\"risk-register-template\""],
+    includes: ["risk-management-policy", "risk-scenario-identification-template", "risk-register-template", "identifying-risk-scenarios-evidence"],
     itemCount: 4,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/3083cf8e-1406-4bf2-8935-147ce760a5e7'
   },
@@ -321,7 +321,7 @@ export const packages: Package[] = [
     originalPrice: 84.75,
     savings: 28.799999999999997,
     description: `Secure SDLC package with policy (4 variants), CI/CD guidance, penetration testing procedures, and vu...`,
-    includes: ["[\"secure-development-policy\"", "\"vulnerability-tracking-template\"", "\"ci-cd-system-evidence\""],
+    includes: ["secure-development-policy", "vulnerability-tracking-template", "ci-cd-system-evidence", "penetration-testing-report-evidence", "penetration-test-remediation-evidence"],
     itemCount: 5,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/e1249c4d-3a34-4158-b298-0f5c4a12a4b8'
   },
@@ -334,7 +334,7 @@ export const packages: Package[] = [
     originalPrice: 114.65,
     savings: 39.7,
     description: `Vendor management package with policy (4 variants), service agreements, assessment questionnaires, a...`,
-    includes: ["[\"third-party-management-policy\"", "\"consulting-services-agreement-template\"", "\"vendor-inventory-template\""],
+    includes: ["third-party-management-policy", "consulting-services-agreement-template", "vendor-inventory-template", "vendor-security-assessment-questionnaire", "third-party-agreements-evidence", "master-services-agreement-evidence", "contractor-agreement-evidence"],
     itemCount: 7,
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/c86b6d3e-e6d8-4f9d-82b4-6b966d424c08'
   }
@@ -352,7 +352,7 @@ export const products: Product[] = [
     description: 'Standardized form for requesting system and data access with manager approval workflow....',
     soc2Criteria: ["[\"CC6.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["employee-confidentiality-agreement-template", "sample-incident-tabletop-exercise-template", "certificate-of-destruction-external-template"],
+    relatedProducts: ["employee-confidentiality-agreement-template", "sample-company-security-program-template", "risk-register-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/0647068b-bc30-452c-8bfb-0e57e8fbb277',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -367,7 +367,7 @@ export const products: Product[] = [
     description: 'Form for periodic access reviews to ensure appropriate user permissions. Includes instructions and Excel template....',
     soc2Criteria: ["[\"CC6.2\"", "\"CC6.3\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-business-continuity-plan", "ethical-management-survey-template", "sample-subscription-terms-of-service-document"],
+    relatedProducts: ["risk-register-template", "risk-scenario-identification-template", "vendor-security-assessment-questionnaire"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/109b7ea3-daa0-439a-890f-b3acc9b78f43',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -382,7 +382,7 @@ export const products: Product[] = [
     description: 'Template for tracking hardware, software, and data assets....',
     soc2Criteria: ["[\"CC6.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["change-request-form", "training-completion-tracking-template", "physical-security-implementation-checklists"],
+    relatedProducts: ["sample-responsible-disclosure-policy-template", "security-incident-report-template", "vendor-security-assessment-questionnaire"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/ef2bad10-7c88-4cba-8871-0ac5a81ad2b9',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -397,7 +397,7 @@ export const products: Product[] = [
     description: 'Comprehensive guidance for creating board of directors charter for governance oversight....',
     soc2Criteria: ["[\"CC1.2\"", "\"CC1.3\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["asset-inventory-template", "sample-whistleblower-policy-document", "security-incident-report-template"],
+    relatedProducts: ["security-incident-report-template", "sample-acceptable-use-policy", "ethical-management-survey-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/06be0a03-6c21-4efe-b6bf-8607f8a00e11',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -412,7 +412,7 @@ export const products: Product[] = [
     description: 'Certificate template for documenting secure destruction of media by external vendors....',
     soc2Criteria: ["[\"CC6.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["vulnerability-tracking-template", "employee-termination-checklist-template", "sample-company-security-program-template"],
+    relatedProducts: ["asset-inventory-template", "change-request-form", "training-completion-tracking-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/8b17c9d3-81e7-49ba-856a-072484c693a0',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -427,7 +427,7 @@ export const products: Product[] = [
     description: 'Certificate template for documenting secure destruction of media performed internally....',
     soc2Criteria: ["[\"CC6.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["asset-inventory-template", "incident-response-program-template", "sample-job-descriptions-for-key-security-roles-document"],
+    relatedProducts: ["asset-inventory-template", "sample-responsible-disclosure-policy-template", "board-of-directors-charter-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/4245c99e-17f5-4684-8b0c-766dd3f5af93',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -442,7 +442,7 @@ export const products: Product[] = [
     description: 'Formal change request form for system and application changes....',
     soc2Criteria: ["[\"CC8.1\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["risk-scenario-identification-template", "employee-performance-review-form", "sample-job-descriptions-for-key-security-roles-document"],
+    relatedProducts: ["vulnerability-tracking-template", "employee-performance-review-form", "policy-acknowledgement-form"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/29e414b4-e359-46dc-936b-83a749b8fd3f',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -457,7 +457,7 @@ export const products: Product[] = [
     description: 'Legal agreement template for engaging consultants with security and confidentiality clauses....',
     soc2Criteria: ["[\"CC1.1\"", "\"CC2.3\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-company-security-program-template", "vulnerability-tracking-template", "sample-disaster-recovery-tabletop-exercise-template"],
+    relatedProducts: ["policy-acknowledgement-form", "sample-company-security-program-document", "sample-whistleblower-policy-document"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/8598d869-c878-43fb-8241-51cb16fe256f',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -472,7 +472,7 @@ export const products: Product[] = [
     description: 'Confidentiality agreement for employees protecting company information....',
     soc2Criteria: ["[\"CC1.1\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["certificate-of-destruction-internal-template", "sample-acceptable-use-policy", "sample-incident-tabletop-exercise-template"],
+    relatedProducts: ["network-diagram", "gdpr-sample-company-privacy-policy", "sample-business-continuity-plan"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/beeb489f-2680-4636-919d-ee4c00a2fe06',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -487,7 +487,7 @@ export const products: Product[] = [
     description: 'Structured performance review form for evaluating employee performance. Includes instructions and Excel template....',
     soc2Criteria: ["[\"CC1.4\"", "\"CC1.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-responsible-disclosure-policy-template", "ethical-management-survey-template", "vendor-security-assessment-questionnaire"],
+    relatedProducts: ["security-incident-report-template", "access-review-ticket-form", "consulting-services-agreement-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/ef85c427-8c6e-4a1d-aa23-e51adcbbd971',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -502,7 +502,7 @@ export const products: Product[] = [
     description: 'Comprehensive checklist for secure employee offboarding and access revocation....',
     soc2Criteria: ["[\"CC6.2\"", "\"CC6.3\"", "\"CC6.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-incident-tabletop-exercise-template", "risk-scenario-identification-template", "sample-business-continuity-plan"],
+    relatedProducts: ["sample-business-continuity-plan", "training-completion-tracking-template", "sample-company-security-program-document"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/2560c0dd-1d52-40be-b0cb-ac6d7a31c7de',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -517,7 +517,7 @@ export const products: Product[] = [
     description: 'Survey template for assessing management commitment to ethical business practices....',
     soc2Criteria: ["[\"CC1.1\"", "\"CC1.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["access-request-ticket-form-template", "sample-whistleblower-policy-document", "consulting-services-agreement-template"],
+    relatedProducts: ["vulnerability-tracking-template", "gdpr-sample-company-privacy-policy", "employee-confidentiality-agreement-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/cf2bdb39-e1eb-48ad-89b1-3da00a0d5850',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -532,7 +532,7 @@ export const products: Product[] = [
     description: 'GDPR-compliant privacy policy template for EU data protection compliance....',
     soc2Criteria: ["[\"P1.1\"", "\"P2.1\"", "\"CC9.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["vendor-inventory-template", "sample-acceptable-use-policy", "access-review-ticket-form"],
+    relatedProducts: ["change-request-form", "user-onboarding-checklist", "security-incident-report-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/a038c56f-0b03-494d-b1aa-8f30af70e3d7',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -547,7 +547,7 @@ export const products: Product[] = [
     description: 'Structured incident response program with roles, procedures, and escalation paths. Includes instructions and Excel template....',
     soc2Criteria: ["[\"CC7.3\"", "\"CC7.4\"", "\"CC7.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-subscription-terms-of-service-document", "policy-acknowledgement-form", "sample-disaster-recovery-tabletop-exercise-template"],
+    relatedProducts: ["sample-acceptable-use-policy", "access-review-ticket-form", "access-request-ticket-form-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/a35586cc-9567-4e99-b5aa-686c66169596',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -562,7 +562,7 @@ export const products: Product[] = [
     description: 'Sample network architecture diagrams showing security zones and data flows. Includes enterprise and SMB versions in PDF and PNG formats....',
     soc2Criteria: ["[\"CC6.1\"", "\"CC6.3\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["board-of-directors-charter-template", "sample-incident-tabletop-exercise-template", "certificate-of-destruction-internal-template"],
+    relatedProducts: ["employee-performance-review-form", "employee-confidentiality-agreement-template", "certificate-of-destruction-internal-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/451d6a8f-8078-428b-8a86-69ae2c36c782',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -577,7 +577,7 @@ export const products: Product[] = [
     description: 'Comprehensive checklists for implementing physical security controls....',
     soc2Criteria: ["[\"CC6.4\"", "\"CC6.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-whistleblower-policy-document", "risk-scenario-identification-template", "network-diagram"],
+    relatedProducts: ["network-diagram", "policy-acknowledgement-form", "sample-subscription-terms-of-service-document"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/58f72640-238a-4181-ade2-05ab15b8bc5b',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -592,7 +592,7 @@ export const products: Product[] = [
     description: 'Form for employees to acknowledge receipt and understanding of company policies....',
     soc2Criteria: ["[\"CC1.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["certificate-of-destruction-external-template", "consulting-services-agreement-template", "vendor-inventory-template"],
+    relatedProducts: ["training-completion-tracking-template", "physical-security-implementation-checklists", "consulting-services-agreement-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/8c655315-4f14-44f6-84ad-e141bb9da82f',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -607,7 +607,7 @@ export const products: Product[] = [
     description: 'Template for tracking identified risks, assessments, and mitigation plans....',
     soc2Criteria: ["[\"CC3.2\"", "\"CC3.3\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["employee-performance-review-form", "sample-company-security-program-template", "risk-scenario-identification-template"],
+    relatedProducts: ["access-review-ticket-form", "policy-acknowledgement-form", "sample-disaster-recovery-tabletop-exercise-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/fefef643-b85b-45a0-b231-6fb44e6753d2',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -622,7 +622,7 @@ export const products: Product[] = [
     description: 'Template for identifying and documenting potential risk scenarios. Includes instructions and Excel template....',
     soc2Criteria: ["[\"CC3.2\"", "\"CC3.3\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["change-request-form", "risk-register-template", "sample-disaster-recovery-tabletop-exercise-template"],
+    relatedProducts: ["risk-register-template", "training-completion-tracking-template", "employee-performance-review-form"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/53bcce73-902b-4dcf-b7df-087604c52ddf',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -637,7 +637,7 @@ export const products: Product[] = [
     description: 'Sample acceptable use policy for reference and customization....',
     soc2Criteria: ["[\"CC1.2\"", "\"CC6.1\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["physical-security-implementation-checklists", "asset-inventory-template", "policy-acknowledgement-form"],
+    relatedProducts: ["change-request-form", "sample-job-descriptions-for-key-security-roles-document", "sample-disaster-recovery-tabletop-exercise-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/2b4b276e-044b-4d55-be2b-9fa9f2f00026',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -652,7 +652,7 @@ export const products: Product[] = [
     description: 'Sample business continuity plan template....',
     soc2Criteria: ["[\"CC3.2\"", "\"CC7.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-company-security-program-document", "certificate-of-destruction-external-template", "training-completion-tracking-template"],
+    relatedProducts: ["risk-register-template", "employee-termination-checklist-template", "access-request-ticket-form-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/f60e9107-d4d0-4934-bf78-02f1a9d27ac0',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -667,7 +667,7 @@ export const products: Product[] = [
     description: 'Public-facing security program description for website transparency....',
     soc2Criteria: ["[\"CC2.3\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["incident-response-program-template", "gdpr-sample-company-privacy-policy", "sample-incident-tabletop-exercise-template"],
+    relatedProducts: ["ethical-management-survey-template", "risk-scenario-identification-template", "consulting-services-agreement-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/31f6a45d-cbb2-4d53-a3ca-89306d4a57a6',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -682,7 +682,7 @@ export const products: Product[] = [
     description: 'Template for creating public security program documentation....',
     soc2Criteria: ["[\"CC2.3\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["change-request-form", "sample-responsible-disclosure-policy-template", "sample-whistleblower-policy-document"],
+    relatedProducts: ["ethical-management-survey-template", "training-completion-tracking-template", "certificate-of-destruction-external-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/36ee2a1d-9954-42db-8ee3-f4347eaea1a4',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -697,7 +697,7 @@ export const products: Product[] = [
     description: 'Sample tabletop exercise scenario for testing disaster recovery procedures....',
     soc2Criteria: ["[\"CC3.2\"", "\"CC7.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["network-diagram", "employee-performance-review-form", "sample-business-continuity-plan"],
+    relatedProducts: ["employee-performance-review-form", "incident-response-program-template", "access-review-ticket-form"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/b5dc7c5c-f0c0-4c5b-82a0-7f90b0da31aa',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -712,7 +712,7 @@ export const products: Product[] = [
     description: 'Sample tabletop exercise scenario for testing incident response procedures....',
     soc2Criteria: ["[\"CC7.4\"", "\"CC7.5\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["vendor-security-assessment-questionnaire", "employee-termination-checklist-template", "sample-subscription-terms-of-service-document"],
+    relatedProducts: ["sample-whistleblower-policy-document", "employee-confidentiality-agreement-template", "sample-disaster-recovery-tabletop-exercise-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/1fe92c75-1ded-41b2-a1be-370e7dab7d1c',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -727,7 +727,7 @@ export const products: Product[] = [
     description: 'Job description templates for CISO, security analyst, and other key security positions....',
     soc2Criteria: ["[\"CC1.3\"", "\"CC1.4\"", "\"CC1.5\""],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["training-completion-tracking-template", "risk-scenario-identification-template", "consulting-services-agreement-template"],
+    relatedProducts: ["risk-register-template", "vendor-security-assessment-questionnaire", "certificate-of-destruction-external-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/707da7ef-62ea-4e54-857d-6987c3be7038',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -742,7 +742,7 @@ export const products: Product[] = [
     description: 'Responsible disclosure policy template for security researchers to report vulnerabilities....',
     soc2Criteria: ["[\"CC2.3\"", "\"CC7.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-disaster-recovery-tabletop-exercise-template", "employee-performance-review-form", "gdpr-sample-company-privacy-policy"],
+    relatedProducts: ["certificate-of-destruction-internal-template", "gdpr-sample-company-privacy-policy", "network-diagram"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/b8c070a0-f6a1-4bb4-aa39-26e890ed6147',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -757,7 +757,7 @@ export const products: Product[] = [
     description: 'Terms of service template for subscription-based SaaS products....',
     soc2Criteria: ["[\"CC2.3\"", "\"CC9.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["asset-inventory-template", "user-onboarding-checklist", "certificate-of-destruction-internal-template"],
+    relatedProducts: ["risk-register-template", "ethical-management-survey-template", "sample-company-security-program-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/6e841715-43cb-494b-b6bf-76b2349bf280',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -772,7 +772,7 @@ export const products: Product[] = [
     description: 'Whistleblower policy template for anonymous reporting of unethical conduct....',
     soc2Criteria: ["[\"CC2.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-company-security-program-document", "change-request-form", "employee-termination-checklist-template"],
+    relatedProducts: ["sample-incident-tabletop-exercise-template", "vendor-inventory-template", "certificate-of-destruction-internal-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/59fdd5d0-1c51-413b-91b8-34e9d61ffe85',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -787,7 +787,7 @@ export const products: Product[] = [
     description: 'Template for documenting security incidents and response actions....',
     soc2Criteria: ["[\"CC7.4\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["asset-inventory-template", "board-of-directors-charter-template", "user-onboarding-checklist"],
+    relatedProducts: ["sample-acceptable-use-policy", "network-diagram", "sample-incident-tabletop-exercise-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/0b05d120-7d1e-4ce0-a603-8520c9783021',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -802,7 +802,7 @@ export const products: Product[] = [
     description: 'Template for tracking employee security training completion....',
     soc2Criteria: ["[\"CC1.4\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["employee-confidentiality-agreement-template", "sample-subscription-terms-of-service-document", "security-incident-report-template"],
+    relatedProducts: ["employee-performance-review-form", "network-diagram", "incident-response-program-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/e2ceaba1-73d8-4f25-98c8-0fbf0c4083e4',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -817,7 +817,7 @@ export const products: Product[] = [
     description: 'Checklist for secure employee onboarding and access provisioning....',
     soc2Criteria: ["[\"CC6.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["sample-disaster-recovery-tabletop-exercise-template", "gdpr-sample-company-privacy-policy", "risk-register-template"],
+    relatedProducts: ["sample-company-security-program-template", "consulting-services-agreement-template", "vendor-inventory-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/98c7ba21-71d6-492d-8848-84cad25adfdc',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -832,7 +832,7 @@ export const products: Product[] = [
     description: 'Template for tracking third-party vendors and service providers....',
     soc2Criteria: ["[\"CC9.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["access-request-ticket-form-template", "vulnerability-tracking-template", "employee-performance-review-form"],
+    relatedProducts: ["sample-whistleblower-policy-document", "network-diagram", "access-review-ticket-form"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/66f81b4e-f79f-4c74-8399-adfaf4f7c390',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -847,7 +847,7 @@ export const products: Product[] = [
     description: 'Questionnaire for assessing vendor security practices and controls....',
     soc2Criteria: ["[\"CC2.3\"", "\"CC9.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["access-request-ticket-form-template", "access-review-ticket-form", "change-request-form"],
+    relatedProducts: ["sample-business-continuity-plan", "employee-performance-review-form", "access-request-ticket-form-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/726de52a-75e6-439a-abe7-7ff3880ff9a2',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -862,7 +862,7 @@ export const products: Product[] = [
     description: 'Template for tracking identified vulnerabilities and remediation status....',
     soc2Criteria: ["[\"CC7.1\"", "\"CC7.2\"]"],
     bundleMemberships: ["complete", "document"],
-    relatedProducts: ["risk-register-template", "certificate-of-destruction-internal-template", "employee-termination-checklist-template"],
+    relatedProducts: ["vendor-inventory-template", "sample-acceptable-use-policy", "sample-company-security-program-template"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/fe7a9987-524e-40d3-81a6-3ffec5aab788',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -877,7 +877,7 @@ export const products: Product[] = [
     description: 'How to monitor and enforce acceptable use policies through technical controls and oversight....',
     soc2Criteria: ["[\"CC6.1\"", "\"CC6.6\"", "\"CC7.2\""],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["soc-2-system-description-evidence", "incident-response-plan-test-evidence", "penetration-test-remediation-evidence"],
+    relatedProducts: ["ci-cd-system-evidence", "removable-media-encryption-evidence", "confidentiality-agreement-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/d6be3866-6e84-412a-a288-b391b52bce60',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -892,7 +892,7 @@ export const products: Product[] = [
     description: 'Guidance on documenting and presenting completed access reviews to auditors....',
     soc2Criteria: ["[\"CC6.2\"", "\"CC6.3\"", "\"CC6.4\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["soc-2-system-description-evidence", "board-meeting-minutes-agenda-evidence", "key-security-role-job-descriptions-evidence"],
+    relatedProducts: ["penetration-testing-report-evidence", "board-of-directors-charter-evidence", "incident-root-cause-analysis-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/975a0048-f537-413c-abcc-ebe42f80105d',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -907,7 +907,7 @@ export const products: Product[] = [
     description: 'How to demonstrate existence and effectiveness of anonymous reporting channels....',
     soc2Criteria: ["[\"CC2.2\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["publicly-available-change-logs-evidence", "intrusion-detection-system-evidence", "training-completion-evidence"],
+    relatedProducts: ["network-segregation-evidence", "acceptable-use-monitoring-evidence", "ci-cd-system-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/806a9718-c236-4c47-aba6-9d7c1cd82694',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -922,7 +922,7 @@ export const products: Product[] = [
     description: 'Guidance on implementing and documenting public-facing system status pages....',
     soc2Criteria: ["[\"CC2.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["network-diagram-evidence", "customer-data-deletion-record-evidence", "publicly-available-privacy-policy-evidence"],
+    relatedProducts: ["training-completion-evidence", "contractor-agreement-evidence", "identifying-risk-scenarios-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/5110c3fc-8174-4d96-a777-7ce7885dde7b',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -937,7 +937,7 @@ export const products: Product[] = [
     description: 'How to present board meeting documentation showing governance oversight....',
     soc2Criteria: ["[\"CC1.2\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["customer-support-site-evidence", "employee-termination-checklist", "employee-background-checks-evidence"],
+    relatedProducts: ["system-vulnerability-remediation-evidence", "third-party-agreements-evidence", "contractor-agreement-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/96a5c2f8-463d-41c5-981e-9b7d07013850',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -952,7 +952,7 @@ export const products: Product[] = [
     description: 'How to present board member qualifications and expertise to auditors....',
     soc2Criteria: ["[\"CC1.2\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["incident-root-cause-analysis-evidence", "training-completion-evidence", "board-meeting-minutes-agenda-evidence"],
+    relatedProducts: ["network-diagram-evidence", "penetration-testing-report-evidence", "publicly-available-security-information-page-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/6967dc6f-df5b-41aa-877e-00198383fcc5',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -967,7 +967,7 @@ export const products: Product[] = [
     description: 'Guidance on documenting board charter and demonstrating governance structure....',
     soc2Criteria: ["[\"CC1.2\"", "\"CC1.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["disaster-recovery-tabletop-exercise-evidence", "customer-support-site-evidence", "employee-termination-security-policy-evidence"],
+    relatedProducts: ["master-services-agreement-evidence", "removable-media-encryption-evidence", "employee-termination-security-policy-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/c3120a44-bf9c-4610-99cf-b2c68036c166',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -982,7 +982,7 @@ export const products: Product[] = [
     description: 'Documentation requirements for continuous integration and deployment pipelines....',
     soc2Criteria: ["[\"CC3.4\"", "\"CC5.3\"", "\"CC7.1\""],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["media-device-disposal-completed-evidence", "intrusion-detection-system-evidence", "penetration-testing-report-evidence"],
+    relatedProducts: ["removable-media-encryption-evidence", "identifying-risk-scenarios-evidence", "incident-response-plan-test-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/64734391-54e5-4169-9b20-ed15f2dbb074',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -997,7 +997,7 @@ export const products: Product[] = [
     description: 'How to present organizational structure showing security roles and reporting lines....',
     soc2Criteria: ["[\"CC1.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["incident-response-plan-test-evidence", "cybersecurity-insurance-policy-evidence", "system-vulnerability-remediation-evidence"],
+    relatedProducts: ["employee-agreements-evidence", "system-vulnerability-remediation-evidence", "incident-root-cause-analysis-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/0573fe96-5091-4e0a-a6b5-9596c59c67c9',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1012,7 +1012,7 @@ export const products: Product[] = [
     description: 'Guidance on maintaining and presenting employee confidentiality agreements....',
     soc2Criteria: ["[\"CC1.1\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["third-party-agreements-evidence", "publicly-available-security-information-page-evidence", "master-services-agreement-evidence"],
+    relatedProducts: ["publicly-available-change-logs-evidence", "internal-communication-of-system-updates-evidence", "incident-root-cause-analysis-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/53e83aeb-a665-42ad-a88a-9fc84a887128',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1027,7 +1027,7 @@ export const products: Product[] = [
     description: 'How to document contractor security requirements and confidentiality obligations....',
     soc2Criteria: ["[\"CC1.1\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["penetration-testing-report-evidence", "intrusion-detection-system-evidence", "penetration-test-remediation-evidence"],
+    relatedProducts: ["network-diagram-evidence", "board-of-directors-charter-evidence", "system-vulnerability-remediation-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/e7fd8cc9-b948-43a3-8bce-b5a3b7f628b9',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1042,7 +1042,7 @@ export const products: Product[] = [
     description: 'Documentation requirements for customer data deletion requests and retention....',
     soc2Criteria: ["[\"CC6.5\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["penetration-testing-report-evidence", "publicly-available-security-information-page-evidence", "publicly-available-privacy-policy-evidence"],
+    relatedProducts: ["company-org-chart-evidence", "internal-communication-of-system-updates-evidence", "access-review-completed"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/e8ac584a-9fbb-45ed-8199-b5ccd90bd35b',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1057,7 +1057,7 @@ export const products: Product[] = [
     description: 'How to demonstrate customer support capabilities and service commitments....',
     soc2Criteria: ["[\"CC2.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["third-party-agreements-evidence", "confidentiality-agreement-evidence", "ci-cd-system-evidence"],
+    relatedProducts: ["media-device-disposal-completed-evidence", "third-party-agreements-evidence", "system-vulnerability-remediation-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/d8ac61b4-930a-44fb-ad7a-fae747b0b795',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1072,7 +1072,7 @@ export const products: Product[] = [
     description: 'Guidance on presenting cyber insurance as part of risk management strategy....',
     soc2Criteria: ["[\"CC9.1\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["contractor-agreement-evidence", "network-diagram-evidence", "employee-termination-checklist"],
+    relatedProducts: ["incident-response-plan-test-evidence", "key-security-role-job-descriptions-evidence", "board-of-directors-cvs-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/25f29300-5f08-4235-a4b0-4c0e25ab60eb',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1087,7 +1087,7 @@ export const products: Product[] = [
     description: 'How to document and present disaster recovery testing exercises....',
     soc2Criteria: ["[\"CC3.2\"", "\"CC5.3\"", "\"CC7.5\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["employee-agreements-evidence", "network-diagram-evidence", "media-device-disposal-completed-evidence"],
+    relatedProducts: ["removable-media-encryption-evidence", "contractor-agreement-evidence", "anonymous-whistleblower-channel-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/9d4830b7-f9ff-40ee-a677-5d7b48d03446',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1102,7 +1102,7 @@ export const products: Product[] = [
     description: 'Documentation requirements for employment contracts and security acknowledgments....',
     soc2Criteria: ["[\"CC1.1\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["publicly-available-terms-of-service-evidence", "application-status-page-evidence", "training-completion-evidence"],
+    relatedProducts: ["master-services-agreement-evidence", "company-org-chart-evidence", "employee-performance-evaluations-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/ac6e1c5e-f822-48e5-89d7-7ee46d627f77',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1117,7 +1117,7 @@ export const products: Product[] = [
     description: 'How to document background check procedures and maintain records....',
     soc2Criteria: ["[\"CC1.1\"", "\"CC1.4\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["system-vulnerability-remediation-evidence", "board-meeting-minutes-agenda-evidence", "employee-performance-evaluations-evidence"],
+    relatedProducts: ["network-diagram-evidence", "disaster-recovery-tabletop-exercise-evidence", "confidentiality-agreement-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/aa4b9bac-8367-466a-8611-830939715c6a',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1132,7 +1132,7 @@ export const products: Product[] = [
     description: 'Guidance on documenting performance reviews and accountability measures....',
     soc2Criteria: ["[\"CC1.1\"", "\"CC1.4\"", "\"CC1.5\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["company-org-chart-evidence", "employee-termination-checklist", "ci-cd-system-evidence"],
+    relatedProducts: ["publicly-available-terms-of-service-evidence", "access-review-completed", "training-completion-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/4a512a71-c831-4f24-a774-712198449d57',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1147,7 +1147,7 @@ export const products: Product[] = [
     description: 'How to demonstrate secure offboarding procedures and access revocation....',
     soc2Criteria: ["[\"CC6.2\"", "\"CC6.3\"", "\"CC6.5\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["customer-data-deletion-record-evidence", "board-meeting-minutes-agenda-evidence", "company-org-chart-evidence"],
+    relatedProducts: ["removable-media-encryption-evidence", "internal-communication-of-system-updates-evidence", "intrusion-detection-system-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/75dcc9f6-a769-4119-85db-ecf0d7058a42',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1162,7 +1162,7 @@ export const products: Product[] = [
     description: 'Documentation requirements for post-employment security obligations....',
     soc2Criteria: ["[\"CC6.2\"", "\"CC6.3\"", "\"CC6.5\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["access-review-completed", "application-status-page-evidence", "publicly-available-privacy-policy-evidence"],
+    relatedProducts: ["employee-agreements-evidence", "incident-response-plan-test-evidence", "removable-media-encryption-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/805ac053-0157-46e2-a37e-74e09393da4d',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1177,7 +1177,7 @@ export const products: Product[] = [
     description: 'How to document risk assessment process and identified scenarios....',
     soc2Criteria: ["[\"CC3.2\"", "\"CC3.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["training-completion-evidence", "soc-2-system-description-evidence", "key-security-role-job-descriptions-evidence"],
+    relatedProducts: ["disaster-recovery-tabletop-exercise-evidence", "customer-data-deletion-record-evidence", "anonymous-whistleblower-channel-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/5ad64b2f-95a3-421c-bb0a-8b2967abab8e',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1192,7 +1192,7 @@ export const products: Product[] = [
     description: 'Guidance on documenting incident response testing and tabletop exercises....',
     soc2Criteria: ["[\"CC7.4\"", "\"CC7.5\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["key-security-role-job-descriptions-evidence", "network-diagram-evidence", "disaster-recovery-tabletop-exercise-evidence"],
+    relatedProducts: ["customer-data-deletion-record-evidence", "employee-termination-security-policy-evidence", "customer-support-site-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/275bcd9f-8d8a-47e5-9602-f6e133c04850',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1207,7 +1207,7 @@ export const products: Product[] = [
     description: 'How to document incident investigations and corrective actions....',
     soc2Criteria: ["[\"CC7.4\"", "\"CC7.5\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["removable-media-encryption-evidence", "ci-cd-system-evidence", "system-vulnerability-remediation-evidence"],
+    relatedProducts: ["employee-termination-checklist", "media-device-disposal-completed-evidence", "publicly-available-security-information-page-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/3b6ed446-003e-4735-b8d0-edc4a09b1e65',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1222,7 +1222,7 @@ export const products: Product[] = [
     description: 'Documentation requirements for change communication and notification....',
     soc2Criteria: ["[\"CC2.2\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["access-review-completed", "removable-media-encryption-evidence", "identifying-risk-scenarios-evidence"],
+    relatedProducts: ["identifying-risk-scenarios-evidence", "penetration-test-remediation-evidence", "employee-termination-security-policy-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/c4030f7d-9860-4c48-9e9b-9bb3b79ca15f',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1237,7 +1237,7 @@ export const products: Product[] = [
     description: 'How to demonstrate IDS/IPS implementation and monitoring....',
     soc2Criteria: ["[\"CC6.6\"", "\"CC7.2\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["penetration-test-remediation-evidence", "employee-background-checks-evidence", "removable-media-encryption-evidence"],
+    relatedProducts: ["employee-termination-security-policy-evidence", "internal-communication-of-system-updates-evidence", "board-meeting-minutes-agenda-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/bdc55aca-2916-464b-aebe-b0d57a97d8a8',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1252,7 +1252,7 @@ export const products: Product[] = [
     description: 'Guidance on documenting security roles and responsibilities....',
     soc2Criteria: ["[\"CC1.3\"", "\"CC1.4\"", "\"CC1.5\""],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["network-diagram-evidence", "customer-data-deletion-record-evidence", "board-meeting-minutes-agenda-evidence"],
+    relatedProducts: ["employee-agreements-evidence", "internal-communication-of-system-updates-evidence", "employee-performance-evaluations-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/9d0c64f9-2495-48e7-aa6c-1b83cc103a28',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1267,7 +1267,7 @@ export const products: Product[] = [
     description: 'How to present customer service agreements showing security commitments....',
     soc2Criteria: ["[\"CC2.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["company-org-chart-evidence", "cybersecurity-insurance-policy-evidence", "identifying-risk-scenarios-evidence"],
+    relatedProducts: ["internal-communication-of-system-updates-evidence", "soc-2-system-description-evidence", "confidentiality-agreement-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/c93e46fa-1795-40e5-abe2-361855d35095',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1282,7 +1282,7 @@ export const products: Product[] = [
     description: 'Documentation requirements for secure media disposal and destruction....',
     soc2Criteria: ["[\"CC6.5\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["employee-termination-checklist", "customer-support-site-evidence", "removable-media-encryption-evidence"],
+    relatedProducts: ["acceptable-use-monitoring-evidence", "soc-2-system-description-evidence", "identifying-risk-scenarios-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/b7f03656-3769-40af-aa06-4f47dbb5eddd',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1297,7 +1297,7 @@ export const products: Product[] = [
     description: 'How to create and present network diagrams showing security architecture....',
     soc2Criteria: ["[\"CC2.2\"", "\"CC2.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["confidentiality-agreement-evidence", "media-device-disposal-completed-evidence", "board-of-directors-cvs-evidence"],
+    relatedProducts: ["incident-root-cause-analysis-evidence", "master-services-agreement-evidence", "ci-cd-system-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/0a59887f-a2c3-48a7-8cd0-b033c195ce93',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1312,7 +1312,7 @@ export const products: Product[] = [
     description: 'Guidance on documenting network segmentation and security zones....',
     soc2Criteria: ["[\"CC6.1\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["publicly-available-privacy-policy-evidence", "intrusion-detection-system-evidence", "penetration-testing-report-evidence"],
+    relatedProducts: ["internal-communication-of-system-updates-evidence", "policy-acknowledgement-evidence", "employee-background-checks-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/25673bfe-920d-430b-a0e4-f833c5bfca67',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1327,7 +1327,7 @@ export const products: Product[] = [
     description: 'Documentation requirements for addressing penetration test findings....',
     soc2Criteria: ["[\"CC3.4\"", "\"CC4.1\"", "\"CC7.2\""],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["disaster-recovery-tabletop-exercise-evidence", "employee-background-checks-evidence", "training-completion-evidence"],
+    relatedProducts: ["employee-termination-checklist", "application-status-page-evidence", "removable-media-encryption-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/20ae77f2-0b8f-4256-9086-db42a7d5f125',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1342,7 +1342,7 @@ export const products: Product[] = [
     description: 'How to present penetration test results and remediation efforts....',
     soc2Criteria: ["[\"CC3.4\"", "\"CC4.1\"", "\"CC7.2\""],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["publicly-available-privacy-policy-evidence", "internal-communication-of-system-updates-evidence", "board-of-directors-charter-evidence"],
+    relatedProducts: ["company-org-chart-evidence", "employee-termination-security-policy-evidence", "employee-performance-evaluations-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/c181f46e-cdac-4313-8c9b-3b5323ef065f',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1357,7 +1357,7 @@ export const products: Product[] = [
     description: 'How to collect, track, and present employee policy acknowledgements to auditors....',
     soc2Criteria: ["[\"CC1.2\"", "\"CC1.4\"", "\"CC2.2\""],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["network-diagram-evidence", "incident-response-plan-test-evidence", "acceptable-use-monitoring-evidence"],
+    relatedProducts: ["penetration-test-remediation-evidence", "publicly-available-security-information-page-evidence", "publicly-available-terms-of-service-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/c1a98233-cf11-43f6-9284-440af827747f',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1372,7 +1372,7 @@ export const products: Product[] = [
     description: 'How to demonstrate comprehensive product documentation and user guides....',
     soc2Criteria: ["[\"CC2.2\"", "\"CC2.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["incident-root-cause-analysis-evidence", "employee-termination-security-policy-evidence", "publicly-available-change-logs-evidence"],
+    relatedProducts: ["cybersecurity-insurance-policy-evidence", "identifying-risk-scenarios-evidence", "penetration-test-remediation-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/59a35a56-605e-4240-8c14-601addc0f613',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1387,7 +1387,7 @@ export const products: Product[] = [
     description: 'Guidance on maintaining public release notes and change documentation....',
     soc2Criteria: ["[\"CC2.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["disaster-recovery-tabletop-exercise-evidence", "ci-cd-system-evidence", "anonymous-whistleblower-channel-evidence"],
+    relatedProducts: ["employee-performance-evaluations-evidence", "board-of-directors-cvs-evidence", "system-vulnerability-remediation-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/e75b70ef-906b-4832-99ec-931ac8ca21dc',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1402,7 +1402,7 @@ export const products: Product[] = [
     description: 'How to present privacy policy and data protection commitments....',
     soc2Criteria: ["[\"CC2.3\"", "\"CC9.2\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["board-meeting-minutes-agenda-evidence", "policy-acknowledgement-evidence", "master-services-agreement-evidence"],
+    relatedProducts: ["employee-termination-security-policy-evidence", "penetration-test-remediation-evidence", "company-org-chart-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/bdade566-17cf-405f-87a8-49c0d155387e',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1417,7 +1417,7 @@ export const products: Product[] = [
     description: 'Documentation requirements for public security program disclosure....',
     soc2Criteria: ["[\"CC2.3\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["contractor-agreement-evidence", "identifying-risk-scenarios-evidence", "penetration-testing-report-evidence"],
+    relatedProducts: ["ci-cd-system-evidence", "incident-response-plan-test-evidence", "confidentiality-agreement-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/b7ba9f43-747a-4967-8485-0fcfea07544b',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1432,7 +1432,7 @@ export const products: Product[] = [
     description: 'How to present terms of service showing service commitments....',
     soc2Criteria: ["[\"CC2.3\"", "\"CC9.2\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["soc-2-system-description-evidence", "customer-data-deletion-record-evidence", "board-of-directors-cvs-evidence"],
+    relatedProducts: ["intrusion-detection-system-evidence", "board-of-directors-charter-evidence", "confidentiality-agreement-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/bc2774d0-8dd2-4a95-8930-74fd1665a472',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1447,7 +1447,7 @@ export const products: Product[] = [
     description: 'Guidance on documenting encryption requirements for portable devices....',
     soc2Criteria: ["[\"CC6.7\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["cybersecurity-insurance-policy-evidence", "media-device-disposal-completed-evidence", "incident-response-plan-test-evidence"],
+    relatedProducts: ["anonymous-whistleblower-channel-evidence", "ci-cd-system-evidence", "access-review-completed"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/60547c70-d7e1-45ec-96ba-a0adb5860a0f',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1462,7 +1462,7 @@ export const products: Product[] = [
     description: 'Comprehensive guide to creating the required SOC 2 system description....',
     soc2Criteria: ["[\"All CC\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["board-of-directors-cvs-evidence", "acceptable-use-monitoring-evidence", "intrusion-detection-system-evidence"],
+    relatedProducts: ["intrusion-detection-system-evidence", "publicly-available-security-information-page-evidence", "anonymous-whistleblower-channel-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/1e3a2054-e262-4a24-87af-3d550be848aa',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1477,7 +1477,7 @@ export const products: Product[] = [
     description: 'How to document vulnerability scanning and patch management processes....',
     soc2Criteria: ["[\"CC2.1\"", "\"CC4.1\"", "\"CC6.6\""],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["board-meeting-minutes-agenda-evidence", "anonymous-whistleblower-channel-evidence", "network-segregation-evidence"],
+    relatedProducts: ["key-security-role-job-descriptions-evidence", "third-party-agreements-evidence", "access-review-completed"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/36b1b6f1-806f-45d1-a310-32ea91dea6b8',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1492,7 +1492,7 @@ export const products: Product[] = [
     description: 'Documentation requirements for vendor contracts and security commitments....',
     soc2Criteria: ["[\"CC2.3\"", "\"CC9.2\"]"],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["employee-termination-checklist", "confidentiality-agreement-evidence", "incident-root-cause-analysis-evidence"],
+    relatedProducts: ["system-vulnerability-remediation-evidence", "publicly-available-security-information-page-evidence", "employee-background-checks-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/a79d862e-5464-490a-a55b-ad00aae7fea4',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1507,7 +1507,7 @@ export const products: Product[] = [
     description: 'How to document and demonstrate employee security awareness training completion....',
     soc2Criteria: ["[\"CC1.4\"", "\"CC1.5\"", "\"CC2.2\""],
     bundleMemberships: ["complete", "evidence"],
-    relatedProducts: ["disaster-recovery-tabletop-exercise-evidence", "customer-support-site-evidence", "policy-acknowledgement-evidence"],
+    relatedProducts: ["access-review-completed", "employee-background-checks-evidence", "incident-response-plan-test-evidence"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/8b1bff20-f765-44f6-9879-730804ba33b5',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1522,7 +1522,7 @@ export const products: Product[] = [
     description: 'Employee acceptable use policy defining appropriate use of company systems, data, and resources. Includes enterprise, SMB, implementation workbook, an...',
     soc2Criteria: ["[\"CC1.2\"", "\"CC6.1\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["incident-response-plan-policy", "information-security-policy", "operations-security-policy"],
+    relatedProducts: ["risk-management-policy", "cryptography-policy", "operations-security-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/05dd5649-e970-4089-8172-2bedcbd38603',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1537,7 +1537,7 @@ export const products: Product[] = [
     description: 'Comprehensive access control policy covering user access management, authentication, MFA, and access reviews. Includes enterprise, SMB, implementation...',
     soc2Criteria: ["[\"CC6.1\"", "\"CC6.2\"", "\"CC6.3\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["human-resources-security-policy", "secure-development-policy", "incident-response-plan-policy"],
+    relatedProducts: ["third-party-management-policy", "code-of-conduct-policy", "network-security-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/514ee9cf-855b-4bf6-b21e-b7b9daa02e7f',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1552,7 +1552,7 @@ export const products: Product[] = [
     description: 'Policy for managing hardware, software, and data assets throughout their lifecycle. Includes enterprise, SMB, implementation workbook, and quick refer...',
     soc2Criteria: ["[\"CC6.5\"", "\"CC7.2\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["code-of-conduct-policy", "human-resources-security-policy", "change-management-policy"],
+    relatedProducts: ["operations-security-policy", "cryptography-policy", "change-management-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/aaa326bb-ed90-4036-bb56-aa30268c04ac',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1567,7 +1567,7 @@ export const products: Product[] = [
     description: 'Comprehensive disaster recovery and business continuity plan template. Includes enterprise, SMB, implementation workbook, and quick reference guide....',
     soc2Criteria: ["[\"CC3.2\"", "\"CC5.3\"", "\"CC7.5\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["human-resources-security-policy", "secure-development-policy", "operations-security-policy"],
+    relatedProducts: ["information-security-policy", "code-of-conduct-policy", "access-control-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/692229fc-6a9f-4ad6-a884-47b29705f13b',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1582,7 +1582,7 @@ export const products: Product[] = [
     description: 'Formal change management policy for controlling system and application changes. Includes enterprise, SMB, implementation workbook, and quick reference...',
     soc2Criteria: ["[\"CC8.1\"", "\"CC7.1\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["third-party-management-policy", "asset-management-policy", "acceptable-use-policy"],
+    relatedProducts: ["information-security-policy", "information-security-roles-and-responsibilities", "third-party-management-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/a389f69c-5afc-4dcd-a948-9dbad5b1f744',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1597,7 +1597,7 @@ export const products: Product[] = [
     description: 'Employee code of conduct establishing ethical standards and behavioral expectations. Includes enterprise, SMB, implementation workbook, and quick refe...',
     soc2Criteria: ["[\"CC1.1\"", "\"CC1.2\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["information-security-policy", "human-resources-security-policy", "network-security-policy"],
+    relatedProducts: ["information-security-roles-and-responsibilities", "operations-security-policy", "change-management-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/923f46d6-d004-4b3a-b823-18338132271e',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1612,7 +1612,7 @@ export const products: Product[] = [
     description: 'Policy for encryption standards, key management, and cryptographic controls. Includes enterprise, SMB, implementation workbook, and quick reference gu...',
     soc2Criteria: ["[\"CC6.1\"", "\"CC6.7\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["asset-management-policy", "acceptable-use-policy", "secure-development-policy"],
+    relatedProducts: ["secure-development-policy", "business-resilience-and-recovery-plan-policy", "physical-security-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/d2fcaf09-0da2-4c33-99b4-64b73229fc94',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1627,7 +1627,7 @@ export const products: Product[] = [
     description: 'Comprehensive data lifecycle management including classification, retention, and disposal. Includes enterprise, SMB, implementation workbook, and quic...',
     soc2Criteria: ["[\"CC6.7\"", "\"CC6.8\"", "\"P1.1\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["human-resources-security-policy", "information-security-policy", "change-management-policy"],
+    relatedProducts: ["human-resources-security-policy", "access-control-policy", "information-security-roles-and-responsibilities"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/d2147c95-7fdb-4163-93a8-75af320acce2',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1642,7 +1642,7 @@ export const products: Product[] = [
     description: 'HR security policy covering background checks, training, and termination procedures. Includes enterprise, SMB, implementation workbook, and quick refe...',
     soc2Criteria: ["[\"CC1.1\"", "\"CC1.4\"", "\"CC6.2\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["cryptography-policy", "privacy-policy", "operations-security-policy"],
+    relatedProducts: ["risk-management-policy", "incident-response-plan-policy", "privacy-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/31515b90-682c-402e-8b36-50fc3071972a',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1657,7 +1657,7 @@ export const products: Product[] = [
     description: 'Detailed incident response procedures for detecting, responding to, and recovering from security incidents. Includes enterprise, SMB, implementation w...',
     soc2Criteria: ["[\"CC7.3\"", "\"CC7.4\"", "\"CC7.5\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["information-security-roles-and-responsibilities", "acceptable-use-policy", "data-management-policy"],
+    relatedProducts: ["asset-management-policy", "information-security-policy", "access-control-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/c8dbfe7e-1ade-4646-b8ce-afecf12f3998',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1672,7 +1672,7 @@ export const products: Product[] = [
     description: 'Master information security policy establishing overall security program framework. Includes enterprise, SMB, implementation workbook, and quick refer...',
     soc2Criteria: ["[\"CC1.2\"", "\"CC1.3\"", "\"CC6.1\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["acceptable-use-policy", "physical-security-policy", "human-resources-security-policy"],
+    relatedProducts: ["human-resources-security-policy", "operations-security-policy", "incident-response-plan-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/1b45fd52-7257-4480-ab7d-58bf8d5a05d5',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1687,7 +1687,7 @@ export const products: Product[] = [
     description: 'Defines security roles, responsibilities, and accountability throughout the organization. Includes enterprise, SMB, implementation workbook, and quick...',
     soc2Criteria: ["[\"CC1.3\"", "\"CC1.4\"", "\"CC2.2\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["operations-security-policy", "access-control-policy", "third-party-management-policy"],
+    relatedProducts: ["access-control-policy", "operations-security-policy", "physical-security-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/1280a91a-aa7f-4561-8481-e762f8f8f080',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1702,7 +1702,7 @@ export const products: Product[] = [
     description: 'Network security controls including firewalls, segmentation, and intrusion detection. Includes enterprise, SMB, implementation workbook, and quick ref...',
     soc2Criteria: ["[\"CC6.1\"", "\"CC6.6\"", "\"CC7.2\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["acceptable-use-policy", "risk-management-policy", "incident-response-plan-policy"],
+    relatedProducts: ["incident-response-plan-policy", "human-resources-security-policy", "information-security-roles-and-responsibilities"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/af8b3da0-a0b3-413b-a756-ba5291daedb4',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1717,7 +1717,7 @@ export const products: Product[] = [
     description: 'Operational security controls for change management, monitoring, and system maintenance. Includes enterprise, SMB, implementation workbook, and quick ...',
     soc2Criteria: ["[\"CC7.1\"", "\"CC7.2\"", "\"CC8.1\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["information-security-roles-and-responsibilities", "third-party-management-policy", "change-management-policy"],
+    relatedProducts: ["change-management-policy", "physical-security-policy", "information-security-roles-and-responsibilities"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/32bc5549-6a60-441a-924e-d7e151fd0bc9',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1732,7 +1732,7 @@ export const products: Product[] = [
     description: 'Physical security controls for facilities, equipment, and access management. Includes enterprise, SMB, implementation workbook, and quick reference gu...',
     soc2Criteria: ["[\"CC6.4\"", "\"CC6.5\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["human-resources-security-policy", "information-security-policy", "third-party-management-policy"],
+    relatedProducts: ["code-of-conduct-policy", "asset-management-policy", "secure-development-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/7942199a-2674-4f98-b483-4fc23087a07b',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1747,7 +1747,7 @@ export const products: Product[] = [
     description: 'Comprehensive privacy policy for protecting personal information and meeting privacy requirements. Includes enterprise, SMB, implementation workbook, ...',
     soc2Criteria: ["[\"P1.1\"", "\"P2.1\"", "\"CC9.2\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["acceptable-use-policy", "incident-response-plan-policy", "information-security-policy"],
+    relatedProducts: ["physical-security-policy", "incident-response-plan-policy", "asset-management-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/db661d39-e54b-4b82-b27f-8ca31749b4dc',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1762,7 +1762,7 @@ export const products: Product[] = [
     description: 'Framework for identifying, assessing, and managing organizational risks. Includes enterprise, SMB, implementation workbook, and quick reference guide....',
     soc2Criteria: ["[\"CC3.1\"", "\"CC3.2\"", "\"CC3.3\""],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["third-party-management-policy", "asset-management-policy", "secure-development-policy"],
+    relatedProducts: ["human-resources-security-policy", "code-of-conduct-policy", "access-control-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/ecfc73d2-bb53-4848-921c-85dc4316d7ef',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1777,7 +1777,7 @@ export const products: Product[] = [
     description: 'Secure software development lifecycle policy with coding standards and testing requirements. Includes enterprise, SMB, implementation workbook, and qu...',
     soc2Criteria: ["[\"CC7.1\"", "\"CC8.1\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["access-control-policy", "code-of-conduct-policy", "change-management-policy"],
+    relatedProducts: ["privacy-policy", "third-party-management-policy", "physical-security-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/fc24fb41-b617-41d9-b6e2-39ea8027b44f',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },
@@ -1792,7 +1792,7 @@ export const products: Product[] = [
     description: 'Vendor management policy for assessing and monitoring third-party service providers. Includes enterprise, SMB, implementation workbook, and quick refe...',
     soc2Criteria: ["[\"CC2.3\"", "\"CC9.2\"]"],
     bundleMemberships: ["complete", "policy"],
-    relatedProducts: ["physical-security-policy", "risk-management-policy", "operations-security-policy"],
+    relatedProducts: ["human-resources-security-policy", "data-management-policy", "cryptography-policy"],
     checkoutUrl: 'https://shop.security-docs.com/checkout/buy/f4db848d-2cc9-4dca-b515-82010f9ea615',
     features: ["Professional template", "Ready to customize", "Instant download", "Email support included"]
   },

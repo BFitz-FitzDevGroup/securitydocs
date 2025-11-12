@@ -14,7 +14,7 @@ export const IndividualPurchase: React.FC<IndividualPurchaseProps> = ({ product 
       
       <div className="flex items-center justify-center mb-4">
         <span className="text-3xl font-bold text-slate-900">${product.price}</span>
-        <span className="text-lg text-slate-500 line-through ml-2">${product.originalPrice}</span>
+        <span className="text-lg text-slate-500 line-through ml-2">${product.originalPrice.toFixed(2)}</span>
       </div>
       
       <PurchaseButton 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, Lightbulb, Cloud, CheckCircle, Globe, Zap, Play } from 'lucide-react';
+import { BookOpen, Download, ExternalLink, Check, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, Lightbulb, Cloud, CheckCircle, Globe, Zap, Play } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 
 const ResourcesHubPage = () => {

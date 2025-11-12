@@ -7,12 +7,42 @@ interface PackageUpsellProps {
   product: Product;
 }
 
+// Helper function to convert slug to proper title
+const slugToTitle = (slug: string): string => {
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+    .replace(/Template$/, 'Template') // Keep "Template" capitalized
+    .replace(/Checklist$/, 'Checklist') // Keep "Checklist" capitalized
+    .replace(/Evidence$/, 'Evidence'); // Keep "Evidence" capitalized
+};
+
 export const PackageUpsell: React.FC<PackageUpsellProps> = ({ product }) => {
   // Only show for policies
   if (product.type !== 'policy') return null;
   
   const packageProduct = getPackageForPolicy(product.slug);
   if (!packageProduct) return null;
+
+  // Parse includes if it's a JSON string, otherwise use as-is
+  let includesList: string[] = [];
+  if (typeof packageProduct.includes === 'string') {
+    try {
+      includesList = JSON.parse(packageProduct.includes);
+    } catch {
+      includesList = packageProduct.includes;
+    }
+  } else if (Array.isArray(packageProduct.includes)) {
+    includesList = packageProduct.includes;
+  }
+
+  // Convert slugs to proper titles
+  const formattedIncludes = includesList.map(slug => {
+    // Remove quotes if present
+    const cleanSlug = slug.replace(/["']/g, '');
+    return slugToTitle(cleanSlug);
+  });
 
   return (
     <div className="bg-gradient-to-br from-emerald-50 to-blue-50 border border-emerald-200 rounded-lg p-6">
@@ -48,7 +78,7 @@ export const PackageUpsell: React.FC<PackageUpsellProps> = ({ product }) => {
       
       <PurchaseButton 
         type="package" 
-        productId={packageProduct.id}
+        packageId={packageProduct.id}
         price={packageProduct.price}
         label={`Get Complete Package - Save $${packageProduct.savings.toFixed(0)}`}
         variant="secondary"
@@ -57,17 +87,12 @@ export const PackageUpsell: React.FC<PackageUpsellProps> = ({ product }) => {
       />
       
       <ul className="text-sm text-slate-600 space-y-1">
-        {packageProduct.includes.slice(0, 3).map((item, index) => (
+        {formattedIncludes.map((item, index) => (
           <li key={index} className="flex items-center">
             <Check className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
             <span>{item}</span>
           </li>
         ))}
-        {packageProduct.itemCount > 3 && (
-          <li className="text-slate-500 italic ml-6">
-            ... and {packageProduct.itemCount - 3} more items
-          </li>
-        )}
       </ul>
     </div>
   );

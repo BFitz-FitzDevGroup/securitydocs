@@ -32,13 +32,13 @@ export const BundleUpsell: React.FC<BundleUpsellProps> = ({
         
         <h3 className="text-xl font-bold text-slate-900 mb-2">Get the {bundle.name}</h3>
         <p className="text-slate-600 mb-4">
-          This template is included in our {bundle.name} with all {bundle.productCount}+ templates and explanations.
+          This template is included in our {bundle.name} with all {bundle.productCount} templates and explanations.
         </p>
         
         <div className="bg-white rounded-lg p-4 mb-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-slate-600">Individual templates (10+):</span>
-            <span className="font-medium text-slate-900">$149+</span>
+            <span className="text-slate-600">Individual templates (10):</span>
+            <span className="font-medium text-slate-900">$149</span>
           </div>
           <div className="flex items-center justify-between mb-2">
             <span className="text-slate-600">{bundle.name}:</span>
@@ -47,7 +47,7 @@ export const BundleUpsell: React.FC<BundleUpsellProps> = ({
           <div className="border-t border-slate-200 pt-2">
             <div className="flex items-center justify-between">
               <span className="font-medium text-slate-900">You Save:</span>
-              <span className="font-bold text-emerald-600">${bundle.savings.toFixed(2)}+</span>
+              <span className="font-bold text-emerald-600">${bundle.savings.toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@ export const BundleUpsell: React.FC<BundleUpsellProps> = ({
           
           <div className="flex items-center justify-between mb-3">
             <span className="text-slate-600">Individual {product.type}s ({categoryBundle.productCount}):</span>
-            <span className="font-medium text-slate-900">${(categoryBundle.productCount * 14.95).toFixed(2)}+</span>
+            <span className="font-medium text-slate-900">${(categoryBundle.productCount * 14.95).toFixed(2)}</span>
           </div>
           <div className="flex items-center justify-between mb-4">
             <span className="text-slate-600">{categoryBundle.name}:</span>
