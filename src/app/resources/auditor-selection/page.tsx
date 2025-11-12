@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { Shield, Users, DollarSign, Clock, AlertTriangle, CheckCircle, FileText, Phone, Building, Award, TrendingUp, Calculator, Lightbulb, Target, ArrowRight, ExternalLink } from 'lucide-react';
+import { Shield, Users, DollarSign, Clock, AlertTriangle, CheckCircle, FileText, Phone, Building, Award, TrendingUp, Calculator, Lightbulb, Target, ArrowRight, ExternalLink, BookOpen, Download } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 
 const AuditorSelectionGuidePage = () => {

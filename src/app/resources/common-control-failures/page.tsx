@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { AlertTriangle, Shield, Users, Lock, Monitor, FileText, CheckCircle, XCircle, ArrowRight, TrendingDown, TrendingUp, Lightbulb, Target, Clock, BarChart3, ExternalLink } from 'lucide-react';
+import { AlertTriangle, Shield, Users, Lock, Monitor, FileText, CheckCircle, XCircle, ArrowRight, TrendingDown, TrendingUp, Lightbulb, Target, Clock, BarChart3, ExternalLink, BookOpen, Download } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 
 const CommonControlFailuresPage = () => {

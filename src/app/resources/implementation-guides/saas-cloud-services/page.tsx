@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { Check, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, ChevronDown, ChevronRight, Lightbulb, Cloud, Server, Database, Zap, Globe, Settings, CheckCircle } from 'lucide-react';
+import { Check, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, ChevronDown, ChevronRight, Lightbulb, Cloud, Server, Database, Zap, Globe, Settings, CheckCircle, Star, Download } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 
 const SaaSImplementationGuidePage = () => {

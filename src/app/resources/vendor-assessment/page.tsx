@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { Shield, AlertTriangle, CheckCircle, Users, FileText, ArrowRight, Lightbulb, AlertCircle, Clock, Target, Zap, BookOpen } from 'lucide-react';
+import { Shield, Download, AlertTriangle, CheckCircle, Users, FileText, ArrowRight, Lightbulb, AlertCircle, Clock, Target, Zap, BookOpen } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 
 const VendorAssessmentGuidePage = () => {

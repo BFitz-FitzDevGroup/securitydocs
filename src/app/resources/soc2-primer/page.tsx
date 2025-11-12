@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight } from 'lucide-react';
+import { Check, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, BookOpen, Download } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 
 const SOC2PrimerPage = () => {

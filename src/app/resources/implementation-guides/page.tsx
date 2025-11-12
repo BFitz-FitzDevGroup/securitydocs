@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, CheckCircle, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, Lightbulb, Cloud, Server, Database, Zap, Globe, Settings, Heart, DollarSign, Building, Rocket } from 'lucide-react';
+import { Check, CheckCircle, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, Lightbulb, Cloud, Server, Database, Zap, Globe, Settings, Heart, DollarSign, Building, Rocket, BookOpen, Download, Star } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 
 const ImplementationGuidesHubPage = () => {

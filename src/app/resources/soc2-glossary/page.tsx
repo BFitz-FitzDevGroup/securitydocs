@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useMemo } from 'react';
-import { Search, Filter, ArrowRight, FileText, Lightbulb, Tag, Users, Shield, Clock, CheckCircle } from 'lucide-react';
+import { Search, Filter, ArrowRight, FileText, Lightbulb, Tag, Users, Shield, Clock, CheckCircle, BookOpen, Download } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 
 const SOC2GlossaryPage = () => {

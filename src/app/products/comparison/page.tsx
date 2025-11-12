@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useMemo } from 'react';
-import { Search, Filter, Check, FileText, Shield, ExternalLink } from 'lucide-react';
+import { Search, BookOpen, Download, Filter, Check, FileText, Shield, ExternalLink } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { products, bundles, Product, Bundle } from '@/lib/products';
 import Link from 'next/link';
