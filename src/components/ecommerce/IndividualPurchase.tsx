@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, FileText, Users } from 'lucide-react';
+import { Clock, FileText, Users, Download } from 'lucide-react';
 import { Product } from '@/lib/products';
 import { PurchaseButton } from './PurchaseButton';
 

@@ -4,6 +4,7 @@ import React from 'react';
 import { Check, Shield, ChevronDown, ChevronUp } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { BundleUpsell } from '@/components/ecommerce/BundleUpsell';
+import { PackageUpsell } from '@/components/ecommerce/PackageUpsell';
 import { IndividualPurchase } from '@/components/ecommerce/IndividualPurchase';
 import { RelatedProducts } from '@/components/ecommerce/RelatedProducts';
 import { getProduct, getRelatedProducts } from '@/lib/products';
@@ -162,6 +163,9 @@ const AccessControlPolicyPage = () => {
             {/* Bundle Upsells */}
             <BundleUpsell product={product} />
             
+            {/* Package Upsells */}
+            <PackageUpsell product={product} />
+
             {/* Individual Purchase */}
             <IndividualPurchase product={product} />
 

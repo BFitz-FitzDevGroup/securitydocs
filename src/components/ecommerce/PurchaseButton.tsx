@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface PurchaseButtonProps {
-  type: 'product' | 'bundle';
+  type: 'product' | 'bundle' | 'package';
   productId?: string;
   bundleId?: string;
   price: number;

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { Check, Shield, FileText, ArrowRight, Users, Clock, Zap } from 'lucide-react';
+import { Check, Shield, FileText, BookOpen, Download, ArrowRight, Users, Clock, Zap, Star } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { bundles } from '@/lib/products';
 

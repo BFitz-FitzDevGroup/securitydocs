@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { Check, Star } from 'lucide-react';
 import { Bundle, Product, getBundle } from '@/lib/products';
 import { PurchaseButton } from './PurchaseButton';
 
