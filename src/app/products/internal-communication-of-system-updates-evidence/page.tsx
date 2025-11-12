@@ -53,13 +53,15 @@ const InternalCommunicationOfSystemUpdatesEvidencePage = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl font-bold text-slate-900 mb-4">
+              <h1 className="text-4xl font-bold text-slate-900 mb-6">
                 Internal Communication of System Updates - Evidence Explanation
               </h1>
               
-              <p className="text-xl text-slate-600 leading-relaxed">
-                Documentation requirements for change communication and notification.
-              </p>
+              <div className="prose prose-lg prose-slate max-w-none">
+                <p className="text-lg text-slate-700 leading-relaxed">
+                  Understanding what auditors expect for this evidence requirement is crucial for SOC 2 success. This Internal Communication of System Updates - Evidence Explanation clarifies exactly what documentation you need and how to present it effectively. SOC 2 compliance requires comprehensive documentation across multiple Trust Service Criteria. This template provides the professional framework auditors expect to see, addressing common audit findings and compliance gaps. It includes clear procedures, roles and responsibilities, and documentation requirements that demonstrate your commitment to security and compliance. Whether you're preparing for your first SOC 2 audit or maintaining ongoing compliance, this template gives you a solid foundation based on real-world audit experience. This evidence explanation clarifies exactly what auditors are looking for, common mistakes to avoid, and best practices for presenting this evidence during your SOC 2 audit. It's designed to demystify audit requirements and give you confidence in your compliance preparation.
+                </p>
+              </div>
             </div>
 
             {/* What's Included */}
@@ -69,22 +71,22 @@ const InternalCommunicationOfSystemUpdatesEvidencePage = () => {
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Evidence Requirements</h3>
-                    <p className="text-sm text-slate-600">Detailed explanation of what auditors expect</p>
+                    <h3 className="font-medium text-slate-900">Evidence Explanation Document</h3>
+                    <p className="text-sm text-slate-600">Detailed explanation of what auditors expect for this requirement</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Collection Guidance</h3>
-                    <p className="text-sm text-slate-600">Instructions for gathering required evidence</p>
+                    <h3 className="font-medium text-slate-900">Best Practices Guide</h3>
+                    <p className="text-sm text-slate-600">Proven approaches for collecting and presenting this evidence</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Sample Documentation</h3>
-                    <p className="text-sm text-slate-600">Examples of acceptable evidence formats</p>
+                    <h3 className="font-medium text-slate-900">Common Mistakes to Avoid</h3>
+                    <p className="text-sm text-slate-600">Lessons learned from real audits to help you succeed</p>
                   </div>
                 </div>
               </div>

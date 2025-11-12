@@ -53,13 +53,15 @@ const NetworkSecurityPolicyPage = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl font-bold text-slate-900 mb-4">
+              <h1 className="text-4xl font-bold text-slate-900 mb-6">
                 Network Security Policy
               </h1>
               
-              <p className="text-xl text-slate-600 leading-relaxed">
-                Network security controls including firewalls, segmentation, and intrusion detection. Includes enterprise, SMB, implementation workbook, and quick reference guide.
-              </p>
+              <div className="prose prose-lg prose-slate max-w-none">
+                <p className="text-lg text-slate-700 leading-relaxed">
+                  The Network Security Policy is a critical component of SOC 2 compliance that auditors will thoroughly review during your audit. Network security controls are fundamental to SOC 2 compliance and heavily scrutinized by auditors. This template covers network architecture documentation, segmentation strategies, firewall configurations, and intrusion detection requirements. It provides clear guidance on implementing defense-in-depth strategies that auditors expect to see. The template addresses common audit findings around inadequate network segmentation, missing network diagrams, and insufficient monitoring of network perimeter controls. This policy includes four versions to fit your organization's needs: an Enterprise version for larger organizations with complex requirements, an SMB version optimized for smaller teams, an Implementation Workbook with step-by-step guidance, and a Quick Reference Guide for daily use. All versions are professionally formatted Microsoft Word documents ready for customization to your specific environment.
+                </p>
+              </div>
             </div>
 
             {/* What's Included */}
@@ -69,22 +71,29 @@ const NetworkSecurityPolicyPage = () => {
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Complete Policy Document</h3>
-                    <p className="text-sm text-slate-600">Professional Microsoft Word template ready to customize</p>
+                    <h3 className="font-medium text-slate-900">Enterprise Version Policy</h3>
+                    <p className="text-sm text-slate-600">Comprehensive policy for larger organizations with complex requirements</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Implementation Guidance</h3>
-                    <p className="text-sm text-slate-600">Step-by-step instructions for rolling out the policy</p>
+                    <h3 className="font-medium text-slate-900">SMB Version Policy</h3>
+                    <p className="text-sm text-slate-600">Streamlined policy optimized for small to medium-sized businesses</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Customizable Parameters</h3>
-                    <p className="text-sm text-slate-600">Bracketed placeholders for your specific requirements</p>
+                    <h3 className="font-medium text-slate-900">Implementation Workbook</h3>
+                    <p className="text-sm text-slate-600">Step-by-step guidance for rolling out and customizing the policy</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-medium text-slate-900">Quick Reference Guide</h3>
+                    <p className="text-sm text-slate-600">One-page summary for daily reference and team training</p>
                   </div>
                 </div>
               </div>

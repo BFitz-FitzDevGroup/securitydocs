@@ -53,13 +53,15 @@ const OperationsSecurityPolicyPage = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl font-bold text-slate-900 mb-4">
+              <h1 className="text-4xl font-bold text-slate-900 mb-6">
                 Operations Security Policy
               </h1>
               
-              <p className="text-xl text-slate-600 leading-relaxed">
-                Operational security controls for change management, monitoring, and system maintenance. Includes enterprise, SMB, implementation workbook, and quick reference guide.
-              </p>
+              <div className="prose prose-lg prose-slate max-w-none">
+                <p className="text-lg text-slate-700 leading-relaxed">
+                  The Operations Security Policy is a critical component of SOC 2 compliance that auditors will thoroughly review during your audit. Information security policies form the foundation of your SOC 2 compliance program and set expectations for all other security controls. Auditors examine these policies to understand your security commitments and then verify implementation through testing. This template provides comprehensive security policy coverage including acceptable use guidelines, security awareness requirements, and violation response procedures. It addresses the key security domains auditors expect to see documented and helps prevent common audit findings around incomplete or outdated security policies. This policy includes four versions to fit your organization's needs: an Enterprise version for larger organizations with complex requirements, an SMB version optimized for smaller teams, an Implementation Workbook with step-by-step guidance, and a Quick Reference Guide for daily use. All versions are professionally formatted Microsoft Word documents ready for customization to your specific environment.
+                </p>
+              </div>
             </div>
 
             {/* What's Included */}
@@ -69,22 +71,29 @@ const OperationsSecurityPolicyPage = () => {
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Complete Policy Document</h3>
-                    <p className="text-sm text-slate-600">Professional Microsoft Word template ready to customize</p>
+                    <h3 className="font-medium text-slate-900">Enterprise Version Policy</h3>
+                    <p className="text-sm text-slate-600">Comprehensive policy for larger organizations with complex requirements</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Implementation Guidance</h3>
-                    <p className="text-sm text-slate-600">Step-by-step instructions for rolling out the policy</p>
+                    <h3 className="font-medium text-slate-900">SMB Version Policy</h3>
+                    <p className="text-sm text-slate-600">Streamlined policy optimized for small to medium-sized businesses</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Customizable Parameters</h3>
-                    <p className="text-sm text-slate-600">Bracketed placeholders for your specific requirements</p>
+                    <h3 className="font-medium text-slate-900">Implementation Workbook</h3>
+                    <p className="text-sm text-slate-600">Step-by-step guidance for rolling out and customizing the policy</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-medium text-slate-900">Quick Reference Guide</h3>
+                    <p className="text-sm text-slate-600">One-page summary for daily reference and team training</p>
                   </div>
                 </div>
               </div>

@@ -53,13 +53,15 @@ const IncidentResponseProgramTemplatePage = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl font-bold text-slate-900 mb-4">
+              <h1 className="text-4xl font-bold text-slate-900 mb-6">
                 Incident Response Program Template
               </h1>
               
-              <p className="text-xl text-slate-600 leading-relaxed">
-                Structured incident response program with roles, procedures, and escalation paths. Includes instructions and Excel template.
-              </p>
+              <div className="prose prose-lg prose-slate max-w-none">
+                <p className="text-lg text-slate-700 leading-relaxed">
+                  The Incident Response Program Template provides essential documentation for demonstrating SOC 2 compliance. Incident response capabilities are essential for SOC 2 compliance and demonstrate your organization's ability to detect, respond to, and recover from security events. Auditors will examine your incident response procedures, testing protocols, and evidence of regular plan reviews. This template provides a complete incident response framework including detection mechanisms, escalation procedures, communication protocols, and post-incident analysis requirements. It addresses common audit gaps around incident categorization, response timeframes, and stakeholder notification procedures that many organizations overlook during initial compliance efforts. This template includes the document template itself plus detailed usage instructions to ensure proper implementation. Both are professional Microsoft Word documents that you can immediately customize for your organization's specific needs and workflow requirements.
+                </p>
+              </div>
             </div>
 
             {/* What's Included */}
@@ -70,21 +72,14 @@ const IncidentResponseProgramTemplatePage = () => {
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="font-medium text-slate-900">Template Document</h3>
-                    <p className="text-sm text-slate-600">Professional Microsoft Word format ready to use</p>
+                    <p className="text-sm text-slate-600">Professional Microsoft Word template ready to customize</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Fillable Fields</h3>
-                    <p className="text-sm text-slate-600">Clear placeholders for your organization's information</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium text-slate-900">Usage Examples</h3>
-                    <p className="text-sm text-slate-600">Sample completed forms for reference</p>
+                    <h3 className="font-medium text-slate-900">Usage Instructions</h3>
+                    <p className="text-sm text-slate-600">Clear guidance on how to complete and implement the template</p>
                   </div>
                 </div>
               </div>

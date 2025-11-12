@@ -53,13 +53,15 @@ const GdprSampleCompanyPrivacyPolicyPage = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl font-bold text-slate-900 mb-4">
+              <h1 className="text-4xl font-bold text-slate-900 mb-6">
                 GDPR Sample Company Privacy Policy
               </h1>
               
-              <p className="text-xl text-slate-600 leading-relaxed">
-                GDPR-compliant privacy policy template for EU data protection compliance.
-              </p>
+              <div className="prose prose-lg prose-slate max-w-none">
+                <p className="text-lg text-slate-700 leading-relaxed">
+                  The GDPR Sample Company Privacy Policy provides essential documentation for demonstrating SOC 2 compliance. Data management and privacy controls are increasingly critical in SOC 2 audits, especially for organizations handling sensitive customer information. This template addresses data classification, retention requirements, disposal procedures, and privacy rights management. It provides clear guidance on implementing data protection measures that satisfy both SOC 2 requirements and privacy regulations. The template includes procedures for data inventory, access restrictions, encryption requirements, and breach notification protocols that demonstrate comprehensive data governance to auditors. This template includes the document template itself plus detailed usage instructions to ensure proper implementation. Both are professional Microsoft Word documents that you can immediately customize for your organization's specific needs and workflow requirements.
+                </p>
+              </div>
             </div>
 
             {/* What's Included */}
@@ -70,21 +72,14 @@ const GdprSampleCompanyPrivacyPolicyPage = () => {
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="font-medium text-slate-900">Template Document</h3>
-                    <p className="text-sm text-slate-600">Professional Microsoft Word format ready to use</p>
+                    <p className="text-sm text-slate-600">Professional Microsoft Word template ready to customize</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Fillable Fields</h3>
-                    <p className="text-sm text-slate-600">Clear placeholders for your organization's information</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium text-slate-900">Usage Examples</h3>
-                    <p className="text-sm text-slate-600">Sample completed forms for reference</p>
+                    <h3 className="font-medium text-slate-900">Usage Instructions</h3>
+                    <p className="text-sm text-slate-600">Clear guidance on how to complete and implement the template</p>
                   </div>
                 </div>
               </div>

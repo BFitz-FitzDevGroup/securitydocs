@@ -53,13 +53,15 @@ const DisasterRecoveryTabletopExerciseEvidencePage = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl font-bold text-slate-900 mb-4">
+              <h1 className="text-4xl font-bold text-slate-900 mb-6">
                 Disaster Recovery Tabletop Exercise - Evidence Explanation
               </h1>
               
-              <p className="text-xl text-slate-600 leading-relaxed">
-                How to document and present disaster recovery testing exercises.
-              </p>
+              <div className="prose prose-lg prose-slate max-w-none">
+                <p className="text-lg text-slate-700 leading-relaxed">
+                  Understanding what auditors expect for this evidence requirement is crucial for SOC 2 success. This Disaster Recovery Tabletop Exercise - Evidence Explanation clarifies exactly what documentation you need and how to present it effectively. Business continuity and disaster recovery capabilities are essential SOC 2 requirements that demonstrate your organization can maintain operations during disruptions. Auditors will examine backup procedures, recovery time objectives, and evidence of regular testing. This template provides comprehensive guidance on backup strategies, recovery procedures, testing protocols, and documentation requirements. It addresses common audit findings around untested recovery procedures, inadequate backup verification, and missing recovery time objectives that can derail SOC 2 audits. This evidence explanation clarifies exactly what auditors are looking for, common mistakes to avoid, and best practices for presenting this evidence during your SOC 2 audit. It's designed to demystify audit requirements and give you confidence in your compliance preparation.
+                </p>
+              </div>
             </div>
 
             {/* What's Included */}
@@ -69,22 +71,22 @@ const DisasterRecoveryTabletopExerciseEvidencePage = () => {
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Evidence Requirements</h3>
-                    <p className="text-sm text-slate-600">Detailed explanation of what auditors expect</p>
+                    <h3 className="font-medium text-slate-900">Evidence Explanation Document</h3>
+                    <p className="text-sm text-slate-600">Detailed explanation of what auditors expect for this requirement</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Collection Guidance</h3>
-                    <p className="text-sm text-slate-600">Instructions for gathering required evidence</p>
+                    <h3 className="font-medium text-slate-900">Best Practices Guide</h3>
+                    <p className="text-sm text-slate-600">Proven approaches for collecting and presenting this evidence</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Check className="w-5 h-5 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-slate-900">Sample Documentation</h3>
-                    <p className="text-sm text-slate-600">Examples of acceptable evidence formats</p>
+                    <h3 className="font-medium text-slate-900">Common Mistakes to Avoid</h3>
+                    <p className="text-sm text-slate-600">Lessons learned from real audits to help you succeed</p>
                   </div>
                 </div>
               </div>
