@@ -1,226 +1,343 @@
 import React from 'react';
 import { PageLayout } from '@/components/layout/PageLayout';
-
-export const metadata = {
-  title: 'Refund Policy | SecurityDocs',
-  description: 'Refund policy for SecurityDocs digital products and templates.',
-};
+import { AlertCircle, Download, Mail, HelpCircle } from 'lucide-react';
 
 export default function RefundPolicyPage() {
+  const breadcrumbPath = [
+    { label: 'Home', href: '/' },
+    { label: 'Legal', href: '/legal' },
+    { label: 'Refund Policy', href: '/legal/refund-policy' }
+  ];
+
   return (
     <PageLayout
       title="Refund Policy"
-      description="Our policy on refunds for digital products"
-      breadcrumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'Legal', href: '/legal' },
-        { label: 'Refund Policy' },
-      ]}
+      description="SecurityDocs refund policy for digital template purchases"
+      showBreadcrumb
+      breadcrumbPath={breadcrumbPath}
     >
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-8">
-          <div className="flex items-start gap-3">
-            <div className="flex-shrink-0 mt-1">
-              <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div>
-              <h2 className="text-lg font-semibold text-amber-900 mb-2">Digital Product Policy</h2>
-              <p className="text-amber-800">
-                <strong>All sales are final.</strong> Due to the instant, digital nature of our products, 
-                we cannot offer refunds after purchase. Please read this policy carefully before purchasing.
-              </p>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <AlertCircle className="w-8 h-8 text-blue-600" />
+            <h1 className="text-4xl font-bold text-slate-900">Refund Policy</h1>
+          </div>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Last Updated: November 12, 2025
+          </p>
+        </div>
+
+        {/* Important Notice */}
+        <div className="mb-12">
+          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-lg p-6">
+            <div className="flex items-start">
+              <AlertCircle className="w-6 h-6 text-amber-600 mr-3 mt-1 flex-shrink-0" />
+              <div>
+                <h2 className="text-lg font-semibold text-slate-900 mb-2">
+                  All Sales Are Final
+                </h2>
+                <p className="text-slate-700 leading-relaxed">
+                  Due to the digital nature of our products and immediate delivery upon purchase, 
+                  SecurityDocs operates a no-refund policy. Please read this policy carefully 
+                  before making a purchase.
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="prose prose-slate max-w-none">
-          <h2>Why No Refunds for Digital Products?</h2>
-          <p>
-            Unlike physical products that can be returned, digital products grant immediate access to 
-            downloadable content. Once you've received your templates, you have full access to the 
-            intellectual property and we cannot "take it back."
-          </p>
-          <p>
-            This is standard practice for digital downloads across the industry. It's similar to how 
-            you can't return an ebook after reading it or software after installing it.
-          </p>
-
-          <h2>Our Commitment to Quality</h2>
-          <p>
-            While we can't offer refunds, we're committed to ensuring you're making an informed purchase:
-          </p>
+        {/* Content */}
+        <div className="prose prose-lg prose-slate max-w-none">
           
-          <h3>Before Purchase</h3>
-          <ul>
-            <li><strong>Detailed Product Descriptions:</strong> Every product page includes comprehensive information about what's included</li>
-            <li><strong>Sample Content:</strong> Product descriptions explain the structure and content you'll receive</li>
-            <li><strong>Clear Expectations:</strong> We're transparent about what templates are (starting points) and aren't (turnkey solutions)</li>
-            <li><strong>Pre-Purchase Support:</strong> Contact us with questions before buying - we're happy to help you choose the right products</li>
-          </ul>
-
-          <h3>After Purchase</h3>
-          <ul>
-            <li><strong>Immediate Delivery:</strong> Download links sent to your email instantly</li>
-            <li><strong>3 Downloads Included:</strong> You can download each product up to 3 times</li>
-            <li><strong>Customer Account:</strong> Access your purchases anytime through Lemon Squeezy</li>
-            <li><strong>Post-Purchase Support:</strong> Questions about using the templates? We're here to help</li>
-          </ul>
-
-          <h2>Exceptional Circumstances</h2>
-          <p>
-            We may consider refund requests in the following rare situations:
-          </p>
-
-          <h3>Technical Issues</h3>
-          <p>If you experience technical problems that prevent you from accessing your purchase:</p>
-          <ul>
-            <li>Download links not working or expired</li>
-            <li>Files corrupted or won't open</li>
-            <li>Wrong product delivered</li>
-            <li>Duplicate charges for the same order</li>
-          </ul>
-          <p>
-            <strong>Action Required:</strong> Contact support@security-docs.com within 7 days of purchase with:
-          </p>
-          <ul>
-            <li>Your order number</li>
-            <li>Description of the technical issue</li>
-            <li>Screenshots or error messages (if applicable)</li>
-          </ul>
-          <p>
-            We'll work to resolve the technical issue first. If we can't fix it, we'll issue a refund.
-          </p>
-
-          <h3>Severe Product Defects</h3>
-          <p>If a product has significant defects that materially affect its usability:</p>
-          <ul>
-            <li>Critical missing content that was promised in the description</li>
-            <li>Files that are completely unusable or blank</li>
-            <li>Fundamental errors that make the template worthless</li>
-          </ul>
-          <p>
-            <strong>Note:</strong> This does NOT include:
-          </p>
-          <ul>
-            <li>Needing to customize the template for your organization (this is expected)</li>
-            <li>Template not matching your specific needs or expectations</li>
-            <li>Your auditor requiring different documentation</li>
-            <li>Minor typos or formatting preferences</li>
-          </ul>
-
-          <h2>What Is NOT Covered</h2>
-          <p>
-            We cannot issue refunds for:
-          </p>
-          <ul>
-            <li><strong>Change of Mind:</strong> Deciding you don't need the template after downloading</li>
-            <li><strong>Customization Requirements:</strong> Realizing you need to customize the template (this is expected and disclosed)</li>
-            <li><strong>Auditor Preferences:</strong> Your auditor wanting different formats or content</li>
-            <li><strong>Audit Outcomes:</strong> Not passing your SOC 2 audit (templates don't guarantee compliance)</li>
-            <li><strong>Wrong Product:</strong> Purchasing the wrong item (descriptions are clear - read carefully)</li>
-            <li><strong>Buyer's Remorse:</strong> Simply regretting the purchase</li>
-            <li><strong>Financial Hardship:</strong> While we're sympathetic, we cannot offer refunds for this reason</li>
-          </ul>
-
-          <h2>Prevention: Making the Right Purchase</h2>
-          
-          <h3>Questions to Ask Yourself</h3>
-          <p>Before purchasing, consider:</p>
-          <ul>
-            <li><strong>Do I need this specific product?</strong> Review the description carefully</li>
-            <li><strong>Is this the right bundle level?</strong> Complete vs Policy vs Document vs Evidence</li>
-            <li><strong>Am I prepared to customize?</strong> Templates require adaptation to your organization</li>
-            <li><strong>Have I checked the format?</strong> All templates are Microsoft Word (.docx) documents</li>
-            <li><strong>Do I understand what's included?</strong> Check the "What's Included" section</li>
-          </ul>
-
-          <h3>Still Unsure?</h3>
-          <p>
-            <strong>Contact us before purchasing!</strong> We'd rather help you make the right decision 
-            than deal with disappointment after purchase.
-          </p>
-          <ul>
-            <li><strong>Email:</strong> support@security-docs.com</li>
-            <li><strong>Response Time:</strong> Usually within 24 hours</li>
-            <li><strong>We'll help you:</strong> Choose the right products, understand what's included, set realistic expectations</li>
-          </ul>
-
-          <h2>How to Request an Exception</h2>
-          <p>
-            If you believe your situation qualifies for an exceptional refund:
-          </p>
-          <ol>
-            <li><strong>Email us:</strong> support@security-docs.com</li>
-            <li><strong>Subject line:</strong> "Refund Request - Order #[your order number]"</li>
-            <li><strong>Include:</strong>
-              <ul>
-                <li>Your order number and purchase date</li>
-                <li>Detailed explanation of the issue</li>
-                <li>Any supporting documentation (screenshots, error messages)</li>
-                <li>Steps you've already taken to resolve the issue</li>
-              </ul>
-            </li>
-            <li><strong>Timeline:</strong> Submit within 7 days of purchase</li>
-          </ol>
-          <p>
-            We'll review your request and respond within 2-3 business days. Each case is evaluated individually.
-          </p>
-
-          <h2>Chargebacks and Disputes</h2>
-          <p>
-            <strong>Please contact us before initiating a chargeback.</strong> Chargebacks should only be used 
-            for unauthorized charges or fraud.
-          </p>
-          <p>
-            If you file a chargeback instead of contacting us:
-          </p>
-          <ul>
-            <li>We'll provide documentation showing you received the product</li>
-            <li>Your account may be suspended</li>
-            <li>You may be banned from future purchases</li>
-            <li>You'll still owe for the product if the chargeback is unsuccessful</li>
-          </ul>
-          <p>
-            We're reasonable people. Talk to us first.
-          </p>
-
-          <h2>Bundle Considerations</h2>
-          <p>
-            <strong>Bundle purchases receive significant discounts</strong> (up to 52% off individual pricing). 
-            Because of these substantial savings:
-          </p>
-          <ul>
-            <li>Bundle refunds are not available for individual items within the bundle</li>
-            <li>You can't return part of a bundle - it's all or nothing</li>
-            <li>Consider starting with a smaller bundle if you're unsure</li>
-          </ul>
-
-          <h2>Questions About This Policy?</h2>
-          <p>
-            We understand this policy may seem strict. It's necessary to protect against abuse while 
-            offering digital products. However, we're committed to customer satisfaction and will work 
-            with you to resolve legitimate issues.
-          </p>
-          <p>
-            <strong>Contact Us:</strong> support@security-docs.com
-          </p>
-
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-12 not-prose">
-            <h3 className="font-semibold text-blue-900 mb-3">Bottom Line</h3>
-            <p className="text-sm text-blue-800 mb-2">
-              <strong>No refunds on digital downloads</strong> - but we want you to make an informed purchase. 
-              We provide detailed descriptions, answer pre-purchase questions, and support you after purchase.
+          {/* Why No Refunds */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Why We Don't Offer Refunds
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              SecurityDocs sells digital products (Microsoft Word templates) that are delivered 
+              immediately upon purchase via email. Once you receive the download links and access 
+              the templates, we cannot "take back" the digital files.
             </p>
-            <p className="text-sm text-blue-800 mb-2">
-              <strong>Technical issues?</strong> Contact us within 7 days and we'll fix it or issue a refund.
+            <p className="text-slate-700 leading-relaxed mb-4">
+              This is similar to purchasing a book or ebook - once you've read the content, 
+              it can't be "unread." Our templates contain valuable intellectual property and 
+              professional guidance that becomes accessible to you immediately upon purchase.
             </p>
-            <p className="text-sm text-blue-700">
-              <strong>Questions before buying?</strong> Email support@security-docs.com - we're happy to help 
-              you choose the right products.
+            <div className="bg-slate-50 rounded-lg p-6 border-l-4 border-slate-400">
+              <p className="text-slate-700 leading-relaxed mb-0">
+                <strong>Important:</strong> We provide detailed product descriptions, sample 
+                content previews, and "What's Included" sections on every product page so you 
+                can make an informed decision before purchasing.
+              </p>
+            </div>
+          </section>
+
+          {/* Before You Buy */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Before You Buy - Please Review
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              To ensure you're making the right purchase, we recommend:
             </p>
-          </div>
+
+            <div className="space-y-4">
+              <div className="bg-blue-50 rounded-lg p-4">
+                <div className="flex items-start">
+                  <Download className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-1">
+                      Read Product Descriptions Carefully
+                    </h3>
+                    <p className="text-slate-700 text-sm leading-relaxed">
+                      Each product page includes detailed descriptions, what's included, and 
+                      SOC 2 compliance coverage. Make sure the template meets your needs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 rounded-lg p-4">
+                <div className="flex items-start">
+                  <HelpCircle className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-1">
+                      Review Template Previews
+                    </h3>
+                    <p className="text-slate-700 text-sm leading-relaxed">
+                      We provide template structure previews and key features on every product 
+                      page. These give you a clear idea of what you'll receive.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 rounded-lg p-4">
+                <div className="flex items-start">
+                  <Mail className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-1">
+                      Contact Us With Questions
+                    </h3>
+                    <p className="text-slate-700 text-sm leading-relaxed">
+                      If you're unsure whether a template is right for you, contact us at{' '}
+                      <a href="mailto:support@security-docs.com" className="text-blue-600 hover:text-blue-700 underline">
+                        support@security-docs.com
+                      </a>
+                      {' '}before purchasing.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Exceptions */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Technical Issues - We're Here to Help
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              While we don't offer refunds, we absolutely want you to receive what you paid for. 
+              If you experience technical difficulties, we'll work with you to resolve them:
+            </p>
+
+            <div className="space-y-3">
+              <div className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <div>
+                  <p className="text-slate-700 leading-relaxed">
+                    <strong>Download Problems:</strong> If download links don't work or expire 
+                    before you can access them, we'll send new links.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <div>
+                  <p className="text-slate-700 leading-relaxed">
+                    <strong>Corrupted Files:</strong> If downloaded files are corrupted or won't 
+                    open properly, we'll provide working copies.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <div>
+                  <p className="text-slate-700 leading-relaxed">
+                    <strong>Wrong Product Delivered:</strong> If we accidentally send the wrong 
+                    template (our error), we'll provide the correct one immediately.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <div>
+                  <p className="text-slate-700 leading-relaxed">
+                    <strong>Payment Issues:</strong> If you were charged but didn't receive your 
+                    purchase, we'll investigate and make it right.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-lg p-4">
+              <p className="text-slate-700 leading-relaxed mb-0">
+                Contact us at{' '}
+                <a href="mailto:support@security-docs.com" className="text-emerald-700 hover:text-emerald-800 underline font-medium">
+                  support@security-docs.com
+                </a>
+                {' '}for any technical issues. We typically respond within 24 hours on business days.
+              </p>
+            </div>
+          </section>
+
+          {/* What's Not Covered */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              What's Not Covered by This Policy
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              We cannot offer refunds or exchanges for:
+            </p>
+
+            <div className="space-y-3">
+              <div className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <div>
+                  <p className="text-slate-700 leading-relaxed">
+                    <strong>Change of Mind:</strong> "I decided I don't need this anymore" or 
+                    "I bought the wrong template."
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <div>
+                  <p className="text-slate-700 leading-relaxed">
+                    <strong>Customization Expectations:</strong> "The template requires too much 
+                    customization." All templates are designed to be customized for your organization.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <div>
+                  <p className="text-slate-700 leading-relaxed">
+                    <strong>Compliance Outcomes:</strong> "We didn't pass our audit." Templates are 
+                    tools to help with compliance, but don't guarantee audit passage.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <div>
+                  <p className="text-slate-700 leading-relaxed">
+                    <strong>Compatibility Issues:</strong> "I don't have Microsoft Word." Product 
+                    descriptions clearly state files are in .docx format.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <div>
+                  <p className="text-slate-700 leading-relaxed">
+                    <strong>Bundle vs Individual:</strong> "I should have bought the bundle instead." 
+                    Bundle savings are clearly displayed on every product page.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Chargebacks */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Chargebacks and Disputes
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              If you're considering a chargeback or payment dispute, please contact us first 
+              at{' '}
+              <a href="mailto:support@security-docs.com" className="text-blue-600 hover:text-blue-700 underline">
+                support@security-docs.com
+              </a>
+              . We want to resolve any issues directly with you.
+            </p>
+            <p className="text-slate-700 leading-relaxed">
+              Initiating a chargeback for a delivered digital product may be considered fraud. 
+              We maintain records of all deliveries and will dispute fraudulent chargebacks.
+            </p>
+          </section>
+
+          {/* Fair Use */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Our Commitment to Fair Treatment
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              While we maintain a no-refund policy, we're committed to treating customers fairly:
+            </p>
+            <ul className="space-y-2 text-slate-700">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>We provide accurate, detailed product descriptions</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>We respond promptly to technical support requests</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>We ensure you can re-download purchases if needed</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>We answer pre-purchase questions to help you choose correctly</span>
+              </li>
+            </ul>
+          </section>
+
+          {/* Contact */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Questions About This Policy?
+            </h2>
+            <p className="text-slate-700 leading-relaxed">
+              If you have questions about our refund policy or need assistance with a purchase, 
+              please contact us at{' '}
+              <a href="mailto:support@security-docs.com" className="text-blue-600 hover:text-blue-700 underline">
+                support@security-docs.com
+              </a>
+              . We're here to help ensure you have a positive experience with SecurityDocs.
+            </p>
+          </section>
+
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-12 p-6 bg-slate-50 border border-slate-200 rounded-lg">
+          <h3 className="text-lg font-semibold text-slate-900 mb-2">
+            Need Help Choosing the Right Templates?
+          </h3>
+          <p className="text-slate-600 mb-4">
+            We're happy to answer questions before you purchase to make sure you're getting 
+            exactly what you need.
+          </p>
+          <a
+            href="mailto:support@security-docs.com"
+            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+          >
+            Contact Us: support@security-docs.com
+          </a>
         </div>
       </div>
     </PageLayout>

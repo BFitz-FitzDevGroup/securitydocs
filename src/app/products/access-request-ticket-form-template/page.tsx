@@ -7,6 +7,7 @@ import { BundleUpsell } from '@/components/ecommerce/BundleUpsell';
 import { PackageUpsell } from '@/components/ecommerce/PackageUpsell';
 import { IndividualPurchase } from '@/components/ecommerce/IndividualPurchase';
 import { RelatedProducts } from '@/components/ecommerce/RelatedProducts';
+import PrePurchaseNotice from '@/components/legal/PrePurchaseNotice';
 import { getProduct, getRelatedProducts } from '@/lib/products';
 
 const AccessRequestTicketFormTemplatePage = () => {
@@ -175,6 +176,9 @@ const AccessRequestTicketFormTemplatePage = () => {
             
             {/* Package Upsell (for policies only) */}
             <PackageUpsell product={product} />
+            
+            {/* Pre-Purchase Notice - IMPORTANT: Read before purchasing */}
+            <PrePurchaseNotice productType="document" />
             
             {/* Individual Purchase */}
             <IndividualPurchase product={product} />

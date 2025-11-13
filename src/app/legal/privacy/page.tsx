@@ -1,226 +1,436 @@
 import React from 'react';
 import { PageLayout } from '@/components/layout/PageLayout';
-
-export const metadata = {
-  title: 'Privacy Policy | SecurityDocs',
-  description: 'Privacy policy for SecurityDocs - how we collect, use, and protect your personal information.',
-};
+import { Shield, Lock, Eye, UserCheck } from 'lucide-react';
 
 export default function PrivacyPolicyPage() {
+  const breadcrumbPath = [
+    { label: 'Home', href: '/' },
+    { label: 'Legal', href: '/legal' },
+    { label: 'Privacy Policy', href: '/legal/privacy' }
+  ];
+
   return (
     <PageLayout
       title="Privacy Policy"
-      description="How we collect, use, and protect your information"
-      breadcrumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'Legal', href: '/legal' },
-        { label: 'Privacy Policy' },
-      ]}
+      description="How SecurityDocs collects, uses, and protects your personal information"
+      showBreadcrumb
+      breadcrumbPath={breadcrumbPath}
     >
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-          <h2 className="text-lg font-semibold text-blue-900 mb-2">Last Updated: November 12, 2025</h2>
-          <p className="text-blue-800">
-            We respect your privacy and are committed to protecting your personal information. 
-            This policy explains what data we collect, how we use it, and your rights.
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <Shield className="w-8 h-8 text-blue-600" />
+            <h1 className="text-4xl font-bold text-slate-900">Privacy Policy</h1>
+          </div>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Last Updated: November 12, 2025
           </p>
-        </div>
-
-        <div className="prose prose-slate max-w-none">
-          <h2>1. Information We Collect</h2>
-          
-          <h3>1.1 Information You Provide</h3>
-          <p>When you make a purchase or contact us, we collect:</p>
-          <ul>
-            <li><strong>Contact Information:</strong> Name, email address</li>
-            <li><strong>Payment Information:</strong> Processed securely by Lemon Squeezy (we never see your full payment details)</li>
-            <li><strong>Billing Information:</strong> Company name (optional), billing address for VAT compliance</li>
-            <li><strong>Communications:</strong> Messages you send us via email or contact forms</li>
-          </ul>
-
-          <h3>1.2 Automatically Collected Information</h3>
-          <p>When you visit our website, we collect:</p>
-          <ul>
-            <li><strong>Usage Data:</strong> Pages viewed, time spent, referring website</li>
-            <li><strong>Device Information:</strong> Browser type, device type, screen resolution</li>
-            <li><strong>IP Address:</strong> For analytics and fraud prevention</li>
-            <li><strong>Analytics:</strong> Via Plausible Analytics (privacy-focused, no cookies) and Google Analytics 4</li>
-          </ul>
-
-          <h2>2. How We Use Your Information</h2>
-          
-          <h3>2.1 Primary Uses</h3>
-          <ul>
-            <li><strong>Order Processing:</strong> To fulfill your purchase and deliver products</li>
-            <li><strong>Customer Support:</strong> To respond to your questions and resolve issues</li>
-            <li><strong>Account Management:</strong> To maintain your customer account at Lemon Squeezy</li>
-            <li><strong>Legal Compliance:</strong> To comply with tax and VAT requirements</li>
-          </ul>
-
-          <h3>2.2 Analytics and Improvement</h3>
-          <ul>
-            <li><strong>Website Analytics:</strong> To understand how visitors use our site and improve user experience</li>
-            <li><strong>Product Development:</strong> To understand which products are most valuable to customers</li>
-            <li><strong>Performance Monitoring:</strong> To ensure our website loads quickly and functions properly</li>
-          </ul>
-
-          <h3>2.3 Marketing Communications</h3>
-          <ul>
-            <li><strong>Transactional Emails:</strong> Order confirmations, download links, receipts (required for service)</li>
-            <li><strong>Product Updates:</strong> Important updates about products you've purchased (opt-out available)</li>
-            <li><strong>Marketing Emails:</strong> New products, educational content (opt-in only, easy unsubscribe)</li>
-          </ul>
-
-          <h2>3. How We Share Your Information</h2>
-          
-          <h3>3.1 Service Providers</h3>
-          <p>We share limited information with trusted service providers who help us operate:</p>
-          <ul>
-            <li><strong>Lemon Squeezy:</strong> Payment processing, product delivery, customer accounts</li>
-            <li><strong>Vercel:</strong> Website hosting and content delivery</li>
-            <li><strong>Analytics Providers:</strong> Plausible Analytics (privacy-focused), Google Analytics</li>
-            <li><strong>Email Service:</strong> For transactional and marketing emails (if applicable)</li>
-          </ul>
-          <p>
-            All service providers are contractually required to protect your data and use it only for 
-            the purposes we specify.
-          </p>
-
-          <h3>3.2 Legal Requirements</h3>
-          <p>We may disclose your information when required by law or to:</p>
-          <ul>
-            <li>Comply with legal processes, court orders, or government requests</li>
-            <li>Enforce our Terms of Service</li>
-            <li>Protect our rights, property, or safety</li>
-            <li>Investigate fraud or security issues</li>
-          </ul>
-
-          <h3>3.3 We DO NOT Sell Your Data</h3>
-          <p>
-            <strong>We never sell, rent, or trade your personal information to third parties for marketing purposes.</strong>
-          </p>
-
-          <h2>4. Analytics and Cookies</h2>
-          
-          <h3>4.1 Our Analytics Approach</h3>
-          <p>
-            We use a dual analytics approach to understand website usage while respecting privacy:
-          </p>
-          <ul>
-            <li><strong>Plausible Analytics:</strong> Privacy-focused, GDPR compliant, no cookies, doesn't track individuals</li>
-            <li><strong>Google Analytics 4:</strong> For advanced e-commerce insights, anonymized IP addresses</li>
-          </ul>
-
-          <h3>4.2 Cookies We Use</h3>
-          <ul>
-            <li><strong>Essential Cookies:</strong> Required for the website to function (shopping cart, downloads)</li>
-            <li><strong>Analytics Cookies:</strong> Help us understand website usage (Google Analytics)</li>
-            <li><strong>No Advertising Cookies:</strong> We don't use cookies for targeted advertising</li>
-          </ul>
-          <p>
-            You can disable cookies in your browser settings, though this may affect website functionality.
-          </p>
-
-          <h2>5. Data Security</h2>
-          <p>We take security seriously and implement appropriate measures:</p>
-          <ul>
-            <li><strong>Encryption:</strong> HTTPS encryption for all data transmission</li>
-            <li><strong>Secure Storage:</strong> Data stored with industry-standard security practices</li>
-            <li><strong>Limited Access:</strong> Only authorized personnel can access customer data</li>
-            <li><strong>Regular Security Reviews:</strong> Ongoing monitoring and updates</li>
-          </ul>
-          <p>
-            However, no method of electronic storage or transmission is 100% secure. We cannot guarantee 
-            absolute security but strive to use commercially reasonable protections.
-          </p>
-
-          <h2>6. Data Retention</h2>
-          <ul>
-            <li><strong>Purchase Records:</strong> Retained for 7 years for accounting and tax purposes</li>
-            <li><strong>Customer Accounts:</strong> Maintained until you request deletion</li>
-            <li><strong>Analytics Data:</strong> Aggregated and anonymized, retained indefinitely</li>
-            <li><strong>Marketing Lists:</strong> Until you unsubscribe or request removal</li>
-          </ul>
-
-          <h2>7. Your Rights and Choices</h2>
-          
-          <h3>7.1 Access and Correction</h3>
-          <p>You have the right to:</p>
-          <ul>
-            <li>Request a copy of the personal information we hold about you</li>
-            <li>Correct inaccurate or incomplete information</li>
-            <li>Update your contact preferences</li>
-          </ul>
-
-          <h3>7.2 Data Deletion</h3>
-          <p>You can request deletion of your personal information, subject to:</p>
-          <ul>
-            <li>Legal requirements to retain certain records (tax, accounting)</li>
-            <li>Legitimate business needs (fraud prevention, disputes)</li>
-            <li>Contractual obligations</li>
-          </ul>
-
-          <h3>7.3 Marketing Opt-Out</h3>
-          <p>You can opt out of marketing communications:</p>
-          <ul>
-            <li>Click "unsubscribe" in any marketing email</li>
-            <li>Contact us at support@security-docs.com</li>
-            <li>Note: Transactional emails (receipts, downloads) cannot be opted out of</li>
-          </ul>
-
-          <h2>8. International Data Transfers</h2>
-          <p>
-            SecurityDocs operates from the United States. If you're located outside the U.S., your 
-            information will be transferred to and processed in the United States. By using our services, 
-            you consent to this transfer and processing.
-          </p>
-          <p>
-            For EU/UK customers: We comply with applicable data protection laws including GDPR requirements 
-            for international transfers.
-          </p>
-
-          <h2>9. Children's Privacy</h2>
-          <p>
-            SecurityDocs is not intended for individuals under 18 years of age. We do not knowingly 
-            collect personal information from children. If we learn we've collected information from 
-            a child, we'll delete it promptly.
-          </p>
-
-          <h2>10. Changes to This Privacy Policy</h2>
-          <p>
-            We may update this privacy policy periodically. Changes will be posted on this page with 
-            an updated "Last Updated" date. Material changes will be communicated via email to customers. 
-            Continued use after changes constitutes acceptance.
-          </p>
-
-          <h2>11. Contact Us</h2>
-          <p>
-            Questions about this privacy policy or your personal information:
-          </p>
-          <ul>
-            <li><strong>Email:</strong> support@security-docs.com</li>
-            <li><strong>Subject Line:</strong> "Privacy Question" for faster response</li>
-          </ul>
-
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 mt-12 not-prose">
-            <h3 className="font-semibold text-slate-900 mb-3">Privacy in Plain English</h3>
-            <p className="text-sm text-slate-700 mb-2">
-              <strong>What we collect:</strong> Just the basics - your email, name, and purchase info. 
-              We use privacy-focused analytics (Plausible) that doesn't track individuals.
-            </p>
-            <p className="text-sm text-slate-700 mb-2">
-              <strong>How we use it:</strong> To process your order, send you your downloads, and improve 
-              our website. We might send you helpful emails about compliance topics (easy to unsubscribe).
-            </p>
-            <p className="text-sm text-slate-700 mb-2">
-              <strong>What we DON'T do:</strong> We never sell your data. We don't bombard you with ads. 
-              We don't track you across the internet.
-            </p>
-            <p className="text-sm text-slate-600">
-              <strong>Your control:</strong> You can request your data, ask us to delete it, or opt out 
-              of emails anytime.
+          <div className="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+            <p className="text-slate-700">
+              We take your privacy seriously. This policy explains how we collect, use, and 
+              protect your personal information when you use SecurityDocs.
             </p>
           </div>
+        </div>
+
+        {/* Content */}
+        <div className="prose prose-lg prose-slate max-w-none">
+          
+          {/* Overview */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Our Privacy Commitment
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              SecurityDocs is committed to protecting your privacy and handling your personal 
+              information responsibly. As a company that helps others achieve compliance, we 
+              understand the importance of data protection and privacy best practices.
+            </p>
+            <p className="text-slate-700 leading-relaxed">
+              This Privacy Policy describes how we collect, use, disclose, and protect your 
+              personal information when you visit our website and purchase our templates.
+            </p>
+          </section>
+
+          {/* Information We Collect */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
+              <Eye className="w-6 h-6 text-blue-600" />
+              Information We Collect
+            </h2>
+
+            <h3 className="text-xl font-semibold text-slate-900 mb-3 mt-6">
+              Information You Provide
+            </h3>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              When you make a purchase, we collect:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-6">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Contact Information:</strong> Name and email address</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Payment Information:</strong> Processed securely by Lemon Squeezy (we never see your payment details)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Purchase Details:</strong> Products purchased, transaction date, and amount</span>
+              </li>
+            </ul>
+
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">
+              Information Collected Automatically
+            </h3>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              When you visit our website, we automatically collect:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-6">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Usage Data:</strong> Pages visited, time spent, and navigation patterns</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Device Information:</strong> Browser type, operating system, and device type</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Location Data:</strong> General location (country/region level) based on IP address</span>
+              </li>
+            </ul>
+
+            <div className="bg-slate-50 border-l-4 border-slate-400 rounded-r-lg p-6">
+              <p className="text-slate-700 leading-relaxed">
+                <strong>Note:</strong> We use privacy-focused analytics (Plausible) that doesn't use 
+                cookies or track you across websites. Your privacy is respected even in our analytics.
+              </p>
+            </div>
+          </section>
+
+          {/* How We Use Your Information */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              How We Use Your Information
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              We use your personal information for the following purposes:
+            </p>
+
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  Order Processing and Delivery
+                </h3>
+                <ul className="space-y-2 text-slate-700">
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    <span>Process your purchase and send you order confirmations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    <span>Deliver templates via email with secure download links</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    <span>Manage your customer account for re-downloads</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  Customer Support
+                </h3>
+                <ul className="space-y-2 text-slate-700">
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    <span>Respond to your inquiries and support requests</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    <span>Resolve technical issues with downloads</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    <span>Communicate about your purchases</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  Website Improvement
+                </h3>
+                <ul className="space-y-2 text-slate-700">
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    <span>Understand how visitors use our website</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    <span>Improve our content and user experience</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    <span>Identify and fix technical issues</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Information Sharing */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              How We Share Your Information
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              We do not sell, rent, or trade your personal information. We only share your 
+              information in these limited circumstances:
+            </p>
+
+            <div className="space-y-4">
+              <div className="bg-slate-50 rounded-lg p-4">
+                <h3 className="font-semibold text-slate-900 mb-2">
+                  Service Providers
+                </h3>
+                <p className="text-slate-700 text-sm leading-relaxed">
+                  We use trusted third-party services to help us operate our business:
+                </p>
+                <ul className="mt-2 space-y-1 text-slate-700 text-sm">
+                  <li className="flex items-start">
+                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full mr-2 mt-1.5 flex-shrink-0"></span>
+                    <span><strong>Lemon Squeezy:</strong> Payment processing and order fulfillment</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full mr-2 mt-1.5 flex-shrink-0"></span>
+                    <span><strong>Vercel:</strong> Website hosting</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full mr-2 mt-1.5 flex-shrink-0"></span>
+                    <span><strong>Plausible Analytics:</strong> Privacy-focused website analytics</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-slate-50 rounded-lg p-4">
+                <h3 className="font-semibold text-slate-900 mb-2">
+                  Legal Requirements
+                </h3>
+                <p className="text-slate-700 text-sm leading-relaxed">
+                  We may disclose information if required by law, legal process, or government 
+                  request, or to protect our rights, property, or safety.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Data Security */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
+              <Lock className="w-6 h-6 text-blue-600" />
+              Data Security
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              We implement appropriate technical and organizational measures to protect your 
+              personal information:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-6">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Encryption:</strong> All data transmission is encrypted using HTTPS/TLS</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Access Controls:</strong> Limited access to personal information on a need-to-know basis</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Secure Hosting:</strong> Data stored on secure, enterprise-grade infrastructure</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Regular Reviews:</strong> Ongoing security assessments and updates</span>
+              </li>
+            </ul>
+            <p className="text-slate-700 leading-relaxed text-sm">
+              While we strive to protect your personal information, no method of transmission 
+              over the internet is 100% secure. We cannot guarantee absolute security.
+            </p>
+          </section>
+
+          {/* Your Rights */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
+              <UserCheck className="w-6 h-6 text-blue-600" />
+              Your Privacy Rights
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              Depending on your location, you may have certain rights regarding your personal 
+              information:
+            </p>
+
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  Access and Correction
+                </h3>
+                <p className="text-slate-700 leading-relaxed">
+                  You can request access to your personal information and ask us to correct 
+                  any inaccuracies.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  Data Deletion
+                </h3>
+                <p className="text-slate-700 leading-relaxed">
+                  You can request deletion of your personal information, subject to legal 
+                  retention requirements (such as tax and accounting records).
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  Marketing Opt-Out
+                </h3>
+                <p className="text-slate-700 leading-relaxed">
+                  We do not send marketing emails unless you specifically opt in. You can 
+                  unsubscribe at any time.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  Data Portability
+                </h3>
+                <p className="text-slate-700 leading-relaxed">
+                  You can request a copy of your personal information in a portable format.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4">
+              <p className="text-slate-700 leading-relaxed">
+                To exercise any of these rights, please contact us at{' '}
+                <a href="mailto:support@security-docs.com" className="text-blue-600 hover:text-blue-700 underline">
+                  support@security-docs.com
+                </a>
+              </p>
+            </div>
+          </section>
+
+          {/* Cookies */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Cookies and Tracking
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              We use minimal cookies and tracking technologies:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-6">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Essential Cookies:</strong> Required for website functionality and security</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span><strong>Analytics:</strong> Privacy-focused analytics that don't track you across sites</span>
+              </li>
+            </ul>
+            <p className="text-slate-700 leading-relaxed">
+              We do not use advertising cookies or sell your browsing data to third parties.
+            </p>
+          </section>
+
+          {/* International Users */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              International Users
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              SecurityDocs is based in the United States. If you access our website from 
+              outside the US, your information may be transferred to, stored, and processed 
+              in the United States.
+            </p>
+            <p className="text-slate-700 leading-relaxed">
+              By using our website and services, you consent to the transfer of your 
+              information to the United States.
+            </p>
+          </section>
+
+          {/* Data Retention */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Data Retention
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              We retain your personal information for as long as necessary to:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-4">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Provide access to purchased templates (indefinitely for re-downloads)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Comply with legal obligations (e.g., tax records: 7 years)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Resolve disputes and enforce agreements</span>
+              </li>
+            </ul>
+          </section>
+
+          {/* Children's Privacy */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Children's Privacy
+            </h2>
+            <p className="text-slate-700 leading-relaxed">
+              SecurityDocs is not directed to children under 13. We do not knowingly collect 
+              personal information from children. If we learn we have collected information 
+              from a child under 13, we will delete it promptly.
+            </p>
+          </section>
+
+          {/* Changes to Policy */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Changes to This Policy
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              We may update this Privacy Policy from time to time. When we make changes, we 
+              will update the "Last Updated" date at the top of this page.
+            </p>
+            <p className="text-slate-700 leading-relaxed">
+              We encourage you to review this policy periodically to stay informed about how 
+              we protect your information.
+            </p>
+          </section>
+
+        </div>
+
+        {/* Contact CTA */}
+        <div className="mt-12 p-6 bg-slate-50 border border-slate-200 rounded-lg">
+          <h3 className="text-lg font-semibold text-slate-900 mb-2">
+            Questions About Privacy?
+          </h3>
+          <p className="text-slate-600 mb-4">
+            If you have questions or concerns about how we handle your personal information, 
+            please contact us.
+          </p>
+          <a
+            href="mailto:support@security-docs.com"
+            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+          >
+            support@security-docs.com
+          </a>
         </div>
       </div>
     </PageLayout>

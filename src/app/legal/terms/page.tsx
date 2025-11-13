@@ -1,202 +1,361 @@
 import React from 'react';
 import { PageLayout } from '@/components/layout/PageLayout';
-
-export const metadata = {
-  title: 'Terms of Service | SecurityDocs',
-  description: 'Terms of service for SecurityDocs SOC 2 compliance templates and digital products.',
-};
+import { Shield, Scale, AlertCircle } from 'lucide-react';
 
 export default function TermsOfServicePage() {
+  const breadcrumbPath = [
+    { label: 'Home', href: '/' },
+    { label: 'Legal', href: '/legal' },
+    { label: 'Terms of Service', href: '/legal/terms' }
+  ];
+
   return (
     <PageLayout
       title="Terms of Service"
-      description="Please read these terms carefully before purchasing or using SecurityDocs templates"
-      breadcrumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'Legal', href: '/legal' },
-        { label: 'Terms of Service' },
-      ]}
+      description="Terms and conditions for using SecurityDocs templates and services"
+      showBreadcrumb
+      breadcrumbPath={breadcrumbPath}
     >
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-          <h2 className="text-lg font-semibold text-blue-900 mb-2">Last Updated: November 12, 2025</h2>
-          <p className="text-blue-800">
-            These terms govern your use of SecurityDocs and purchase of our digital products. 
-            By using our website or purchasing our products, you agree to these terms.
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <Scale className="w-8 h-8 text-blue-600" />
+            <h1 className="text-4xl font-bold text-slate-900">Terms of Service</h1>
+          </div>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Last Updated: November 12, 2025
           </p>
-        </div>
-
-        <div className="prose prose-slate max-w-none">
-          <h2>1. About SecurityDocs</h2>
-          <p>
-            SecurityDocs provides SOC 2 compliance templates, documentation, and educational resources for 
-            businesses seeking SOC 2 certification. Our products are digital downloads delivered via email 
-            after purchase.
-          </p>
-
-          <h2>2. Products and Services</h2>
-          
-          <h3>2.1 What We Provide</h3>
-          <p>We offer the following digital products:</p>
-          <ul>
-            <li><strong>Policy Templates:</strong> SOC 2-aligned policy documents in multiple versions (Enterprise, SMB, Workbook, Implementation Guide)</li>
-            <li><strong>Document Templates:</strong> Operational forms and procedures with implementation instructions</li>
-            <li><strong>Evidence Explanations:</strong> Guidance on what auditors expect for specific SOC 2 controls</li>
-            <li><strong>Bundles:</strong> Comprehensive packages combining multiple products at discounted pricing</li>
-          </ul>
-
-          <h3>2.2 File Format and Delivery</h3>
-          <ul>
-            <li>All templates are delivered as Microsoft Word (.docx) documents</li>
-            <li>Download links are sent via email immediately after purchase</li>
-            <li>You have <strong>3 download attempts</strong> per purchase</li>
-            <li>Downloads must be completed within 30 days of purchase</li>
-            <li>You can re-download from your customer account at Lemon Squeezy</li>
-          </ul>
-
-          <h2>3. Important Disclaimers</h2>
-          
-          <h3>3.1 Not Professional Advice</h3>
-          <p>
-            <strong>SecurityDocs templates are educational resources and starting points only.</strong> They do not constitute:
-          </p>
-          <ul>
-            <li>Legal advice or legal services</li>
-            <li>Accounting or audit services</li>
-            <li>Professional compliance consulting</li>
-            <li>Certified or audited documentation</li>
-          </ul>
-          <p>
-            We are not attorneys, accountants, or certified auditors. For professional advice regarding your 
-            specific situation, consult appropriate licensed professionals.
-          </p>
-
-          <h3>3.2 No Guarantee of Compliance</h3>
-          <p>
-            <strong>Using our templates does not guarantee SOC 2 compliance or audit success.</strong> SOC 2 audits 
-            evaluate your actual security practices and controls, not just your documentation. Factors affecting 
-            audit outcomes include:
-          </p>
-          <ul>
-            <li>How accurately your documents reflect your actual practices</li>
-            <li>The effectiveness of your implemented security controls</li>
-            <li>Your evidence collection and operational maturity</li>
-            <li>Your auditor's specific requirements and interpretation</li>
-            <li>Your organization's unique risk profile and environment</li>
-          </ul>
-
-          <h3>3.3 Customization Required</h3>
-          <p>
-            <strong>You must customize all templates to match your organization.</strong> Our templates provide 
-            structure and examples, but you are responsible for:
-          </p>
-          <ul>
-            <li>Accurately describing your systems, processes, and controls</li>
-            <li>Ensuring alignment with your actual security practices</li>
-            <li>Removing inapplicable sections and adding necessary content</li>
-            <li>Reviewing with appropriate technical and legal personnel</li>
-            <li>Obtaining approval from your auditor when required</li>
-          </ul>
-
-          <h2>4. Purchase Terms</h2>
-          
-          <h3>4.1 Pricing and Payment</h3>
-          <ul>
-            <li>All prices are in USD unless otherwise stated</li>
-            <li>Payment processing handled by Lemon Squeezy (our payment processor)</li>
-            <li>VAT automatically calculated and collected for applicable regions</li>
-            <li>Prices subject to change without notice (existing purchases honored)</li>
-          </ul>
-
-          <h3>4.2 Digital Product Policy - No Refunds</h3>
-          <p>
-            <strong>All sales are final.</strong> Due to the nature of digital products that grant immediate access, 
-            we cannot offer refunds or exchanges after purchase. Before purchasing:
-          </p>
-          <ul>
-            <li>Review product descriptions carefully</li>
-            <li>Check sample content when available</li>
-            <li>Contact us with any pre-purchase questions</li>
-            <li>Ensure the product meets your needs</li>
-          </ul>
-          <p>
-            <strong>Exceptional Circumstances:</strong> We may consider refund requests in cases of technical issues 
-            preventing download or severe product defects. Contact support@security-docs.com within 7 days of purchase 
-            with documentation of the issue.
-          </p>
-
-          <h3>4.3 License and Usage Rights</h3>
-          <p>Upon purchase, you receive a non-exclusive, non-transferable license to:</p>
-          <ul>
-            <li>Download and use the templates within your organization</li>
-            <li>Modify and customize the templates for your internal use</li>
-            <li>Create derivative works based on the templates for your organization</li>
-          </ul>
-          <p><strong>You may NOT:</strong></p>
-          <ul>
-            <li>Resell, redistribute, or share templates with other organizations</li>
-            <li>Use templates to create competing products or services</li>
-            <li>Remove or modify copyright notices</li>
-            <li>Claim authorship of unmodified templates</li>
-          </ul>
-
-          <h2>5. Limitation of Liability</h2>
-          <p>
-            <strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</strong>
-          </p>
-          <ul>
-            <li>SecurityDocs is provided "as is" without warranties of any kind</li>
-            <li>We make no guarantees regarding audit outcomes or compliance achievement</li>
-            <li>We are not liable for any indirect, incidental, or consequential damages</li>
-            <li>Our total liability is limited to the amount you paid for the product</li>
-            <li>We are not responsible for decisions made based on our templates</li>
-          </ul>
-
-          <h2>6. Intellectual Property</h2>
-          <p>
-            All content, templates, and materials provided by SecurityDocs are protected by copyright and 
-            intellectual property laws. SecurityDocs retains all rights not explicitly granted in your license.
-          </p>
-
-          <h2>7. Privacy and Data Collection</h2>
-          <p>
-            Your personal information is collected and processed according to our <a href="/legal/privacy" className="text-blue-600 hover:text-blue-700">Privacy Policy</a>. 
-            We collect minimal information necessary for order processing and customer support.
-          </p>
-
-          <h2>8. Changes to Terms</h2>
-          <p>
-            We may update these terms periodically. Continued use of SecurityDocs after changes constitutes 
-            acceptance of updated terms. Material changes will be communicated via email to customers.
-          </p>
-
-          <h2>9. Governing Law</h2>
-          <p>
-            These terms are governed by the laws of the State of California, United States, without regard to 
-            conflict of law principles.
-          </p>
-
-          <h2>10. Contact Information</h2>
-          <p>
-            For questions about these terms or our products:
-          </p>
-          <ul>
-            <li><strong>Email:</strong> support@security-docs.com</li>
-            <li><strong>Website:</strong> www.security-docs.com</li>
-          </ul>
-
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 mt-12 not-prose">
-            <h3 className="font-semibold text-slate-900 mb-3">Summary (Not Legal Advice)</h3>
-            <p className="text-sm text-slate-700 mb-2">
-              In plain English: Our templates are high-quality starting points based on real SOC 2 experience. 
-              You must customize them for your organization. They're educational resources, not professional advice. 
-              No refunds on digital products. We're not responsible if your audit doesn't go well - that depends 
-              on your actual security practices, not just documentation.
-            </p>
-            <p className="text-sm text-slate-600">
-              Have questions? Contact us before purchasing. We're here to help you succeed.
+          <div className="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+            <p className="text-slate-700">
+              By purchasing and using SecurityDocs templates, you agree to these terms. 
+              Please read them carefully before making a purchase.
             </p>
           </div>
+        </div>
+
+        {/* Content */}
+        <div className="prose prose-lg prose-slate max-w-none">
+          
+          {/* Agreement to Terms */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Agreement to Terms
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              These Terms of Service govern your use of SecurityDocs and the purchase of our 
+              SOC 2 compliance templates and documentation. By accessing our website and 
+              purchasing our products, you agree to be bound by these terms.
+            </p>
+            <p className="text-slate-700 leading-relaxed">
+              If you do not agree with any part of these terms, please do not purchase or 
+              use our templates.
+            </p>
+          </section>
+
+          {/* Product Description */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Product Description
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              SecurityDocs provides digital templates and documentation designed to assist 
+              with SOC 2 compliance preparation. Our products include:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-4">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Policy templates (Enterprise, SMB, Workbook, and Guide versions)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Document templates with usage instructions</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Evidence explanations and best practices guides</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Product bundles with multiple templates</span>
+              </li>
+            </ul>
+            <p className="text-slate-700 leading-relaxed">
+              All templates are delivered as Microsoft Word (.docx) documents via email 
+              after purchase.
+            </p>
+          </section>
+
+          {/* License and Usage Rights */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              License and Usage Rights
+            </h2>
+            
+            <h3 className="text-xl font-semibold text-slate-900 mb-3 mt-6">
+              What You Can Do
+            </h3>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              When you purchase our templates, you receive a non-exclusive, non-transferable 
+              license to use them for your organization's internal compliance purposes. You may:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-6">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Customize and modify templates for your organization's needs</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Use templates within a single organization or legal entity</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Print and distribute customized versions internally</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Share customized documents with auditors and compliance assessors</span>
+              </li>
+            </ul>
+
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">
+              What You Cannot Do
+            </h3>
+            <ul className="space-y-2 text-slate-700 mb-4">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Resell, redistribute, or share templates with other organizations</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Claim authorship or ownership of the original templates</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Use templates as part of a consulting service for third parties</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Reverse engineer or extract content for competitive purposes</span>
+              </li>
+            </ul>
+          </section>
+
+          {/* Important Disclaimers */}
+          <section className="mb-12">
+            <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-lg p-6 mb-6">
+              <div className="flex items-start">
+                <AlertCircle className="w-6 h-6 text-amber-600 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                    Important: Customization Required
+                  </h3>
+                  <p className="text-slate-700 leading-relaxed">
+                    Our templates are starting points that <strong>must be customized</strong> to 
+                    reflect your organization's specific environment, controls, and practices. 
+                    Using templates without proper customization will not result in SOC 2 compliance.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Disclaimer of Warranties
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              SecurityDocs templates are provided "as is" without warranties of any kind, 
+              either express or implied. We do not warrant that:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-4">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Our templates will guarantee SOC 2 audit passage</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Templates will meet your specific compliance requirements</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Templates are error-free or complete for all situations</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Use of templates will prevent audit findings or compliance issues</span>
+              </li>
+            </ul>
+          </section>
+
+          {/* Limitation of Liability */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Limitation of Liability
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              To the maximum extent permitted by law, SecurityDocs and its creators shall 
+              not be liable for any:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-4">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Indirect, incidental, or consequential damages</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Loss of business, revenue, or profits</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Audit failures or compliance violations</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Costs of substitute goods or services</span>
+              </li>
+            </ul>
+            <p className="text-slate-700 leading-relaxed">
+              Our total liability shall not exceed the amount you paid for the templates.
+            </p>
+          </section>
+
+          {/* Payment and Delivery */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Payment and Delivery
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              All purchases are processed securely through Lemon Squeezy, our payment 
+              processor. Upon successful payment:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-4">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>You'll receive an email with secure download links</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Downloads are limited to 3 attempts per purchase</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>A customer account is created for re-downloads if needed</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>International customers will be charged applicable VAT</span>
+              </li>
+            </ul>
+          </section>
+
+          {/* Refund Policy Reference */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Refund Policy
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              All sales are final. Due to the digital nature of our products and immediate 
+              delivery upon purchase, we do not offer refunds except in cases of technical 
+              issues preventing download.
+            </p>
+            <p className="text-slate-700 leading-relaxed">
+              Please see our complete{' '}
+              <a href="/legal/refund-policy" className="text-blue-600 hover:text-blue-700 underline">
+                Refund Policy
+              </a>
+              {' '}for full details.
+            </p>
+          </section>
+
+          {/* Intellectual Property */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Intellectual Property
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              All templates, content, and documentation provided by SecurityDocs are protected 
+              by copyright and intellectual property laws. SecurityDocs retains all ownership 
+              rights to the original templates.
+            </p>
+            <p className="text-slate-700 leading-relaxed">
+              The SecurityDocs name, logo, and branding are trademarks and may not be used 
+              without permission.
+            </p>
+          </section>
+
+          {/* Support and Contact */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Support and Contact
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              We provide email support for technical issues related to downloading or accessing 
+              your purchased templates. Support does not include:
+            </p>
+            <ul className="space-y-2 text-slate-700 mb-4">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Compliance consulting or advisory services</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Customization services for your specific needs</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-slate-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                <span>Audit preparation or representation services</span>
+              </li>
+            </ul>
+            <p className="text-slate-700 leading-relaxed">
+              For support inquiries, contact us at:{' '}
+              <a href="mailto:support@security-docs.com" className="text-blue-600 hover:text-blue-700 underline">
+                support@security-docs.com
+              </a>
+            </p>
+          </section>
+
+          {/* Changes to Terms */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Changes to Terms
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              We reserve the right to modify these Terms of Service at any time. Changes 
+              will be effective immediately upon posting to our website. Your continued use 
+              of SecurityDocs after changes are posted constitutes acceptance of the modified terms.
+            </p>
+            <p className="text-slate-700 leading-relaxed">
+              We encourage you to review these terms periodically.
+            </p>
+          </section>
+
+          {/* Governing Law */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+              Governing Law
+            </h2>
+            <p className="text-slate-700 leading-relaxed">
+              These Terms of Service are governed by the laws of the State of California, 
+              United States, without regard to conflict of law principles. Any disputes shall 
+              be resolved in the courts of California.
+            </p>
+          </section>
+
+        </div>
+
+        {/* Contact CTA */}
+        <div className="mt-12 p-6 bg-slate-50 border border-slate-200 rounded-lg">
+          <h3 className="text-lg font-semibold text-slate-900 mb-2">
+            Questions About These Terms?
+          </h3>
+          <p className="text-slate-600 mb-4">
+            If you have questions about our Terms of Service, please contact us.
+          </p>
+          <a
+            href="mailto:support@security-docs.com"
+            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+          >
+            support@security-docs.com
+          </a>
         </div>
       </div>
     </PageLayout>
