@@ -1,4 +1,5 @@
 import React from 'react';
+import { RelaunchBanner } from '@/components/layout/RelaunchBanner';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import DisclaimerFooter from '@/components/legal/DisclaimerFooter'; // Add this import
@@ -25,6 +26,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
+      <RelaunchBanner />
       <Header />
       
       {shouldShowBreadcrumb && finalBreadcrumbs.length > 0 && (
