@@ -1,12 +1,15 @@
+import dotenv from 'dotenv';
+
+// Load environment variables from .env.local
+const result = dotenv.config({ path: '.env.local' });
+
+console.log('🔍 Dotenv result:', result.error ? result.error : 'Success');
+console.log('🔑 Key from env:', process.env.INDEXNOW_API_KEY ? 'Found' : 'NOT FOUND');
+
 import { submitToIndexNow } from '../src/lib/indexnow';
 
 const urls = [
-  'https://security-docs.com/blog/what-is-compliance',
-  'https://security-docs.com/blog/soc2-type1-vs-type2',
-  'https://security-docs.com/blog/compliance-certifications-comparison',
-  'https://security-docs.com/blog/soc2-preparation-90-days',
-  'https://security-docs.com/blog/soc2-type2-timeline',
-  'https://security-docs.com/blog/common-soc2-audit-findings',
+  'https://security-docs.com/blog/saas-soc2-compliance-guide',
 ];
 
 console.log('🚀 Submitting URLs to IndexNow...');
