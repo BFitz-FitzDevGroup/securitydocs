@@ -113,14 +113,22 @@ const ProductsPage = () => {
                         ${bundle.savings.toFixed(2)}
                       </td>
                       <td className="px-6 py-4 text-center">
-                        <a
-                          href={bundle.checkoutUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
-                        >
-                          Get Bundle
-                        </a>
+                        <div className="flex flex-col gap-2">
+                          <a
+                            href={`/products/${bundle.id}-bundle`}
+                            className="inline-block bg-slate-100 hover:bg-slate-200 text-slate-900 px-4 py-2 rounded-lg font-medium transition-colors"
+                          >
+                            View Details
+                          </a>
+                          <a
+                            href={bundle.checkoutUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                          >
+                            Get Bundle
+                          </a>
+                        </div>
                       </td>
                     </tr>
                   ))}

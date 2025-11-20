@@ -66,16 +66,22 @@ const BundlesPage = () => {
                     ))}
                   </ul>
                 </div>
-                <div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                    <div className="text-center mb-4">
-                      <div className="text-sm mb-2">Individual Items Would Cost:</div>
-                      <div className="text-2xl line-through opacity-75">${completeBundle.originalPrice.toFixed(2)}</div>
-                      <div className="text-5xl font-bold my-4">${completeBundle.price.toFixed(2)}</div>
-                      <div className="text-xl font-semibold text-amber-300">
-                        Save ${completeBundle.savings.toFixed(2)}
-                      </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                  <div className="text-center mb-4">
+                    <div className="text-sm mb-2">Individual Items Would Cost:</div>
+                    <div className="text-2xl line-through opacity-75">${completeBundle.originalPrice.toFixed(2)}</div>
+                    <div className="text-5xl font-bold my-4">${completeBundle.price.toFixed(2)}</div>
+                    <div className="text-xl font-semibold text-amber-300">
+                      Save ${completeBundle.savings.toFixed(2)}
                     </div>
+                  </div>
+                  <div className="space-y-3">
+                    <a
+                      href={`/products/complete-bundle`}
+                      className="block w-full bg-slate-100 hover:bg-slate-200 text-slate-900 px-8 py-4 rounded-lg font-bold text-center transition-colors text-lg"
+                    >
+                      View Details
+                    </a>
                     <a
                       href={completeBundle.checkoutUrl}
                       target="_blank"
@@ -87,7 +93,6 @@ const BundlesPage = () => {
                   </div>
                 </div>
               </div>
-
               <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/20">
                 <div className="text-center">
                   <div className="text-3xl font-bold mb-1">{completeBundle.productCount}</div>
@@ -157,14 +162,22 @@ const BundlesPage = () => {
                   </div>
                 </div>
 
-                <a
-                  href={bundle.checkoutUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block w-full bg-${color}-600 hover:bg-${color}-700 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors`}
-                >
-                  Get {bundle.name}
-                </a>
+                <div className="space-y-2">
+                  <a
+                    href={`/products/${bundle.id}-bundle`}
+                    className="block w-full bg-slate-100 hover:bg-slate-200 text-slate-900 px-6 py-3 rounded-lg font-semibold text-center transition-colors"
+                  >
+                    View Details
+                  </a>
+                  <a
+                    href={bundle.checkoutUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`block w-full bg-${color}-600 hover:bg-${color}-700 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors`}
+                  >
+                    Get {bundle.name}
+                  </a>
+                </div>
               </div>
             );
           })}

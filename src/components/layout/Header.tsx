@@ -81,6 +81,9 @@ const SecurityDocsHeader = () => {
             <a href="/resources" className="text-slate-200 hover:text-white transition-colors">
               Resources
             </a>
+            <a href="/blog" className="text-slate-200 hover:text-white transition-colors">
+              Blog
+            </a>
             <a href="/resources/soc2-primer" className="text-slate-200 hover:text-white transition-colors">
               SOC 2 Primer
             </a>
@@ -124,6 +127,9 @@ const SecurityDocsHeader = () => {
               </a>
               <a href="/products/bundles" className="block text-slate-200 hover:text-white py-2 transition-colors pl-4">
                 Bundles
+              </a>
+              <a href="/blog" className="block text-slate-200 hover:text-white py-2 transition-colors">
+                Blog
               </a>
               <a href="/resources/soc2-primer" className="block text-slate-200 hover:text-white py-2 transition-colors">
                 SOC 2 Primer

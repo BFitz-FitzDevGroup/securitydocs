@@ -1,0 +1,547 @@
+---
+title: "How to Prepare for SOC 2 Audit in 90 Days"
+excerpt: "A practical 90-day roadmap for achieving SOC 2 Type I readiness, including key milestones, common pitfalls, budget considerations, and resource allocation strategies."
+date: "2025-11-10"
+category: "SOC 2 Compliance"
+readTime: "12 min read"
+author: "SecurityDocs Team"
+---
+
+Getting SOC 2 compliant doesn't have to take a year. With focused effort and the right resources, you can prepare for your **SOC 2 Type I** audit in just 90 days.
+
+> **Important:** This guide focuses on **[SOC 2 Type I](/blog/soc2-type1-vs-type2)** certification, which assesses whether your controls are properly designed at a point in time. If you need **Type II** certification (which requires 3-6 months of evidence showing controls are operating effectively), check out our **[SOC 2 Type II Timeline Guide](/blog/soc2-type2-timeline)**.
+
+**Why start with Type I?**
+- Faster time to certification (90 days vs 9-12 months)
+- Demonstrates commitment to customers immediately
+- Validates your control design before the longer Type II period
+- Can transition to Type II after collecting evidence
+
+Many companies pursue Type I first to meet immediate customer requirements, then work toward Type II for the more comprehensive certification that most enterprise customers eventually require.
+
+**New to compliance?** Read our guide on [What is Compliance and Why It Matters](/blog/what-is-compliance) to understand the broader landscape, or see our [Compliance Certifications Comparison](/blog/compliance-certifications-comparison) to determine if SOC 2 is right for your business.
+
+## Budget Overview: What This Will Cost
+
+Before diving into the timeline, let's talk money. A realistic 90-day SOC 2 Type I budget includes:
+
+**Direct Costs:**
+- Type I Audit Fee: $10,000-$20,000 (varies by company size and scope)
+- Security Tools: $2,000-$5,000 (MFA, monitoring, vulnerability scanning)
+- Background Checks: $500-$1,500 (depends on team size)
+- Legal Review: $1,000-$3,000 (optional but recommended)
+
+**Indirect Costs:**
+- Internal Time: 200-400 hours (compliance lead + cross-functional team)
+- Policy Documentation: $5,000-$15,000 (if hiring consultants) OR $550 (using our [Complete Bundle](/products/bundles))
+- Training Development: $1,000-$2,000 (can be done internally)
+
+**Total Budget Range:** $20,000-$45,000+ depending on your approach.
+
+**Cost-saving tip:** Most companies waste $10,000-$15,000 reinventing policy documentation. Our professionally crafted [Policy Templates](/products/policies) can reduce this to under $600 while maintaining audit-ready quality.
+
+## Week 1-4: Foundation Phase
+
+The first month is all about establishing your compliance foundation and getting organizational buy-in. This phase sets the tone for your entire compliance program.
+
+### Week 1: Scoping and Planning
+
+**Day 1-2: Define Your Scope**
+
+Start by clearly defining which systems and data flows are in scope for your SOC 2 audit. Most companies starting out choose the **Security** trust service criteria as their baseline, sometimes adding **Availability** if system uptime is critical to customer commitments.
+
+**Scoping decisions:**
+- Which applications/systems store, process, or transmit customer data?
+- What about development environments? (Usually out of scope for Type I)
+- Cloud infrastructure in scope? (AWS/Azure/GCP - yes, typically)
+- Third-party SaaS tools? (Depends on data sensitivity)
+
+**Deliverable:** System inventory spreadsheet with in-scope/out-of-scope designations
+
+**Day 3-5: Stakeholder Alignment**
+
+SOC 2 affects every department. Get leadership buy-in early.
+
+**Schedule kickoff meetings with:**
+- Executive team (budget approval, priority setting)
+- Engineering (technical controls implementation)
+- HR (background checks, training programs)
+- Operations (monitoring, incident response)
+- Sales (customer communication strategy)
+
+**Deliverable:** Project charter with executive sponsor, timeline, and resource commitments
+
+### Week 2: Policy Framework Development
+
+This is where most companies either waste weeks or save massive time.
+
+**The DIY Approach (4-6 weeks):**
+- Research each required policy area
+- Write policies from scratch
+- Legal review and revisions
+- Stakeholder review cycles
+- Final approvals
+
+**The Template Approach (3-5 days):**
+- Start with proven, audit-tested templates
+- Customize for your specific environment
+- Internal review and approval
+- Ready for implementation
+
+Our [Policy Bundle](/products/policies) includes all 15 required policies in four versions: Enterprise, SMB, Implementation Workbook, and Quick Reference Guide. Customers report saving 4-6 weeks using these templates versus starting from scratch.
+
+**Required policy areas:**
+1. Information Security Policy
+2. Access Control Policy
+3. Change Management Policy
+4. Risk Management Policy
+5. Incident Response Plan
+6. Business Continuity/Disaster Recovery
+7. Data Management Policy
+8. Human Resources Security Policy
+9. Physical Security Policy
+10. Network Security Policy
+11. Operations Security Policy
+12. Vendor Management Policy
+13. Acceptable Use Policy
+14. Data Classification Policy
+15. Asset Management Policy
+
+**Week 2 deliverable:** Complete policy framework approved by leadership
+
+### Week 3: Assign Roles and Responsibilities
+
+SOC 2 compliance requires clear ownership. Ambiguity kills compliance programs.
+
+**Critical roles to assign:**
+
+**Compliance Lead (20-30 hours/week for 90 days)**
+- Overall program ownership
+- Auditor communication
+- Timeline management
+- Executive reporting
+
+**Security Lead (15-20 hours/week)**
+- Technical controls implementation
+- Security tool configuration
+- Vulnerability management
+- Security monitoring setup
+
+**HR Lead (5-10 hours/week)**
+- Background check coordination
+- Training program rollout
+- Policy acknowledgment tracking
+- Termination procedures
+
+**Operations Lead (10-15 hours/week)**
+- Monitoring and alerting
+- Incident response procedures
+- Backup and recovery testing
+- On-call rotation management
+
+**IT Lead (15-20 hours/week)**
+- Access provisioning/deprovisioning
+- MFA deployment
+- System hardening
+- Change management implementation
+
+**Tip:** For smaller teams, individuals wear multiple hats, but avoid single points of failure. Every critical function needs a backup.
+
+### Week 4: Auditor Selection
+
+Don't wait until week 12 to think about auditors. Start conversations now.
+
+**Auditor selection criteria:**
+- SOC 2 specialization (not all auditors do SOC 2)
+- Industry experience (SaaS, FinTech, HealthTech expertise varies)
+- Timeline availability (can they accommodate your schedule?)
+- Pricing transparency (fixed fee vs hourly?)
+- Reference checks (talk to 2-3 recent clients)
+
+**Get quotes from 2-3 firms.** Prices vary significantly based on:
+- Your company size (employees, revenue)
+- System complexity
+- Number of locations/data centers
+- Trust Service Criteria in scope
+
+**Week 4 deliverable:** Auditor selected, audit scheduled for Week 13-14
+
+## Week 5-8: Implementation Phase
+
+Now it's time to actually implement the controls defined in your policies. This is where the rubber meets the road.
+
+### Week 5-6: Technical Controls Implementation
+
+**Multi-factor Authentication (MFA)**
+
+MFA is non-negotiable for SOC 2. Every administrative system needs it.
+
+**Implementation checklist:**
+- [ ] Deploy MFA for all production system access
+- [ ] Configure MFA for cloud infrastructure (AWS/Azure/GCP)
+- [ ] Enforce MFA for code repositories (GitHub, GitLab, Bitbucket)
+- [ ] Implement MFA for SaaS admin panels (Salesforce, HubSpot, etc.)
+- [ ] Configure MFA enforcement policies (no bypass options)
+- [ ] Document MFA requirements in Access Control Policy
+
+**Common pitfall:** Allowing MFA bypass for "emergency access." Don't do this. Use break-glass procedures with documented access instead.
+
+**Network Security**
+
+**Implementation checklist:**
+- [ ] Segment production from non-production networks
+- [ ] Configure firewall rules (principle of least privilege)
+- [ ] Implement VPN for remote access to production
+- [ ] Set up network monitoring and alerting
+- [ ] Document network architecture (create network diagram)
+- [ ] Review and harden cloud security groups
+
+**Tool recommendations:**
+- Network segmentation: AWS VPC, Azure VNet, GCP VPC
+- Monitoring: Datadog, New Relic, CloudWatch
+- VPN: Tailscale, Pritunl, or cloud-native VPN solutions
+
+**Data Encryption**
+
+**Implementation checklist:**
+- [ ] Enable encryption at rest for all databases (RDS, MongoDB, etc.)
+- [ ] Enforce TLS 1.2+ for all data in transit
+- [ ] Configure HTTPS for all web applications
+- [ ] Enable encrypted backups
+- [ ] Document encryption standards in policies
+
+**Cost:** Most cloud providers include encryption at rest at no extra charge. Budget $0-500/month for enhanced encryption key management.
+
+### Week 7: Administrative Controls
+
+**Background Checks**
+
+**Implementation steps:**
+1. Select background check vendor (Checkr, Sterling, Certn)
+2. Define background check requirements by role
+3. Run checks for all current employees
+4. Document results (pass/fail, not details)
+5. Update hiring process to include pre-hire checks
+
+**Cost:** $30-75 per check. Budget $1,500-3,000 for a 30-person company.
+
+**Legal note:** Comply with FCRA requirements, get written authorization, provide adverse action notices if needed.
+
+**Security Awareness Training**
+
+SOC 2 requires documented security awareness training for all employees.
+
+**Training topics to cover:**
+- Password security and MFA usage
+- Phishing awareness and reporting
+- Data classification and handling
+- Incident reporting procedures
+- Physical security responsibilities
+- Clean desk/clear screen policies
+
+**Training options:**
+- Off-the-shelf: KnowBe4, SANS, Cybrary ($10-50/user/year)
+- DIY: Create your own slides and quiz (free, more time-intensive)
+- Hybrid: Use our templates + vendor content
+
+**Implementation:**
+- [ ] Select training platform or create content
+- [ ] Schedule initial training sessions
+- [ ] Track completion rates (need 100% for audit)
+- [ ] Set up annual refresher training
+- [ ] Document training records
+
+### Week 8: Access Management
+
+**User Access Management**
+
+Implement formal processes for access provisioning, modifications, and terminations.
+
+**Processes to document:**
+- New hire access request workflow
+- Role change access review process
+- Termination access revocation checklist
+- Quarterly access review procedures
+
+**Tools that help:**
+- Ticketing systems: Jira, Linear, GitHub Issues
+- Identity providers: Okta, Azure AD, Google Workspace
+- Access review: Vanta, Drata, Secureframe (optional)
+
+Our [Access Request Ticket Form](/products/access-request-ticket-form) and [Access Review Template](/products/access-review-ticket-form) provide audit-ready documentation structures.
+
+**Critical:** Document EVERY access change in tickets. Auditors will sample 25+ access changes and expect documented approval for each.
+
+## Week 9-12: Documentation and Readiness
+
+The final phase is about ensuring everything is documented and audit-ready.
+
+### Week 9: Risk Assessment
+
+SOC 2 requires a formal risk assessment process.
+
+**Risk assessment steps:**
+1. Identify potential risks to system security and availability
+2. Assess likelihood and impact of each risk
+3. Document existing controls mitigating each risk
+4. Identify control gaps requiring additional mitigation
+5. Create risk treatment plan for any unacceptable risks
+
+**Time investment:** 20-30 hours for first-time risk assessment
+
+**Tool:** Use our [Risk Assessment Template](/products/risk-management-policy) which includes risk scenario library and assessment framework.
+
+### Week 10: System Description
+
+The System Description document describes your organization, services, and control environment for auditors.
+
+**Required sections:**
+- Company overview and services
+- System infrastructure (architecture diagram)
+- Software and tools used
+- Data flows (how customer data moves through systems)
+- Control environment (policies, procedures, organizational structure)
+- Trust Service Criteria and related controls
+
+**Length:** Typically 20-40 pages
+
+**Time investment:** 30-40 hours
+
+**Tip:** Create this collaboratively. Engineering writes infrastructure sections, HR writes personnel sections, Security writes control sections.
+
+### Week 11: Evidence Organization
+
+Get all your documentation organized BEFORE the auditor shows up.
+
+**Create an evidence folder structure:**
+
+<div className="bg-slate-900 text-white p-6 rounded-lg font-mono text-sm my-6">
+  <div className="mb-2">SOC2_Audit_Evidence/</div>
+  <div className="ml-4 mb-2">
+    <div>├── Policies/</div>
+    <div className="ml-4 text-slate-300">
+      <div>├── Information_Security_Policy.pdf</div>
+      <div>├── Access_Control_Policy.pdf</div>
+      <div>└── ... (all 15 policies)</div>
+    </div>
+  </div>
+  <div className="ml-4 mb-2">
+    <div>├── Procedures/</div>
+    <div className="ml-4 text-slate-300">
+      <div>├── User_Onboarding_Procedure.pdf</div>
+      <div>├── Incident_Response_Procedure.pdf</div>
+      <div>└── ...</div>
+    </div>
+  </div>
+  <div className="ml-4 mb-2">
+    <div>├── Training/</div>
+    <div className="ml-4 text-slate-300">
+      <div>├── Training_Materials.pdf</div>
+      <div>├── Completion_Reports.xlsx</div>
+      <div>└── Training_Records/</div>
+    </div>
+  </div>
+  <div className="ml-4 mb-2">
+    <div>├── Access_Management/</div>
+    <div className="ml-4 text-slate-300">
+      <div>├── Access_Requests/ (ticket exports)</div>
+      <div>├── Termination_Records/</div>
+      <div>└── Access_Reviews/</div>
+    </div>
+  </div>
+  <div className="ml-4 mb-2">
+    <div>├── Security_Monitoring/</div>
+    <div className="ml-4 text-slate-300">
+      <div>├── Vulnerability_Scans/</div>
+      <div>├── Log_Review_Evidence/</div>
+      <div>└── Monitoring_Configurations/</div>
+    </div>
+  </div>
+  <div className="ml-4 mb-2">
+    <div>├── Vendor_Management/</div>
+    <div className="ml-4 text-slate-300">
+      <div>├── Vendor_Assessments/</div>
+      <div>├── Vendor_Contracts/</div>
+      <div>└── SOC2_Reports_from_Vendors/</div>
+    </div>
+  </div>
+  <div className="ml-4">
+    <div>└── System_Description/</div>
+    <div className="ml-4 text-slate-300">
+      <div>├── Architecture_Diagrams.pdf</div>
+      <div>├── Network_Diagrams.pdf</div>
+      <div>└── System_Description.docx</div>
+    </div>
+  </div>
+</div>
+
+**Pro tip:** Create this structure in Google Drive or SharePoint and give your auditor view-only access. Much faster than emailing individual files.
+
+### Week 12: Internal Readiness Assessment
+
+Do a dry run before the real audit.
+
+**Self-assessment checklist:**
+- [ ] All 15 policies documented and approved
+- [ ] System description complete
+- [ ] Risk assessment documented
+- [ ] All employees have completed security training
+- [ ] MFA implemented across all admin systems
+- [ ] Access management procedures documented
+- [ ] Network security controls implemented
+- [ ] Encryption enabled (at rest and in transit)
+- [ ] Vendor management process documented
+- [ ] Incident response plan tested (tabletop exercise)
+- [ ] Evidence folder organized and complete
+
+**Gap remediation:** If you find control gaps, you have 1-2 weeks to address them before the audit begins.
+
+## Week 13-14: The Audit
+
+**What to expect during the audit:**
+
+**Fieldwork (Week 13):**
+- Kickoff call with auditor
+- Evidence requests (be prepared with organized folders)
+- Control walkthroughs (auditor interviews key personnel)
+- System demonstrations (show them MFA, monitoring, etc.)
+- Questions and clarifications
+
+**Review (Week 14):**
+- Auditor reviews all submitted evidence
+- Follow-up questions and additional evidence requests
+- Management responses to any findings
+- Draft report review
+
+**Results:**
+- Clean report (no findings) - Best case! ✅
+- Observations (minor improvements suggested) - Common
+- Exceptions (control deficiencies) - Need management response
+
+## Common Pitfalls and How to Avoid Them
+
+**❌ Starting Too Late**
+Beginning at Day 1 instead of Week 1 matters. Every day counts in a 90-day timeline.
+
+**Solution:** Start NOW. Don't wait for perfect conditions.
+
+**❌ Underestimating Time Commitments**
+"This will only take a few hours per week" is a dangerous assumption.
+
+**Solution:** Allocate 20-30 hours/week for your compliance lead. Build in buffer time.
+
+**❌ Skipping the Risk Assessment**
+Some companies treat this as a checkbox exercise.
+
+**Solution:** Take it seriously. A good risk assessment informs your entire control framework.
+
+**❌ Poor Documentation**
+"We do this, but it's not documented" doesn't count in an audit.
+
+**Solution:** If it's not documented, it didn't happen. Document everything.
+
+**❌ Last-Minute Evidence Scrambling**
+Trying to create 3 months of access review evidence the week before your audit.
+
+**Solution:** Implement processes early and follow them consistently.
+
+**❌ Weak Vendor Management**
+Not assessing your critical vendors' security.
+
+**Solution:** Get SOC 2 reports from all vendors handling your customer data.
+
+**❌ Incomplete Training**
+Having 87% training completion when you need 100%.
+
+**Solution:** Start training in Week 7, track completion weekly, follow up on stragglers.
+
+## Tools and Vendors
+
+**Essential Tools (Budget: $2,000-5,000 setup + $500-1,500/month)**
+
+**Identity and Access Management:**
+- Okta, Azure AD, Google Workspace (MFA and SSO)
+- Budget: $3-10/user/month
+
+**Security Monitoring:**
+- Datadog, New Relic, Splunk (SIEM and monitoring)
+- Budget: $500-2,000/month depending on scale
+
+**Vulnerability Scanning:**
+- Qualys, Tenable, Rapid7 (vulnerability management)
+- Budget: $2,000-5,000/year
+
+**Security Training:**
+- KnowBe4, SANS, Cybrary (security awareness)
+- Budget: $10-50/user/year
+
+**Background Checks:**
+- Checkr, Sterling, Certn
+- Budget: $30-75 per check
+
+**Optional: Compliance Automation (Type II Focus)**
+- Vanta, Drata, Secureframe ($12,000-36,000/year)
+- Not necessary for Type I, helpful for Type II evidence collection for larger organizations
+
+## Transitioning from Type I to Type II
+
+Once you have your Type I, you can begin the Type II journey.
+
+**What changes:**
+- **Evidence period:** Now you need 3-6 months of operational evidence
+- **Access reviews:** Quarterly reviews required (documented)
+- **Monitoring:** Log reviews and security monitoring evidence
+- **Vulnerability management:** Quarterly scans + remediation tracking
+- **Training:** Evidence of annual training completion
+- **Incident response:** Documentation of any incidents and response
+
+**Timeline:** Start evidence collection immediately after Type I. Schedule Type II audit for 6-9 months out.
+
+**Read our [Type II Timeline Guide](/blog/soc2-type2-timeline) for the complete roadmap.**
+
+## ROI: Is This Worth It?
+
+**Revenue impact:**
+- Average deal size increase: 23% (enterprise customers pay more)
+- Sales cycle reduction: 30-45 days (eliminate security questionnaire delays)
+- Win rate improvement: 15-20% (competitive differentiator)
+
+**Cost avoidance:**
+- Custom questionnaires: Save 10-20 hours per enterprise deal
+- Legal review of contracts: Reduced security addendums
+- Security incidents: Better controls = lower risk
+
+**For a SaaS company closing $500k-1M in annual contracts:**
+- Investment: $25,000-40,000 for Type I
+- Return: $200,000+ in accelerated revenue and closed deals
+- Payback period: 3-6 months typically
+
+Read our [ROI analysis](/blog/soc2-roi-analysis) for detailed calculations.
+
+## Final Checklist
+
+**Before starting your audit, confirm:**
+- [ ] All policies documented and approved
+- [ ] System description complete
+- [ ] Risk assessment documented
+- [ ] All controls implemented
+- [ ] All employees trained (100% completion)
+- [ ] Evidence organized and accessible
+- [ ] Auditor selected and scheduled
+- [ ] Team briefed on audit process
+- [ ] Management review completed
+
+## Get Started Today
+
+**90 days goes fast.** The companies that succeed are the ones that start immediately, stay organized, and leverage proven templates instead of reinventing the wheel.
+
+**Ready to begin?**
+- [Complete Bundle](/products/bundles) - Everything you need for $549.95 (save $600)
+- [Policy Bundle](/products/policies) - All 15 policies for $129.95
+- [Implementation Guides](/resources/implementation-guides) - Free step-by-step guides
+
+**Questions?** Email us at [support@security-docs.com](mailto:support@security-docs.com). We're here to help.
+
+---
+
+*Last updated: November 2025. Based on real-world SOC 2 implementations and current audit requirements.*
