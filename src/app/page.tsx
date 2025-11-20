@@ -2,6 +2,13 @@ import React from 'react';
 import { Check, Shield, FileText, ArrowRight, Star, BookOpen, Download } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { BundleUpsell } from '@/components/ecommerce/BundleUpsell';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/'
+  }
+};
 
 const HomePage = () => {
   return (

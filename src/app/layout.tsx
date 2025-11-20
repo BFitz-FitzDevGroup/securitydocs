@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://security-docs.com'), // ADD THIS LINE
   title: {
     default: 'SecurityDocs - SOC 2 Compliance Templates & Documentation',
     template: '%s | SecurityDocs'
