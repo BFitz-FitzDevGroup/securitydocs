@@ -5,6 +5,8 @@ const urls = [
   'https://security-docs.com/blog/soc2-type1-vs-type2',
   'https://security-docs.com/blog/compliance-certifications-comparison',
   'https://security-docs.com/blog/soc2-preparation-90-days',
+  'https://security-docs.com/blog/soc2-type2-timeline',
+  'https://security-docs.com/blog/common-soc2-audit-findings',
 ];
 
 console.log('🚀 Submitting URLs to IndexNow...');

@@ -1,0 +1,622 @@
+---
+title: "SOC 2 Type II Timeline: Week-by-Week Breakdown (6-12 Months)"
+excerpt: "Detailed timeline for SOC 2 Type II certification from start to finish. Learn what happens each week during the observation period, audit preparation, and report issuance."
+date: "2025-11-13"
+category: "SOC 2 Compliance"
+readTime: "12 min read"
+author: "SecurityDocs Team"
+---
+
+Your sales team just closed an enterprise deal contingent on SOC 2 Type II certification. Your board wants it done in six months. Your auditor says twelve. Your CFO is asking why it costs so much and takes so long. Now you're googling "SOC 2 Type II timeline" at 10 PM trying to figure out what actually happens during those mysterious months.
+
+The difference between a six-month timeline and a twelve-month nightmare often comes down to preparation and understanding what's really involved. Skip the readiness phase and you'll spend months fixing gaps mid-audit. Start the observation period before controls are working properly and you'll fail testing. Rush evidence collection and you'll be scrambling to reproduce six months of logs in the final weeks.
+
+This guide breaks down the entire SOC 2 Type II timeline week by week, explaining what happens during each phase, why it takes so long, and how to avoid the delays that extend timelines. By the end, you'll know exactly what to expect and how to plan your certification journey realistically.
+
+**Quick overview:** SOC 2 Type II typically takes 9-12 months total. Three to four months for readiness and control implementation, six months minimum for the observation period, and two to four months for audit execution and report issuance. We'll explain why each phase takes this long and what accelerates or delays progress.
+
+If you're still deciding between Type I and Type II, start here: [SOC 2 Type I vs Type II: Key Differences Explained](/blog/soc2-type1-vs-type2)
+
+## Understanding the SOC 2 Type II Timeline
+
+Before diving into weekly details, understand why Type II takes substantially longer than Type I.
+
+### Type I vs Type II: The Timeline Difference
+
+**Type I:** Point-in-time assessment of control design (2-4 months total)
+- Auditor reviews whether your controls are designed appropriately
+- No observation period required
+- Faster but less valuable to customers
+
+**Type II:** Assessment of operating effectiveness over time (9-12 months total)
+- Auditor reviews control design AND tests that controls work over time
+- Requires minimum six-month observation period
+- What enterprise customers actually require
+
+Most companies pursuing SOC 2 for the first time need Type II. Type I might satisfy some customers temporarily, but you'll eventually need Type II anyway. Plan for Type II from the start unless you have a specific reason to pursue Type I first.
+
+### The Three Major Phases
+
+SOC 2 Type II breaks into three distinct phases:
+
+**Phase 1: Readiness & Implementation (3-4 months)**
+- Gap assessment and control design
+- Policy and procedure implementation
+- Tool deployment and configuration
+- Evidence collection system setup
+
+**Phase 2: Observation Period (6-12 months)**
+- Controls operate continuously
+- Evidence accumulates automatically
+- Quarterly reviews and adjustments
+- Minimum six months required for Type II
+
+**Phase 3: Audit Execution (2-4 months)**
+- Formal audit kickoff
+- Evidence collection and review
+- Testing and findings
+- Report preparation and issuance
+
+The observation period is the longest phase but requires the least active work. Phase 1 requires the most effort, and Phase 3 is the most intense but shortest. Understanding this rhythm helps you allocate resources appropriately.
+
+### Why Six Months Minimum?
+
+The six-month observation period isn't arbitrary. SOC 2 Type II tests operating effectiveness, which means proving controls work consistently over time. Auditors need to see:
+
+- **Quarterly access reviews** happening on schedule
+- **Monthly security training** completing regularly
+- **Incident response procedures** tested multiple times
+- **Change management processes** handling real changes
+- **Backup procedures** executing and tested repeatedly
+
+You can't demonstrate quarterly reviews with only three months of operation. You can't show consistent training completion without multiple monthly cycles. The six-month minimum exists because some controls, by definition, require that much time to test properly.
+
+Some auditors and companies push for twelve-month observation periods for additional confidence, though six months is the industry standard minimum. Plan for six months but don't be surprised if stakeholders prefer twelve.
+
+## Phase 1: Readiness & Implementation (Weeks 1-16)
+
+This phase transforms your security program from ad-hoc practices to a formal, documented, auditable compliance program. Most companies underestimate the work involved here.
+
+### Weeks 1-2: Gap Assessment and Planning
+
+**What happens:**
+Your team or an external consultant assesses your current state against SOC 2 requirements, identifying gaps between current practices and audit requirements.
+
+**Key activities:**
+- Map existing security controls to Trust Service Criteria
+- Identify missing policies, procedures, and documentation
+- Document current tools and their configurations
+- Interview stakeholders about existing processes
+- Estimate effort required to close each gap
+
+**Deliverable:** Gap assessment report with prioritized remediation plan
+
+**Common mistakes:** Skipping this phase entirely or doing only a superficial assessment. Companies that jump straight to implementation often miss critical requirements and waste time building the wrong things.
+
+**Timeline impact:** A thorough gap assessment takes two weeks but saves months later. A poor assessment extends your overall timeline by 3-6 months as you discover gaps mid-audit.
+
+### Weeks 3-6: Policy Development and Approval
+
+**What happens:**
+You develop or customize comprehensive security policies covering all relevant Trust Service Criteria. These policies document what your security program does, how it operates, and who's responsible.
+
+**Key activities:**
+- Draft or customize policy templates for your environment
+- Align policies with actual practices (or document planned practices)
+- Review policies with legal, HR, and technical stakeholders
+- Get executive approval and sign-off
+- Publish policies to employees
+
+**Deliverable:** Complete policy suite approved and published
+
+**Policies typically required:**
+- Information Security Policy (master policy)
+- Access Control Policy
+- Incident Response Plan
+- Risk Management Policy
+- Change Management Policy
+- Business Continuity/Disaster Recovery Plan
+- Data Management/Privacy Policy
+- Human Resources Security Policy
+- Physical Security Policy
+- Operations Security Policy
+- Asset Management Policy
+- Network Security Policy
+- Vendor Management Policy
+- Acceptable Use Policy
+- Encryption Policy
+
+That's a lot of policies, which is why this phase takes a month. Writing policies from scratch can take 200+ hours. Using professional templates reduces this to customization work, cutting weeks from your timeline.
+
+Our [Policy Bundle](/products/policy-bundle) includes all 15 essential policies with both enterprise and SMB versions, implementation workbooks, and quick reference guides - saving you those 200+ hours of policy writing.
+
+**Common mistakes:** Creating aspirational policies that don't match reality. When audit comes, you'll have to prove you're following the policies you wrote. If your policy says quarterly access reviews but you're not actually doing them, you'll fail that control.
+
+**Timeline impact:** Policy development and approval typically takes four weeks. Companies trying to rush this in two weeks produce poor policies that need revision later, adding weeks to the timeline.
+
+### Weeks 7-10: Control Implementation
+
+**What happens:**
+You implement the technical and administrative controls documented in your policies. This is where theory becomes practice.
+
+**Technical control implementation:**
+- Configure multi-factor authentication for all administrative access
+- Deploy endpoint protection (antivirus, EDR)
+- Implement network segmentation and firewall rules
+- Set up security information and event management (SIEM)
+- Configure centralized logging and log retention
+- Implement backup and recovery procedures
+- Deploy vulnerability scanning tools
+- Configure encryption for data at rest and in transit
+
+**Administrative control implementation:**
+- Establish security awareness training program
+- Create access request and review procedures
+- Implement change management workflows
+- Set up incident response procedures and on-call rotation
+- Establish vendor assessment processes
+- Create business continuity and disaster recovery procedures
+- Deploy background check processes for new hires
+
+**Deliverable:** All required controls operational and documented
+
+**Resource requirements:** This is the most resource-intensive phase. Plan for significant IT/security team involvement. Many companies need outside help here if they don't have dedicated security staff.
+
+**Common mistakes:** Implementing controls without testing them first. Deploy your access review process but actually run a test review before the observation period starts. Test your incident response plan with a tabletop exercise. Verify backups can actually restore.
+
+**Timeline impact:** Control implementation takes four weeks with a dedicated team. Stretched across other priorities, it can take 8-12 weeks. Companies that try to rush this phase end up with poorly implemented controls that fail testing during audit.
+
+### Weeks 11-14: Evidence Collection System Setup
+
+**What happens:**
+You build the systems and processes that will collect evidence during the observation period. This is critical - you can't go back and recreate six months of evidence later.
+
+**Key activities:**
+- Configure tools to automatically collect required evidence
+- Set up log aggregation and retention
+- Create templates for manual evidence collection
+- Document evidence collection procedures
+- Train team on evidence requirements
+- Set up evidence repository and organization system
+- Create calendar reminders for periodic evidence collection
+
+**Evidence collection requirements:**
+- Access provisioning and deprovisioning logs
+- Access review documentation
+- Security training completion records
+- Vulnerability scan results and remediation
+- Change management tickets and approvals
+- Incident response documentation
+- Backup logs and restore testing
+- Security monitoring alerts and responses
+- Vendor assessment documentation
+- Policy review and approval records
+
+**Deliverable:** Evidence collection system operational and tested
+
+Our [Evidence Bundle](/products/evidence-bundle) explains exactly what evidence auditors expect for each control, what format it should be in, and how to collect it efficiently - eliminating guesswork during this critical setup phase.
+
+**Common mistakes:** Not setting up automated evidence collection. Trying to manually collect evidence each month is painful and error-prone. Automate everything possible: log collection, training completion reports, vulnerability scans, backup verification.
+
+**Timeline impact:** Setting up evidence collection takes 3-4 weeks initially but saves dozens of hours during the observation period and audit phase. Companies that skip this step spend months manually reconstructing evidence later.
+
+### Weeks 15-16: Readiness Assessment and Audit Selection
+
+**What happens:**
+You verify everything is ready for the observation period to start, and you select and engage your audit firm.
+
+**Readiness verification:**
+- Confirm all policies approved and published
+- Verify all technical controls operational
+- Test evidence collection systems
+- Review procedures with team
+- Conduct internal readiness assessment
+- Address any remaining gaps
+
+**Auditor selection:**
+- Research qualified audit firms (look for AICPA members)
+- Request proposals from 3-5 firms
+- Compare pricing, timeline, and approach
+- Check references from similar companies
+- Negotiate scope and terms
+- Execute engagement letter
+
+**Deliverable:** Formal audit engagement signed, observation period start date set
+
+**Auditor considerations:**
+- Industry experience (SaaS, FinTech, HealthTech expertise)
+- Firm size and client load
+- Timeline and availability
+- Pricing ($25,000-$75,000 for Type II)
+- Communication style and responsiveness
+- Tools and portal capabilities
+
+**Common mistakes:** Choosing the cheapest auditor without checking qualifications or references. A bad audit firm can make the process painful and extend timelines significantly. Also, waiting until the last minute to select an auditor - good firms book up months in advance.
+
+**Timeline impact:** Auditor selection should take 2-3 weeks. Starting too late can delay your observation period start by months if your preferred firm isn't available.
+
+## Phase 2: Observation Period (Weeks 17-42, Minimum 6 Months)
+
+This is the longest phase but paradoxically requires the least active effort. Your controls operate continuously, evidence accumulates automatically, and you maintain the program you built in Phase 1.
+
+### Understanding the Observation Period
+
+The observation period is exactly what it sounds like: the period during which auditors will observe that your controls operated effectively. You don't interact with auditors much during this phase - you're just running your security program while evidence accumulates.
+
+**What "operating effectively" means:**
+Controls must work as designed, consistently, throughout the period. One successful access review doesn't count - you need to show access reviews happening quarterly, every quarter, for the entire period. Security training can't be a one-time event - it needs to happen monthly or quarterly as documented.
+
+### Week 17: Observation Period Kickoff
+
+**What happens:**
+The formal observation period begins. This date is critical - all evidence auditors examine will come from this date forward for the next 6-12 months.
+
+**Key activities:**
+- Document observation period start date
+- Verify all evidence collection systems active
+- Send team reminder about compliance requirements
+- Schedule first quarterly review
+- Confirm monitoring systems operational
+
+**Critical requirement:** All controls must be operational on day one. You can't start the observation period and then implement a control two months later - that control won't have six months of operating history.
+
+**Common mistakes:** Starting the observation period before controls are truly ready. Companies eager to "start the clock" sometimes begin the period prematurely, only to discover a critical control isn't working properly. This forces them to restart the observation period, losing months.
+
+### Weeks 17-42: Ongoing Operations (6-Month Minimum)
+
+**What happens:**
+Your security program operates as documented. Evidence accumulates. Your team follows procedures and maintains controls.
+
+**Monthly activities:**
+- Conduct security awareness training
+- Review and respond to security alerts
+- Process access requests and modifications
+- Maintain vulnerability scanning and patching
+- Review backup logs and test restores
+- Update documentation as needed
+- Collect and organize evidence
+
+**Quarterly activities:**
+- Perform comprehensive access reviews
+- Review and update risk assessments
+- Test incident response procedures
+- Review vendor security assessments
+- Conduct business continuity testing
+- Review policies for needed updates
+- Generate quarterly compliance reports
+
+**Ad-hoc activities:**
+- Respond to security incidents (following documented procedures)
+- Process change requests (following change management process)
+- Onboard new employees (following HR security procedures)
+- Offboard departing employees (following termination procedures)
+- Assess new vendors (following vendor management process)
+
+**The importance of consistency:**
+Auditors will test controls by sampling evidence from throughout the observation period. If you did access reviews in months 1, 2, and 3, then skipped months 4-6, that's a finding. Consistency matters more than perfection.
+
+**Evidence organization:**
+Maintain a clear evidence repository organized by control and time period. When audit comes, you'll need to quickly produce evidence from any point in the observation period. Companies that organize evidence weekly save days during the audit phase.
+
+**Common mistakes:**
+- Letting procedures slip mid-period ("we'll catch up later")
+- Not documenting exceptions or deviations
+- Assuming evidence collection is happening when it's not
+- Ignoring alerts or findings that should trigger incident response
+- Skipping quarterly activities because "we did them last quarter"
+
+**Team fatigue:** The observation period tests discipline. The initial excitement of SOC 2 fades, and maintaining procedures feels routine. Build compliance activities into regular workflows rather than treating them as special projects.
+
+### Quarterly Checkpoints
+
+**Every three months:**
+Conduct an internal review to verify everything is on track. Don't wait until audit to discover problems.
+
+**Quarterly checkpoint activities:**
+- Review all evidence collected that quarter
+- Verify no gaps in evidence collection
+- Confirm all procedures followed as documented
+- Address any deviations or exceptions
+- Update documentation based on process changes
+- Assess readiness for upcoming audit phase
+
+These quarterly reviews catch issues early when they're fixable. Discovering six months into the observation period that you forgot to collect change management evidence for months 2-4 is painful. Quarterly checkpoints prevent this.
+
+## Phase 3: Audit Execution (Weeks 43-54)
+
+The observation period is complete, evidence is collected, and now the formal audit begins. This is the most intense phase with the most auditor interaction.
+
+### Weeks 43-44: Audit Kickoff and Evidence Request
+
+**What happens:**
+The auditor formally begins the Type II assessment, starting with a kickoff meeting and comprehensive evidence request.
+
+**Kickoff meeting agenda:**
+- Confirm audit scope and criteria
+- Review timeline and deliverables
+- Discuss evidence submission process
+- Identify key contacts and responsibilities
+- Schedule testing and interview sessions
+- Address questions and concerns
+
+**Initial evidence request:**
+Auditors send a detailed request list covering all controls in scope. This typically includes:
+- All policies and procedures
+- Organization charts and role definitions
+- Network diagrams and system architecture
+- Tool configurations and screenshots
+- Vendor contracts and assessments
+- Evidence samples from throughout observation period
+
+**Evidence submission:**
+Most audit firms use a secure portal for evidence sharing. You'll upload hundreds (sometimes thousands) of files organized by control.
+
+**Common mistakes:** Submitting disorganized evidence in random file structures. Auditors reviewing poorly organized evidence take longer, ask more questions, and charge more hours. Clean, well-organized evidence speeds the entire audit process.
+
+**Timeline impact:** Evidence organization and submission typically takes 1-2 weeks. Companies with good evidence organization do this in a week. Companies that didn't organize evidence during the observation period spend 3-4 weeks reconstructing and organizing.
+
+### Weeks 45-48: Testing and Interviews
+
+**What happens:**
+Auditors examine your evidence, test controls, conduct interviews, and identify any issues or findings.
+
+**Testing activities:**
+- Review policies for completeness and appropriateness
+- Examine technical configurations and screenshots
+- Sample evidence from throughout the observation period
+- Trace processes from start to finish
+- Verify segregation of duties
+- Confirm authorizations and approvals
+- Test access controls and authentication
+
+**Interview sessions:**
+Auditors interview various team members to understand how controls operate in practice:
+- IT/security leadership (control environment, risk assessment)
+- System administrators (technical controls, access management)
+- HR representatives (employee lifecycle, training)
+- Development teams (change management, deployment processes)
+- Operations teams (monitoring, incident response)
+
+**Interview preparation:**
+Brief interviewees on what to expect. They should answer honestly about what actually happens, not what they think auditors want to hear. Inconsistencies between documentation and interviews trigger additional scrutiny.
+
+**Common findings emerge:**
+During testing, auditors identify controls that don't meet requirements:
+- Missing evidence for specific time periods
+- Procedures not followed as documented
+- Technical configurations not matching policies
+- Insufficient documentation or detail
+- Gaps in coverage or testing
+
+**Management response:**
+For each finding, you'll need to provide:
+- Acknowledgment of the issue
+- Root cause analysis
+- Remediation completed or planned
+- Timeline for addressing gaps
+- Evidence of corrective actions
+
+**Timeline impact:** Testing typically takes 3-4 weeks. Companies with clean evidence and well-implemented controls move faster. Companies with significant findings spend extra weeks providing additional evidence and implementing corrections.
+
+### Weeks 49-52: Findings Resolution and Draft Report
+
+**What happens:**
+Auditors compile findings, you respond and remediate, and the auditor prepares a draft report.
+
+**Findings review:**
+Auditors present all findings (both minor observations and significant issues). You review each finding and determine:
+- Is this accurate? (Sometimes findings result from misunderstandings)
+- Can we provide additional evidence to address it?
+- Do we need to implement corrective actions?
+- What's our management response?
+
+**Remediation:**
+For findings requiring action, implement fixes and provide evidence:
+- Update policies or procedures
+- Implement missing controls
+- Collect additional evidence
+- Document processes more thoroughly
+- Train team on corrected procedures
+
+**Draft report review:**
+Auditors provide a draft SOC 2 Type II report for your review. This report includes:
+- Description of your system and controls
+- Testing procedures performed
+- Results of testing (pass/fail for each control)
+- Findings and management responses
+- Auditor's opinion
+
+**Your review focuses on:**
+- Accuracy of system description
+- Appropriate characterization of findings
+- Clarity of management responses
+- No confidential information inadvertently included
+- Correct scope and time period
+
+**Common mistakes:** Treating findings as failures rather than learning opportunities. Almost every company gets some findings on their first Type II audit. What matters is how you respond and remediate.
+
+**Timeline impact:** Findings resolution and draft report typically take 3-4 weeks. Companies with many findings or slow remediation can extend this to 6-8 weeks.
+
+### Weeks 53-54: Final Report and Issuance
+
+**What happens:**
+You provide final comments on the draft, auditor makes any necessary revisions, and the final SOC 2 Type II report is issued.
+
+**Final review:**
+- Confirm all comments addressed
+- Verify accuracy of final version
+- Review auditor's opinion (hopefully unqualified/clean)
+- Ensure all management responses included
+- Check that confidential information protected
+
+**Report issuance:**
+The auditor issues the final SOC 2 Type II report, which includes:
+- Effective date and observation period covered
+- Trust Service Criteria addressed
+- Auditor's independent opinion
+- System description
+- Control objectives and testing results
+- Any findings or exceptions noted
+
+**Report distribution:**
+You control who receives the report. Most companies:
+- Share with customers who required it
+- Provide to prospects during sales process
+- Store securely for future reference
+- Plan for annual renewal
+
+**Timeline impact:** Final report issuance takes 1-2 weeks after draft review is complete.
+
+## What Delays SOC 2 Type II Timelines?
+
+Understanding common delays helps you avoid them.
+
+### Top Timeline Killers
+
+**Starting observation period prematurely (adds 6+ months)**
+Companies eager to "start the clock" begin the observation period before controls are truly operational. When auditors discover controls weren't working properly from day one, the observation period must restart.
+
+**Prevention:** Conduct thorough readiness assessment before starting observation period. Better to delay start by a month than restart six months later.
+
+**Poor evidence organization (adds 4-8 weeks)**
+Companies that don't organize evidence during the observation period spend weeks at audit time reconstructing and organizing evidence.
+
+**Prevention:** Organize evidence weekly, not at audit time. Create clear folder structures and naming conventions.
+
+**Team turnover mid-process (adds 2-6 weeks)**
+When key people leave during SOC 2, knowledge gaps and handoff issues slow progress.
+
+**Prevention:** Document procedures thoroughly and cross-train team members. Don't rely on single points of failure.
+
+**Auditor availability delays (adds 4-12 weeks)**
+Popular audit firms book up months in advance. Waiting to select an auditor can delay your start significantly.
+
+**Prevention:** Select and engage auditor early, ideally during readiness phase. Confirm start dates well in advance.
+
+**Scope changes mid-audit (adds 2-8 weeks)**
+Discovering you need additional criteria or controls after the observation period starts requires extending the timeline.
+
+**Prevention:** Finalize scope during gap assessment. Understand customer requirements before starting.
+
+**Incomplete remediation (adds 4-8 weeks)**
+Findings that require significant remediation extend the timeline while you implement fixes and collect new evidence.
+
+**Prevention:** Implement controls properly from the start. Test thoroughly before observation period begins.
+
+### Realistic Timeline Expectations
+
+**Absolute minimum (rare):** 9 months
+- Experienced team
+- Simple scope
+- Resources dedicated
+- No significant findings
+
+**Typical timeline:** 10-12 months
+- First-time certification
+- Standard scope
+- Some findings
+- Normal resource constraints
+
+**Extended timeline:** 12-18 months
+- Complex environment
+- Multiple criteria
+- Limited resources
+- Significant remediation needed
+
+**Plan for the typical timeline, not the minimum.** Companies that plan for nine months and take twelve feel behind and stressed. Companies that plan for twelve months and finish in eleven feel ahead of schedule.
+
+## How to Accelerate Your Timeline
+
+While you can't rush the six-month observation period, you can accelerate everything else.
+
+### Before Starting
+
+**Use professional templates:** Writing policies from scratch takes 200+ hours. Professional templates reduce this to customization work, saving 6-8 weeks.
+
+**Hire help strategically:** External consultants or fractional security leaders can accelerate readiness work from 16 weeks to 8-10 weeks by bringing experience and dedicated focus.
+
+**Pre-select your auditor:** Don't wait until week 15 to start auditor selection. Research firms during weeks 1-4 and engage during weeks 10-12.
+
+**Automate evidence collection:** Invest time upfront in automation. Manual evidence collection costs 10+ hours monthly during observation period.
+
+### During Observation Period
+
+**Maintain discipline:** Skipping procedures creates gaps that delay audit. Six months of consistent operation beats seven months with gaps.
+
+**Organize evidence weekly:** Don't wait until audit to organize. Spend 1-2 hours weekly organizing evidence to save weeks at audit time.
+
+**Conduct internal audits:** Quarterly self-assessments catch issues early when they're easy to fix.
+
+### During Audit
+
+**Respond quickly:** Every day of delay in responding to auditor questions extends the timeline. Assign a dedicated point person.
+
+**Provide complete evidence:** Submitting partial evidence that requires follow-up adds rounds of back-and-forth. Provide everything requested comprehensively.
+
+**Be available:** Schedule interviews promptly and make team members available when auditors need them.
+
+## Your SOC 2 Type II Timeline Action Plan
+
+Here's your practical timeline planning guide.
+
+### Month 1: Planning and Assessment
+- Conduct gap assessment
+- Identify required resources
+- Select implementation approach
+- Begin auditor research
+- Create project timeline and budget
+
+### Month 2: Policy Development
+- Draft or customize policies
+- Review with stakeholders
+- Get executive approval
+- Publish to employees
+- Begin control implementation
+
+### Month 3: Control Implementation
+- Deploy technical controls
+- Implement administrative processes
+- Test controls thoroughly
+- Set up evidence collection
+- Train team on procedures
+
+### Month 4: Readiness and Launch
+- Conduct readiness assessment
+- Select and engage auditor
+- Address final gaps
+- Launch observation period
+- Confirm evidence collection working
+
+### Months 5-10: Observation Period (6 months)
+- Operate controls consistently
+- Collect evidence continuously
+- Conduct quarterly reviews
+- Maintain documentation
+- Prepare for audit phase
+
+### Months 11-12: Audit Execution
+- Submit evidence to auditor
+- Participate in testing and interviews
+- Respond to findings
+- Review draft report
+- Receive final report
+
+**Total timeline:** 12 months from start to final report issuance.
+
+## Making Your Timeline Realistic
+
+The difference between a successful SOC 2 journey and a painful one often comes down to realistic planning.
+
+**Don't promise timelines you can't meet.** When your board asks for six months but the realistic timeline is twelve, explain why. Delivering on a twelve-month timeline beats missing a six-month promise.
+
+**Build in buffer.** Plan for twelve months even if you think you can do it in ten. Buffer protects against inevitable delays and reduces stress.
+
+**Prioritize consistency over speed.** Better to have a clean six-month observation period than a rushed four-month period that fails testing.
+
+**Invest in setup.** Time spent in Phase 1 (readiness and implementation) pays dividends in Phase 2 and 3. Companies that rush setup spend months fixing problems later.
+
+The journey to SOC 2 Type II is measured in months, not weeks. Plan appropriately, execute consistently, and you'll get there successfully.
+
+Ready to start your SOC 2 journey? Our [Complete Bundle](/products/complete-bundle) includes everything you need for the entire timeline - policies for Phase 1, documents for evidence collection in Phase 2, and evidence explanations for Phase 3. Save months of work with templates built from real-world compliance experience.
+
+Already know what you need? Browse our [Policy Bundle](/products/policy-bundle), [Document Bundle](/products/document-bundle), or [Evidence Bundle](/products/evidence-bundle) to get exactly what your timeline requires.
