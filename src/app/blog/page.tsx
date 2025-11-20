@@ -7,6 +7,9 @@ import { getAllBlogPosts } from '@/lib/blog';
 export const metadata: Metadata = {
   title: 'Security & Compliance Blog',
   description: 'Practical insights on SOC 2 compliance, security best practices, and tool reviews from real-world experience.',
+  alternates: {
+    canonical: '/blog'
+  }
 };
 
 export default function BlogPage() {

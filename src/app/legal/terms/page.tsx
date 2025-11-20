@@ -1,6 +1,15 @@
 import React from 'react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { Shield, Scale, AlertCircle } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description: 'Terms and conditions for using SecurityDocs templates and services',
+  alternates: {
+    canonical: '/legal/terms'
+  }
+};
 
 export default function TermsOfServicePage() {
   const breadcrumbPath = [

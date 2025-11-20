@@ -4,6 +4,9 @@ import { PageLayout } from '@/components/layout/PageLayout'
 export const metadata: Metadata = {
   title: 'Contact Us | SecurityDocs',
   description: 'Get in touch with SecurityDocs for questions about our SOC 2 compliance templates and resources.',
+  alternates: {
+    canonical: '/contact'
+  }
 }
 
 export default function ContactPage() {

@@ -1,6 +1,15 @@
 import React from 'react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { Shield, Lock, Eye, UserCheck } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'How SecurityDocs collects, uses, and protects your personal information',
+  alternates: {
+    canonical: '/legal/privacy'
+  }
+};
 
 export default function PrivacyPolicyPage() {
   const breadcrumbPath = [

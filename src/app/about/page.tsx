@@ -6,6 +6,9 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About Us | SecurityDocs',
   description: 'Learn about SecurityDocs - SOC 2 compliance templates and resources built from real-world implementation experience.',
+  alternates: {
+    canonical: '/about'
+  }
 }
 
 export default function AboutPage() {

@@ -1,10 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { PageLayout } from '@/components/layout/PageLayout';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Legal Information | SecurityDocs',
   description: 'Terms of service, privacy policy, refund policy, and other legal information for SecurityDocs.',
+  alternates: {
+    canonical: '/legal'
+  }
 };
 
 export default function LegalHubPage() {

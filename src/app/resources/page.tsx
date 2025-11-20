@@ -1,6 +1,16 @@
 import React from 'react';
 import { BookOpen, Download, ExternalLink, Check, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, Lightbulb, Cloud, CheckCircle, Globe, Zap, Play } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'SOC 2 Compliance Resources & Tools',
+  description: 'Free SOC 2 compliance resources including implementation guides, cost calculators, checklists, glossary, and timeline estimators to help you achieve certification.',
+  alternates: {
+    canonical: '/resources'
+  },
+  keywords: ['SOC 2 resources', 'compliance tools', 'SOC 2 checklist', 'SOC 2 guide', 'compliance calculator'],
+};
 
 const ResourcesHubPage = () => {
   const breadcrumbPath = [

@@ -1,6 +1,15 @@
 import React from 'react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { AlertCircle, Download, Mail, HelpCircle } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Refund Policy',
+  description: 'SecurityDocs refund policy for digital template purchases',
+  alternates: {
+    canonical: '/legal/refund-policy'
+  }
+};
 
 export default function RefundPolicyPage() {
   const breadcrumbPath = [
