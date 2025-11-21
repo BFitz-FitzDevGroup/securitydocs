@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import { BlackFridayBanner } from '@/components/campaign/BlackFridayBanner';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://security-docs.com'), // ADD THIS LINE
+  metadataBase: new URL('https://security-docs.com'),
   title: {
     default: 'SecurityDocs - SOC 2 Compliance Templates & Documentation',
     template: '%s | SecurityDocs'
@@ -56,6 +57,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <GoogleAnalytics />
+        <BlackFridayBanner />
         {children}
       </body>
     </html>

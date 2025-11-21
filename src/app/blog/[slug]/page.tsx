@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowLeft, Tag } from 'lucide-react';
 import Link from 'next/link';
 import { getBlogPost, getAllBlogPosts } from '@/lib/blog';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import { BlogPromoBanner } from '@/components/campaign/BlogPromoBanner';
 
 export async function generateStaticParams() {
   const posts = getAllBlogPosts();
@@ -127,6 +128,9 @@ export default async function BlogPostPage({
         ">
           <MDXRemote source={post.content} />
         </div>
+        
+        {/* CYBER WEEK CAMPAIGN BANNER - Shows Nov 24 - Dec 5 only */}
+        <BlogPromoBanner />
         
         {/* Related Products CTA */}
         <div className="mt-12 p-6 bg-blue-50 border border-blue-200 rounded-lg">

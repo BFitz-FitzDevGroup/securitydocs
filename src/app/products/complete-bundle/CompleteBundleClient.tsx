@@ -5,6 +5,7 @@ import { Package, Check, Shield, Star, Download } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { getBundle } from '@/lib/products';
 import PrePurchaseNotice from '@/components/legal/PrePurchaseNotice';
+import { BundleSaleSection } from '@/components/campaign/BundleSaleSection';
 
 export function CompleteBundleClient() {
   const bundle = getBundle('complete');
@@ -46,6 +47,16 @@ export function CompleteBundleClient() {
               <h1 className="text-4xl font-bold text-slate-900 mb-6">
                 {bundle.name}
               </h1>
+              
+              {/* CYBER WEEK SALE SECTION - Shows Nov 24 - Dec 5 only */}
+              <BundleSaleSection
+                bundleName="Complete Bundle"
+                discountPercent={50}
+                originalPrice={549.95}
+                salePrice={274.95}
+                savings={275}
+                discountCode="CYBERWEEK50"
+              />
               
               <div className="prose prose-lg prose-slate max-w-none">
                 <p className="text-lg text-slate-700 leading-relaxed">

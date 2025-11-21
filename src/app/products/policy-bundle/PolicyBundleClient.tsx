@@ -5,6 +5,7 @@ import { Shield, Check, Download, FileText } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { getBundle } from '@/lib/products';
 import PrePurchaseNotice from '@/components/legal/PrePurchaseNotice';
+import { BundleSaleSection } from '@/components/campaign/BundleSaleSection';
 
 export function PolicyBundleClient() {
   const bundle = getBundle('policy');
@@ -45,7 +46,17 @@ export function PolicyBundleClient() {
               <h1 className="text-4xl font-bold text-slate-900 mb-6">
                 {bundle.name}
               </h1>
-              
+
+              {/* CYBER WEEK SALE SECTION - Shows Nov 24 - Dec 5 only */}
+              <BundleSaleSection
+                bundleName="Policy Bundle"
+                discountPercent={40}
+                originalPrice={199.95}
+                salePrice={119.97}
+                savings={79.98}
+                discountCode="CYBERWEEK40"
+              />
+
               <div className="prose prose-lg prose-slate max-w-none">
                 <p className="text-lg text-slate-700 leading-relaxed">
                   Get all 15 essential SOC 2 security policies in one comprehensive package. These professionally written templates cover every Trust Service Criteria and provide the foundation your compliance program needs. Save ${bundle.savings.toFixed(2)} compared to purchasing policies individually.
