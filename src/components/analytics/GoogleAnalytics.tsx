@@ -2,7 +2,7 @@
 
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 
 declare global {
   interface Window {
@@ -15,22 +15,27 @@ declare global {
   }
 }
 
-export default function GoogleAnalytics() {
-  const GA_MEASUREMENT_ID = 'G-YGZHLTJE23';
+// Separate component for route tracking (uses useSearchParams)
+function RouteTracker({ measurementId }: { measurementId: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // Track page views on route change
   useEffect(() => {
     if (pathname) {
       // Wait for gtag to be available
       if (typeof window.gtag !== 'undefined') {
-        window.gtag('config', GA_MEASUREMENT_ID, {
+        window.gtag('config', measurementId, {
           page_path: pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : ''),
         });
       }
     }
-  }, [pathname, searchParams]);
+  }, [pathname, searchParams, measurementId]);
+
+  return null;
+}
+
+export default function GoogleAnalytics() {
+  const GA_MEASUREMENT_ID = 'G-YGZHLTJE23';
 
   return (
     <>
@@ -48,6 +53,9 @@ export default function GoogleAnalytics() {
           });
         `}
       </Script>
+      <Suspense fallback={null}>
+        <RouteTracker measurementId={GA_MEASUREMENT_ID} />
+      </Suspense>
     </>
   );
 }
