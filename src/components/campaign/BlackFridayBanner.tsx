@@ -35,34 +35,36 @@ export function BlackFridayBanner() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-red-600 to-red-700 text-white relative z-50">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex-1 text-center">
-            <p className="text-base md:text-lg font-bold">
-              🎉 Cyber Week Sale: Up to 50% Off All Bundles – Save Big on SOC 2 Compliance
-            </p>
-            <p className="text-xs md:text-sm mt-1">
-              Sale ends December 5th • Use codes{' '}
-              <span className="font-mono bg-white text-red-700 px-2 py-0.5 rounded font-bold">
-                CYBERWEEK50
-              </span>
-              {' '}or{' '}
-              <span className="font-mono bg-white text-red-700 px-2 py-0.5 rounded font-bold">
-                CYBERWEEK40
-              </span>
-              {' '}at checkout
-            </p>
+    <Link href="/products/complete-bundle">
+      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white relative z-50">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex-1 text-center">
+              <p className="text-base md:text-lg font-bold">
+                🎉 Cyber Week Sale: Up to 50% Off All Bundles – Save Big on SOC 2 Compliance
+              </p>
+              <p className="text-xs md:text-sm mt-1">
+                Sale ends December 5th • Use codes{' '}
+                <span className="font-mono bg-white text-red-700 px-2 py-0.5 rounded font-bold">
+                  CYBERWEEK50
+                </span>
+                {' '}or{' '}
+                <span className="font-mono bg-white text-red-700 px-2 py-0.5 rounded font-bold">
+                  CYBERWEEK40
+                </span>
+                {' '}at checkout
+              </p>
+            </div>
+            <button
+              onClick={handleDismiss}
+              className="flex-shrink-0 hover:bg-red-800 rounded p-1 transition-colors"
+              aria-label="Close banner"
+            >
+              <X size={20} />
+            </button>
           </div>
-          <button
-            onClick={handleDismiss}
-            className="flex-shrink-0 hover:bg-red-800 rounded p-1 transition-colors"
-            aria-label="Close banner"
-          >
-            <X size={20} />
-          </button>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
