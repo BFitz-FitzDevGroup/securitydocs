@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   }
 };
 
+export const revalidate = 3600; // Rebuild every hour
+
 export default function BlogPage() {
   const blogPosts = getAllBlogPosts();
 
