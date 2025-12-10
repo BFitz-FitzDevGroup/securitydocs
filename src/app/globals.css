@@ -25,3 +25,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Code block styling - override prose defaults */
+.prose pre {
+  background-color: #0f172a !important; /* slate-900 */
+  color: #ffffff !important;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.prose pre code {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  padding: 0 !important;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* Inline code styling - keep light background */
+.prose :not(pre) > code {
+  background-color: #f1f5f9 !important; /* slate-100 */
+  color: #0f172a !important; /* slate-900 */
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+/* Remove the default backticks that prose adds */
+.prose code::before,
+.prose code::after {
+  content: "" !important;
+}

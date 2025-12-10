@@ -1,0 +1,903 @@
+---
+title: "SOC 2 Change Management Process: Requirements and Implementation"
+excerpt: "Master SOC 2 change management requirements. Learn how to implement change controls, handle emergency changes, and collect evidence that satisfies auditors."
+date: "2025-12-16"
+category: "SOC 2 Compliance"
+readTime: "11 min read"
+author: "SecurityDocs Team"
+---
+
+Change management is the #2 reason companies fail SOC 2 audits, right behind access control issues.
+
+Your auditor will ask for evidence that changes to production systems were properly approved, tested, and documented. They'll select random deployment dates from your observation period and ask: "Can you show me the change ticket, test results, and approval for what went to production on October 15th?"
+
+If you can't produce that documentation—or if the documentation shows changes deployed without proper approval or testing—you'll get an audit finding. Even one undocumented production change can result in an exception in your SOC 2 report.
+
+Here's why auditors care so much: Poorly managed changes are a leading cause of security incidents and outages. A developer pushes code directly to production without testing. A configuration change breaks authentication. A database migration deletes critical data. These aren't theoretical risks—they happen constantly at companies without proper change management.
+
+The good news: Implementing effective change management doesn't mean slowing down your development velocity. You can have fast deployments and strong controls. You just need the right process and the discipline to follow it.
+
+This guide covers everything you need to know about SOC 2 change management: what the requirements are, how to implement them without killing your team's productivity, and how to collect the evidence your auditor will request.
+
+## What is SOC 2 Change Management?
+
+SOC 2 change management is your documented process for making changes to production systems in a controlled, secure manner. It ensures that changes are:
+- Requested and documented
+- Risk-assessed for security impact
+- Tested before deployment
+- Approved by appropriate personnel
+- Logged and trackable
+- Reversible if problems occur
+
+The specific Trust Services Criterion that covers this is **CC8.1**: "The entity authorizes, designs, develops, configures, documents, tests, approves, and implements changes to infrastructure, data, software, and procedures to meet its objectives."
+
+That's a lot packed into one criterion. Let's break it down:
+- **Authorizes**: Someone with authority approves changes
+- **Designs/Develops**: Changes are planned, not ad-hoc
+- **Configures**: System configurations are documented
+- **Documents**: There's a record of what changed and why
+- **Tests**: Changes are validated before production
+- **Approves**: Formal approval before deployment
+- **Implements**: Deployment is controlled and logged
+
+### Types of Changes Covered
+
+Your change management process needs to cover:
+
+**Application Code Changes**:
+- New features
+- Bug fixes
+- Security patches
+- Dependency updates
+- API changes
+
+**Infrastructure Changes**:
+- Server provisioning or decommissioning
+- Network configuration changes
+- Firewall rule modifications
+- Cloud resource changes (AWS, Azure, GCP)
+- Database schema modifications
+
+**Configuration Changes**:
+- Application configuration updates
+- Environment variables
+- Feature flags
+- Third-party service configurations
+- Security settings
+
+**Access Changes**:
+- New user accounts
+- Permission modifications
+- Role assignments
+- Service account changes
+
+Note: User access changes are often handled separately under access control procedures, but they still follow change management principles.
+
+### Why It Matters for Security and Availability
+
+Poor change management leads to:
+
+**Security Incidents**:
+- Accidentally deploying code with vulnerabilities
+- Misconfiguring security controls
+- Exposing sensitive data through configuration errors
+- Breaking authentication or authorization mechanisms
+
+**Availability Failures**:
+- Deploying untested code that crashes production
+- Database migrations that lock tables for hours
+- Configuration changes that break critical services
+- Changes that exceed system capacity
+
+**Data Integrity Issues**:
+- Database changes that corrupt data
+- Changes that process transactions incorrectly
+- Loss of data due to improper migrations
+
+Your auditor has seen all of these happen due to poor change management. That's why they scrutinize this area so carefully.
+
+### Common Misconceptions
+
+**Myth**: "We deploy multiple times per day. We can't have formal change management."
+**Reality**: Modern DevOps practices support rapid deployment WITH controls. The key is automation.
+
+**Myth**: "Change management only applies to big changes."
+**Reality**: All production changes need documentation, even small ones. Hotfixes and emergency changes have expedited processes, but still require documentation.
+
+**Myth**: "We use GitOps, so we don't need separate change management."
+**Reality**: GitOps IS change management when done correctly. Pull requests, code reviews, and deployment logs provide the documentation auditors need.
+
+## SOC 2 Change Management Requirements
+
+Let's break down exactly what auditors expect to see.
+
+### Formal Change Request Process
+
+Every change needs a documented request that includes:
+- What's being changed
+- Why it's being changed
+- Who requested it
+- Risk level of the change
+- Planned implementation date
+- Expected impact on operations
+
+This doesn't have to be a formal ticket system (though that helps). Pull requests in GitHub can serve as change requests if they include this information.
+
+### Risk Assessment for Changes
+
+Not all changes carry the same risk. Your process should categorize changes:
+
+**High-Risk Changes**:
+- Database schema modifications affecting customer data
+- Changes to authentication or authorization systems
+- Network security configuration changes
+- Cryptographic implementation changes
+- Changes that could affect availability for customers
+
+**Medium-Risk Changes**:
+- New features with security implications
+- API changes affecting integrations
+- Infrastructure changes affecting multiple systems
+- Configuration changes to production systems
+
+**Low-Risk Changes**:
+- UI-only changes with no backend impact
+- Documentation updates
+- Monitoring configuration changes
+- Non-production environment changes
+
+High-risk changes require more stringent approval and testing. Low-risk changes might have expedited processes.
+
+### Testing Requirements
+
+Before deploying to production, changes must be tested. The level of testing should match the risk:
+
+**For High-Risk Changes**:
+- Unit tests
+- Integration tests
+- Security testing (for security-relevant changes)
+- Performance testing (for changes affecting load)
+- User acceptance testing
+- Staging environment deployment
+- Documented test results
+
+**For Medium-Risk Changes**:
+- Unit tests
+- Integration tests
+- Staging environment verification
+- Basic functionality testing
+
+**For Low-Risk Changes**:
+- Code review
+- Basic functionality check
+- Developer verification
+
+The key: You need documented evidence that testing occurred. "We tested it" isn't enough. You need test results, staging deployment logs, or review notes.
+
+### Approval Workflows
+
+Changes require approval from appropriate personnel before production deployment.
+
+**Who Should Approve**:
+- **Low-risk changes**: Peer developer review (PR approval)
+- **Medium-risk changes**: Technical lead or senior developer
+- **High-risk changes**: Engineering manager + security review + sometimes business owner
+
+**Important**: The person implementing a change shouldn't be the sole approver. Segregation of duties matters.
+
+### Documentation Standards
+
+Your change documentation should capture:
+- Change description
+- Files or systems affected
+- Risk assessment
+- Testing performed
+- Approval record (who approved, when)
+- Deployment date and time
+- Deployment outcome (success/failure)
+- Rollback executed (if needed)
+
+For code changes, Git commit messages and pull request descriptions often provide sufficient documentation if they're detailed enough.
+
+### Rollback Procedures
+
+Every significant change needs a plan for reverting if something goes wrong:
+- How to identify if the change caused issues
+- Steps to roll back the change
+- Data recovery procedures if needed
+- Who has authority to initiate rollback
+- How to test that rollback was successful
+
+For code deployments, this is often automated (revert the Git commit, redeploy). For infrastructure or configuration changes, you need documented procedures.
+
+### Post-Implementation Review
+
+After deploying changes, verify they worked as intended:
+- Monitoring data shows no anomalies
+- Error rates haven't increased
+- Performance metrics remain acceptable
+- Customer-reported issues haven't spiked
+- Security controls still functioning
+
+Document this verification. It shows auditors that you don't just deploy changes and hope for the best.
+
+Here's how different change types map to requirements:
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="border-b-2">
+        <th className="text-left py-3 px-4">Change Type</th>
+        <th className="text-left py-3 px-4">Risk Level</th>
+        <th className="text-left py-3 px-4">Testing Required</th>
+        <th className="text-left py-3 px-4">Approval Needed</th>
+        <th className="text-left py-3 px-4">Rollback Plan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b">
+        <td className="py-3 px-4 font-medium">Database schema change</td>
+        <td className="py-3 px-4">High</td>
+        <td className="py-3 px-4">Full test suite + staging deploy</td>
+        <td className="py-3 px-4">Engineering manager + DBA</td>
+        <td className="py-3 px-4">Documented procedure</td>
+      </tr>
+      <tr className="border-b">
+        <td className="py-3 px-4 font-medium">New API endpoint</td>
+        <td className="py-3 px-4">Medium</td>
+        <td className="py-3 px-4">Integration tests + staging</td>
+        <td className="py-3 px-4">Technical lead</td>
+        <td className="py-3 px-4">Automated revert</td>
+      </tr>
+      <tr className="border-b">
+        <td className="py-3 px-4 font-medium">Bug fix</td>
+        <td className="py-3 px-4">Medium</td>
+        <td className="py-3 px-4">Unit tests + review</td>
+        <td className="py-3 px-4">Peer review</td>
+        <td className="py-3 px-4">Automated revert</td>
+      </tr>
+      <tr className="border-b">
+        <td className="py-3 px-4 font-medium">UI styling change</td>
+        <td className="py-3 px-4">Low</td>
+        <td className="py-3 px-4">Visual review</td>
+        <td className="py-3 px-4">Peer review</td>
+        <td className="py-3 px-4">Automated revert</td>
+      </tr>
+      <tr className="border-b">
+        <td className="py-3 px-4 font-medium">Configuration update</td>
+        <td className="py-3 px-4">Medium-High</td>
+        <td className="py-3 px-4">Staging verification</td>
+        <td className="py-3 px-4">Technical lead</td>
+        <td className="py-3 px-4">Configuration rollback</td>
+      </tr>
+      <tr>
+        <td className="py-3 px-4 font-medium">Security patch</td>
+        <td className="py-3 px-4">High</td>
+        <td className="py-3 px-4">Security testing + staging</td>
+        <td className="py-3 px-4">Security team + engineering</td>
+        <td className="py-3 px-4">Tested rollback</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Implementing Change Management
+
+Now let's walk through how to actually build this into your development workflow.
+
+### Step 1: Define Change Categories
+
+Start by categorizing the types of changes your team makes. This informs how much process each type requires.
+
+Create a simple table:
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="border-b-2">
+        <th className="text-left py-3 px-4">Change Category</th>
+        <th className="text-left py-3 px-4">Examples</th>
+        <th className="text-left py-3 px-4">Risk Level</th>
+        <th className="text-left py-3 px-4">Approval Required</th>
+        <th className="text-left py-3 px-4">Testing Required</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b">
+        <td className="py-3 px-4 font-medium">Code deployment</td>
+        <td className="py-3 px-4">Features, bug fixes</td>
+        <td className="py-3 px-4">Medium</td>
+        <td className="py-3 px-4">Tech lead</td>
+        <td className="py-3 px-4">Unit + integration tests</td>
+      </tr>
+      <tr className="border-b">
+        <td className="py-3 px-4 font-medium">Database migration</td>
+        <td className="py-3 px-4">Schema changes</td>
+        <td className="py-3 px-4">High</td>
+        <td className="py-3 px-4">Engineering manager</td>
+        <td className="py-3 px-4">Full test suite</td>
+      </tr>
+      <tr className="border-b">
+        <td className="py-3 px-4 font-medium">Infrastructure</td>
+        <td className="py-3 px-4">Cloud resource changes</td>
+        <td className="py-3 px-4">Medium-High</td>
+        <td className="py-3 px-4">DevOps lead</td>
+        <td className="py-3 px-4">Staging verification</td>
+      </tr>
+      <tr className="border-b">
+        <td className="py-3 px-4 font-medium">Configuration</td>
+        <td className="py-3 px-4">Env vars, feature flags</td>
+        <td className="py-3 px-4">Medium</td>
+        <td className="py-3 px-4">Tech lead</td>
+        <td className="py-3 px-4">Staging test</td>
+      </tr>
+      <tr>
+        <td className="py-3 px-4 font-medium">Hotfix</td>
+        <td className="py-3 px-4">Emergency bug fixes</td>
+        <td className="py-3 px-4">High</td>
+        <td className="py-3 px-4">Engineering manager (retrospective)</td>
+        <td className="py-3 px-4">Minimal (documented)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Don't make this overly complex. Most teams can get by with 5-8 categories.
+
+### Step 2: Create Change Request Form/Template
+
+If you're using a ticketing system (Jira, Linear, Asana), create a change request issue type that captures:
+
+```
+Change Request
+
+Title: [Brief description]
+Category: [Select from defined categories]
+Risk Level: [High/Medium/Low]
+Systems Affected: [List]
+Description: [Detailed explanation]
+Business Justification: [Why this change]
+Testing Plan: [How it will be tested]
+Rollback Plan: [How to revert if needed]
+Target Deployment Date: [Date]
+Requestor: [Name]
+```
+
+If you're not using a ticketing system, pull request templates in GitHub/GitLab can serve the same purpose:
+
+```markdown
+## Change Description
+[What's changing and why]
+
+## Risk Assessment
+- [ ] Low risk (UI only, documentation)
+- [ ] Medium risk (new features, config changes)
+- [ ] High risk (database, authentication, security)
+
+## Testing Completed
+- [ ] Unit tests passing
+- [ ] Integration tests passing
+- [ ] Deployed to staging
+- [ ] Manual testing completed
+
+## Rollback Plan
+[How to revert this change if needed]
+
+## Deployment Checklist
+- [ ] Code review approved
+- [ ] Tests passing
+- [ ] Staging verification complete
+- [ ] Approved by [role]
+```
+
+### Step 3: Establish Approval Matrix
+
+Document who needs to approve what:
+
+```
+Approval Matrix
+
+Low-Risk Changes:
+- Required: One peer developer review
+- Optional: None
+
+Medium-Risk Changes:
+- Required: Technical lead or senior engineer
+- Optional: Security team (for security-related changes)
+
+High-Risk Changes:
+- Required: Engineering manager
+- Required: Security review (for security changes)
+- Required: DBA approval (for database changes)
+- Optional: Business owner (for changes affecting customer experience)
+
+Emergency Changes:
+- Required: Available engineering lead (can be retrospective)
+- Required: Incident commander approval
+- Documented within 24 hours of deployment
+```
+
+The key principle: **Segregation of duties**. The person writing code shouldn't be the only one approving its deployment.
+
+### Step 4: Set Up Change Advisory Board (or Lightweight Alternative)
+
+For larger companies, a Change Advisory Board (CAB) reviews high-risk changes before deployment. For startups, this is usually overkill.
+
+**For Companies Under 20 Employees**:
+Skip the formal CAB. Use your existing engineering standup or weekly planning meeting to discuss upcoming high-risk changes.
+
+**For Companies 20-100 Employees**:
+Have a weekly 30-minute change review meeting where high-risk changes planned for the next week are discussed. Not all changes need CAB review—just high-risk ones.
+
+**For Companies Over 100 Employees**:
+Implement a formal CAB that meets weekly or bi-weekly to review:
+- All high-risk changes
+- Any changes that failed in previous deployments
+- Changes with cross-team dependencies
+- Infrastructure changes affecting multiple teams
+
+Document CAB decisions: what was approved, any concerns raised, mitigation plans.
+
+### Step 5: Document Procedures in Policy
+
+Write down your change management process in a policy document. This is what you show auditors when they ask: "What's your change management process?"
+
+The policy should cover:
+- Change categories and risk levels
+- Approval requirements for each risk level
+- Testing requirements
+- Deployment procedures
+- Emergency change process
+- Rollback procedures
+- Documentation requirements
+
+Our [Document Bundle](/products/document-bundle) includes change management policy templates that you can customize for your specific workflow.
+
+### Step 6: Tool Selection and Integration
+
+You don't need expensive change management software. Most teams use tools they already have:
+
+**GitHub/GitLab/Bitbucket**:
+- Pull requests serve as change requests
+- Code reviews provide approval documentation
+- Commit history provides change log
+- Branch protection rules enforce review requirements
+
+**Jira/Linear/Asana**:
+- Change request tickets track high-risk changes
+- Workflow states show approval status
+- Comments document discussions and decisions
+- Reports show change history
+
+**CI/CD Tools (GitHub Actions, Jenkins, CircleCI)**:
+- Deployment logs document what changed when
+- Test results provide evidence of testing
+- Approval gates enforce review requirements
+- Rollback capabilities built into pipelines
+
+**Slack/Microsoft Teams**:
+- Deployment notifications provide additional documentation
+- Approval requests can flow through chat (with logging)
+- Incident channels document emergency changes
+
+The best setup: Pull requests for code changes + tickets for infrastructure/config changes + CI/CD logs for deployments. This gives you complete traceability without expensive tools.
+
+### Step 7: Train Your Team
+
+Change management only works if your team follows the process. Conduct training covering:
+- Why change management matters (security and availability)
+- How to submit change requests
+- What level of testing is required
+- Approval workflow
+- How to document changes
+- Emergency change procedures
+
+Make it clear: This isn't bureaucracy for its own sake. It's protecting the company and preventing incidents that wake everyone up at 2 AM.
+
+**Example Training Agenda** (30-minute session):
+
+1. **Why We Need This** (5 min):
+   - Share a real example of an incident caused by poor change management (anonymized if needed)
+   - Explain SOC 2 requirements
+   - Emphasize: This protects us from outages
+
+2. **The Process** (15 min):
+   - Walk through a sample change from request to deployment
+   - Show the PR template and what to fill in
+   - Demonstrate how to request approval
+   - Show where to find deployment logs
+
+3. **Edge Cases** (5 min):
+   - What constitutes an emergency change
+   - When to escalate for additional approval
+   - How to document changes retrospectively if needed
+
+4. **Q&A** (5 min)
+
+Do this annually, and whenever new engineers join the team.
+
+## Emergency Change Procedures
+
+Real-world operations don't always allow for full change management processes. Sometimes you need to deploy a hotfix immediately to prevent customer impact.
+
+### When Normal Process Can Be Expedited
+
+Emergency changes are appropriate when:
+- Critical security vulnerability needs immediate patching
+- Production is down and you need to deploy a fix
+- Data loss is imminent without intervention
+- Customer-impacting bug requires immediate resolution
+- External dependency failure requires configuration change
+
+Emergency changes are NOT appropriate for:
+- "We want to launch this feature faster"
+- "The deadline is today"
+- "We don't feel like following the process"
+
+### Required Documentation
+
+Even emergency changes require documentation—it just happens retrospectively:
+
+**During the Incident**:
+- Document in incident channel (Slack, Teams)
+- Note who authorized the change
+- Capture what's being changed and why
+- Record deployment time
+
+**Within 24 Hours**:
+- Create formal change ticket
+- Document testing performed (even if minimal)
+- Get retroactive approval from engineering manager
+- Add rollback plan
+- Note lessons learned
+
+**For Audit Trail**:
+- Link change ticket to incident ticket
+- Show emergency authorization
+- Demonstrate change was necessary
+- Document outcome (resolved incident)
+
+### Retrospective Approval
+
+Emergency changes should be approved by the most senior available engineer during the incident, then formally reviewed afterward:
+
+**During Incident**:
+"Engineering Manager approved emergency deployment of hotfix to resolve authentication outage"
+
+**Within 24 Hours**:
+- Formal change ticket created
+- Engineering manager signs off
+- Change is reviewed in next team meeting
+- Process improvements are identified if needed
+
+Auditors understand emergency changes happen. What they want to see:
+1. They were truly emergencies (documented incident)
+2. They were authorized (not just deployed without approval)
+3. They were documented (may be retrospective, but complete)
+4. They're rare (not your standard deployment method)
+
+### Security Incident Changes
+
+Security incidents often require emergency changes. The process is similar:
+
+**During Response**:
+- Incident commander authorizes necessary changes
+- Changes are documented in incident timeline
+- Multiple responders verify changes when possible
+
+**Post-Incident**:
+- All changes documented formally
+- Security team reviews and approves retrospectively
+- Post-incident review covers change management
+- Permanent fixes implemented through normal process
+
+**Example Emergency Change Scenario**:
+
+**Incident**: 2 AM Saturday, production database showing signs of SQL injection attempts.
+
+**Emergency Change**: Deploy WAF rule to block the attack pattern immediately.
+
+**Documentation Trail**:
+```
+Slack #incidents channel, 2:14 AM:
+"@engineering-manager deploying WAF rule to block SQL injection. Authorization?"
+"@engineering-manager approved. Deploy."
+
+Monday, 9 AM:
+Change ticket created: CHG-1234
+Title: "Emergency WAF rule deployment - SQL injection defense"
+Description: [Full details]
+Authorization: Engineering Manager (incident authorization)
+Testing: Validated rule blocks attack pattern without false positives
+Outcome: Attack blocked, no customer data exposed
+Retrospective approval: Security team + Engineering Manager
+Lessons learned: Need predefined WAF rules for common attack patterns
+```
+
+Auditors will see: Yes, it was an emergency. Yes, it was authorized. Yes, it was documented. ✓
+
+## Common Change Management Failures
+
+Let's look at the issues that trip up companies during audits, and how to avoid them.
+
+### Failure 1: Undocumented Changes
+
+**What Auditors See**:
+Deployments to production with no corresponding change ticket or pull request. Or changes where the documentation is so vague it's useless ("misc fixes", "update config").
+
+**Why It Fails Audits**:
+Auditors can't verify that the change was approved, tested, or even intentional.
+
+**How to Prevent**:
+- Require pull requests for all code changes (enforce with branch protection)
+- Use clear, descriptive commit messages
+- Create change tickets for all infrastructure/configuration changes
+- Review deployment logs weekly to ensure everything has documentation
+- Make it easier to document changes than to skip documentation
+
+### Failure 2: Missing Testing Evidence
+
+**What Auditors See**:
+Changes deployed to production with no evidence of testing. Or testing evidence that's just "tested locally" with no details.
+
+**Why It Fails Audits**:
+Testing is a required step in change management. Auditors need proof it happened.
+
+**How to Prevent**:
+- Require CI/CD pipeline to run tests before allowing merge
+- Document manual testing in pull requests or tickets
+- Require staging deployment before production
+- Keep test results (screenshots, logs, test reports)
+- Make test requirements clear for each change category
+
+### Failure 3: Inadequate Rollback Plans
+
+**What Auditors See**:
+No documented rollback procedure, or procedures that weren't tested.
+
+**Why It Fails Audits**:
+Without tested rollback capabilities, your ability to maintain availability is questionable.
+
+**How to Prevent**:
+- Require rollback plan in change requests
+- Test rollback procedures during staging deployments
+- Document rollback execution (even if never needed in production)
+- Have automated rollback for code deployments
+- Practice disaster recovery scenarios that include rollbacks
+
+### Failure 4: No Segregation of Duties
+
+**What Auditors See**:
+Developers approving their own changes, or single person implementing and approving high-risk changes.
+
+**Why It Fails Audits**:
+Violates basic internal control principles. No independent review = higher risk of errors or malicious changes.
+
+**How to Prevent**:
+- Require at least one approval from someone other than the author
+- Use branch protection rules to enforce review requirements
+- For high-risk changes, require two approvals
+- Document who reviews should come from (not junior dev reviewing senior dev's work)
+- Regular audits of who's approving what
+
+### Failure 5: Emergency Changes Without Justification
+
+**What Auditors See**:
+Lots of "emergency" changes that don't appear to be true emergencies, or emergency changes with no documented authorization.
+
+**Why It Fails Audits**:
+If everything is an emergency, nothing is. Auditors conclude your change management is broken.
+
+**How to Prevent**:
+- Define what constitutes an emergency clearly
+- Require incident tickets for emergency changes
+- Review emergency changes in post-incident reviews
+- Track emergency change frequency (should be rare)
+- Question whether "emergency" changes were actually necessary
+
+**Guideline**: If more than 10% of your changes are "emergency," you have a planning problem, not a change management problem.
+
+## Evidence Collection for Audits
+
+Your auditor will request specific evidence. Here's what to collect and how to organize it.
+
+### What Auditors Want to See
+
+**Sample Selection**:
+Your auditor will select a random sample of changes from your observation period (typically 3-5 months for Type II). For each sample, they'll request:
+
+**For Code Changes**:
+- Pull request with description
+- Code review approvals
+- Test results (CI/CD pipeline logs)
+- Deployment record (when it went to production)
+- Post-deployment verification
+
+**For Infrastructure Changes**:
+- Change ticket
+- Risk assessment
+- Approval record
+- Configuration before/after
+- Testing in staging/dev environment
+- Deployment timestamp
+
+**For Configuration Changes**:
+- Change request
+- Approval
+- Configuration diff
+- Testing evidence
+- Deployment confirmation
+
+### Change Logs and Tickets
+
+Maintain a complete change log for your observation period. This can be:
+- Git commit history (for code)
+- Ticketing system reports (for infrastructure)
+- Deployment logs (from CI/CD)
+- Combined change log spreadsheet
+
+**Example Change Log**:
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="border-b-2">
+        <th className="text-left py-3 px-4">Date</th>
+        <th className="text-left py-3 px-4">Type</th>
+        <th className="text-left py-3 px-4">Description</th>
+        <th className="text-left py-3 px-4">Approval</th>
+        <th className="text-left py-3 px-4">Testing</th>
+        <th className="text-left py-3 px-4">Deploy Log</th>
+        <th className="text-left py-3 px-4">Outcome</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b">
+        <td className="py-3 px-4">2025-10-15</td>
+        <td className="py-3 px-4 font-medium">Code</td>
+        <td className="py-3 px-4">Add MFA to admin panel</td>
+        <td className="py-3 px-4">PR #1234</td>
+        <td className="py-3 px-4">CI passed</td>
+        <td className="py-3 px-4">Deploy #567</td>
+        <td className="py-3 px-4">Success</td>
+      </tr>
+      <tr className="border-b">
+        <td className="py-3 px-4">2025-10-16</td>
+        <td className="py-3 px-4 font-medium">Config</td>
+        <td className="py-3 px-4">Update rate limits</td>
+        <td className="py-3 px-4">JIRA CHG-789</td>
+        <td className="py-3 px-4">Staging test</td>
+        <td className="py-3 px-4">Log entry</td>
+        <td className="py-3 px-4">Success</td>
+      </tr>
+      <tr>
+        <td className="py-3 px-4">2025-10-17</td>
+        <td className="py-3 px-4 font-medium">Infra</td>
+        <td className="py-3 px-4">Add new API server</td>
+        <td className="py-3 px-4">JIRA CHG-790</td>
+        <td className="py-3 px-4">Load test</td>
+        <td className="py-3 px-4">CloudFormation</td>
+        <td className="py-3 px-4">Success</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+This log makes it easy to respond to auditor sample requests.
+
+### Approval Records
+
+For each change in your sample, demonstrate approval:
+
+**Code Changes**:
+- Show pull request with required approvals
+- GitHub/GitLab show who approved and when
+- Branch protection rules prove approval was required
+
+**Tickets**:
+- Show approval status in Jira/etc
+- Screenshots or exports showing approval workflow
+- Comments from approvers
+
+**Email Approvals** (if used):
+- Forward approval emails to a compliance folder
+- Include in change ticket as attachments
+
+### Testing Results
+
+Provide evidence of testing for each change:
+
+**Automated Tests**:
+- CI/CD pipeline logs
+- Test coverage reports
+- Screenshots of passing tests
+
+**Manual Testing**:
+- Testing notes in pull requests
+- Staging deployment confirmation
+- Screenshots of tested functionality
+- QA sign-off (if you have QA team)
+
+**Load/Performance Testing** (for significant changes):
+- Performance test results
+- Comparison to baseline metrics
+- Capacity planning documentation
+
+### Post-Implementation Validation
+
+Show that you verified changes worked:
+
+**For All Changes**:
+- Monitoring data showing no anomalies after deployment
+- Error rate dashboards
+- Incident reports (or lack thereof)
+
+**For High-Risk Changes**:
+- Specific validation checklist
+- Sign-off from technical lead
+- Customer impact assessment
+
+**Example Post-Deploy Validation**:
+```
+Change: Database schema migration
+Deploy Time: 2025-10-15 02:00 UTC
+Validation Performed:
+- Query performance within acceptable range ✓
+- No errors in application logs ✓
+- Data integrity checks passed ✓
+- Rollback plan confirmed ready ✓
+- Monitoring for 24 hours - no issues ✓
+
+Validated by: [Engineer Name]
+Date: 2025-10-15 14:00 UTC
+```
+
+## Organizing Evidence for Auditors
+
+Create a shared folder (Google Drive, SharePoint, etc.) with the following structure:
+
+```
+SOC 2 Evidence/
+  Change Management/
+    Change Log.xlsx (master log of all changes)
+    
+    Sample 1 - 2025-10-15 PR #1234/
+      pull_request.pdf
+      ci_results.pdf
+      deployment_log.pdf
+      monitoring_confirmation.pdf
+      
+    Sample 2 - 2025-10-16 CHG-789/
+      change_ticket.pdf
+      approval_record.pdf
+      testing_results.pdf
+      deployment_confirmation.pdf
+      
+    [etc for each sample]
+    
+    Policies/
+      change_management_policy.pdf
+      emergency_change_procedure.pdf
+      rollback_procedures.pdf
+```
+
+When auditors request evidence, you can quickly pull the relevant folder and share it.
+
+## Conclusion
+
+Change management might not be the most exciting part of SOC 2, but it's one of the most important. Strong change management prevents the incidents that could take down your business. Weak change management is a common audit failure that can delay your certification by months.
+
+The good news: It's not complicated. You need:
+
+**Clear Process**: Define what changes require what level of approval and testing
+**Documentation**: Use the tools you already have (Git, Jira, CI/CD) to document changes
+**Discipline**: Follow the process even when it feels inconvenient
+**Continuous Improvement**: Learn from incidents and near-misses
+
+Most importantly, remember that change management isn't about slowing down development. Modern DevOps practices like CI/CD, automated testing, and GitOps make it possible to deploy multiple times per day WITH strong change management controls. The key is automation—the more you automate approval, testing, and deployment, the faster and safer your changes become.
+
+Start simple and mature your process over time. A basic change management process that everyone actually follows beats a complex process that people bypass when they're in a hurry.
+
+Ready to implement this? Our [Document Bundle](/products/document-bundle) includes change management templates that you can customize for your specific workflow. Or get the [Complete Bundle](/products/complete-bundle) for all the policies, documents, and evidence guidance you need for SOC 2 compliance.
+
+Want to understand other common audit failure points? Check out our guide on [common SOC 2 audit findings](/blog/common-soc2-audit-findings) to see what else trips up companies during their audits.

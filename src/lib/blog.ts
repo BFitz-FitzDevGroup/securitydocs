@@ -93,3 +93,72 @@ export function getBlogPost(slug: string): BlogPost | null {
     return null;
   }
 }
+
+/**
+ * Get ALL blog posts including future-dated ones (for development preview only)
+ * This function skips the isPublished() date check
+ */
+export function getAllBlogPostsUnfiltered(): Omit<BlogPost, 'content'>[] {
+  // Check if directory exists
+  if (!fs.existsSync(blogDirectory)) {
+    return [];
+  }
+
+  const fileNames = fs.readdirSync(blogDirectory);
+  const allPosts = fileNames
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fileName) => {
+      const slug = fileName.replace(/\.mdx$/, '');
+      const fullPath = path.join(blogDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data } = matter(fileContents); // Note: not extracting 'content' since we don't need it
+
+      return {
+        slug,
+        title: data.title || '',
+        excerpt: data.excerpt || '',
+        date: data.date || '',
+        category: data.category || '',
+        readTime: data.readTime || '5 min read',
+        author: data.author || 'SecurityDocs Team',
+      };
+    });
+    // Note: NO .filter() with isPublished() - this shows ALL posts
+
+  // Sort by date (newest first)
+  return allPosts.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+}
+
+/**
+ * Get a single blog post without date filtering (for development preview only)
+ */
+export function getBlogPostUnfiltered(slug: string): BlogPost | null {
+  try {
+    const fullPath = path.join(blogDirectory, `${slug}.mdx`);
+    
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
+
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+
+    const post = {
+      slug,
+      title: data.title || '',
+      excerpt: data.excerpt || '',
+      date: data.date || '',
+      category: data.category || '',
+      readTime: data.readTime || '5 min read',
+      author: data.author || 'SecurityDocs Team',
+      content,
+    };
+
+    // No date check - return post regardless of publication date
+    return post;
+  } catch (error) {
+    return null;
+  }
+}
