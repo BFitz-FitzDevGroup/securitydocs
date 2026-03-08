@@ -45,6 +45,13 @@ export const PurchaseButton: React.FC<PurchaseButtonProps> = ({
   const handlePurchase = () => {
     const checkoutUrl = getCheckoutUrl();
     if (checkoutUrl) {
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'begin_checkout', {
+          currency: 'USD',
+          value: price,
+          items: [{ item_id: productId || bundleId || packageId, item_name: label, price }],
+        });
+      }
       window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
     } else {
       console.error('Checkout URL not found for:', { type, productId, bundleId, packageId });

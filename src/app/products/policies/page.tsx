@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { PoliciesClient } from './PoliciesClient';
 
 export const metadata: Metadata = {
-  title: 'SOC 2 Policy Templates - Information Security Policies',
-  description: 'Professional SOC 2 policy templates covering all Trust Service Criteria. Includes information security, access control, incident response, risk management, and more.',
+  title: 'SOC 2 Policy Templates — All TSC Covered',
+  description: 'Get professionally written SOC 2 policy templates for access control, incident response, risk management, and every Trust Service Criteria.',
   alternates: {
     canonical: '/products/policies'
   },

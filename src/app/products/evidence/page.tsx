@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { EvidenceClient } from './EvidenceClient';
 
 export const metadata: Metadata = {
-  title: 'SOC 2 Evidence Explanations - Audit Preparation Guides',
-  description: 'Comprehensive evidence explanations for SOC 2 audits. Learn exactly what auditors expect and how to present each type of evidence for all Trust Service Criteria.',
+  title: 'SOC 2 Evidence Guides — What Auditors Expect',
+  description: 'Learn exactly what evidence SOC 2 auditors require and how to present it. Covers all Trust Service Criteria with step-by-step explanations.',
   alternates: {
     canonical: '/products/evidence'
   },

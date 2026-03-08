@@ -509,7 +509,8 @@ export function SOC2ChecklistClient() {
 
           <div className="mt-6 text-center">
             <a 
-              href="/api/download/checklist" 
+              href="/downloads/soc2-compliance-checklist.pdf"
+              download
               className="inline-flex items-center text-slate-600 hover:text-slate-700 text-sm bg-white border border-slate-300 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors"
             >
               <Download className="w-4 h-4 mr-2" />

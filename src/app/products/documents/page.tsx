@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { DocumentsClient } from './DocumentsClient';
 
 export const metadata: Metadata = {
-  title: 'SOC 2 Document Templates - Forms & Procedures',
-  description: 'Professional SOC 2 document templates including forms, checklists, procedures, and implementation guides. Essential operational documents for compliance.',
+  title: 'SOC 2 Document Templates — Forms & Procedures',
+  description: 'Download SOC 2 operational document templates including forms, checklists, and procedures. Plug-and-play docs to streamline your audit prep.',
   alternates: {
     canonical: '/products/documents'
   },

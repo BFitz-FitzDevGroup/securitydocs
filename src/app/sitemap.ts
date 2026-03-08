@@ -1,9 +1,27 @@
 import { MetadataRoute } from 'next';
+import { getAllBlogPosts } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://security-docs.com';
   const currentDate = new Date();
-  
+
+  // Blog posts
+  const blogPosts = getAllBlogPosts();
+  const blogPages = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date + 'T12:00:00-08:00'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ];
+
   // Static pages
   const staticPages = [
     {
@@ -684,5 +702,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ];
 
-  return [...staticPages, ...productPages];
+  return [...staticPages, ...blogPages, ...productPages];
 }

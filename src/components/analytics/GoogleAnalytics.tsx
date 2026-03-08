@@ -1,7 +1,7 @@
 'use client';
 
 import Script from 'next/script';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useEffect, Suspense } from 'react';
 
 declare global {
@@ -18,18 +18,17 @@ declare global {
 // Separate component for route tracking (uses useSearchParams)
 function RouteTracker({ measurementId }: { measurementId: string }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (pathname) {
       // Wait for gtag to be available
       if (typeof window.gtag !== 'undefined') {
         window.gtag('config', measurementId, {
-          page_path: pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : ''),
+          page_path: pathname,
         });
       }
     }
-  }, [pathname, searchParams, measurementId]);
+  }, [pathname, measurementId]);
 
   return null;
 }

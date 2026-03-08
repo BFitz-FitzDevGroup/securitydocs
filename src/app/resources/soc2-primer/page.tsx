@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { SOC2PrimerClient } from './SOC2PrimerClient';
 
 export const metadata: Metadata = {
-  title: 'SOC 2 Compliance Primer - Complete Beginner\'s Guide',
-  description: 'Comprehensive introduction to SOC 2 compliance for beginners. Learn what SOC 2 is, who needs it, the five Trust Service Criteria, and how to get started with certification.',
+  title: 'SOC 2 Compliance Guide for Beginners',
+  description: 'Learn what SOC 2 is, who needs it, and the five Trust Service Criteria. Start your compliance journey with this plain-English primer.',
   alternates: {
     canonical: '/resources/soc2-primer'
   },

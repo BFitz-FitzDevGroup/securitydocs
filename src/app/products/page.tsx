@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ProductsClient } from './ProductsClient';
 
 export const metadata: Metadata = {
-  title: 'SOC 2 Templates & Bundles - Compliance Documentation',
-  description: 'Professional SOC 2 compliance templates including policies, documents, and evidence explanations. Choose individual templates or save with comprehensive bundles.',
+  title: 'SOC 2 Compliance Templates & Bundles',
+  description: 'Browse ready-to-use SOC 2 policy, document, and evidence templates. Buy individually or save with bundled packages for full audit coverage.',
   alternates: {
     canonical: '/products'
   },

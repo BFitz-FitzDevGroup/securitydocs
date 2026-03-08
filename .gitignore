@@ -42,3 +42,4 @@ next-env.d.ts
 
 # Blog test page (development only, shows future posts)
 src/app/blog-test/
+.env*.local

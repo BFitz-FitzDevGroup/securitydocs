@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { SOC2ChecklistClient } from './SOC2ChecklistClient';
 
 export const metadata: Metadata = {
-  title: 'Complete SOC 2 Compliance Checklist - Step-by-Step Guide',
-  description: 'Free comprehensive SOC 2 compliance checklist covering all requirements from policies to evidence collection. Download our printable checklist to track your progress.',
+  title: 'Free SOC 2 Checklist Template — Download Now',
+  description: 'Download our free SOC 2 compliance checklist. Track policies, controls, and evidence collection step-by-step to get audit-ready faster.',
   alternates: {
     canonical: '/resources/soc2-checklist'
   },
