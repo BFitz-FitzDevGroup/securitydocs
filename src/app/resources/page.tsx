@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Download, ExternalLink, Check, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, Lightbulb, Cloud, CheckCircle, Globe, Zap, Play } from 'lucide-react';
+import { BookOpen, Download, ExternalLink, Check, Shield, AlertCircle, Users, Lock, FileText, Clock, Target, ArrowRight, Lightbulb, Cloud, CheckCircle, Globe, Zap, Play, Scale } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 import type { Metadata } from 'next';
 
@@ -117,6 +117,16 @@ const ResourcesHubPage = () => {
       type: "Reference",
       difficulty: "Beginner",
       readTime: "Reference"
+    },
+    {
+      title: "Do You Need a SOC 2 Compliance Platform?",
+      description: "Honest comparison of compliance platforms vs. templates. Learn exactly when Vanta or Drata is worth $15-40k/year — and when it isn't.",
+      icon: Scale,
+      href: "/resources/do-you-need-a-compliance-platform",
+      type: "Guide",
+      difficulty: "Intermediate",
+      readTime: "12 min read",
+      isNew: true
     }
   ];
 

@@ -79,6 +79,11 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/resources/do-you-need-a-compliance-platform" className="text-slate-400 hover:text-white transition-colors">
+                  Platforms vs. Templates
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-slate-400 hover:text-white transition-colors">
                   About Us
                 </Link>
