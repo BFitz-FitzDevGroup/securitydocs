@@ -1,0 +1,233 @@
+---
+title: "SOC 2 Vendor Management: Building Your Third-Party Risk Program"
+excerpt: "Build a SOC 2 vendor management program that satisfies CC9.2. Covers vendor inventory, security questionnaires, SOC 2 report review, BAAs, and annual reviews."
+date: "2025-12-19"
+category: "SOC 2 Compliance"
+readTime: "18 min read"
+author: "SecurityDocs Team"
+---
+
+Every SaaS company today runs on other SaaS companies. Your application sits on AWS or GCP. Customer payments flow through Stripe. Employee identities live in Okta. Support tickets land in Zendesk. Monitoring alerts come from Datadog. Code lives in GitHub. Before you've written a single line of proprietary logic, you've already handed customer data to a dozen third parties.
+
+SOC 2 vendor management exists because your security posture is only as strong as the weakest vendor in your supply chain. When your auditor examines your third-party risk program under CC9.2, they're asking a fundamental question: do you know who has access to your data, and have you verified that they're protecting it appropriately?
+
+The good news is that vendor management doesn't require enterprise-grade GRC tooling or a dedicated vendor risk team. What it requires is a systematic approach to identifying your vendors, assessing their security posture, and monitoring them over time. This guide covers exactly how to build that system, whether you have 15 vendors or 150.
+
+## Why Vendor Management Gets Flagged in SOC 2 Audits
+
+Vendor management is one of the most commonly cited gaps in SOC 2 audits. Not because organizations don't care about vendor security, but because the process requirements are more structured than most companies realize. Our guide on [common audit findings](/blog/common-soc2-audit-findings) consistently shows vendor management among the top issues, and the reasons are predictable.
+
+The first problem is incomplete vendor inventories. Companies track their major vendors — the cloud provider, the payment processor, the identity platform — but miss the long tail. That CSV export tool the marketing team signed up for? The log aggregation service the on-call engineer connected during an incident? The contractor who has VPN access and uses their own tools? These forgotten vendor relationships create unmonitored risk.
+
+The second problem is lack of security assessment documentation. Many companies informally evaluate vendors during procurement ("they seem legit, they have a SOC 2 badge on their website") but never document the evaluation. When the auditor asks to see your vendor security assessment for a critical subprocessor, an email thread saying "looks good to me" doesn't satisfy the requirement.
+
+The third problem is missing ongoing review. SOC 2 doesn't just require that you assess vendors at onboarding — it requires periodic reassessment. A vendor that was secure when you signed the contract three years ago may have changed ownership, laid off their security team, or suffered a breach you never heard about. Without annual reviews, your initial assessment becomes stale.
+
+## Building Your Vendor Inventory
+
+The vendor inventory is the foundation of your third-party risk program. Every other activity — risk assessment, security review, contractual requirements — depends on knowing who your vendors are.
+
+### Identifying All Vendors
+
+Start with the obvious sources: accounts payable records, credit card statements, and subscription management tools. These capture vendors you're paying. Then expand to free tools and services, which are often the ones with the least security scrutiny.
+
+Walk through your data flows. For each type of data you handle (customer data, employee data, financial data, operational data), trace where it goes. Customer support might paste customer details into a third-party ticketing system. Marketing might upload customer email lists to an email automation platform. Engineering might send error reports containing request data to a crash reporting service. Each of these represents a vendor relationship with data implications.
+
+Check your SSO provider for connected applications. Check your DNS records for third-party services. Check your browser extensions — yes, browser extensions are third-party software that may access your data. Check your CI/CD pipeline for third-party integrations and GitHub Actions.
+
+### Categorizing Vendors by Risk
+
+Not all vendors require the same level of scrutiny. A vendor that processes customer PII demands more rigorous assessment than a vendor that provides your office coffee service. Categorize vendors into tiers based on two factors: data access and service criticality.
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Tier</th>
+        <th className="text-left py-3 px-4 font-semibold">Data Access</th>
+        <th className="text-left py-3 px-4 font-semibold">Service Criticality</th>
+        <th className="text-left py-3 px-4 font-semibold">Assessment Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Critical</td>
+        <td className="py-3 px-4">Processes or stores customer data</td>
+        <td className="py-3 px-4">Outage directly impacts customers</td>
+        <td className="py-3 px-4">Full security assessment, SOC 2 report review, contractual security requirements, annual review</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">High</td>
+        <td className="py-3 px-4">Accesses internal systems or employee data</td>
+        <td className="py-3 px-4">Outage impacts internal operations significantly</td>
+        <td className="py-3 px-4">Security questionnaire, compliance certification review, annual review</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Medium</td>
+        <td className="py-3 px-4">Limited data access, no customer data</td>
+        <td className="py-3 px-4">Supports but doesn&#39;t directly enable operations</td>
+        <td className="py-3 px-4">Basic security review, standard contract terms</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Low</td>
+        <td className="py-3 px-4">No data access</td>
+        <td className="py-3 px-4">Easily replaceable, minimal operational impact</td>
+        <td className="py-3 px-4">Standard vendor onboarding, periodic check</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Most organizations find they have 5-10 critical vendors, 10-20 high-risk vendors, and a long tail of medium and low-risk vendors. Your SOC 2 auditor will focus primarily on the critical and high tiers.
+
+### Essential Vendor Inventory Fields
+
+For each vendor in your inventory, document:
+
+- **Vendor name and primary contact** for security-related communications
+- **Service description** — what they do for you, in plain language
+- **Data types shared** — be specific (customer names, email addresses, payment tokens, etc.)
+- **Data flow direction** — do you send data to them, do they send data to you, or both?
+- **Integration method** — API, file transfer, manual entry, SSO connection
+- **Contract dates** — start date, renewal date, term length
+- **Risk tier** — critical, high, medium, or low based on your categorization
+- **Compliance certifications held** — SOC 2, ISO 27001, HIPAA, PCI DSS
+- **Last security review date** — when you last assessed their security posture
+- **Business owner** — the person internally who manages the vendor relationship
+
+## Conducting Vendor Security Assessments
+
+Once you know who your vendors are and how they're tiered, the next step is assessing their security posture. The depth of assessment should match the vendor's risk tier.
+
+### Reviewing Vendor SOC 2 Reports
+
+For critical and high-risk vendors, requesting their SOC 2 report is the gold standard. A vendor's SOC 2 Type II report tells you that an independent auditor examined their controls over a period of time and verified they were operating effectively.
+
+When reviewing a vendor's SOC 2 report, focus on these elements:
+
+**Report period and currency.** A SOC 2 report from two years ago is stale. Look for reports covering the most recent 12-month period. If the report is more than 12 months old, ask whether a current report is available or forthcoming.
+
+**Opinion type.** An unqualified opinion means the auditor found no significant issues. A qualified opinion means exceptions were noted. A qualified opinion isn't automatically disqualifying — read the exceptions to understand their relevance to your use of the vendor's services.
+
+**Scope and Trust Service Criteria.** Verify that the report covers the services you're using. A vendor might have a SOC 2 report for their core platform but not for a newer product you're consuming. Check which Trust Service Criteria are covered — if you care about availability for that vendor, their SOC 2 should include the Availability criteria.
+
+**Exceptions and management responses.** The "Complementary User Entity Controls" (CUECs) section describes controls that the vendor expects you to implement on your end. If the vendor's SOC 2 states that customers are responsible for configuring MFA, you need to verify you've actually done that.
+
+**Subservice organizations.** Your vendor has vendors too. Check whether the report uses the "inclusive" method (their subprocessors are covered by the audit) or the "carve-out" method (subprocessors are excluded). If carved out, you may need to obtain those subprocessors' SOC 2 reports as well.
+
+### Security Questionnaires
+
+For vendors that don't have a SOC 2 report, or for supplementing your SOC 2 report review, security questionnaires provide structured information about a vendor's security practices. The challenge is that questionnaires are self-reported — you're trusting the vendor's answers without independent verification.
+
+Keep questionnaires focused and relevant. A 300-question assessment that asks a SaaS vendor about physical data center security when they're running on AWS is wasting everyone's time. Tailor your questions to the vendor's tier and the nature of the services they provide.
+
+Core areas to cover in a vendor security questionnaire:
+
+- **Data handling:** How do they store, process, and transmit your data? What encryption standards do they use? Where is data geographically located?
+- **Access controls:** How do they manage access to systems that process your data? Do they require MFA? How do they handle employee offboarding?
+- **Incident response:** Do they have a documented incident response plan? How would they notify you of a breach affecting your data? What are their notification timelines?
+- **Business continuity:** What are their backup and disaster recovery practices? What SLA do they commit to?
+- **Compliance:** What compliance certifications do they hold? When were they last audited? Do they conduct regular penetration testing?
+- **Subprocessors:** Which third parties do they share your data with? How do they assess those third parties?
+
+### When Vendors Refuse to Cooperate
+
+Some vendors, particularly smaller ones, won't have a SOC 2 report and may resist completing a detailed security questionnaire. This is a data point in itself. You have several options:
+
+Accept the risk with documentation. If the vendor is low-risk and easily replaceable, you might accept the risk and document your rationale. Your risk assessment should reflect this decision — see our [risk assessment guide](/blog/soc2-risk-assessment-process) for how to document accepted risks properly.
+
+Implement compensating controls. If you must use a vendor that can't demonstrate adequate security, limit the data you share with them, encrypt data before transmission, monitor the integration more closely, and document these compensating measures.
+
+Find an alternative vendor. Sometimes the right answer is switching to a vendor that takes security seriously enough to invest in SOC 2 compliance or at minimum complete a security questionnaire.
+
+## Contractual Security Requirements
+
+Your contracts with critical and high-risk vendors should include security-specific provisions. These create legal accountability and ensure the vendor commits to specific security practices.
+
+### Key Contract Clauses
+
+**Data processing terms** should specify what data the vendor receives, what they can do with it, and how they must protect it. This is separate from and more specific than generic terms of service.
+
+**Security requirements** should reference the vendor's obligation to maintain reasonable security controls, comply with relevant standards, and notify you of material changes to their security posture.
+
+**Breach notification** should establish clear timelines for the vendor to notify you of security incidents affecting your data. Industry standard is 72 hours, but for critical vendors, you may want shorter notification windows.
+
+**Audit rights** should allow you or your auditor to examine the vendor's security practices. Most vendors push back on direct audit rights but will agree to provide updated SOC 2 reports or complete periodic security questionnaires.
+
+**Data return and deletion** should specify what happens to your data when the relationship ends. You should be able to export your data and require the vendor to delete their copies within a specified timeframe.
+
+**Subprocessor notification** should require the vendor to inform you before engaging new subprocessors that will access your data, giving you the opportunity to evaluate the new subprocessor or terminate the relationship.
+
+### Business Associate Agreements
+
+If your organization handles protected health information (PHI), any vendor that accesses PHI must sign a Business Associate Agreement (BAA). This is a HIPAA requirement, not a SOC 2 requirement, but the two often overlap for [healthtech companies](/blog/soc2-for-healthtech) pursuing both frameworks.
+
+A BAA establishes the vendor's obligations regarding PHI, including required safeguards, breach notification requirements, and restrictions on data use. Without a signed BAA, sharing PHI with a vendor is a HIPAA violation regardless of how secure the vendor actually is.
+
+## The Annual Vendor Review Process
+
+SOC 2 requires ongoing vendor monitoring, not just initial assessment. Your annual review process should be documented and consistently executed across all critical and high-risk vendors.
+
+### What Annual Reviews Should Cover
+
+**Compliance status check.** Has the vendor maintained their SOC 2 certification? Have they obtained new certifications or lost existing ones? Request updated reports annually.
+
+**Incident history.** Has the vendor experienced any security incidents since your last review? Check their status pages, public breach databases, and security blogs for reported incidents.
+
+**Service changes.** Has the vendor made material changes to their service that affect your data? New features might introduce new data processing, new subprocessors, or new geographic data locations.
+
+**Contract review.** Are your contractual security requirements still adequate? Has the vendor's risk tier changed based on how you're now using their services?
+
+**Performance assessment.** Has the vendor met their SLA commitments? Have there been availability issues that impact your operations?
+
+### Documenting Your Reviews
+
+Documentation is what transforms vendor management from an informal practice into an auditable program. For each annual review, create a record that includes:
+
+- Review date and reviewer name
+- Vendor name and risk tier
+- Documents reviewed (SOC 2 report, questionnaire responses, etc.)
+- Findings and any identified concerns
+- Risk acceptance decisions with rationale
+- Action items and follow-up dates
+- Sign-off by the vendor relationship owner
+
+Store these records where your auditor can access them during the audit. A shared drive folder organized by vendor name and review date works fine. You don't need a GRC platform for vendor management documentation — you need consistency and completeness.
+
+## Handling Vendor Security Incidents
+
+Despite your best assessment efforts, vendors will experience security incidents. Your vendor management program should include a clear process for responding when a vendor notifies you of an incident or when you discover one through other channels.
+
+### Response Steps
+
+When you learn of a vendor security incident:
+
+**Assess exposure.** Determine what data the vendor had access to and whether your data was specifically affected. A vendor's broad security incident may not involve your data at all.
+
+**Activate your incident response plan.** If your data was potentially compromised, treat it as your own incident. Your [incident response process](/blog/soc2-preparation-90-days) should include vendor-related scenarios.
+
+**Communicate with the vendor.** Request a detailed incident report, timeline of events, root cause analysis, and remediation steps. Document all communications.
+
+**Evaluate ongoing risk.** Based on the nature and severity of the incident, determine whether the vendor's risk tier should change. A minor incident handled transparently might not change your assessment. A significant breach with poor communication might warrant finding an alternative vendor.
+
+**Document everything.** Your auditor will want to see how you handled vendor incidents. Good documentation demonstrates a mature vendor management program even when things go wrong.
+
+## Building a Vendor Management Program from Scratch
+
+If you're starting vendor management for the first time, here's a practical timeline:
+
+**Week 1-2:** Build your vendor inventory. Cast a wide net — it's easier to remove low-risk vendors from your tracking than to discover critical ones during an audit.
+
+**Week 3:** Categorize vendors into risk tiers. Focus on getting the critical and high tiers right.
+
+**Week 4-5:** Send SOC 2 report requests to critical vendors and security questionnaires to high-risk vendors. Follow up persistently — vendor security teams are often slow to respond.
+
+**Week 6-7:** Review returned reports and questionnaires. Document findings and identify any gaps or concerns.
+
+**Week 8:** Compile your vendor management procedure document, establish your annual review calendar, and brief your team on the ongoing process.
+
+This timeline produces a vendor management program that will satisfy your auditor's requirements under CC9.2 and provide genuine visibility into your third-party risk landscape. As your [SOC 2 compliance costs](/blog/soc2-compliance-costs) are evaluated, vendor management is one area where process discipline matters more than tool investment.
+
+For organizations that want a head start on the documentation, our [Complete Bundle](/products/complete-bundle) includes vendor assessment questionnaire templates, vendor inventory spreadsheets, and vendor review documentation templates. These provide the structure so you can focus on the substance of evaluating your specific vendors.
+
+Vendor management is an ongoing discipline, not a one-time project. The organizations that handle it well are the ones that integrate vendor security thinking into their procurement process, their architecture decisions, and their ongoing operational practices. Every new vendor should trigger the assessment process. Every vendor renewal should trigger a review. When this becomes habit rather than compliance obligation, your third-party risk program is genuinely working.

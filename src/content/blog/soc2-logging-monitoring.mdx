@@ -1,0 +1,214 @@
+---
+title: "SOC 2 Logging and Monitoring Requirements: What You Need to Capture"
+excerpt: "A practical guide to SOC 2 logging requirements under CC7.2. Covers what to log, retention periods, SIEM selection, alerting rules, and evidence collection from logs."
+date: "2026-01-20"
+category: "SOC 2 Compliance"
+readTime: "18 min read"
+author: "SecurityDocs Team"
+---
+
+SOC 2 logging requirements catch many companies off guard. Most engineering teams already have some logging in place — application error logs, web server access logs, maybe a centralized logging tool for debugging production issues. But the gap between "we have logs" and "our logging satisfies SOC 2 CC7.2" is wider than it appears. Your auditor isn't asking whether you can find a stack trace from last Tuesday. They're asking whether you can demonstrate that security-relevant events across your entire environment are captured, retained, monitored, and acted upon.
+
+The core requirement comes from CC7.2: "The entity monitors system components and the operation of those components for anomalies that are indicative of malicious acts, natural disasters, and errors affecting the entity's ability to meet its objectives." That single sentence drives a set of expectations around what you log, where you store it, how long you keep it, who reviews it, and what happens when something suspicious appears.
+
+This guide covers the practical reality of meeting SOC 2 logging requirements: which system components and events you need to capture, how to structure your log management, what retention periods your auditor expects, how to choose and configure monitoring tools, and how to turn your logs into the audit evidence your assessor will request.
+
+## What SOC 2 Requires You to Log
+
+The Trust Service Criteria don't provide an exhaustive list of log types. Instead, they establish categories of events that must be captured to demonstrate security monitoring. Here's what those categories look like in practice.
+
+### Authentication and Access Events
+
+Every successful and failed authentication attempt across your environment should be logged. This includes user logins to your application, SSH access to servers, VPN connections, console access to cloud provider dashboards, database authentication, and API key usage.
+
+For each authentication event, capture: the identity attempting access (username, service account, API key identifier), the timestamp, the source IP address, the target system, the authentication method used (password, SSO, MFA, certificate), and the result (success or failure).
+
+Failed authentication attempts are particularly important. A handful of failed passwords might be a user forgetting their credentials. Hundreds of failed attempts against multiple accounts from a single IP address is a brute-force attack. Without logging both successes and failures, you can't distinguish between the two.
+
+Your auditor will test this by asking to see authentication logs for a specific time period and verifying that they capture the expected fields. They may also ask to see how failed authentication attempts trigger alerts — which connects logging to your monitoring and incident response capabilities.
+
+### Authorization and Access Control Changes
+
+Log every change to user permissions, role assignments, group memberships, and access control lists. When someone is added to an admin role, when a new API key is provisioned, when firewall rules change, when a security group is modified — these are the events that change who can access what, and they need a documented trail.
+
+Capture the change itself (what permission was granted or revoked), who made the change, when it was made, and any approval or justification. Access control changes are frequently tested during SOC 2 audits because they represent potential privilege escalation. Being able to show a complete history of who had access to what, and when that access changed, is fundamental to demonstrating your access control program works.
+
+### System Configuration Changes
+
+Changes to system configurations — server settings, cloud resource configurations, network configurations, database parameters — should be logged. In a cloud-native environment, this means capturing events from your cloud provider's configuration change services: AWS CloudTrail, GCP Cloud Audit Logs, or Azure Activity Logs.
+
+Configuration changes are important because they can introduce vulnerabilities. An engineer who opens a security group to allow SSH from any IP address has created an exposure that won't show up in application logs. CloudTrail or its equivalent captures that change, creating an audit trail that connects configuration modifications to the person who made them.
+
+### Data Access Events
+
+For systems containing sensitive data — customer databases, file storage with PII, encryption key management systems — log access events. Who queried the customer database? Who downloaded files from the sensitive document repository? Who accessed the encryption keys?
+
+The depth of data access logging varies by system sensitivity. For your production customer database, logging every SELECT query may be impractical. But logging administrative access, bulk data exports, schema changes, and access from unexpected sources is both feasible and expected.
+
+### Application Security Events
+
+Your application should log security-relevant events that your infrastructure logs won't capture. These include permission-denied errors (a user attempting to access a resource they're not authorized for), input validation failures that might indicate injection attempts, rate limiting triggers, account lockouts, password resets, MFA enrollment and changes, and session management events like forced logouts or concurrent session terminations.
+
+Application-level security logging requires developer involvement — these log entries don't appear automatically. Build security event logging into your application framework so that every endpoint and service emits the right events without individual developers needing to remember to add them.
+
+### Infrastructure and Network Events
+
+Infrastructure logs capture what's happening at the system level: operating system events, network flow logs, firewall accept/deny decisions, load balancer access logs, DNS query logs, and container orchestration events. In cloud environments, these map to services like AWS VPC Flow Logs, CloudFront access logs, Route 53 query logs, and EKS/ECS audit logs.
+
+Not every infrastructure log needs to be retained at full fidelity for SOC 2 purposes, but the categories that matter most are firewall and security group deny events (someone or something tried to access a resource and was blocked), network flow anomalies (unusual traffic patterns), and system-level authentication (SSH, RDP, console access).
+
+## Log Retention: How Long to Keep What
+
+Your auditor will ask about your log retention policy and verify that it's being followed. The Trust Service Criteria don't mandate a specific retention period, but practical requirements and auditor expectations establish clear minimums.
+
+### Minimum Retention Expectations
+
+For SOC 2 Type II audits, your log retention period must, at minimum, cover the entire audit observation period — typically 6 to 12 months. If your audit covers January through December, logs from January need to still be available in February when the auditor requests them.
+
+Most auditors expect to see a retention period of at least 12 months for security-relevant logs. This ensures that logs are available for the current audit period regardless of when the audit occurs and provides enough history to investigate incidents that may have occurred months before detection.
+
+Some organizations retain logs for longer periods — 18 months, 24 months, or indefinitely for critical security events. Longer retention isn't required by SOC 2 specifically, but it may be required by other regulatory obligations (PCI DSS requires 12 months, some state regulations require longer) and provides more runway for forensic investigation.
+
+### Retention by Log Type
+
+A practical approach is tiered retention based on the security significance of the log type:
+
+**12+ months:** Authentication logs, authorization change logs, security incident logs, configuration change logs, data access logs for sensitive systems. These are the logs your auditor will test directly and that you'll need for incident investigation.
+
+**6-12 months:** Application access logs, infrastructure monitoring logs, network flow logs, web server access logs. These provide context for security investigations and operational troubleshooting.
+
+**3-6 months:** Debug logs, verbose application logs, performance metrics logs. These serve operational purposes but rarely factor into audit evidence or security investigations.
+
+### Ensuring Retention Compliance
+
+Document your retention periods in your logging and monitoring policy and verify that your log management system is actually enforcing them. A policy that says "12-month retention" while your log storage automatically purges at 30 days is a finding waiting to happen.
+
+Set up alerts that fire if log ingestion stops unexpectedly. A gap in your logs during the audit period — even if caused by a misconfiguration rather than malicious activity — creates questions your auditor will probe. Continuous log ingestion verification is a control your auditor will appreciate seeing.
+
+## Choosing a SIEM or Log Management Platform
+
+A Security Information and Event Management (SIEM) platform centralizes logs from across your environment, provides search and analysis capabilities, and enables alerting on security events. For SOC 2 compliance, a SIEM isn't strictly required — you could theoretically satisfy the requirements with individual service logs and manual review — but it's practically essential for any environment beyond a handful of systems.
+
+### What to Look for in a SIEM
+
+**Log ingestion breadth.** Your SIEM needs to ingest logs from every source that matters: cloud provider APIs, application log streams, infrastructure events, identity provider logs, and security tool outputs. Verify that the platform has pre-built integrations for your specific cloud provider, identity provider, and key SaaS tools.
+
+**Search and investigation.** When your auditor asks "show me all administrative access to the production database in Q3," you need to produce that report quickly. Full-text search across all log sources, with filtering by time range, source system, event type, and user identity, is table stakes.
+
+**Alerting.** The ability to define rules that trigger notifications based on log patterns is what transforms logging from a record-keeping exercise into active monitoring. Your SIEM should support both threshold-based alerts (more than 10 failed logins in 5 minutes) and pattern-based alerts (login from a country where you have no employees).
+
+**Retention management.** The SIEM should support your retention policy, either through built-in storage tiers or integration with cheaper long-term storage (S3, GCS) for aged logs. Verify that retained logs are searchable, not just archived — logs you can't query during an investigation provide limited value.
+
+**Compliance reporting.** Pre-built or easily customizable reports that map to SOC 2 criteria simplify evidence collection. The ability to generate a report showing "all access control changes during Q4" or "all failed authentication attempts this month" saves hours compared to manual log analysis.
+
+### SIEM Options by Company Size
+
+For a detailed review of security tools including SIEM options, see our guide on [security tools for SOC 2 compliance](/blog/security-tools-for-soc2-compliance). Here's a high-level overview:
+
+**Startup and early-stage (under 50 employees, limited budget).** Cloud-native logging services — AWS CloudWatch Logs, GCP Cloud Logging, Azure Monitor — combined with your cloud provider's security hub (AWS Security Hub, GCP Security Command Center) provide basic SIEM functionality at minimal incremental cost. These services handle log ingestion, search, and basic alerting natively. The tradeoff is that they don't aggregate logs from non-cloud sources as easily, and cross-cloud correlation is limited.
+
+**Growth-stage (50-200 employees, moderate budget).** Purpose-built SIEM platforms like Datadog Security Monitoring, Panther, or Elastic Security provide broader log ingestion, better alerting, and more sophisticated investigation capabilities. Costs range from a few hundred to several thousand dollars monthly depending on log volume and feature tier.
+
+**Enterprise (200+ employees, dedicated security team).** Full-featured SIEM platforms like Splunk, Sumo Logic, or Microsoft Sentinel provide advanced correlation, threat intelligence integration, automated response orchestration, and enterprise-grade compliance reporting. These platforms scale to enormous log volumes but come with corresponding price tags and operational complexity.
+
+The right choice depends on your log volume, the number and diversity of log sources you need to aggregate, and your team's capacity to operate the platform. A SIEM that nobody monitors is worse than no SIEM at all — it creates a false sense of security and fails the SOC 2 requirement for active monitoring.
+
+## Building Your Alerting Rules
+
+Logging without alerting is just storage. SOC 2 requires active monitoring, which means your logging infrastructure must generate alerts when security-relevant events occur. Your auditor will ask what alerts you have configured, how they're delivered, and how you respond to them.
+
+### Essential SOC 2 Logging Alerts
+
+Start with alerts that map directly to the most commonly tested SOC 2 controls:
+
+**Brute-force detection.** Alert on multiple failed authentication attempts against the same account or from the same source IP within a short window. A threshold of 5-10 failures in 5 minutes is a reasonable starting point, adjustable based on your baseline.
+
+**Impossible travel.** Alert when the same user authenticates from two geographically distant locations within a timeframe that makes physical travel impossible. A login from New York at 10:00 AM followed by a login from Singapore at 10:15 AM indicates either compromised credentials or a VPN anomaly that warrants investigation.
+
+**Privilege escalation.** Alert when a user is added to an administrative group, when new admin accounts are created, or when existing accounts receive elevated permissions outside of your change management process.
+
+**Configuration changes to security controls.** Alert on modifications to firewall rules, security groups, IAM policies, encryption settings, or logging configurations. These changes can weaken your security posture, and immediate awareness is critical.
+
+**Off-hours access.** Alert on access to sensitive systems outside of normal business hours, particularly from unexpected source IPs. This doesn't mean every off-hours login is malicious — engineers working late is normal — but it should be reviewed.
+
+**Data exfiltration indicators.** Alert on unusually large data transfers, bulk API calls to data-intensive endpoints, or large database query results. These patterns may indicate an insider threat or a compromised account being used to extract data.
+
+**Log pipeline failures.** Alert when log sources stop sending data. A gap in your logs could indicate a configuration problem, but it could also indicate an attacker who disabled logging to cover their tracks. Either way, you want to know immediately.
+
+### Alert Management and Fatigue
+
+Alert fatigue — when too many alerts desensitize your team to the point where real threats get ignored — is a genuine risk. When every alert feels like noise, the one that matters gets lost. Start with a small set of high-confidence alerts and expand gradually as you tune thresholds and eliminate false positives.
+
+Categorize alerts by severity. Critical alerts (active breach indicators) should page the on-call engineer immediately via phone or SMS. High alerts (suspicious activity requiring investigation) should create tickets and notify the security team. Medium alerts (anomalies worth reviewing) can be batched for daily review. Low alerts (informational) can be reviewed weekly or during periodic log reviews.
+
+Document your alert triage process. When an alert fires, what happens next? Who investigates? What's the escalation path if the investigation reveals an actual incident? This connects your alerting to your incident response program, which your auditor will trace end to end.
+
+## Turning Logs Into Audit Evidence
+
+Your logs serve double duty: they're an operational security tool and a source of audit evidence. Structuring your evidence collection around your logging infrastructure makes audit preparation significantly easier.
+
+### Evidence Your Auditor Will Request
+
+Based on the [SOC 2 evidence collection process](/blog/soc2-evidence-collection-process), here are the log-related evidence artifacts your auditor will typically request:
+
+**Logging configuration documentation.** Show what's being logged across your environment — which systems emit logs, what events are captured, and where logs are stored. Screenshots of SIEM configurations, CloudTrail settings, and application logging configurations satisfy this requirement.
+
+**Retention policy and verification.** Your logging policy states your retention period. The auditor verifies it by requesting logs from early in the audit period to confirm they're still available.
+
+**Alert rule inventory.** A list of configured alerts, their thresholds, notification targets, and severity levels. Export this from your SIEM or document it in a spreadsheet that maps each alert to the SOC 2 criteria it supports.
+
+**Alert response evidence.** For a sample of alerts that fired during the audit period, show the investigation process and resolution. This typically includes the alert notification, the investigation notes or ticket, the determination (false positive, true positive, escalated to incident), and any remediation actions.
+
+**Log review evidence.** If your policy requires periodic log reviews (beyond automated alerting), provide evidence that those reviews occurred — meeting notes, review checklists, or sign-off records.
+
+**Access to logs.** Your auditor may request direct access to your SIEM to run their own queries and verify that logs contain the expected data. Be prepared to provide read-only access or to run queries on their behalf and share the results.
+
+### Organizing Log Evidence
+
+Build a quarterly evidence collection habit. At the end of each quarter, export or screenshot: a summary of alerts fired and their dispositions, evidence of log retention compliance (a query returning results from the oldest date in your retention window), any changes to logging configuration or alert rules, and periodic log review records.
+
+Store this evidence in your central evidence repository, tagged with the SOC 2 criteria each artifact supports. When audit season arrives, you'll have 12 months of organized evidence rather than a frantic scramble to reconstruct months of activity.
+
+## Common Logging Findings in SOC 2 Audits
+
+Logging and monitoring issues are among the [most common SOC 2 audit findings](/blog/common-soc2-audit-findings). Understanding what goes wrong helps you prevent the same issues.
+
+### Incomplete Log Coverage
+
+The most frequent finding is incomplete log coverage — critical systems that aren't sending logs to the SIEM, or event types that aren't being captured. A company might have excellent application logging but no infrastructure logs, or they might log authentication events but not authorization changes.
+
+Prevention: maintain an inventory of all systems in scope for SOC 2 and verify that each one is sending logs to your centralized platform. Run a coverage audit quarterly to identify gaps.
+
+### Retention Gaps
+
+Logs that should be retained for 12 months but are only available for 3 months because of a storage configuration error. Or logs that were retained but are no longer searchable because they were moved to cold storage without indexing.
+
+Prevention: test your retention by querying for logs from the earliest date in your retention window. Do this monthly, not just during audit prep.
+
+### Alerts That Nobody Watches
+
+Configured alerts that fire to an email inbox nobody checks, or a Slack channel that was archived. The alert exists on paper but doesn't produce an operational response.
+
+Prevention: include alert response verification in your regular operational reviews. Send test alerts periodically and verify they reach the right people through the expected channels.
+
+### No Documentation of Alert Response
+
+Alerts fire, someone investigates, the issue is resolved — but none of it is documented. When the auditor asks to see how you responded to a specific alert, there's no record.
+
+Prevention: require that every alert above informational severity creates a ticket or a documented entry. Even a brief note — "investigated, determined to be a contractor logging in from a new IP, confirmed with engineering manager" — satisfies the documentation requirement.
+
+## Getting Started With SOC 2 Logging
+
+If your logging infrastructure is minimal or nonexistent, here's a practical sequence for getting audit-ready:
+
+**Week 1-2: Enable cloud provider audit logging.** Turn on CloudTrail (AWS), Cloud Audit Logs (GCP), or Activity Logs (Azure). Enable logging for all regions and all services. This single step captures authentication, authorization, and configuration change events across your cloud environment.
+
+**Week 3-4: Centralize application logs.** Configure your application to emit structured security event logs and route them to a centralized platform. Start with authentication events, authorization decisions, and error conditions.
+
+**Week 5-6: Set up a SIEM or log aggregation.** Choose a platform appropriate for your size and budget, configure log ingestion from all sources, and verify that logs are being received and are searchable.
+
+**Week 7-8: Configure alerting.** Implement the essential alerts listed earlier in this guide. Start with brute-force detection, privilege escalation, and configuration changes. Verify that alerts reach the right people through reliable channels.
+
+**Week 9-10: Document and test.** Write your logging and monitoring policy, document your alert inventory, and conduct an end-to-end test: generate a test event, verify it appears in your SIEM, verify the alert fires, investigate and document the response.
+
+This timeline aligns with the broader [90-day SOC 2 preparation plan](/blog/soc2-preparation-90-days) and gives your logging infrastructure time to accumulate the historical data your auditor will want to see. The [SecurityDocs Evidence Bundle](/products/evidence) includes evidence collection checklists that map logging artifacts to specific SOC 2 criteria, making it straightforward to organize your log-related evidence as you build your program.

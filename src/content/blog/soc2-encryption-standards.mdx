@@ -1,0 +1,239 @@
+---
+title: "SOC 2 Encryption Requirements: Data at Rest, In Transit, and Key Management"
+excerpt: "Master SOC 2 encryption requirements for CC6.7 compliance. Covers AES-256 for data at rest, TLS 1.2+ for transit, key management, and audit evidence."
+date: "2026-01-23"
+category: "SOC 2 Compliance"
+readTime: "14 min read"
+author: "SecurityDocs Team"
+---
+
+Encryption is one of those controls that auditors expect to see fully implemented before they walk through the door. SOC 2 encryption requirements under CC6.7 mandate that organizations protect data both at rest and in transit using industry-standard cryptographic methods. Fall short here, and your auditor will flag it — not as a suggestion, but as an exception that lands directly in your SOC 2 report.
+
+The challenge for most startups and growing companies isn't understanding that encryption matters. Everyone knows that. The challenge is knowing exactly what needs to be encrypted, which algorithms and configurations satisfy auditors, how to handle encryption keys, and how to prove all of this with documentation and evidence. A company might encrypt its primary database but forget about backups, log files, or temporary storage. Or they might use TLS everywhere but run an outdated version that an auditor considers insufficient.
+
+This guide breaks down every aspect of SOC 2 encryption requirements: what CC6.7 actually demands, how to implement encryption for data at rest and in transit, how to build a key management program, and how to collect the [evidence your auditor will request](/blog/soc2-evidence-collection-process). Whether you're running on AWS, GCP, or Azure, the principles apply the same way — only the specific implementation steps differ.
+
+## Understanding CC6.7: The SOC 2 Encryption Requirements
+
+CC6.7 is the Trust Services Criterion that addresses data protection during transmission and storage. The full criterion states that the entity restricts the transmission, movement, and removal of information to authorized internal and external users and processes, and protects it during transmission, movement, and removal to meet the entity's objectives.
+
+That language is deliberately broad. The AICPA doesn't prescribe specific encryption algorithms or key lengths — that's left to the organization to determine based on its risk profile. However, in practice, auditors have strong expectations about what "appropriate" encryption looks like, and those expectations are anchored in current industry standards.
+
+For data at rest, auditors expect to see AES-256 encryption (or at minimum AES-128, though AES-256 is the de facto standard). For data in transit, they expect TLS 1.2 or higher. Anything below these thresholds will draw questions and likely result in findings.
+
+CC6.7 doesn't exist in isolation. It connects directly to your [risk assessment process](/blog/soc2-risk-assessment-process), which should identify data protection risks that encryption mitigates. Your encryption controls should trace back to specific risks in your risk register. When an auditor asks "why did you choose AES-256?", the answer should reference your risk assessment, not just "because everyone uses it."
+
+### What Needs to Be Encrypted
+
+The scope of encryption requirements extends beyond your primary database. Here's what auditors expect to see encrypted:
+
+**Data at rest** includes your production databases, database backups, file storage (S3 buckets, Azure Blob Storage, GCS buckets), local storage on servers or virtual machines, log files that contain sensitive data, data warehouse and analytics systems, and any temporary or staging storage.
+
+**Data in transit** covers API communications between your services, data sent to and received from customers, internal service-to-service communication, connections to third-party services, database connections, administrative access to servers and infrastructure, and email containing sensitive information.
+
+A common audit finding — and one detailed in our guide to [common SOC 2 audit findings](/blog/common-soc2-audit-findings) — is organizations that encrypt their primary data stores but leave gaps in less obvious locations. Backups stored in a secondary region without encryption. Log files shipped to a SIEM that contain PII. A staging database cloned from production that sits unencrypted because "it's just for testing." Auditors are trained to look for these gaps.
+
+## SOC 2 Encryption Requirements for Data at Rest
+
+Encrypting data at rest means rendering stored data unreadable without the proper decryption key. For SOC 2 purposes, this protects against unauthorized access to data through physical theft, unauthorized system access, or improper data disposal.
+
+### AES-256: The Standard
+
+AES-256 (Advanced Encryption Standard with a 256-bit key) is the encryption algorithm auditors expect to see for data at rest. It's approved by NIST, used by the U.S. government for classified information, and supported natively by every major cloud provider and database system. There's no practical reason to use anything weaker, and using AES-256 eliminates any conversation with your auditor about whether your encryption is "strong enough."
+
+AES-128 is technically acceptable and remains secure against known attacks, but choosing AES-256 removes ambiguity. The performance difference between AES-128 and AES-256 is negligible on modern hardware, so there's little reason not to use the stronger option.
+
+### Cloud Provider Encryption (Server-Side Encryption)
+
+Every major cloud provider offers server-side encryption that encrypts data automatically when it's written to storage and decrypts it automatically when authorized users read it. This is the simplest form of encryption at rest and should be your baseline.
+
+**AWS** offers SSE-S3 (Amazon manages the keys), SSE-KMS (keys managed through AWS Key Management Service), and SSE-C (you provide your own keys). For SOC 2 purposes, SSE-KMS is the preferred option because it gives you control over key policies, enables key rotation, and provides audit trails through CloudTrail.
+
+**Google Cloud** encrypts all data at rest by default using Google-managed keys. For greater control, Cloud KMS lets you manage your own keys with configurable rotation policies and IAM-based access controls.
+
+**Azure** provides Storage Service Encryption using Microsoft-managed keys by default, with the option to use customer-managed keys through Azure Key Vault.
+
+For most SOC 2 audits, cloud provider-managed encryption with customer-managed keys (CMK) through a KMS is sufficient. The auditor wants to see that encryption is enabled, that you control the key policies, and that key access is logged and restricted.
+
+### Application-Level Encryption
+
+Cloud provider encryption protects against physical theft and unauthorized access at the infrastructure layer. Application-level encryption goes a step further by encrypting data before it reaches the storage layer, meaning even database administrators or cloud provider employees can't read the plaintext data.
+
+Application-level encryption is not strictly required for SOC 2, but it may be appropriate for highly sensitive data types like social security numbers, financial account numbers, health records, or authentication credentials. If your [risk assessment](/blog/soc2-risk-assessment-process) identifies these data types as high-risk, application-level encryption demonstrates defense-in-depth.
+
+When implementing application-level encryption, use well-tested cryptographic libraries rather than building your own encryption routines. Libraries like AWS Encryption SDK, Google Tink, or language-specific implementations of libsodium handle the difficult parts — key derivation, initialization vectors, authenticated encryption — correctly. Rolling your own cryptography is one of the fastest ways to introduce vulnerabilities that an encryption standard was meant to prevent.
+
+### Database Encryption
+
+Most modern databases support Transparent Data Encryption (TDE), which encrypts database files on disk without requiring application changes. PostgreSQL, MySQL, SQL Server, and MongoDB all support TDE or equivalent features.
+
+For cloud-managed databases, encryption is often enabled by default. AWS RDS, Google Cloud SQL, and Azure SQL Database all encrypt storage using AES-256. Verify that encryption is enabled by checking your database configuration — don't assume it's on just because the cloud provider offers it. Some older database instances created before encryption became the default may still be running unencrypted.
+
+Beyond TDE, consider column-level encryption for particularly sensitive fields. A customer table might have many columns, but only a few — like social security number or credit card number — warrant the additional protection of column-level encryption. This limits the blast radius if the database is compromised in a way that bypasses TDE.
+
+## SOC 2 Encryption Requirements for Data in Transit
+
+Encrypting data in transit protects information as it moves between systems, users, and services. The primary mechanism is TLS (Transport Layer Security), which encrypts the communication channel so that intercepted traffic is unreadable.
+
+### TLS 1.2 and 1.3: Minimum Standards
+
+SOC 2 auditors expect TLS 1.2 as the minimum version for all data in transit. TLS 1.0 and 1.1 are deprecated and contain known vulnerabilities. If your systems still accept connections using these older versions, your auditor will flag it.
+
+TLS 1.3, released in 2018, is the current recommended version. It removes support for weak cipher suites, reduces the handshake to a single round trip (improving performance), and eliminates several attack vectors present in TLS 1.2. If you're setting up new infrastructure, default to TLS 1.3 with TLS 1.2 as a fallback for older clients that don't yet support 1.3.
+
+Configuring TLS properly means more than just enabling it. You also need to ensure that weak cipher suites are disabled. Specifically, disable CBC-mode ciphers (vulnerable to padding oracle attacks), RC4 (broken), and 3DES (deprecated). Prefer ECDHE key exchange for forward secrecy, which ensures that even if your private key is compromised in the future, past communications remain secure.
+
+### HTTPS Everywhere
+
+Every web-facing endpoint should use HTTPS. This includes your customer-facing application, your API endpoints, your admin panels, and your documentation sites. HTTP should redirect to HTTPS, and HSTS (HTTP Strict Transport Security) headers should be set to prevent downgrade attacks.
+
+Check for mixed content — pages served over HTTPS that load resources over HTTP. Modern browsers flag this, but it can still occur with legacy CDN configurations, embedded images, or third-party scripts. Mixed content undermines the security of your HTTPS implementation and is something auditors may catch if they review your application.
+
+### Internal Service Communication
+
+Many organizations focus on encrypting external traffic but neglect internal service-to-service communication. If your microservices communicate over a private network using plaintext HTTP, that's a gap your auditor may question — especially if sensitive data moves between services.
+
+The standard approaches for internal traffic encryption are service mesh (like Istio or Linkerd, which provide mutual TLS between services automatically), VPN or private network encryption, or application-level TLS where each service presents and validates certificates.
+
+For most SOC 2 audits, running services within a VPC or private network with [appropriate network controls](/blog/security-tools-for-soc2-compliance) and access restrictions is acceptable. But if your architecture routes traffic over the public internet — even between your own services — encryption is mandatory.
+
+### Database Connection Encryption
+
+Database connections should use TLS/SSL encryption, especially if the database is accessed over a network rather than a local socket. Cloud-managed databases typically support and often enforce encrypted connections. Verify that your application's database connection strings include SSL/TLS parameters and that the database is configured to reject unencrypted connections.
+
+For PostgreSQL, this means setting `sslmode=require` or `sslmode=verify-full` in your connection string. For MySQL, use `--ssl-mode=REQUIRED`. For MongoDB, use TLS-enabled connection URIs. Document these configurations — your auditor will want to see that encrypted connections aren't just available but enforced.
+
+## Key Management: The Most Overlooked Encryption Requirement
+
+Encryption is only as strong as the protection of the keys. An AES-256 encrypted database is worthless if the decryption key is stored in a plaintext configuration file on the same server. Key management is where many companies stumble, and auditors know this.
+
+### Key Management Fundamentals
+
+A proper key management program addresses key generation, storage, access control, rotation, and destruction. Each of these has specific expectations in a SOC 2 context.
+
+**Key generation** should use cryptographically secure random number generators. Cloud KMS services handle this automatically. If you're generating keys in your application, use your programming language's secure random library (like `crypto.randomBytes()` in Node.js or `secrets` in Python), never a general-purpose random number generator.
+
+**Key storage** must be separate from the data the keys protect. Storing encryption keys in the same database they're encrypting defeats the purpose. Use a dedicated key management service — AWS KMS, Google Cloud KMS, Azure Key Vault, or HashiCorp Vault — to store and manage keys. These services provide hardware-backed key storage, access controls, and audit logging.
+
+**Key access control** should follow the principle of least privilege. Only the services and personnel that need access to specific keys should have it. In AWS KMS, this means crafting key policies that grant access to specific IAM roles, not broad account-level permissions. Log every key access event and review those logs regularly as part of your [monitoring program](/blog/soc2-logging-monitoring).
+
+### Key Rotation
+
+Key rotation means periodically replacing encryption keys with new ones. This limits the exposure window if a key is compromised — an attacker who obtains an old key can only decrypt data encrypted with that specific key, not data encrypted with the new key.
+
+SOC 2 auditors expect to see a documented key rotation policy and evidence that rotation actually occurs. The standard practice is annual key rotation for master keys, though more frequent rotation (quarterly or even monthly) is appropriate for high-risk environments.
+
+Cloud KMS services make rotation straightforward. AWS KMS supports automatic annual rotation for customer-managed keys. Google Cloud KMS allows configurable rotation periods. When rotation occurs, the old key version is retained for decrypting data that was encrypted with it, while new encryption operations use the new key version. This means rotation doesn't require re-encrypting all existing data.
+
+For application-managed keys, rotation is more complex. You need to implement a process that generates a new key, begins using it for new encryption operations, and optionally re-encrypts existing data with the new key. Document this process and ensure it's tested — an untested rotation procedure is a liability, not a control.
+
+### Key Destruction
+
+When keys are no longer needed — for example, when decommissioning a system or when data subject to a retention policy has been deleted — the keys should be securely destroyed. Destroying the encryption key for a dataset is often the most reliable way to ensure the data cannot be recovered, even if encrypted copies exist in backups.
+
+Document your key destruction procedures and maintain a log of destroyed keys, including the date, the reason for destruction, and the person who authorized it. Cloud KMS services provide key deletion workflows that include a waiting period (typically 7-30 days) to prevent accidental destruction.
+
+## Cloud Provider Encryption vs. Self-Managed: A Comparison
+
+One decision every company faces is whether to rely on cloud provider encryption or implement self-managed encryption. Here's how they compare for SOC 2 purposes:
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Factor</th>
+        <th className="text-left py-3 px-4 font-semibold">Cloud Provider Encryption</th>
+        <th className="text-left py-3 px-4 font-semibold">Self-Managed Encryption</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Implementation effort</td>
+        <td className="py-3 px-4">Minimal — usually a configuration toggle</td>
+        <td className="py-3 px-4">Significant — requires cryptographic expertise</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Key management</td>
+        <td className="py-3 px-4">Handled by KMS with audit logging</td>
+        <td className="py-3 px-4">Requires dedicated infrastructure (e.g., Vault)</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Performance impact</td>
+        <td className="py-3 px-4">Negligible — hardware-accelerated</td>
+        <td className="py-3 px-4">Varies based on implementation</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Auditor acceptance</td>
+        <td className="py-3 px-4">Widely accepted for most use cases</td>
+        <td className="py-3 px-4">Accepted but requires more documentation</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Control level</td>
+        <td className="py-3 px-4">Moderate — you control key policies</td>
+        <td className="py-3 px-4">Maximum — you control everything</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Cost</td>
+        <td className="py-3 px-4">Low — KMS charges per key and API call</td>
+        <td className="py-3 px-4">Higher — infrastructure and operational overhead</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Best for</td>
+        <td className="py-3 px-4">Most SOC 2 audits, standard data types</td>
+        <td className="py-3 px-4">Regulated industries, extremely sensitive data</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+For the vast majority of SOC 2-bound companies, cloud provider encryption with customer-managed keys through KMS is the right choice. It provides strong encryption with minimal operational overhead, produces clear audit trails, and is well-understood by auditors. Self-managed encryption adds complexity that most organizations don't need and introduces operational risks (like key loss) that can be worse than the threats encryption is meant to address.
+
+## Documenting Your Encryption Controls
+
+Documentation is how you prove to your auditor that encryption is properly implemented and managed. Without documentation, even perfect encryption controls can result in audit findings because the auditor can't verify what they can't see.
+
+### The Encryption Policy
+
+Your encryption policy should document your organization's requirements for encryption, including which encryption algorithms and key lengths are approved, what data must be encrypted at rest and in transit, key management procedures (generation, storage, rotation, destruction), roles and responsibilities for key management, and exception procedures for systems that cannot support encryption.
+
+This policy doesn't need to be lengthy — two to four pages is typical. What matters is that it's specific enough to be actionable and that your actual practices match what the policy describes. If your policy says "all data at rest is encrypted with AES-256" but your staging database is unencrypted, that's a finding. Our [Policy Bundle](/products/policies) includes an encryption policy template that covers all the elements auditors expect to see.
+
+### Evidence for Your Auditor
+
+When it comes time for the audit, your auditor will request evidence that your encryption controls are operating as designed. The [evidence collection process](/blog/soc2-evidence-collection-process) for encryption typically includes:
+
+**Configuration screenshots** showing encryption enabled on databases, storage buckets, and other data stores. Include the encryption algorithm and key information. For AWS, this might be screenshots from the RDS console showing "Encryption: Enabled, KMS Key: [key ARN]." For storage buckets, show the default encryption configuration.
+
+**TLS configuration evidence** showing your web servers and load balancers configured with TLS 1.2+ and strong cipher suites. SSL Labs (ssllabs.com) scan results are commonly accepted evidence — they show the TLS versions and cipher suites your endpoints support, along with an overall grade.
+
+**Key management evidence** including KMS key policies showing who has access, CloudTrail or equivalent logs showing key usage, key rotation configuration or evidence of manual rotation, and documentation of any key destruction events during the audit period.
+
+**Network diagrams** showing where encryption is applied in your architecture. This complements your [system description](/blog/soc2-system-description-guide) and helps the auditor understand how data flows through your environment and where encryption protects it.
+
+## Common Encryption Mistakes That Cause Audit Findings
+
+After walking through many SOC 2 audits, certain encryption mistakes appear repeatedly. Avoiding these will save you from findings and the remediation work that follows.
+
+The first mistake is **inconsistent encryption coverage**. Encrypting production but not staging, encrypting the database but not its backups, or encrypting stored data but transmitting it over plaintext connections. Auditors look for consistency — if encryption is your control for protecting data, it needs to apply everywhere that data exists.
+
+The second mistake is **using deprecated protocols**. TLS 1.0 and 1.1 should be disabled everywhere. SSL 3.0 should definitely be disabled. If legacy clients require these older protocols, document a risk acceptance and implement compensating controls. But first, verify that legacy clients actually exist — many companies keep old protocols enabled "just in case" when no clients are actually using them.
+
+The third mistake is **poor key management hygiene**. Keys stored in source code, shared among team members via Slack, or embedded in Docker images. Every key should live in a KMS or secrets manager, accessible only through controlled API calls with audit logging.
+
+The fourth mistake is **no documentation**. Everything might be perfectly encrypted, but if you can't show the auditor a policy, configuration evidence, and key management procedures, they have no basis to issue a clean opinion.
+
+The fifth mistake is **forgetting about data in non-obvious locations**. Error logs, debug files, cache stores, message queues, and email attachments can all contain sensitive data. Map your data flows comprehensively and ensure encryption covers every location where sensitive data lands.
+
+## Getting Started with SOC 2 Encryption Requirements
+
+If you're early in your SOC 2 journey, here's a practical path to meeting encryption requirements without overcomplicating things.
+
+Start by inventorying where sensitive data lives and moves. Map every database, storage bucket, log destination, and third-party integration. For each, document whether encryption at rest and in transit is currently enabled and what algorithm/version is in use.
+
+Next, enable cloud provider encryption on everything that supports it. In AWS, enable default encryption on all S3 buckets, enable encryption on all RDS instances and EBS volumes, and use KMS customer-managed keys. Similar steps apply in GCP and Azure. This single action covers the majority of your data at rest encryption requirements.
+
+Then, audit your TLS configuration. Run SSL Labs scans on all external endpoints. Check that internal services use encrypted connections. Disable TLS 1.0 and 1.1 everywhere. Configure HSTS headers on all web applications.
+
+Finally, document everything. Write your encryption policy, generate configuration evidence, and set up key management procedures. The [Complete Bundle](/products/complete-bundle) at $549.95 includes encryption policy templates, evidence collection worksheets, and key management procedure documentation that you can customize to your environment — saving weeks of writing from scratch.
+
+Encryption is foundational to SOC 2 compliance, but it doesn't have to be complicated. Use standard algorithms, leverage your cloud provider's built-in capabilities, manage keys through a KMS, document your controls, and collect evidence consistently. Do these things, and encryption will be one of the smoothest parts of your audit.

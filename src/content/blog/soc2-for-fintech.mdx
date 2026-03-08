@@ -200,45 +200,45 @@ Here's how FinTech-specific risks map to SOC 2 criteria:
 <div className="overflow-x-auto my-8">
   <table className="min-w-full border-collapse">
     <thead>
-      <tr className="border-b-2">
-        <th className="text-left py-3 px-4">Risk Area</th>
-        <th className="text-left py-3 px-4">Primary TSC</th>
-        <th className="text-left py-3 px-4">Secondary TSC</th>
-        <th className="text-left py-3 px-4">Key Controls</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Risk Area</th>
+        <th className="text-left py-3 px-4 font-semibold">Primary TSC</th>
+        <th className="text-left py-3 px-4 font-semibold">Secondary TSC</th>
+        <th className="text-left py-3 px-4 font-semibold">Key Controls</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Unauthorized fund transfers</td>
         <td className="py-3 px-4">CC6 (Security)</td>
         <td className="py-3 px-4">PI1 (Processing Integrity)</td>
         <td className="py-3 px-4">Strong auth, transaction limits, approval workflows</td>
       </tr>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Transaction data breach</td>
         <td className="py-3 px-4">CC6 (Security)</td>
         <td className="py-3 px-4">C1 (Confidentiality)</td>
         <td className="py-3 px-4">Encryption, access controls, network segmentation</td>
       </tr>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Payment processing downtime</td>
         <td className="py-3 px-4">A1 (Availability)</td>
         <td className="py-3 px-4">PI1 (Processing Integrity)</td>
         <td className="py-3 px-4">Redundancy, monitoring, disaster recovery</td>
       </tr>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Fraudulent transactions</td>
         <td className="py-3 px-4">PI1 (Processing Integrity)</td>
         <td className="py-3 px-4">CC7 (Detection)</td>
         <td className="py-3 px-4">Fraud detection, velocity limits, manual review</td>
       </tr>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Customer financial data exposure</td>
         <td className="py-3 px-4">CC6 (Security)</td>
         <td className="py-3 px-4">P1 (Privacy)</td>
         <td className="py-3 px-4">Encryption, DLP, access logging</td>
       </tr>
-      <tr>
+      <tr className="odd:bg-white even:bg-gray-50">
         <td className="py-3 px-4 font-medium">Regulatory non-compliance</td>
         <td className="py-3 px-4">CC2 (Governance)</td>
         <td className="py-3 px-4">CC3 (Risk)</td>
@@ -563,45 +563,45 @@ Here's a control mapping example:
 <div className="overflow-x-auto my-8">
   <table className="min-w-full border-collapse">
     <thead>
-      <tr className="border-b-2">
-        <th className="text-left py-3 px-4">Control Description</th>
-        <th className="text-left py-3 px-4">SOC 2 Criteria</th>
-        <th className="text-left py-3 px-4">PCI DSS Requirement</th>
-        <th className="text-left py-3 px-4">Single Implementation</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Control Description</th>
+        <th className="text-left py-3 px-4 font-semibold">SOC 2 Criteria</th>
+        <th className="text-left py-3 px-4 font-semibold">PCI DSS Requirement</th>
+        <th className="text-left py-3 px-4 font-semibold">Single Implementation</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Multi-factor authentication for all production access</td>
         <td className="py-3 px-4">CC6.2</td>
         <td className="py-3 px-4">8.3</td>
         <td className="py-3 px-4">MFA via identity provider (Okta, Auth0)</td>
       </tr>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Encryption of cardholder data at rest</td>
         <td className="py-3 px-4">CC6.6</td>
         <td className="py-3 px-4">3.4</td>
         <td className="py-3 px-4">AES-256 encryption using cloud KMS</td>
       </tr>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Quarterly vulnerability scanning</td>
         <td className="py-3 px-4">CC7.1</td>
         <td className="py-3 px-4">11.2</td>
         <td className="py-3 px-4">Automated scans via approved vendor</td>
       </tr>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Change approval and testing</td>
         <td className="py-3 px-4">CC8.1</td>
         <td className="py-3 px-4">6.4</td>
         <td className="py-3 px-4">GitHub pull requests with required approvals</td>
       </tr>
-      <tr className="border-b">
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
         <td className="py-3 px-4 font-medium">Segregation of duties for sensitive operations</td>
         <td className="py-3 px-4">CC6.2</td>
         <td className="py-3 px-4">7.1</td>
         <td className="py-3 px-4">RBAC with approval workflows</td>
       </tr>
-      <tr>
+      <tr className="odd:bg-white even:bg-gray-50">
         <td className="py-3 px-4 font-medium">Security awareness training</td>
         <td className="py-3 px-4">CC2.2</td>
         <td className="py-3 px-4">12.6</td>

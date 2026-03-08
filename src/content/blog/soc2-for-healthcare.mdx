@@ -96,50 +96,50 @@ Encryption requirements intensify beyond typical SaaS standards. HIPAA requires 
 Audit logging must be more comprehensive than typical SaaS applications. Every PHI access attempt, successful or failed, should be logged with user identity, timestamp, data accessed, and action taken. These logs must be retained for at least six years (HIPAA retention requirement) and protected from tampering.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Data Type</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Examples</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">HIPAA Requirement</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">SOC 2 Criteria</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Data Type</th>
+        <th className="text-left py-3 px-4 font-semibold">Examples</th>
+        <th className="text-left py-3 px-4 font-semibold">HIPAA Requirement</th>
+        <th className="text-left py-3 px-4 font-semibold">SOC 2 Criteria</th>
         <th className="text-left py-3 px-4 font-semibold">Key Controls</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Electronic PHI (ePHI)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Patient records, diagnoses, treatment plans</td>
-        <td className="py-3 px-4 border-r border-slate-300">Security Rule</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC6.x, C1.x</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Electronic PHI (ePHI)</td>
+        <td className="py-3 px-4">Patient records, diagnoses, treatment plans</td>
+        <td className="py-3 px-4">Security Rule</td>
+        <td className="py-3 px-4">CC6.x, C1.x</td>
         <td className="py-3 px-4">Encryption, access controls, audit logs</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Payment Information</td>
-        <td className="py-3 px-4 border-r border-slate-300">Insurance details, billing records</td>
-        <td className="py-3 px-4 border-r border-slate-300">Security Rule</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC6.x</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Payment Information</td>
+        <td className="py-3 px-4">Insurance details, billing records</td>
+        <td className="py-3 px-4">Security Rule</td>
+        <td className="py-3 px-4">CC6.x</td>
         <td className="py-3 px-4">Tokenization, encryption, PCI DSS if cards</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Demographic PHI</td>
-        <td className="py-3 px-4 border-r border-slate-300">Name, DOB, SSN, addresses</td>
-        <td className="py-3 px-4 border-r border-slate-300">Privacy Rule</td>
-        <td className="py-3 px-4 border-r border-slate-300">P1.x</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Demographic PHI</td>
+        <td className="py-3 px-4">Name, DOB, SSN, addresses</td>
+        <td className="py-3 px-4">Privacy Rule</td>
+        <td className="py-3 px-4">P1.x</td>
         <td className="py-3 px-4">Access restrictions, consent management</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Clinical Notes</td>
-        <td className="py-3 px-4 border-r border-slate-300">Doctor notes, prescriptions, assessments</td>
-        <td className="py-3 px-4 border-r border-slate-300">Security & Privacy</td>
-        <td className="py-3 px-4 border-r border-slate-300">C1.x, PI1.x</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Clinical Notes</td>
+        <td className="py-3 px-4">Doctor notes, prescriptions, assessments</td>
+        <td className="py-3 px-4">Security & Privacy</td>
+        <td className="py-3 px-4">C1.x, PI1.x</td>
         <td className="py-3 px-4">Role-based access, integrity controls</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">De-identified Data</td>
-        <td className="py-3 px-4 border-r border-slate-300">Aggregated analytics, research datasets</td>
-        <td className="py-3 px-4 border-r border-slate-300">Not PHI if done correctly</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC6.x (lower risk)</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">De-identified Data</td>
+        <td className="py-3 px-4">Aggregated analytics, research datasets</td>
+        <td className="py-3 px-4">Not PHI if done correctly</td>
+        <td className="py-3 px-4">CC6.x (lower risk)</td>
         <td className="py-3 px-4">De-identification process documentation</td>
       </tr>
     </tbody>
@@ -185,44 +185,44 @@ HIPAA's Technical Safeguards map closely to SOC 2's system-level controls.
 **Transmission Security** (§164.312(e)(1)) maps to **CC6.7**. Protecting PHI during electronic transmission through encryption and network security controls addresses both HIPAA and SOC 2 requirements for data protection in transit.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">HIPAA Requirement</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">SOC 2 Criteria</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Shared Control Implementation</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">HIPAA Requirement</th>
+        <th className="text-left py-3 px-4 font-semibold">SOC 2 Criteria</th>
+        <th className="text-left py-3 px-4 font-semibold">Shared Control Implementation</th>
         <th className="text-left py-3 px-4 font-semibold">Evidence for Both</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Access Control (§164.312(a)(1))</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC6.1, CC6.2</td>
-        <td className="py-3 px-4 border-r border-slate-300">Role-based access, MFA, provisioning/deprovisioning</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Access Control (§164.312(a)(1))</td>
+        <td className="py-3 px-4">CC6.1, CC6.2</td>
+        <td className="py-3 px-4">Role-based access, MFA, provisioning/deprovisioning</td>
         <td className="py-3 px-4">User access reports, MFA logs, access reviews</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Audit Controls (§164.312(b))</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC7.2</td>
-        <td className="py-3 px-4 border-r border-slate-300">SIEM, log retention, monitoring</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Audit Controls (§164.312(b))</td>
+        <td className="py-3 px-4">CC7.2</td>
+        <td className="py-3 px-4">SIEM, log retention, monitoring</td>
         <td className="py-3 px-4">Log samples, monitoring reports, incident response records</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Integrity (§164.312(c)(1))</td>
-        <td className="py-3 px-4 border-r border-slate-300">PI1.1, PI1.2</td>
-        <td className="py-3 px-4 border-r border-slate-300">Change management, data validation</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Integrity (§164.312(c)(1))</td>
+        <td className="py-3 px-4">PI1.1, PI1.2</td>
+        <td className="py-3 px-4">Change management, data validation</td>
         <td className="py-3 px-4">Change logs, testing records, validation reports</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Transmission Security (§164.312(e)(1))</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC6.7</td>
-        <td className="py-3 px-4 border-r border-slate-300">TLS/SSL, VPN, encrypted email</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Transmission Security (§164.312(e)(1))</td>
+        <td className="py-3 px-4">CC6.7</td>
+        <td className="py-3 px-4">TLS/SSL, VPN, encrypted email</td>
         <td className="py-3 px-4">Network configs, encryption verification</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Risk Analysis (§164.308(a)(1)(ii)(A))</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC3.1, CC3.2</td>
-        <td className="py-3 px-4 border-r border-slate-300">Annual risk assessment</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Risk Analysis (§164.308(a)(1)(ii)(A))</td>
+        <td className="py-3 px-4">CC3.1, CC3.2</td>
+        <td className="py-3 px-4">Annual risk assessment</td>
         <td className="py-3 px-4">Risk assessment documents, treatment plans</td>
       </tr>
     </tbody>
@@ -354,44 +354,44 @@ Medical accuracy equals patient safety, making processing integrity especially c
 **PI1.2 - Completeness and Accuracy**: Implement data integrity checks throughout the clinical data lifecycle. Maintain version control for medical records showing all changes over time. Implement comprehensive audit trails for all changes to PHI, showing who changed what, when, and why. Validate data against clinical standards like HL7 and FHIR for interoperability scenarios.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">SOC 2 Control</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Standard SaaS Implementation</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">HealthTech Enhancement</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">SOC 2 Control</th>
+        <th className="text-left py-3 px-4 font-semibold">Standard SaaS Implementation</th>
+        <th className="text-left py-3 px-4 font-semibold">HealthTech Enhancement</th>
         <th className="text-left py-3 px-4 font-semibold">HIPAA Alignment</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Access Control (CC6.1-6.3)</td>
-        <td className="py-3 px-4 border-r border-slate-300">RBAC, MFA, 24-hour deprovisioning</td>
-        <td className="py-3 px-4 border-r border-slate-300">Minimum necessary, emergency access, immediate termination</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Access Control (CC6.1-6.3)</td>
+        <td className="py-3 px-4">RBAC, MFA, 24-hour deprovisioning</td>
+        <td className="py-3 px-4">Minimum necessary, emergency access, immediate termination</td>
         <td className="py-3 px-4">§164.308(a)(3), §164.308(a)(4)</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Encryption (CC6.7)</td>
-        <td className="py-3 px-4 border-r border-slate-300">TLS 1.2+, AES-256</td>
-        <td className="py-3 px-4 border-r border-slate-300">FIPS 140-2 compliant, end-to-end encryption</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Encryption (CC6.7)</td>
+        <td className="py-3 px-4">TLS 1.2+, AES-256</td>
+        <td className="py-3 px-4">FIPS 140-2 compliant, end-to-end encryption</td>
         <td className="py-3 px-4">§164.312(a)(2)(iv), §164.312(e)(2)(ii)</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Audit Logging (CC7.2)</td>
-        <td className="py-3 px-4 border-r border-slate-300">90-day retention, key events</td>
-        <td className="py-3 px-4 border-r border-slate-300">6-year retention, comprehensive PHI access logs</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Audit Logging (CC7.2)</td>
+        <td className="py-3 px-4">90-day retention, key events</td>
+        <td className="py-3 px-4">6-year retention, comprehensive PHI access logs</td>
         <td className="py-3 px-4">§164.312(b), §164.308(a)(1)(ii)(D)</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Data Retention (C1.2)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Depends on business needs</td>
-        <td className="py-3 px-4 border-r border-slate-300">6-year minimum for medical records</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Data Retention (C1.2)</td>
+        <td className="py-3 px-4">Depends on business needs</td>
+        <td className="py-3 px-4">6-year minimum for medical records</td>
         <td className="py-3 px-4">§164.316(b)(2)(i)</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Processing Integrity (PI1.1)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Basic validation</td>
-        <td className="py-3 px-4 border-r border-slate-300">Clinical accuracy validation, HL7/FHIR compliance</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Processing Integrity (PI1.1)</td>
+        <td className="py-3 px-4">Basic validation</td>
+        <td className="py-3 px-4">Clinical accuracy validation, HL7/FHIR compliance</td>
         <td className="py-3 px-4">N/A (goes beyond HIPAA)</td>
       </tr>
     </tbody>
@@ -445,50 +445,50 @@ HIPAA is federal law, but states add additional requirements creating compliance
 Design your compliance program to address the most stringent requirements across all jurisdictions where you operate. Conduct state-by-state analysis of operations documenting which state laws apply and how you comply. Engage legal counsel for multi-state operations to ensure regulatory compliance across jurisdictions. Document state-specific controls in your SOC 2 report as complementary user entity controls where applicable.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Challenge</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Impact on SOC 2</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Impact on HIPAA</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Integrated Solution</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Challenge</th>
+        <th className="text-left py-3 px-4 font-semibold">Impact on SOC 2</th>
+        <th className="text-left py-3 px-4 font-semibold">Impact on HIPAA</th>
+        <th className="text-left py-3 px-4 font-semibold">Integrated Solution</th>
         <th className="text-left py-3 px-4 font-semibold">Controls to Implement</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Developer Production Access</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC8.1</td>
-        <td className="py-3 px-4 border-r border-slate-300">§164.308(a)(3)(ii)(B)</td>
-        <td className="py-3 px-4 border-r border-slate-300">De-identification process, break-glass procedure</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Developer Production Access</td>
+        <td className="py-3 px-4">CC8.1</td>
+        <td className="py-3 px-4">§164.308(a)(3)(ii)(B)</td>
+        <td className="py-3 px-4">De-identification process, break-glass procedure</td>
         <td className="py-3 px-4">Data masking, audit logging, approval workflow</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Telemedicine Apps</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC6.6, CC6.7</td>
-        <td className="py-3 px-4 border-r border-slate-300">§164.312(e)(1)</td>
-        <td className="py-3 px-4 border-r border-slate-300">End-to-end encryption, MDM</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Telemedicine Apps</td>
+        <td className="py-3 px-4">CC6.6, CC6.7</td>
+        <td className="py-3 px-4">§164.312(e)(1)</td>
+        <td className="py-3 px-4">End-to-end encryption, MDM</td>
         <td className="py-3 px-4">Encrypted communications, device management</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Third-Party Integrations</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC9.1, CC9.2</td>
-        <td className="py-3 px-4 border-r border-slate-300">§164.308(b)(1)</td>
-        <td className="py-3 px-4 border-r border-slate-300">BAAs, API security, vendor management</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Third-Party Integrations</td>
+        <td className="py-3 px-4">CC9.1, CC9.2</td>
+        <td className="py-3 px-4">§164.308(b)(1)</td>
+        <td className="py-3 px-4">BAAs, API security, vendor management</td>
         <td className="py-3 px-4">Subcontractor agreements, SOC 2 reports, API authentication</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Breach Notification</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC7.3-7.5</td>
-        <td className="py-3 px-4 border-r border-slate-300">§164.408</td>
-        <td className="py-3 px-4 border-r border-slate-300">Integrated incident response plan</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Breach Notification</td>
+        <td className="py-3 px-4">CC7.3-7.5</td>
+        <td className="py-3 px-4">§164.408</td>
+        <td className="py-3 px-4">Integrated incident response plan</td>
         <td className="py-3 px-4">Breach assessment, notification procedures, documentation</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Multi-State Requirements</td>
-        <td className="py-3 px-4 border-r border-slate-300">System Description</td>
-        <td className="py-3 px-4 border-r border-slate-300">State laws</td>
-        <td className="py-3 px-4 border-r border-slate-300">Most stringent requirement approach</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Multi-State Requirements</td>
+        <td className="py-3 px-4">System Description</td>
+        <td className="py-3 px-4">State laws</td>
+        <td className="py-3 px-4">Most stringent requirement approach</td>
         <td className="py-3 px-4">State-specific controls, legal review</td>
       </tr>
     </tbody>

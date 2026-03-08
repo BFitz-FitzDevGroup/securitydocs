@@ -110,50 +110,50 @@ On-call rotation during peak season means 24/7 coverage during November and Dece
 Processing errors create immediate customer impact: wrong shipments trigger complaints and returns, pricing disputes create refund demands and chargeback risks, inventory overselling generates angry customers and reputational damage. Unlike SaaS where bugs annoy users, e-commerce processing errors directly affect financial transactions and physical goods delivery.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Trust Service Criterion</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">SaaS Focus</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">FinTech Focus</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">E-commerce Focus</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Trust Service Criterion</th>
+        <th className="text-left py-3 px-4 font-semibold">SaaS Focus</th>
+        <th className="text-left py-3 px-4 font-semibold">FinTech Focus</th>
+        <th className="text-left py-3 px-4 font-semibold">E-commerce Focus</th>
         <th className="text-left py-3 px-4 font-semibold">Why Different</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Security (CC6.x)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Moderate - consistent patterns</td>
-        <td className="py-3 px-4 border-r border-slate-300">High - financial data</td>
-        <td className="py-3 px-4 border-r border-slate-300">High - payment + PII at scale</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Security (CC6.x)</td>
+        <td className="py-3 px-4">Moderate - consistent patterns</td>
+        <td className="py-3 px-4">High - financial data</td>
+        <td className="py-3 px-4">High - payment + PII at scale</td>
         <td className="py-3 px-4">B2C scale, CS access, seasonal staff</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Availability (A1.x)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Important - productivity</td>
-        <td className="py-3 px-4 border-r border-slate-300">Critical - transactions</td>
-        <td className="py-3 px-4 border-r border-slate-300">CRITICAL - revenue tied to uptime</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Availability (A1.x)</td>
+        <td className="py-3 px-4">Important - productivity</td>
+        <td className="py-3 px-4">Critical - transactions</td>
+        <td className="py-3 px-4">CRITICAL - revenue tied to uptime</td>
         <td className="py-3 px-4">Peak season, holiday traffic 10x</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Processing Integrity (PI1.x)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Lower priority</td>
-        <td className="py-3 px-4 border-r border-slate-300">Critical - transaction accuracy</td>
-        <td className="py-3 px-4 border-r border-slate-300">High - order/payment accuracy</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Processing Integrity (PI1.x)</td>
+        <td className="py-3 px-4">Lower priority</td>
+        <td className="py-3 px-4">Critical - transaction accuracy</td>
+        <td className="py-3 px-4">High - order/payment accuracy</td>
         <td className="py-3 px-4">Wrong orders, pricing errors, overselling</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Confidentiality (C1.x)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Sometimes required</td>
-        <td className="py-3 px-4 border-r border-slate-300">Often required</td>
-        <td className="py-3 px-4 border-r border-slate-300">Rarely required</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Confidentiality (C1.x)</td>
+        <td className="py-3 px-4">Sometimes required</td>
+        <td className="py-3 px-4">Often required</td>
+        <td className="py-3 px-4">Rarely required</td>
         <td className="py-3 px-4">Public-facing products, not confidential</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Privacy (P1.x)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Sometimes required</td>
-        <td className="py-3 px-4 border-r border-slate-300">Sometimes required</td>
-        <td className="py-3 px-4 border-r border-slate-300">Often required - GDPR/CCPA</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Privacy (P1.x)</td>
+        <td className="py-3 px-4">Sometimes required</td>
+        <td className="py-3 px-4">Sometimes required</td>
+        <td className="py-3 px-4">Often required - GDPR/CCPA</td>
         <td className="py-3 px-4">Consumer PII, international sales</td>
       </tr>
     </tbody>
@@ -199,50 +199,50 @@ Even with payment processors handling card data, SOC 2 requires comprehensive co
 Access control to customer and order data satisfies both PCI DSS (restricted cardholder data access) and SOC 2 (appropriate access controls). Encryption standards (TLS 1.2+, AES-256) address both frameworks. Logging and monitoring (security event tracking, audit logs) serve both audits. Vendor management (payment processor is a vendor requiring due diligence) creates shared evidence. Incident response (procedures for detecting and responding to security events) works for both PCI DSS and SOC 2.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Control Area</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">PCI DSS Requirement</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">SOC 2 Criteria</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">E-commerce Implementation</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Control Area</th>
+        <th className="text-left py-3 px-4 font-semibold">PCI DSS Requirement</th>
+        <th className="text-left py-3 px-4 font-semibold">SOC 2 Criteria</th>
+        <th className="text-left py-3 px-4 font-semibold">E-commerce Implementation</th>
         <th className="text-left py-3 px-4 font-semibold">Evidence Needed</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Access Control</td>
-        <td className="py-3 px-4 border-r border-slate-300">Req 7, 8 - Restrict access</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC6.1-6.3</td>
-        <td className="py-3 px-4 border-r border-slate-300">RBAC for CS reps, MFA for admin</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Access Control</td>
+        <td className="py-3 px-4">Req 7, 8 - Restrict access</td>
+        <td className="py-3 px-4">CC6.1-6.3</td>
+        <td className="py-3 px-4">RBAC for CS reps, MFA for admin</td>
         <td className="py-3 px-4">User access lists, MFA logs, access reviews</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Encryption</td>
-        <td className="py-3 px-4 border-r border-slate-300">Req 3, 4 - Encrypt data</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC6.6, CC6.7</td>
-        <td className="py-3 px-4 border-r border-slate-300">TLS 1.2+, database encryption, tokenization</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Encryption</td>
+        <td className="py-3 px-4">Req 3, 4 - Encrypt data</td>
+        <td className="py-3 px-4">CC6.6, CC6.7</td>
+        <td className="py-3 px-4">TLS 1.2+, database encryption, tokenization</td>
         <td className="py-3 px-4">Network configs, encryption at rest configs</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Monitoring</td>
-        <td className="py-3 px-4 border-r border-slate-300">Req 10 - Track access</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC7.2</td>
-        <td className="py-3 px-4 border-r border-slate-300">SIEM, access logs, transaction logs</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Monitoring</td>
+        <td className="py-3 px-4">Req 10 - Track access</td>
+        <td className="py-3 px-4">CC7.2</td>
+        <td className="py-3 px-4">SIEM, access logs, transaction logs</td>
         <td className="py-3 px-4">Log samples, monitoring dashboards</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Vulnerability Mgmt</td>
-        <td className="py-3 px-4 border-r border-slate-300">Req 6, 11 - Test security</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC7.1</td>
-        <td className="py-3 px-4 border-r border-slate-300">Vuln scanning, pen testing, secure SDLC</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Vulnerability Mgmt</td>
+        <td className="py-3 px-4">Req 6, 11 - Test security</td>
+        <td className="py-3 px-4">CC7.1</td>
+        <td className="py-3 px-4">Vuln scanning, pen testing, secure SDLC</td>
         <td className="py-3 px-4">Scan reports, pen test results, patching logs</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Incident Response</td>
-        <td className="py-3 px-4 border-r border-slate-300">Req 12.10 - IR plan</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC7.3-7.5</td>
-        <td className="py-3 px-4 border-r border-slate-300">Combined IR for payment and data breaches</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Incident Response</td>
+        <td className="py-3 px-4">Req 12.10 - IR plan</td>
+        <td className="py-3 px-4">CC7.3-7.5</td>
+        <td className="py-3 px-4">Combined IR for payment and data breaches</td>
         <td className="py-3 px-4">IR plan, test results, incident records</td>
       </tr>
     </tbody>
@@ -300,50 +300,50 @@ Emergency-only changes during peak weeks require documented approval processes s
 Peak season incident response requires enhanced procedures. Designate a dedicated incident commander available 24/7, establish a war room (physical or virtual) for coordinated response, commit to 15-minute response time SLAs (faster than typical 1-hour windows), implement external communication plans (status page updates, customer notifications), and schedule post-mortems after season ends to learn from incidents.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Peak Season Challenge</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Impact on SOC 2</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Control Implementation</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Testing Required</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Peak Season Challenge</th>
+        <th className="text-left py-3 px-4 font-semibold">Impact on SOC 2</th>
+        <th className="text-left py-3 px-4 font-semibold">Control Implementation</th>
+        <th className="text-left py-3 px-4 font-semibold">Testing Required</th>
         <th className="text-left py-3 px-4 font-semibold">Evidence for Audit</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">10x Traffic Spike</td>
-        <td className="py-3 px-4 border-r border-slate-300">A1.1, A1.2 - Availability</td>
-        <td className="py-3 px-4 border-r border-slate-300">Auto-scaling, load balancers, CDN</td>
-        <td className="py-3 px-4 border-r border-slate-300">Pre-season load testing</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">10x Traffic Spike</td>
+        <td className="py-3 px-4">A1.1, A1.2 - Availability</td>
+        <td className="py-3 px-4">Auto-scaling, load balancers, CDN</td>
+        <td className="py-3 px-4">Pre-season load testing</td>
         <td className="py-3 px-4">Load test results, monitoring dashboards</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">DDoS Attacks</td>
-        <td className="py-3 px-4 border-r border-slate-300">A1.2 - Security threats</td>
-        <td className="py-3 px-4 border-r border-slate-300">DDoS protection, rate limiting, WAF</td>
-        <td className="py-3 px-4 border-r border-slate-300">DDoS simulation (tabletop)</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">DDoS Attacks</td>
+        <td className="py-3 px-4">A1.2 - Security threats</td>
+        <td className="py-3 px-4">DDoS protection, rate limiting, WAF</td>
+        <td className="py-3 px-4">DDoS simulation (tabletop)</td>
         <td className="py-3 px-4">WAF logs, blocked attack reports</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Database Performance</td>
-        <td className="py-3 px-4 border-r border-slate-300">A1.1, PI1.1 - Uptime + accuracy</td>
-        <td className="py-3 px-4 border-r border-slate-300">Query optimization, caching, read replicas</td>
-        <td className="py-3 px-4 border-r border-slate-300">Performance testing</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Database Performance</td>
+        <td className="py-3 px-4">A1.1, PI1.1 - Uptime + accuracy</td>
+        <td className="py-3 px-4">Query optimization, caching, read replicas</td>
+        <td className="py-3 px-4">Performance testing</td>
         <td className="py-3 px-4">Database performance metrics</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Code Freeze Violations</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC8.1 - Change management</td>
-        <td className="py-3 px-4 border-r border-slate-300">Emergency change approval, documented freeze</td>
-        <td className="py-3 px-4 border-r border-slate-300">Change log review</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Code Freeze Violations</td>
+        <td className="py-3 px-4">CC8.1 - Change management</td>
+        <td className="py-3 px-4">Emergency change approval, documented freeze</td>
+        <td className="py-3 px-4">Change log review</td>
         <td className="py-3 px-4">Change management records during peak</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Payment Processing Failures</td>
-        <td className="py-3 px-4 border-r border-slate-300">PI1.1, PI1.2 - Transaction integrity</td>
-        <td className="py-3 px-4 border-r border-slate-300">Redundant payment paths, monitoring</td>
-        <td className="py-3 px-4 border-r border-slate-300">Payment processor failover test</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Payment Processing Failures</td>
+        <td className="py-3 px-4">PI1.1, PI1.2 - Transaction integrity</td>
+        <td className="py-3 px-4">Redundant payment paths, monitoring</td>
+        <td className="py-3 px-4">Payment processor failover test</td>
         <td className="py-3 px-4">Payment success rate metrics</td>
       </tr>
     </tbody>
@@ -397,64 +397,64 @@ Secure all vendor integrations using OAuth 2.0 for authentication and authorizat
 Major vendors should be listed as "subservice organizations" in your SOC 2 report. Include their SOC 2 reports in your report package, document complementary user entity controls (CUECs) outlining responsibilities each party maintains, and use clear examples like "Platform security depends on Stripe's PCI-compliant payment processing" showing reliance relationships.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Vendor Category</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Data Access</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Risk Level</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Due Diligence Required</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">SOC 2 Criteria</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Vendor Category</th>
+        <th className="text-left py-3 px-4 font-semibold">Data Access</th>
+        <th className="text-left py-3 px-4 font-semibold">Risk Level</th>
+        <th className="text-left py-3 px-4 font-semibold">Due Diligence Required</th>
+        <th className="text-left py-3 px-4 font-semibold">SOC 2 Criteria</th>
         <th className="text-left py-3 px-4 font-semibold">Example Vendors</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Payment Processing</td>
-        <td className="py-3 px-4 border-r border-slate-300">Payment data, customer PII</td>
-        <td className="py-3 px-4 border-r border-slate-300">CRITICAL</td>
-        <td className="py-3 px-4 border-r border-slate-300">PCI DSS Level 1, SOC 2 Type II</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC9.1, CC9.2, CC6.7</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Payment Processing</td>
+        <td className="py-3 px-4">Payment data, customer PII</td>
+        <td className="py-3 px-4">CRITICAL</td>
+        <td className="py-3 px-4">PCI DSS Level 1, SOC 2 Type II</td>
+        <td className="py-3 px-4">CC9.1, CC9.2, CC6.7</td>
         <td className="py-3 px-4">Stripe, PayPal, Adyen</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Email Marketing</td>
-        <td className="py-3 px-4 border-r border-slate-300">Customer email, purchase history</td>
-        <td className="py-3 px-4 border-r border-slate-300">HIGH</td>
-        <td className="py-3 px-4 border-r border-slate-300">SOC 2 Type II, DPA/BAA</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC9.1, CC9.2, P1.1</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Email Marketing</td>
+        <td className="py-3 px-4">Customer email, purchase history</td>
+        <td className="py-3 px-4">HIGH</td>
+        <td className="py-3 px-4">SOC 2 Type II, DPA/BAA</td>
+        <td className="py-3 px-4">CC9.1, CC9.2, P1.1</td>
         <td className="py-3 px-4">Mailchimp, Klaviyo</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Fulfillment</td>
-        <td className="py-3 px-4 border-r border-slate-300">Shipping address, order details</td>
-        <td className="py-3 px-4 border-r border-slate-300">HIGH</td>
-        <td className="py-3 px-4 border-r border-slate-300">SOC 2 preferred, security questionnaire</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC9.1, CC9.2</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Fulfillment</td>
+        <td className="py-3 px-4">Shipping address, order details</td>
+        <td className="py-3 px-4">HIGH</td>
+        <td className="py-3 px-4">SOC 2 preferred, security questionnaire</td>
+        <td className="py-3 px-4">CC9.1, CC9.2</td>
         <td className="py-3 px-4">ShipBob, Flexport</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Analytics</td>
-        <td className="py-3 px-4 border-r border-slate-300">Behavioral data, PII</td>
-        <td className="py-3 px-4 border-r border-slate-300">MEDIUM</td>
-        <td className="py-3 px-4 border-r border-slate-300">Security questionnaire, privacy policy review</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC9.1, P1.1</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Analytics</td>
+        <td className="py-3 px-4">Behavioral data, PII</td>
+        <td className="py-3 px-4">MEDIUM</td>
+        <td className="py-3 px-4">Security questionnaire, privacy policy review</td>
+        <td className="py-3 px-4">CC9.1, P1.1</td>
         <td className="py-3 px-4">Segment, Mixpanel</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Fraud Prevention</td>
-        <td className="py-3 px-4 border-r border-slate-300">Transaction data, risk signals</td>
-        <td className="py-3 px-4 border-r border-slate-300">HIGH</td>
-        <td className="py-3 px-4 border-r border-slate-300">SOC 2 Type II</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC9.1, CC9.2</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Fraud Prevention</td>
+        <td className="py-3 px-4">Transaction data, risk signals</td>
+        <td className="py-3 px-4">HIGH</td>
+        <td className="py-3 px-4">SOC 2 Type II</td>
+        <td className="py-3 px-4">CC9.1, CC9.2</td>
         <td className="py-3 px-4">Sift, Riskified</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">CDN/Hosting</td>
-        <td className="py-3 px-4 border-r border-slate-300">Public web content only</td>
-        <td className="py-3 px-4 border-r border-slate-300">LOW</td>
-        <td className="py-3 px-4 border-r border-slate-300">Basic security review</td>
-        <td className="py-3 px-4 border-r border-slate-300">CC9.1</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">CDN/Hosting</td>
+        <td className="py-3 px-4">Public web content only</td>
+        <td className="py-3 px-4">LOW</td>
+        <td className="py-3 px-4">Basic security review</td>
+        <td className="py-3 px-4">CC9.1</td>
         <td className="py-3 px-4">Cloudflare, Fastly</td>
       </tr>
     </tbody>

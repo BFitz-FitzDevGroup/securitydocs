@@ -1,0 +1,188 @@
+---
+title: "SOC 2 for HealthTech Companies: Navigating HIPAA and Healthcare Compliance"
+excerpt: "Guide to SOC 2 compliance for healthtech companies. Covers HIPAA overlap, PHI scope, BAA requirements, dual framework strategy, and the Privacy criteria."
+date: "2025-12-23"
+category: "SOC 2 Compliance"
+readTime: "19 min read"
+author: "SecurityDocs Team"
+---
+
+HealthTech companies face a compliance landscape that no other industry quite matches. You're building software that handles some of the most sensitive data imaginable — patient diagnoses, medication histories, mental health records, genetic information — and you're answering to two overlapping but distinct compliance frameworks: HIPAA and SOC 2.
+
+Most healthtech founders hit this realization around the same time: your first hospital customer asks for your SOC 2 report, and your compliance advisor says you need to think about HIPAA too. Suddenly you're staring at two frameworks, trying to figure out where they overlap, where they diverge, and whether you can tackle both without doubling your compliance budget.
+
+The practical answer is that SOC 2 and HIPAA complement each other more than they conflict, but the devil is in the details. Understanding those details — especially around PHI scope, Business Associate Agreements, and the Privacy Trust Service Criteria — is what separates healthtech companies that navigate compliance efficiently from those that spend months going in circles.
+
+## Why HealthTech Companies Need Both SOC 2 and HIPAA
+
+HIPAA is a legal requirement. If your software touches protected health information (PHI), you're either a covered entity or a business associate under HIPAA, and compliance isn't optional. The question isn't whether HIPAA applies — it's how to satisfy it.
+
+SOC 2, on the other hand, is voluntary. No regulator requires it. But the healthcare industry has increasingly adopted SOC 2 as a market expectation. Hospitals, health systems, and large healthcare organizations routinely request SOC 2 reports from their technology vendors as part of procurement. Without a SOC 2 report, you may not be disqualified outright, but you'll face longer sales cycles, more extensive security questionnaires, and a competitive disadvantage against vendors who do have one.
+
+The strategic calculation is straightforward. HIPAA compliance is the cost of doing business in healthcare. SOC 2 compliance is the cost of doing business efficiently — it replaces dozens of individual security questionnaires with a single independently audited report. Together, they form a compliance foundation that opens doors across the healthcare ecosystem.
+
+This doesn't mean you need to pursue both simultaneously from day one. For many early-stage healthtech companies, the right sequence is to implement HIPAA-compliant practices first (because they're legally required), then layer on SOC 2 when you reach the stage where enterprise healthcare customers are requesting it. Our guide on [preparing for your first SOC 2 audit](/blog/soc2-preparation-90-days) covers the timeline considerations for getting started.
+
+## Understanding the HIPAA and SOC 2 Overlap
+
+HIPAA and SOC 2 both care about protecting sensitive data, but they approach it from different angles. HIPAA is prescriptive in some areas and principle-based in others. SOC 2 is entirely principle-based, with flexibility in how you satisfy the Trust Service Criteria. The overlap is substantial, which means effort invested in one framework pays dividends for the other.
+
+### Where They Align
+
+**Access controls.** Both frameworks require that you restrict access to sensitive data based on role and need. HIPAA's "minimum necessary" standard and SOC 2's CC6.1-CC6.3 requirements both demand that users only access the data they need to perform their jobs. Implementing role-based access control, MFA, and regular access reviews satisfies requirements in both frameworks.
+
+**Encryption.** HIPAA's technical safeguards require encryption of PHI at rest and in transit (or a documented risk assessment explaining why encryption is not "reasonable and appropriate," which is a hard argument to make in 2025). SOC 2's CC6.7 has similar expectations. Implementing AES-256 for data at rest and TLS 1.2+ for data in transit covers both frameworks.
+
+**Audit logging.** HIPAA requires audit controls that record and examine activity in systems containing PHI. SOC 2's CC7.2 requires logging of system activities. One comprehensive logging implementation — capturing authentication events, data access, configuration changes, and administrative actions — serves both purposes.
+
+**Incident response.** Both frameworks require documented incident response procedures. HIPAA has specific breach notification timelines (60 days for individuals, immediate for breaches affecting 500+ people), while SOC 2 requires that incidents be identified, responded to, and resolved. A single incident response plan can satisfy both, with a HIPAA-specific notification addendum.
+
+**Risk assessment.** HIPAA's Security Rule requires periodic risk assessments of ePHI. SOC 2's CC3.1-CC3.4 requires risk assessment of your control environment. Our [risk assessment guide](/blog/soc2-risk-assessment-process) covers how to build a risk assessment that addresses both frameworks in a single process.
+
+**Vendor management.** HIPAA requires that business associates (vendors handling PHI) sign Business Associate Agreements. SOC 2's CC9.2 requires vendor risk assessment. These are complementary — BAAs address the contractual obligation while vendor security assessments address the operational assurance.
+
+### Where They Diverge
+
+**PHI scope vs. SOC 2 scope.** HIPAA applies specifically to PHI — individually identifiable health information. SOC 2 applies to whatever systems and data you define in your system description. Your SOC 2 scope might be broader (covering customer data that isn't PHI) or narrower (covering only your core platform while HIPAA obligations extend to every system that touches PHI).
+
+**Regulatory enforcement.** HIPAA is enforced by the Office for Civil Rights (OCR) with real penalties — fines range from $100 to $50,000 per violation, with annual maximums up to $1.5 million per violation category. SOC 2 has no regulatory enforcement. A failed SOC 2 audit means a qualified report that might cost you customers, but nobody fines you.
+
+**Patient rights.** HIPAA grants patients specific rights: access to their records, the right to request corrections, the right to an accounting of disclosures. SOC 2 has no equivalent individual rights requirements (though the Privacy criteria touches on some of these concepts).
+
+**Physical safeguards.** HIPAA explicitly addresses physical safeguards for systems processing PHI — workstation security, facility access controls, device and media controls. SOC 2 addresses physical security under CC6.4 but with less specificity about healthcare-specific physical security scenarios.
+
+## The Privacy Trust Service Criteria for HealthTech
+
+Most SOC 2 audits cover only the Security criteria (it's the only required criterion). HealthTech companies should seriously consider adding the Privacy criteria to their SOC 2 scope. Here's why.
+
+The Privacy criteria (P1.0 through P8.0) addresses how personal information is collected, used, retained, disclosed, and disposed of. For a healthtech company, these privacy principles align closely with HIPAA's privacy requirements and provide additional assurance to your healthcare customers that you take data privacy seriously.
+
+### Key Privacy Criteria for HealthTech
+
+**P1.0 — Notice.** You must provide notice about your privacy practices — what data you collect, how you use it, who you share it with, and how individuals can exercise their rights. For a healthtech company, this should align with your HIPAA Notice of Privacy Practices.
+
+**P2.0 — Choice and Consent.** Individuals should have choices about how their personal information is used. In healthcare, this gets nuanced — much PHI use is permitted for treatment, payment, and healthcare operations without explicit consent, but other uses require authorization.
+
+**P3.0 — Collection.** Personal information should be collected only for the purposes identified in your notice. This aligns with HIPAA's minimum necessary standard.
+
+**P5.0 — Use, Retention, and Disposal.** Personal information should be used only for the purposes identified, retained only as long as necessary, and disposed of securely. HIPAA has record retention requirements (six years for certain documents), and your disposal procedures should address both SOC 2 and HIPAA requirements.
+
+**P6.0 — Disclosure.** Disclosures of personal information should be limited to the purposes identified in your notice. For healthtech, this maps to HIPAA's rules about permissible disclosures.
+
+Adding the Privacy criteria increases audit scope and cost, but for healthtech companies, it strengthens your competitive position. When a hospital evaluates two vendors and one has a SOC 2 with the Privacy criteria while the other has Security only, the Privacy-inclusive report demonstrates deeper commitment to patient data protection.
+
+## PHI Scope: Getting the Boundaries Right
+
+One of the trickiest aspects of healthtech compliance is understanding what constitutes PHI and ensuring your SOC 2 scope properly accounts for it.
+
+### What Qualifies as PHI
+
+PHI is any individually identifiable health information that is created, received, maintained, or transmitted by a covered entity or business associate. The "individually identifiable" part is key — health information becomes PHI when it can be connected to a specific person.
+
+The 18 HIPAA identifiers that make health information individually identifiable include: names, dates (except year), phone numbers, email addresses, Social Security numbers, medical record numbers, health plan beneficiary numbers, account numbers, certificate/license numbers, vehicle identifiers, device identifiers, web URLs, IP addresses, biometric identifiers, full-face photographs, and any other unique identifying number.
+
+For healthtech companies, common pitfalls include:
+
+**Application logs containing PHI.** If your application logs include patient names, medical record numbers, or other identifiers alongside health information, those logs are PHI. Your logging infrastructure, log aggregation service, and error tracking tools all become systems processing PHI.
+
+**Analytics data that reconstitutes PHI.** Even if you strip obvious identifiers, combinations of quasi-identifiers (date of birth, zip code, gender, diagnosis) can re-identify individuals. De-identification under HIPAA requires either expert determination or application of the Safe Harbor method (removing all 18 identifiers plus any other information that could identify an individual).
+
+**Development and staging environments.** If developers use copies of production data that include PHI, your development environments fall under HIPAA. Many healthtech companies address this by using synthetic data for development, which removes the compliance burden from non-production environments entirely.
+
+**Backup systems.** Backups containing PHI are PHI. Your backup storage, retention, and disposal practices must comply with HIPAA, and those systems should be within your SOC 2 scope.
+
+### Aligning PHI Scope with SOC 2 Scope
+
+Your SOC 2 system description defines the boundaries of your audit. For healthtech companies, this boundary should encompass all systems that process, store, or transmit PHI — plus any additional systems your SOC 2 covers.
+
+The common mistake is defining SOC 2 scope too narrowly, excluding systems that handle PHI. If your SOC 2 covers your application and database but excludes your logging infrastructure and backup systems, and those systems contain PHI, you have a HIPAA compliance gap that your SOC 2 report doesn't address.
+
+The recommended approach is to define your SOC 2 scope to include all systems involved in your service delivery, which naturally encompasses your PHI-processing systems. This creates a single compliance boundary that serves both frameworks.
+
+## Business Associate Agreements in the SOC 2 Context
+
+Business Associate Agreements (BAAs) are contractual requirements under HIPAA. Any vendor that creates, receives, maintains, or transmits PHI on your behalf must sign a BAA before you share PHI with them. No exceptions, no informal arrangements, no "we'll get to it later."
+
+### BAAs and Your SOC 2 Vendor Management
+
+Your SOC 2 vendor management program (CC9.2) should track BAA status alongside other vendor security assessments. For each vendor in your inventory that handles PHI, your records should document:
+
+- Whether a BAA is in place
+- When the BAA was executed
+- When it was last reviewed or updated
+- What PHI the vendor has access to
+- Whether the vendor's own compliance certifications (SOC 2, HITRUST) have been verified
+
+When your auditor reviews your [vendor management program](/blog/soc2-vendor-management), they'll verify that BAAs are in place for applicable vendors. A missing BAA for a vendor that processes PHI is a significant finding that affects both your HIPAA compliance and your SOC 2 audit results.
+
+### Cloud Provider BAAs
+
+Every major cloud provider offers BAAs: AWS, GCP, Azure, and most healthcare-focused SaaS platforms. These BAAs are typically standardized and non-negotiable, but they require you to configure and use the services in compliance with the provider's guidelines.
+
+AWS, for example, requires that you use services designated as HIPAA-eligible and that you configure them according to their HIPAA implementation guidance. Running PHI workloads on non-eligible AWS services violates the BAA. Your SOC 2 evidence should demonstrate that your cloud infrastructure configuration aligns with your cloud provider's BAA requirements.
+
+## Building a Dual Compliance Strategy
+
+Rather than managing HIPAA and SOC 2 as separate programs with separate documentation, build a unified compliance program that satisfies both.
+
+### Unified Policy Framework
+
+Write policies that address both frameworks simultaneously. Your Information Security Policy should reference both HIPAA Security Rule requirements and SOC 2 Common Criteria. Your Incident Response Plan should include both HIPAA breach notification procedures and SOC 2 incident management requirements. This eliminates redundant documentation and reduces the maintenance burden.
+
+The key is to identify the stricter requirement in each area and implement to that standard. If HIPAA requires 6-year document retention and your SOC 2 auditor expects 3 years, implement 6-year retention and you've satisfied both. If SOC 2 requires formal risk assessment and HIPAA requires risk assessment with specific ePHI considerations, build one risk assessment process that covers ePHI specifically within the broader SOC 2 framework.
+
+### Unified Control Implementation
+
+Most security controls serve both frameworks. Implement controls once, document them once, and map them to both HIPAA safeguards and SOC 2 criteria. A control mapping matrix — listing each control alongside the HIPAA safeguards and SOC 2 criteria it satisfies — demonstrates this unified approach to auditors and regulators.
+
+For a detailed comparison of compliance frameworks and how they overlap, our [certification comparison guide](/blog/compliance-certification-comparison) provides side-by-side analysis that's particularly useful for healthtech companies weighing multiple frameworks.
+
+### Evidence Collection
+
+Collect evidence that serves both frameworks. Your access review documentation supports both HIPAA's access control requirements and SOC 2's CC6.1-CC6.3. Your encryption configuration documentation supports both HIPAA's technical safeguards and SOC 2's CC6.7. Your training records support both HIPAA's training requirements and SOC 2's CC1.4.
+
+Build your [evidence collection process](/blog/soc2-evidence-collection-process) with both frameworks in mind from the start. Each piece of evidence should be tagged with the HIPAA safeguards and SOC 2 criteria it supports, making it easy to produce the right documentation for each audience.
+
+## Common HealthTech Compliance Mistakes
+
+Having worked with healthtech companies navigating dual compliance, certain mistakes appear repeatedly.
+
+### Treating HIPAA and SOC 2 as Completely Separate
+
+Companies that run two parallel compliance programs — one for HIPAA and one for SOC 2 — spend roughly twice the effort for marginal additional benefit. The overlap is substantial enough that a unified approach is both more efficient and more effective. Auditors actually view integrated compliance programs more favorably than separate ones because integration demonstrates organizational maturity.
+
+### Underestimating PHI Scope
+
+Almost every healthtech company underestimates where PHI exists in their systems on first assessment. PHI tends to leak into logging systems, error reports, analytics pipelines, email systems, and development environments. Conduct a thorough data flow mapping exercise before defining your compliance scope. The time spent mapping data flows saves far more time than discovering out-of-scope PHI during an audit.
+
+### Ignoring the Privacy Criteria
+
+HealthTech companies that skip the Privacy criteria in their SOC 2 miss an opportunity to differentiate. The marginal cost of adding Privacy to a SOC 2 audit that already covers Security is modest compared to the value it provides in healthcare procurement conversations.
+
+### Over-Relying on BAAs
+
+A signed BAA doesn't mean a vendor is secure. It means they've contractually committed to protecting PHI. Whether they actually do so depends on their security practices, which you should assess through the vendor management process described above. BAAs are necessary but not sufficient.
+
+### Not Planning for Breach Notification
+
+HIPAA breach notification requirements are specific and time-bound. You must notify affected individuals within 60 days, report breaches affecting 500+ individuals to OCR and media immediately, and report smaller breaches in an annual log. Your incident response plan must include HIPAA-specific notification procedures, and your team should practice the notification process through tabletop exercises.
+
+## HealthTech Compliance Roadmap
+
+For healthtech companies building compliance from the ground up, here's a practical sequence:
+
+**Months 1-2:** Implement HIPAA fundamentals — risk assessment focusing on ePHI, BAAs with all applicable vendors, workforce training, encryption of PHI at rest and in transit, basic access controls and audit logging.
+
+**Months 3-4:** Expand to SOC 2 preparation — formalize policies, build your control framework, define your system description, begin continuous evidence collection. Leverage the HIPAA work you've already done.
+
+**Months 5-6:** Engage a SOC 2 auditor for a readiness assessment. Address gaps. Prepare for the formal audit.
+
+**Months 7-9:** Complete your SOC 2 Type I audit. This gives you a point-in-time report to share with customers while you build the operational history needed for Type II.
+
+**Months 10-18:** Operate under your controls for the Type II observation period. Maintain HIPAA compliance continuously. Complete your [SOC 2 Type II audit](/blog/soc2-type1-vs-type2).
+
+This timeline is aggressive but achievable for a focused team. The key efficiency is building compliance once for both frameworks rather than sequentially.
+
+For healthtech companies that want to accelerate the documentation phase, our [Complete Bundle](/products/complete-bundle) includes policy templates, evidence explanation guides, and documentation frameworks that align with both SOC 2 and HIPAA requirements. The policies are designed to be customized for your specific environment while providing the structural foundation that both frameworks require.
+
+Healthcare compliance is complex, but it's not insurmountable. The companies that navigate it successfully are the ones that understand the frameworks as complementary rather than competing, build unified programs rather than parallel ones, and invest in getting the fundamentals right before worrying about edge cases. Your patients' data deserves the protection, and your customers will reward the investment.

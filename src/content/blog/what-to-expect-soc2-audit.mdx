@@ -1,0 +1,270 @@
+---
+title: "What to Expect During Your SOC 2 Audit: A Day-by-Day Walkthrough"
+excerpt: "Know exactly what happens during a SOC 2 audit. Covers the PBC list, kickoff meetings, evidence walkthroughs, testing, exceptions, and report delivery."
+date: "2026-02-03"
+category: "SOC 2 Compliance"
+readTime: "15 min read"
+author: "SecurityDocs Team"
+---
+
+The SOC 2 audit process is shrouded in mystery for first-time companies. You've spent months preparing — writing policies, implementing controls, collecting evidence — and now the audit is approaching. What actually happens? Who do you need in which meetings? What will the auditor ask? How long does the whole thing take? And what happens if something goes wrong?
+
+Understanding the SOC 2 audit process before it begins transforms the experience from stressful to manageable. Auditors aren't adversaries trying to catch you in mistakes. They're evaluators who want to verify that your controls work as described. When you know what they're looking for and how they'll look for it, you can prepare your team, organize your evidence, and walk into the audit with confidence rather than anxiety.
+
+This guide provides a day-by-day walkthrough of a typical SOC 2 audit, from the pre-audit kickoff through report delivery. The timeline assumes a Type II audit with a standard scope, though the process is similar for [Type I audits](/blog/soc2-type1-vs-type2) — just shorter, since there's no observation period to evaluate. Whether this is your first audit or your fifth, knowing what's coming makes everything smoother.
+
+## Before the Audit: Setting the Stage
+
+The audit doesn't start on day one of fieldwork. Several important activities happen in the weeks before your auditor arrives (virtually or physically).
+
+### Engagement Letter and Scope Confirmation
+
+Weeks or months before fieldwork, you'll sign an engagement letter with your audit firm. This document specifies the scope of the audit (which Trust Service Criteria are included), the audit period (for Type II, typically 6-12 months), the timeline for fieldwork and report delivery, fees, and both parties' responsibilities.
+
+Review the scope carefully. Most SaaS companies include Security (required) and Availability, with some adding Confidentiality or Processing Integrity based on customer requirements. Adding or removing criteria after the engagement letter is signed can delay the audit and increase costs. Our guide on [choosing a SOC 2 auditor](/blog/how-to-choose-soc2-auditor) covers how to evaluate scope decisions and auditor fit.
+
+### The PBC List: Your Evidence Request
+
+The PBC (Prepared by Client) list is the single most important document in your pre-audit preparation. It's a detailed list of every piece of evidence your auditor will need to examine. Think of it as the audit's table of contents — every item on the list maps to a specific control or criterion the auditor must evaluate.
+
+A typical PBC list for a SOC 2 Type II audit contains 80-150 items, organized by control area. Here's a representative sample of what you'll see:
+
+**Governance and Organization:** Organizational chart, list of board/management committee meetings, risk assessment documentation, information security policy, employee handbook excerpts covering security responsibilities.
+
+**Access Control:** User listings for all in-scope systems, MFA configuration evidence, new hire access provisioning records, termination access removal evidence, quarterly access review documentation, privileged access inventory.
+
+**Change Management:** Change management policy, sample change tickets showing the approval workflow, evidence of code review processes, deployment logs, emergency change documentation.
+
+**Operations and Monitoring:** Incident response plan, incident log for the audit period, monitoring and alerting configuration, vulnerability scan results, penetration test reports, patch management evidence.
+
+**Backup and Recovery:** Backup configuration evidence, backup monitoring reports, disaster recovery plan, DR test results.
+
+**Vendor Management:** Vendor inventory, vendor security assessments, critical vendor SOC 2 reports or security certifications.
+
+**Risk Management:** Risk assessment methodology, risk register, risk treatment plans.
+
+You'll receive the PBC list weeks before fieldwork. Don't wait to start gathering evidence — many items take time to collect, especially if you need to pull historical records or coordinate with team members. The [evidence collection process](/blog/soc2-evidence-collection-process) is where most of the audit preparation work happens.
+
+### Pre-Audit Internal Review
+
+Before the auditor begins, conduct an internal review of your controls. Walk through the PBC list item by item and verify that every piece of evidence exists, is current, and actually demonstrates what it's supposed to demonstrate.
+
+Common issues found during internal review include policies that reference procedures the company no longer follows, access review documentation from six months ago but nothing more recent, backup monitoring reports showing failures that were never investigated, and change management tickets with missing approvals. Finding these issues now gives you time to remediate them. Finding them during the audit gives you an exception on your report.
+
+If you haven't done a formal [readiness assessment](/blog/soc2-readiness-assessment), the pre-audit review serves as your last chance to catch gaps. Allocate at least two weeks for this review, with time to fix any issues discovered.
+
+## Week 1: Kickoff and Planning
+
+### The Kickoff Meeting
+
+The audit formally begins with a kickoff meeting, typically lasting 60-90 minutes. Attendees usually include the audit engagement partner or manager, one or two audit staff members, your security or compliance lead, your CTO or VP of Engineering, and optionally, representatives from IT, HR, and operations.
+
+The kickoff covers several topics. The auditor will confirm the audit scope, timeline, and logistics. They'll walk through the PBC list, clarifying any items you have questions about. They'll explain their testing approach — how they select samples, what constitutes a "pass" vs. a "fail," and how they handle exceptions. They'll identify key contacts for each control area and schedule walkthrough meetings for the coming weeks.
+
+The kickoff is your opportunity to ask questions. Good questions to ask include: How many samples will you select for testing? (Typically 25-50 depending on the control and population size.) What's your threshold for exceptions before it becomes a qualified opinion? How do you handle controls that were implemented partway through the audit period? What format do you prefer for evidence — screenshots, exports, live demonstrations?
+
+### Evidence Submission
+
+After the kickoff, evidence submission begins in earnest. Most audit firms use a secure portal where you upload evidence mapped to each PBC list item. Some auditors accept evidence via encrypted email or shared drives, but portal-based submission is standard.
+
+Organize your evidence clearly. For each PBC item, provide the specific evidence requested (not a folder of loosely related documents), a brief description of what the evidence demonstrates, and timestamps showing the evidence falls within the audit period. Auditors review dozens of audit engagements — making their job easier by organizing your evidence thoughtfully creates goodwill and reduces back-and-forth requests.
+
+Submit evidence as it becomes ready rather than waiting until everything is complete. Auditors typically begin reviewing evidence as it arrives, which spreads their workload and gives you earlier feedback on any issues.
+
+## Weeks 2-3: Walkthrough Meetings
+
+Walkthrough meetings are where the auditor gains a deep understanding of how your controls actually operate. These meetings typically last 30-60 minutes each and cover specific control areas. Expect 5-8 walkthrough meetings over a two-week period.
+
+### How Walkthroughs Work
+
+In each walkthrough, the auditor asks the control owner to describe the process from start to finish, while the auditor follows along with your documented policy. They're looking for two things: that the process as described matches the documented policy, and that the process as operated achieves the control objective.
+
+For example, in an access control walkthrough, the auditor might ask: "Walk me through what happens when a new employee joins the engineering team. Who initiates the access request? Who approves it? What systems does the new hire get access to? How is MFA configured on their accounts? How long does the whole process take?"
+
+The control owner — typically the person who runs the process day-to-day — walks through each step, ideally showing a recent real example. The auditor takes notes, asks follow-up questions, and may request additional evidence for anything that's unclear.
+
+### Common Walkthrough Topics
+
+**Access management walkthrough:** User provisioning, deprovisioning, MFA enforcement, quarterly access reviews, privileged access management.
+
+**Change management walkthrough:** How code goes from development to production, who approves changes, how changes are tested, how emergency changes are handled, and how all of this is documented.
+
+**Incident response walkthrough:** How incidents are detected, escalated, investigated, resolved, and documented. The auditor may ask about specific incidents during the audit period.
+
+**Monitoring and logging walkthrough:** What's logged, where logs are stored, how alerts are configured, who responds to alerts, and how monitoring gaps are identified and addressed.
+
+**Vendor management walkthrough:** How vendors are identified, assessed, monitored, and reviewed. The auditor will ask about specific critical vendors and what due diligence was performed.
+
+**Backup and recovery walkthrough:** Backup frequency, monitoring, testing, and the disaster recovery plan. The auditor will ask about the most recent DR test and its results.
+
+### Tips for Successful Walkthroughs
+
+Prepare the control owners in advance. They should review the relevant policy, have a recent example ready to walk through, and understand that the auditor's questions aren't accusations — they're verification. Nervousness causes people to over-explain or go off-topic, which extends the meeting and sometimes creates confusion.
+
+Be honest. If a process isn't always followed perfectly, say so. Auditors are experienced enough to know that no process is perfect 100% of the time. What they can't tolerate is dishonesty — if they discover later that a walkthrough description didn't match reality, it undermines trust and leads to expanded testing.
+
+Keep answers focused on the question asked. A common mistake is volunteering information that wasn't requested, which can open lines of inquiry the auditor wouldn't have otherwise pursued. Answer thoroughly but don't ramble.
+
+## Weeks 3-4: Testing and Evidence Examination
+
+After walkthroughs, the auditor enters the testing phase. This is where they independently verify that your controls operated effectively throughout the audit period — not just during the walkthrough demonstration.
+
+### How Auditors Test Controls
+
+Auditors use several testing approaches:
+
+**Inquiry** — asking questions of personnel. This was largely covered in walkthroughs but continues throughout testing. The auditor may interview additional team members to corroborate what the control owner described.
+
+**Observation** — watching a process in action. The auditor might ask to watch a deployment happen in real-time, observe how an alert is handled, or see how a new user's access is provisioned.
+
+**Inspection** — examining evidence directly. This is the bulk of testing. The auditor reviews the evidence you submitted — access logs, change tickets, backup reports, access review documentation — and verifies that it demonstrates the control operating as described.
+
+**Reperformance** — the auditor independently performs a procedure to verify the result. For example, they might log into a system and attempt to access a resource they shouldn't have access to, verifying that your access controls are working.
+
+### Sample-Based Testing
+
+Auditors don't examine every instance of every control. Instead, they select samples. For a control that operates daily (like backups), they might select 25-30 days from the audit period and verify backups were completed on each of those days. For a control that operates on specific events (like user provisioning), they might select 10-15 new hires and verify that access was properly provisioned and approved for each one.
+
+Sample sizes are guided by professional standards and the auditor's risk assessment. Higher-risk controls get larger samples. If the auditor finds exceptions in their initial sample, they'll typically expand the sample to determine whether the exception is isolated or systemic.
+
+Understanding sample-based testing is important because it means a single missed control instance doesn't necessarily doom your audit. If the auditor samples 25 change tickets and 24 have proper approvals, that one exception will likely be noted but won't result in a qualified opinion (unless the exception reveals a systemic issue). However, if 5 out of 25 change tickets are missing approvals, that suggests a control design or operating effectiveness problem.
+
+### Supplemental Requests
+
+During testing, auditors almost always identify evidence they need that wasn't on the original PBC list. These supplemental requests (sometimes called "additional information requests" or "follow-up questions") are normal and shouldn't cause alarm.
+
+Supplemental requests typically fall into three categories: evidence that was submitted but wasn't clear enough (the auditor needs a different format or additional context), evidence for specific transactions the auditor sampled and wants to examine more closely, and evidence to corroborate something described in a walkthrough that wasn't covered by the original PBC list.
+
+Respond to supplemental requests promptly. Delayed responses slow down the audit and can extend fieldwork beyond the planned timeline, which sometimes increases fees. Designate someone on your team as the primary point of contact for supplemental requests and give them authority to pull evidence from other team members quickly.
+
+## Handling Exceptions and Findings
+
+Even well-prepared companies sometimes receive exceptions — instances where a control didn't operate as designed. Understanding how exceptions are handled reduces the anxiety when they arise.
+
+### What Constitutes an Exception
+
+An exception occurs when the auditor finds that a control was not operating effectively for a specific instance or period. Examples include a terminated employee whose access wasn't removed for 5 days (when your policy says 24 hours), a production deployment without documented approval, a backup that failed and wasn't noticed for 3 days, and a quarterly access review that was conducted 6 weeks late.
+
+Not every imperfection is an exception. Auditors apply materiality — a backup that ran 2 hours late one time probably isn't material. A backup that failed entirely for a week probably is. The auditor uses professional judgment to determine whether a deviation is significant enough to report.
+
+### How Exceptions Are Communicated
+
+Auditors typically communicate exceptions as they're found, giving you an opportunity to provide additional context or evidence that might resolve the issue. Sometimes an apparent exception disappears when the full context is understood — the access that appeared to be for a terminated employee was actually for a contractor with the same name, or the "unapproved" deployment was actually an automated security patch covered by a pre-approved change category.
+
+If the exception stands after discussion, the auditor documents it. You'll have an opportunity to provide a management response — your explanation of why the exception occurred and what you've done (or plan to do) to prevent it from recurring.
+
+### Impact on Your Report
+
+A few isolated exceptions typically don't affect the overall audit opinion. They'll appear in the report as noted exceptions, along with your management response, but the auditor's opinion will still be unqualified (clean).
+
+A pattern of exceptions in the same control area — or exceptions suggesting a control was never really operating — can lead to a qualified opinion. This means the auditor found that specific controls were not effective during the audit period. A qualified opinion isn't the end of the world, but it does mean your customers and prospects will see the qualification when they review your report.
+
+The [common SOC 2 audit findings](/blog/common-soc2-audit-findings) guide covers the most frequent exceptions and how to prevent them. Reviewing this before your audit and addressing any gaps proactively is one of the best investments of your preparation time.
+
+## Post-Fieldwork: Draft Report and Review
+
+After testing is complete, the auditor prepares a draft SOC 2 report. This typically takes 2-4 weeks after fieldwork ends, though some firms are faster.
+
+### Draft Report Review
+
+You'll receive the draft report for review before it's finalized. This is your opportunity to review the system description for accuracy (the auditor writes this based on your input, and factual errors sometimes creep in), review any exceptions and ensure your management responses are included, verify that the scope and audit period are correctly stated, and flag any factual inaccuracies in the auditor's description of your controls.
+
+The draft review is not an opportunity to argue about exceptions that were already discussed and agreed upon during fieldwork. If you disagree with how an exception was characterized, this is the time to raise it, but be prepared to provide new evidence or context that the auditor didn't have during testing.
+
+### Report Finalization
+
+After you've reviewed the draft and provided feedback, the auditor finalizes the report. The final report undergoes quality review within the audit firm (typically by a partner who wasn't directly involved in the engagement) before being issued.
+
+The final report is a PDF document, usually 30-80 pages, that includes the auditor's opinion (unqualified or qualified), the system description (an overview of your organization, systems, and controls), the control criteria and the auditor's test results, any exceptions noted, and your management's response to exceptions.
+
+You'll receive the report and can distribute it to customers, prospects, and partners who request it. Most companies share SOC 2 reports under NDA, using a secure sharing platform or a request process through their sales team.
+
+### Timeline: From Kickoff to Report
+
+The complete SOC 2 audit process timeline typically looks like this:
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Phase</th>
+        <th className="text-left py-3 px-4 font-semibold">Duration</th>
+        <th className="text-left py-3 px-4 font-semibold">Key Activities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Pre-audit preparation</td>
+        <td className="py-3 px-4">2-4 weeks</td>
+        <td className="py-3 px-4">PBC list review, evidence gathering, internal review</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Kickoff and planning</td>
+        <td className="py-3 px-4">1 week</td>
+        <td className="py-3 px-4">Kickoff meeting, evidence submission begins</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Walkthroughs</td>
+        <td className="py-3 px-4">2 weeks</td>
+        <td className="py-3 px-4">5-8 walkthrough meetings with control owners</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Testing</td>
+        <td className="py-3 px-4">2-3 weeks</td>
+        <td className="py-3 px-4">Sample-based testing, supplemental evidence requests</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Exception resolution</td>
+        <td className="py-3 px-4">1-2 weeks</td>
+        <td className="py-3 px-4">Discussion of findings, management responses</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Draft report</td>
+        <td className="py-3 px-4">2-4 weeks</td>
+        <td className="py-3 px-4">Auditor prepares draft, your team reviews</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Final report</td>
+        <td className="py-3 px-4">1-2 weeks</td>
+        <td className="py-3 px-4">Quality review, finalization, delivery</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Total</td>
+        <td className="py-3 px-4 font-medium">10-16 weeks</td>
+        <td className="py-3 px-4 font-medium">From kickoff to final report</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+This timeline assumes a straightforward audit without significant scope changes or major findings requiring extended testing. First-time audits tend to be on the longer end of this range, while repeat audits are often faster because the auditor is already familiar with your environment.
+
+For detailed guidance on the full preparation timeline, including the months leading up to the audit, see our [90-day preparation guide](/blog/soc2-preparation-90-days).
+
+## Preparing Your Team for Audit Success
+
+The auditor interacts with real people on your team, and those interactions significantly impact how smoothly the audit goes. Preparing your team is as important as preparing your evidence.
+
+### Who Needs to Be Involved
+
+Not everyone in your organization needs to participate in the audit, but several key roles will be called upon. Your compliance or security lead serves as the primary audit coordinator, managing evidence submission and scheduling. Your CTO or VP of Engineering participates in the kickoff and is available for escalation. Engineering managers or team leads serve as control owners for change management, access control, and monitoring walkthroughs. Your HR representative provides employee lifecycle evidence (onboarding, terminations, background checks). Your IT administrator or DevOps lead covers infrastructure, backup, and system administration topics.
+
+Brief each person on what to expect in their interactions with the auditor. Emphasize that walkthroughs are conversations, not interrogations. Encourage honest, concise answers. Remind them that saying "I don't know, let me find out" is far better than guessing or providing inaccurate information.
+
+### Common First-Time Audit Mistakes
+
+Teams new to SOC 2 audits often make preventable mistakes that extend the audit or create unnecessary findings.
+
+Over-committing in policies is a frequent issue. If your policy says you conduct monthly vulnerability scans but you actually scan quarterly, that's a finding — not because quarterly scanning is inadequate, but because your actual practice doesn't match your policy. Write policies that describe what you actually do, not what you aspire to do.
+
+Submitting evidence that doesn't match the request is another common problem. If the auditor asks for "a list of all users with access to the production database," don't submit a screenshot of the application's user management page. Provide exactly what was requested — a complete list of database users with their permission levels.
+
+Delayed responses to supplemental requests create the most friction. Every day of delay extends the audit. Assign a single person to triage supplemental requests and set a 24-48 hour response target.
+
+### The Value of Good Preparation
+
+The difference between a smooth audit and a painful one almost always comes down to preparation. Companies that have organized evidence, trained control owners, and addressed known gaps before the auditor arrives consistently finish faster, receive fewer findings, and build a positive relationship with their auditor that pays dividends in future audits.
+
+The [Complete Bundle](/products/complete-bundle) at $549.95 provides policy templates, evidence collection worksheets, and audit preparation checklists that give your team a structured framework for audit readiness. Combined with this walkthrough guide, you'll have a clear picture of what's coming and the tools to handle it confidently.
+
+Walking into your SOC 2 audit prepared — knowing the process, having evidence organized, and having your team briefed — turns what many companies dread into a manageable, predictable process. The audit isn't something to survive. It's a professional engagement that, when prepared for properly, validates the hard work your team has already done to build a secure, well-managed operation.

@@ -110,71 +110,71 @@ A **SaaS app marketplace** defines scope as platform infrastructure (AWS-hosted)
 A **professional services marketplace** scopes platform as service provider profile and verification system, customer-provider matching engine, project management and communication tools, payment escrow and processing, and review and dispute resolution system. Service provider responsibilities (CUECs) include service delivery quality, customer data protection during engagement, professional liability insurance, compliance with customer security requirements, and incident notification to platform and customers.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">System Component</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Platform Responsibility</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Vendor Responsibility (CUEC)</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Shared Responsibility</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">System Component</th>
+        <th className="text-left py-3 px-4 font-semibold">Platform Responsibility</th>
+        <th className="text-left py-3 px-4 font-semibold">Vendor Responsibility (CUEC)</th>
+        <th className="text-left py-3 px-4 font-semibold">Shared Responsibility</th>
         <th className="text-left py-3 px-4 font-semibold">SOC 2 Coverage</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Platform Infrastructure</td>
-        <td className="py-3 px-4 border-r border-slate-300">Full ownership - servers, DBs, networks</td>
-        <td className="py-3 px-4 border-r border-slate-300">None</td>
-        <td className="py-3 px-4 border-r border-slate-300">N/A</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Platform Infrastructure</td>
+        <td className="py-3 px-4">Full ownership - servers, DBs, networks</td>
+        <td className="py-3 px-4">None</td>
+        <td className="py-3 px-4">N/A</td>
         <td className="py-3 px-4">In scope - platform audit</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Authentication/Authorization</td>
-        <td className="py-3 px-4 border-r border-slate-300">Platform login, MFA, access control</td>
-        <td className="py-3 px-4 border-r border-slate-300">Vendor employee access to vendor systems</td>
-        <td className="py-3 px-4 border-r border-slate-300">Both maintain their systems</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Authentication/Authorization</td>
+        <td className="py-3 px-4">Platform login, MFA, access control</td>
+        <td className="py-3 px-4">Vendor employee access to vendor systems</td>
+        <td className="py-3 px-4">Both maintain their systems</td>
         <td className="py-3 px-4">Platform in scope; vendor = CUEC</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Vendor Product/Service</td>
-        <td className="py-3 px-4 border-r border-slate-300">Platform APIs, distribution</td>
-        <td className="py-3 px-4 border-r border-slate-300">Product security, quality, testing</td>
-        <td className="py-3 px-4 border-r border-slate-300">Platform provides tools; vendor uses securely</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Vendor Product/Service</td>
+        <td className="py-3 px-4">Platform APIs, distribution</td>
+        <td className="py-3 px-4">Product security, quality, testing</td>
+        <td className="py-3 px-4">Platform provides tools; vendor uses securely</td>
         <td className="py-3 px-4">Platform tools in scope; product = CUEC</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Customer Data</td>
-        <td className="py-3 px-4 border-r border-slate-300">Platform data storage, encryption, access control</td>
-        <td className="py-3 px-4 border-r border-slate-300">Appropriate data handling during service delivery</td>
-        <td className="py-3 px-4 border-r border-slate-300">Both protect at their layer</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Customer Data</td>
+        <td className="py-3 px-4">Platform data storage, encryption, access control</td>
+        <td className="py-3 px-4">Appropriate data handling during service delivery</td>
+        <td className="py-3 px-4">Both protect at their layer</td>
         <td className="py-3 px-4">Platform in scope; vendor = CUEC</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Payment Processing</td>
-        <td className="py-3 px-4 border-r border-slate-300">Payment infrastructure, escrow, disbursement</td>
-        <td className="py-3 px-4 border-r border-slate-300">Accurate invoicing, refund policies</td>
-        <td className="py-3 px-4 border-r border-slate-300">Platform processes; vendor provides data</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Payment Processing</td>
+        <td className="py-3 px-4">Payment infrastructure, escrow, disbursement</td>
+        <td className="py-3 px-4">Accurate invoicing, refund policies</td>
+        <td className="py-3 px-4">Platform processes; vendor provides data</td>
         <td className="py-3 px-4">Platform in scope; vendor accuracy = CUEC</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Incident Response</td>
-        <td className="py-3 px-4 border-r border-slate-300">Platform incidents, coordination</td>
-        <td className="py-3 px-4 border-r border-slate-300">Vendor-specific incidents</td>
-        <td className="py-3 px-4 border-r border-slate-300">Both respond to incidents in their domains</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Incident Response</td>
+        <td className="py-3 px-4">Platform incidents, coordination</td>
+        <td className="py-3 px-4">Vendor-specific incidents</td>
+        <td className="py-3 px-4">Both respond to incidents in their domains</td>
         <td className="py-3 px-4">Platform in scope; vendor = CUEC</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Security Monitoring</td>
-        <td className="py-3 px-4 border-r border-slate-300">Platform SIEM, log analysis, threat detection</td>
-        <td className="py-3 px-4 border-r border-slate-300">Vendor system monitoring</td>
-        <td className="py-3 px-4 border-r border-slate-300">Platform monitors platform; vendor monitors vendor</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Security Monitoring</td>
+        <td className="py-3 px-4">Platform SIEM, log analysis, threat detection</td>
+        <td className="py-3 px-4">Vendor system monitoring</td>
+        <td className="py-3 px-4">Platform monitors platform; vendor monitors vendor</td>
         <td className="py-3 px-4">Platform in scope; vendor = CUEC</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Vendor Onboarding</td>
-        <td className="py-3 px-4 border-r border-slate-300">Security verification, approval, ongoing monitoring</td>
-        <td className="py-3 px-4 border-r border-slate-300">Meeting security requirements, providing documentation</td>
-        <td className="py-3 px-4 border-r border-slate-300">Platform verifies; vendor complies</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Vendor Onboarding</td>
+        <td className="py-3 px-4">Security verification, approval, ongoing monitoring</td>
+        <td className="py-3 px-4">Meeting security requirements, providing documentation</td>
+        <td className="py-3 px-4">Platform verifies; vendor complies</td>
         <td className="py-3 px-4">Platform process in scope; vendor compliance = CUEC</td>
       </tr>
     </tbody>
@@ -224,71 +224,71 @@ Implement automated testing of tenant boundaries. Run nightly tests attempting c
 [FinTech marketplaces](/blog/soc2-for-fintech), [healthcare platforms](/blog/soc2-for-healthtech), and [e-commerce marketplaces](/blog/soc2-for-ecommerce) face particularly intense scrutiny due to regulatory requirements and sensitive data. Auditors understand the stakes—segregation failures in these industries create massive liability.
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100 border-b-2 border-slate-300">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Architecture Option</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Segregation Strength</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Cost</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Operational Complexity</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Audit Evidence</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Best For</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Architecture Option</th>
+        <th className="text-left py-3 px-4 font-semibold">Segregation Strength</th>
+        <th className="text-left py-3 px-4 font-semibold">Cost</th>
+        <th className="text-left py-3 px-4 font-semibold">Operational Complexity</th>
+        <th className="text-left py-3 px-4 font-semibold">Audit Evidence</th>
+        <th className="text-left py-3 px-4 font-semibold">Best For</th>
         <th className="text-left py-3 px-4 font-semibold">SOC 2 Considerations</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Shared Schema</td>
-        <td className="py-3 px-4 border-r border-slate-300">Application-level (weakest)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Lowest</td>
-        <td className="py-3 px-4 border-r border-slate-300">Simplest</td>
-        <td className="py-3 px-4 border-r border-slate-300">Application code review, permission testing</td>
-        <td className="py-3 px-4 border-r border-slate-300">High vendor count, small vendors</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Shared Schema</td>
+        <td className="py-3 px-4">Application-level (weakest)</td>
+        <td className="py-3 px-4">Lowest</td>
+        <td className="py-3 px-4">Simplest</td>
+        <td className="py-3 px-4">Application code review, permission testing</td>
+        <td className="py-3 px-4">High vendor count, small vendors</td>
         <td className="py-3 px-4">Requires extensive application testing</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Separate Schema</td>
-        <td className="py-3 px-4 border-r border-slate-300">Database-level (moderate)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Moderate</td>
-        <td className="py-3 px-4 border-r border-slate-300">Moderate</td>
-        <td className="py-3 px-4 border-r border-slate-300">DB access logs, schema isolation proof</td>
-        <td className="py-3 px-4 border-r border-slate-300">Mid-market vendors, moderate count</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Separate Schema</td>
+        <td className="py-3 px-4">Database-level (moderate)</td>
+        <td className="py-3 px-4">Moderate</td>
+        <td className="py-3 px-4">Moderate</td>
+        <td className="py-3 px-4">DB access logs, schema isolation proof</td>
+        <td className="py-3 px-4">Mid-market vendors, moderate count</td>
         <td className="py-3 px-4">Easier to audit than shared schema</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Separate Database</td>
-        <td className="py-3 px-4 border-r border-slate-300">Physical DB-level (strong)</td>
-        <td className="py-3 px-4 border-r border-slate-300">High</td>
-        <td className="py-3 px-4 border-r border-slate-300">Complex</td>
-        <td className="py-3 px-4 border-r border-slate-300">Infrastructure logs, separate DB configs</td>
-        <td className="py-3 px-4 border-r border-slate-300">Enterprise vendors, high security needs</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Separate Database</td>
+        <td className="py-3 px-4">Physical DB-level (strong)</td>
+        <td className="py-3 px-4">High</td>
+        <td className="py-3 px-4">Complex</td>
+        <td className="py-3 px-4">Infrastructure logs, separate DB configs</td>
+        <td className="py-3 px-4">Enterprise vendors, high security needs</td>
         <td className="py-3 px-4">Strong segregation story for auditors</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Separate Infrastructure</td>
-        <td className="py-3 px-4 border-r border-slate-300">Complete isolation (strongest)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Highest</td>
-        <td className="py-3 px-4 border-r border-slate-300">Most complex</td>
-        <td className="py-3 px-4 border-r border-slate-300">Network segregation, separate audits</td>
-        <td className="py-3 px-4 border-r border-slate-300">Regulated industries, government</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Separate Infrastructure</td>
+        <td className="py-3 px-4">Complete isolation (strongest)</td>
+        <td className="py-3 px-4">Highest</td>
+        <td className="py-3 px-4">Most complex</td>
+        <td className="py-3 px-4">Network segregation, separate audits</td>
+        <td className="py-3 px-4">Regulated industries, government</td>
         <td className="py-3 px-4">May require separate SOC 2 per tenant</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Hybrid Tiered</td>
-        <td className="py-3 px-4 border-r border-slate-300">Varies by tier</td>
-        <td className="py-3 px-4 border-r border-slate-300">Balanced</td>
-        <td className="py-3 px-4 border-r border-slate-300">Moderate-High</td>
-        <td className="py-3 px-4 border-r border-slate-300">Per-tier testing and documentation</td>
-        <td className="py-3 px-4 border-r border-slate-300">Most marketplaces - pragmatic approach</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Hybrid Tiered</td>
+        <td className="py-3 px-4">Varies by tier</td>
+        <td className="py-3 px-4">Balanced</td>
+        <td className="py-3 px-4">Moderate-High</td>
+        <td className="py-3 px-4">Per-tier testing and documentation</td>
+        <td className="py-3 px-4">Most marketplaces - pragmatic approach</td>
         <td className="py-3 px-4">Document tier controls clearly</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Serverless Multi-tenant</td>
-        <td className="py-3 px-4 border-r border-slate-300">Application + cloud-level</td>
-        <td className="py-3 px-4 border-r border-slate-300">Moderate</td>
-        <td className="py-3 px-4 border-r border-slate-300">Moderate</td>
-        <td className="py-3 px-4 border-r border-slate-300">Function-level isolation, IAM policies</td>
-        <td className="py-3 px-4 border-r border-slate-300">Modern cloud-native marketplaces</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Serverless Multi-tenant</td>
+        <td className="py-3 px-4">Application + cloud-level</td>
+        <td className="py-3 px-4">Moderate</td>
+        <td className="py-3 px-4">Moderate</td>
+        <td className="py-3 px-4">Function-level isolation, IAM policies</td>
+        <td className="py-3 px-4">Modern cloud-native marketplaces</td>
         <td className="py-3 px-4">Rely on cloud provider SOC 2 + app controls</td>
       </tr>
     </tbody>
@@ -304,43 +304,43 @@ The vendor security program is where SOC 2 compliance gets challenging for marke
 Most successful marketplaces implement tiered vendor security requirements based on risk:
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Tier</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Risk Level</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Security Requirements</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Verification</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Tier</th>
+        <th className="text-left py-3 px-4 font-semibold">Risk Level</th>
+        <th className="text-left py-3 px-4 font-semibold">Security Requirements</th>
+        <th className="text-left py-3 px-4 font-semibold">Verification</th>
         <th className="text-left py-3 px-4 font-semibold">Example Vendors</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Basic</td>
-        <td className="py-3 px-4 border-r border-slate-300">Low</td>
-        <td className="py-3 px-4 border-r border-slate-300">Terms acceptance, basic background check</td>
-        <td className="py-3 px-4 border-r border-slate-300">Checkbox attestation</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Basic</td>
+        <td className="py-3 px-4">Low</td>
+        <td className="py-3 px-4">Terms acceptance, basic background check</td>
+        <td className="py-3 px-4">Checkbox attestation</td>
         <td className="py-3 px-4">Marketing agencies, consultants with no data access</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Standard</td>
-        <td className="py-3 px-4 border-r border-slate-300">Moderate</td>
-        <td className="py-3 px-4 border-r border-slate-300">Security questionnaire, MFA enforcement, data handling agreement</td>
-        <td className="py-3 px-4 border-r border-slate-300">Questionnaire + platform checks</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Standard</td>
+        <td className="py-3 px-4">Moderate</td>
+        <td className="py-3 px-4">Security questionnaire, MFA enforcement, data handling agreement</td>
+        <td className="py-3 px-4">Questionnaire + platform checks</td>
         <td className="py-3 px-4">Most marketplace vendors with typical data access</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Advanced</td>
-        <td className="py-3 px-4 border-r border-slate-300">High</td>
-        <td className="py-3 px-4 border-r border-slate-300">SOC 2 Type II report, penetration testing, code review rights</td>
-        <td className="py-3 px-4 border-r border-slate-300">Report review + testing</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Advanced</td>
+        <td className="py-3 px-4">High</td>
+        <td className="py-3 px-4">SOC 2 Type II report, penetration testing, code review rights</td>
+        <td className="py-3 px-4">Report review + testing</td>
         <td className="py-3 px-4">Integration partners, API vendors, data processors</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">Enterprise</td>
-        <td className="py-3 px-4 border-r border-slate-300">Critical</td>
-        <td className="py-3 px-4 border-r border-slate-300">SOC 2 + ISO 27001, annual audits, shared incident response</td>
-        <td className="py-3 px-4 border-r border-slate-300">Multiple certifications + onsite assessment</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Enterprise</td>
+        <td className="py-3 px-4">Critical</td>
+        <td className="py-3 px-4">SOC 2 + ISO 27001, annual audits, shared incident response</td>
+        <td className="py-3 px-4">Multiple certifications + onsite assessment</td>
         <td className="py-3 px-4">Payment processors, infrastructure providers, major integrations</td>
       </tr>
     </tbody>
@@ -388,50 +388,50 @@ SOC 2 auditors expect continuous vendor monitoring, not just onboarding checks:
 While all SOC 2 Trust Services Criteria apply to marketplaces, certain criteria require enhanced controls due to the multi-party nature:
 
 <div className="overflow-x-auto my-8">
-  <table className="min-w-full border-collapse border border-slate-300">
+  <table className="min-w-full border-collapse">
     <thead>
-      <tr className="bg-slate-100">
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">TSC Criterion</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Standard SaaS Focus</th>
-        <th className="text-left py-3 px-4 font-semibold border-r border-slate-300">Marketplace Enhancement</th>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">TSC Criterion</th>
+        <th className="text-left py-3 px-4 font-semibold">Standard SaaS Focus</th>
+        <th className="text-left py-3 px-4 font-semibold">Marketplace Enhancement</th>
         <th className="text-left py-3 px-4 font-semibold">Why It Matters More</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">CC6.1-6.3 (Access Control)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Employee access to customer data</td>
-        <td className="py-3 px-4 border-r border-slate-300">Employee + vendor + cross-vendor access segregation</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">CC6.1-6.3 (Access Control)</td>
+        <td className="py-3 px-4">Employee access to customer data</td>
+        <td className="py-3 px-4">Employee + vendor + cross-vendor access segregation</td>
         <td className="py-3 px-4">Must prevent vendors accessing competitors' data</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">CC6.6 (Logical Segregation)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Customer data isolation</td>
-        <td className="py-3 px-4 border-r border-slate-300">Multi-level: buyers, vendors, sub-vendors</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">CC6.6 (Logical Segregation)</td>
+        <td className="py-3 px-4">Customer data isolation</td>
+        <td className="py-3 px-4">Multi-level: buyers, vendors, sub-vendors</td>
         <td className="py-3 px-4">Three-party data relationships require architectural controls</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">CC9.1-9.2 (Vendor Risk)</td>
-        <td className="py-3 px-4 border-r border-slate-300">5-15 critical vendors</td>
-        <td className="py-3 px-4 border-r border-slate-300">Potentially thousands of vendors to manage</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">CC9.1-9.2 (Vendor Risk)</td>
+        <td className="py-3 px-4">5-15 critical vendors</td>
+        <td className="py-3 px-4">Potentially thousands of vendors to manage</td>
         <td className="py-3 px-4">Vendor breach = platform audit exception</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">CC7.3-7.5 (Incident Response)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Internal incidents</td>
-        <td className="py-3 px-4 border-r border-slate-300">Internal + vendor-caused incidents</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">CC7.3-7.5 (Incident Response)</td>
+        <td className="py-3 px-4">Internal incidents</td>
+        <td className="py-3 px-4">Internal + vendor-caused incidents</td>
         <td className="py-3 px-4">Must coordinate response across multiple parties</td>
       </tr>
-      <tr className="border-b border-slate-200">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">C1.1-C1.2 (Confidentiality)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Often not required</td>
-        <td className="py-3 px-4 border-r border-slate-300">Usually required for vendor business data</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">C1.1-C1.2 (Confidentiality)</td>
+        <td className="py-3 px-4">Often not required</td>
+        <td className="py-3 px-4">Usually required for vendor business data</td>
         <td className="py-3 px-4">Vendor sales data, pricing, strategies are trade secrets</td>
       </tr>
-      <tr className="border-b border-slate-200 bg-slate-50">
-        <td className="py-3 px-4 font-medium border-r border-slate-300">PI1.1-PI1.3 (Processing Integrity)</td>
-        <td className="py-3 px-4 border-r border-slate-300">Application accuracy</td>
-        <td className="py-3 px-4 border-r border-slate-300">Transaction splits, payments, commissions accuracy</td>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">PI1.1-PI1.3 (Processing Integrity)</td>
+        <td className="py-3 px-4">Application accuracy</td>
+        <td className="py-3 px-4">Transaction splits, payments, commissions accuracy</td>
         <td className="py-3 px-4">Financial accuracy across three parties critical</td>
       </tr>
     </tbody>

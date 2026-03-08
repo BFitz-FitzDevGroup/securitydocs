@@ -1,0 +1,279 @@
+---
+title: "SOC 2 vs HIPAA: Key Differences and When You Need Both"
+excerpt: "Understand the differences between SOC 2 and HIPAA compliance. Covers regulatory scope, PHI requirements, BAAs, control overlaps, enforcement, and when you need both."
+date: "2026-01-16"
+category: "SOC 2 Compliance"
+readTime: "17 min read"
+author: "SecurityDocs Team"
+---
+
+SOC 2 vs HIPAA is one of the most common compliance questions for SaaS companies entering the healthcare space. Both frameworks address data security, both require documented controls and evidence, and both come up in customer security questionnaires. But they serve fundamentally different purposes, apply to different organizations, and carry very different consequences for non-compliance. Confusing them — or assuming that one substitutes for the other — can leave your company exposed to regulatory penalties, contract violations, or lost deals.
+
+The short answer is that SOC 2 is a voluntary attestation framework that demonstrates your general security posture. HIPAA is a federal law that mandates specific protections for health information. Some companies need only SOC 2. Some need only HIPAA. A growing number of SaaS companies selling to healthcare organizations need both — and understanding where they overlap and where they diverge is essential to building an efficient compliance program that doesn't duplicate work unnecessarily.
+
+This guide breaks down the specific differences between SOC 2 and HIPAA, explains the scenarios where you need one or both, maps the control overlaps so you can leverage shared efforts, and addresses the practical questions that come up when companies navigate dual compliance.
+
+## The Fundamental Difference: Voluntary vs Mandatory
+
+The most important distinction between SOC 2 and HIPAA is their legal nature.
+
+**SOC 2** is a voluntary attestation standard developed by the American Institute of Certified Public Accountants (AICPA). No law requires you to get a SOC 2 report. You pursue SOC 2 because customers demand it, because it helps you win enterprise deals, or because you want to demonstrate your security commitment. If you fail a SOC 2 audit, there are no government fines. Your report simply reflects the findings, and customers decide whether the findings are acceptable.
+
+**HIPAA** (Health Insurance Portability and Accountability Act) is a federal law, enforced by the U.S. Department of Health and Human Services Office for Civil Rights (OCR). If your organization is a covered entity or a business associate that handles protected health information (PHI), HIPAA compliance is not optional. Non-compliance can result in civil monetary penalties ranging from $100 to $50,000 per violation (up to $1.5 million per year per violation category), criminal penalties including imprisonment, and mandatory breach notification requirements that can damage your reputation even when the breach itself is contained.
+
+This distinction matters practically because it changes the cost-benefit calculation entirely. With SOC 2, you weigh the cost of compliance against the business opportunities it unlocks. With HIPAA, you weigh the cost of compliance against the certainty of penalties if you handle PHI without adequate safeguards. The question isn't whether HIPAA compliance is worth the investment — it's whether you can afford to handle health data without it.
+
+For a broader comparison of SOC 2 against other frameworks including ISO 27001 and PCI DSS, see our [compliance certification comparison](/blog/compliance-certification-comparison).
+
+## Who Each Framework Applies To
+
+### SOC 2 Applicability
+
+SOC 2 applies to any service organization that stores, processes, or transmits customer data. There's no legal trigger — it's driven by market demand. Practically, SOC 2 becomes relevant when enterprise customers include it in their vendor assessment requirements, when you're listed on a marketplace that requires SOC 2 attestation, or when you're competing against vendors who already have SOC 2 reports.
+
+SaaS companies, cloud service providers, managed service providers, data centers, and any B2B company that handles customer data are typical candidates for SOC 2. The framework is industry-agnostic — it applies equally to a marketing analytics platform and a healthcare data warehouse.
+
+### HIPAA Applicability
+
+HIPAA applies to two categories of organizations:
+
+**Covered entities** are health plans, healthcare clearinghouses, and healthcare providers who conduct certain transactions electronically. If you're a hospital, an insurance company, or a medical practice, you're a covered entity.
+
+**Business associates** are organizations that perform functions or activities on behalf of a covered entity that involve access to protected health information. This is where SaaS companies enter the picture. If your software stores, processes, or transmits PHI on behalf of a healthcare provider or health plan, you're a business associate — even if healthcare isn't your primary market.
+
+The business associate definition catches more technology companies than many founders realize. A project management tool used by a hospital to coordinate patient care, a cloud storage provider where a clinic uploads medical records, an email marketing platform that sends appointment reminders containing patient names — all of these scenarios can trigger business associate status.
+
+The determination isn't based on whether you call yourself a healthcare company. It's based on whether you access, store, process, or transmit PHI. If you do, HIPAA applies regardless of your industry classification.
+
+## What Each Framework Protects
+
+### SOC 2: Trust Service Criteria
+
+SOC 2 is organized around five Trust Service Criteria, of which Security is the only mandatory category:
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Trust Service Criteria</th>
+        <th className="text-left py-3 px-4 font-semibold">Focus</th>
+        <th className="text-left py-3 px-4 font-semibold">Required?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Security (Common Criteria)</td>
+        <td className="py-3 px-4">Protection against unauthorized access</td>
+        <td className="py-3 px-4">Yes — always included</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Availability</td>
+        <td className="py-3 px-4">System uptime and performance commitments</td>
+        <td className="py-3 px-4">Optional — selected based on customer needs</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Processing Integrity</td>
+        <td className="py-3 px-4">Accurate and complete data processing</td>
+        <td className="py-3 px-4">Optional</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Confidentiality</td>
+        <td className="py-3 px-4">Protection of confidential information</td>
+        <td className="py-3 px-4">Optional</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Privacy</td>
+        <td className="py-3 px-4">Personal information handling practices</td>
+        <td className="py-3 px-4">Optional</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+SOC 2 doesn't define what specific data you must protect or how. Instead, it requires you to define your own commitments (through your system description) and then demonstrate that your controls effectively support those commitments. The framework is flexible — you choose which Trust Service Criteria to include based on what matters to your customers and your service.
+
+### HIPAA: Protected Health Information
+
+HIPAA is laser-focused on one category of data: protected health information (PHI). PHI includes any individually identifiable health information that relates to an individual's physical or mental health condition, the provision of healthcare, or payment for healthcare — and that identifies the individual or could reasonably be used to identify them.
+
+PHI encompasses medical records, diagnosis codes, treatment plans, prescription histories, lab results, billing records, insurance information, and any other health-related data linked to an identifiable person. It also includes ePHI — electronic protected health information — which is PHI in electronic form.
+
+HIPAA's requirements are prescriptive relative to SOC 2. The Security Rule specifies administrative, physical, and technical safeguards that must be implemented. The Privacy Rule governs how PHI can be used and disclosed. The Breach Notification Rule mandates specific actions when PHI is compromised.
+
+## Detailed Comparison
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Dimension</th>
+        <th className="text-left py-3 px-4 font-semibold">SOC 2</th>
+        <th className="text-left py-3 px-4 font-semibold">HIPAA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Legal basis</td>
+        <td className="py-3 px-4">AICPA professional standard</td>
+        <td className="py-3 px-4">Federal law (45 CFR Parts 160, 162, 164)</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Compliance type</td>
+        <td className="py-3 px-4">Voluntary attestation</td>
+        <td className="py-3 px-4">Mandatory for covered entities and business associates</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Data scope</td>
+        <td className="py-3 px-4">All customer data (defined by you)</td>
+        <td className="py-3 px-4">Protected health information (PHI) only</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Enforcement body</td>
+        <td className="py-3 px-4">None — market-driven</td>
+        <td className="py-3 px-4">HHS Office for Civil Rights (OCR)</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Penalties for non-compliance</td>
+        <td className="py-3 px-4">No legal penalties; customer/market consequences</td>
+        <td className="py-3 px-4">Civil fines up to $1.5M/year; criminal penalties</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Assessment type</td>
+        <td className="py-3 px-4">Third-party CPA audit</td>
+        <td className="py-3 px-4">Self-assessment or third-party audit</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Assessment frequency</td>
+        <td className="py-3 px-4">Annual (Type II: continuous observation period)</td>
+        <td className="py-3 px-4">Ongoing compliance; no mandatory audit cycle</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Deliverable</td>
+        <td className="py-3 px-4">SOC 2 report (Type I or Type II)</td>
+        <td className="py-3 px-4">No formal report; compliance demonstrated through documentation</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Breach notification</td>
+        <td className="py-3 px-4">No federal requirement</td>
+        <td className="py-3 px-4">60-day notification to individuals; HHS notification; media notification for breaches affecting 500+</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Contractual requirement</td>
+        <td className="py-3 px-4">Customer contracts and vendor assessments</td>
+        <td className="py-3 px-4">Business Associate Agreement (BAA) legally required</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Framework flexibility</td>
+        <td className="py-3 px-4">High — choose applicable Trust Service Criteria</td>
+        <td className="py-3 px-4">Low — safeguards are specified by regulation</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Encryption requirements</td>
+        <td className="py-3 px-4">Defined by your policies</td>
+        <td className="py-3 px-4">Addressable safeguard — must implement or document why alternative is equivalent</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Business Associate Agreements: The HIPAA Contractual Layer
+
+One of the most consequential differences between SOC 2 and HIPAA is the Business Associate Agreement (BAA). When a covered entity shares PHI with a business associate, HIPAA requires a signed BAA that specifies how the business associate will protect PHI, what uses and disclosures are permitted, the business associate's obligations to report breaches, and that the business associate will ensure any subcontractors who access PHI also agree to the same restrictions.
+
+SOC 2 has no equivalent contractual requirement. Customers may include SOC 2 reporting obligations in their contracts, but there's no standardized agreement mandated by the framework.
+
+For SaaS companies entering healthcare, the BAA has practical implications beyond legal compliance. Your BAA defines the boundaries of what you can and cannot do with PHI. It creates legal liability for breaches. And it establishes a contractual chain — if you share PHI with a subprocessor, you need a BAA with that subprocessor too.
+
+This is where vendor management becomes critical. Your [vendor management program](/blog/soc2-vendor-management) needs to track which vendors access PHI, ensure BAAs are in place with each one, and verify that those vendors maintain adequate safeguards. Our guide on [SOC 2 for healthtech companies](/blog/soc2-for-healthtech) covers the specific vendor management considerations for organizations handling health data.
+
+## When You Need SOC 2 Only
+
+You need SOC 2 alone when your customers require security attestation but your data doesn't include PHI. This covers the vast majority of B2B SaaS companies: marketing platforms, project management tools, analytics services, developer tools, financial software, HR platforms, and CRM systems that don't touch health information.
+
+Even if some of your customers are healthcare organizations, you may not need HIPAA if your software doesn't access, store, or process PHI. A healthcare organization using your general-purpose project management tool for administrative (non-clinical) tasks probably isn't sharing PHI with you. The question is always about the data, not the customer's industry.
+
+## When You Need HIPAA Only
+
+Pure HIPAA-only scenarios are less common for SaaS companies because HIPAA doesn't produce a report that non-healthcare customers can evaluate. Organizations that need only HIPAA are typically direct healthcare providers (hospitals, clinics, physician practices) or companies whose entire customer base is healthcare and whose contracts are exclusively governed by HIPAA requirements.
+
+Most SaaS companies that need HIPAA also benefit from SOC 2 because it provides a standardized report format that all customers — not just healthcare ones — can evaluate during vendor assessment.
+
+## When You Need Both
+
+The "both" scenario is increasingly common and applies when your SaaS company handles PHI on behalf of healthcare customers and also serves non-healthcare customers who require SOC 2 attestation. A cloud-based EHR system, a patient engagement platform, a telehealth solution, a healthcare analytics platform, or a general-purpose platform that adds healthcare customers — all of these typically need both.
+
+The good news is that building both programs simultaneously is significantly more efficient than building them sequentially. The control overlap is substantial, which means the incremental effort of adding HIPAA to an existing SOC 2 program (or vice versa) is much smaller than building either from scratch.
+
+## Control Overlaps: Leveraging Shared Efforts
+
+The reason dual compliance is feasible without doubling your workload is that SOC 2 and HIPAA share extensive control overlap. Here's where the frameworks align:
+
+**Access controls.** Both frameworks require unique user identification, role-based access, access reviews, and termination procedures. SOC 2's CC6.1-CC6.3 maps closely to HIPAA's Access Control technical safeguard (§164.312(a)). The controls you implement for SOC 2 — MFA, least-privilege access, quarterly access reviews — largely satisfy HIPAA requirements as well.
+
+**Encryption.** SOC 2 controls for encryption in transit and at rest align with HIPAA's Transmission Security (§164.312(e)) and the encryption addressable specification. Implementing TLS for data in transit and AES-256 for data at rest satisfies both frameworks.
+
+**Audit logging.** SOC 2's CC7.1-CC7.2 logging requirements overlap significantly with HIPAA's Audit Controls (§164.312(b)). Both require logging access to sensitive data, retaining logs for defined periods, and reviewing logs for unauthorized activity.
+
+**Incident response.** SOC 2's CC7.3-CC7.5 incident response controls align with HIPAA's Security Incident Procedures (§164.308(a)(6)). The primary difference is HIPAA's specific breach notification timeline — 60 days for individual notification — which is more prescriptive than SOC 2's general incident response requirements.
+
+**Risk assessment.** Both frameworks require formal risk assessments. SOC 2's CC3.1-CC3.3 and HIPAA's Risk Analysis (§164.308(a)(1)(ii)(A)) both expect documented risk identification, evaluation, and treatment. Your [risk assessment process](/blog/soc2-risk-assessment-process) can serve both frameworks with minor adjustments to ensure PHI-specific risks are explicitly addressed.
+
+**Vendor management.** SOC 2's CC9.2 vendor management requirements and HIPAA's Business Associate provisions both require you to evaluate and manage third-party security. The key addition for HIPAA is the formal BAA requirement.
+
+**Training.** Both frameworks require security awareness training. SOC 2's CC1.4-CC1.5 and HIPAA's Security Awareness and Training (§164.308(a)(5)) both mandate employee education on security policies and threat recognition. HIPAA additionally requires training specific to PHI handling.
+
+## Control Gaps: Where HIPAA Requires More
+
+Despite the overlap, HIPAA includes requirements that SOC 2 doesn't explicitly address:
+
+**Privacy Rule compliance.** HIPAA's Privacy Rule governs the use and disclosure of PHI — when you can share it, with whom, and under what conditions. SOC 2's optional Privacy criterion covers personal information broadly but doesn't include the specific use-and-disclosure framework that HIPAA mandates.
+
+**Minimum necessary standard.** HIPAA requires that PHI access and disclosure be limited to the minimum necessary to accomplish the intended purpose. While SOC 2's least-privilege principle is similar, HIPAA's minimum necessary standard applies specifically to PHI and includes additional documentation requirements.
+
+**Individual rights.** HIPAA grants individuals specific rights over their PHI: the right to access, amend, and receive an accounting of disclosures. These patient-facing obligations have no SOC 2 equivalent. Your platform needs to support these rights operationally, which may require building features for patient data access requests, amendment workflows, and disclosure logs.
+
+**Breach notification.** HIPAA's Breach Notification Rule specifies exact timelines (60 days to individuals, annual notification to HHS for small breaches, immediate for large breaches), content requirements for notification letters, and media notification for breaches affecting 500 or more individuals. SOC 2 requires incident response procedures but doesn't prescribe notification timelines or formats.
+
+**Physical safeguard specifics.** HIPAA includes detailed physical safeguard requirements (Facility Access Controls, Workstation Use, Workstation Security, Device and Media Controls) that go beyond SOC 2's general physical security expectations.
+
+## Building an Efficient Dual Compliance Program
+
+For companies pursuing both SOC 2 and HIPAA, the most efficient approach is to build a single control framework that satisfies both, rather than maintaining two separate compliance programs.
+
+### Unified Policy Library
+
+Write policies that address both frameworks simultaneously. Your Access Control Policy can include a section specifically addressing PHI access restrictions. Your Incident Response Policy can include HIPAA-specific breach notification procedures as a supplement to the general incident response workflow. Your [policy library](/blog/writing-soc2-policies) expands to include HIPAA-specific policies (PHI Use and Disclosure, Patient Rights, Breach Notification) while shared policies serve double duty.
+
+### Integrated Risk Assessment
+
+Conduct a single risk assessment that covers both SOC 2 Trust Service Criteria risks and HIPAA-specific risks to PHI. The methodology is the same — identify threats, evaluate likelihood and impact, determine treatment — but the scope expands to explicitly address PHI-related risks: unauthorized PHI disclosure, PHI integrity issues, and PHI availability disruptions.
+
+### Combined Evidence Collection
+
+Many evidence artifacts serve both frameworks. Access review documentation proves SOC 2 CC6.1 compliance and HIPAA Access Control compliance simultaneously. Encryption configuration screenshots satisfy SOC 2 encryption requirements and HIPAA Transmission Security requirements. Training completion records demonstrate both CC1.4 and HIPAA training compliance.
+
+Organize your evidence repository with tags or folders that map each artifact to both SOC 2 criteria and HIPAA safeguards. This dual-mapping approach prevents duplication and makes it easy to produce evidence for either framework's assessment.
+
+### Practical Sequencing
+
+If you're building from scratch, start with SOC 2. Its structured audit process and formal report deliverable provide a framework for organizing your security program. Once your SOC 2 controls are operational, layer on HIPAA-specific requirements: BAAs with vendors who access PHI, breach notification procedures, Privacy Rule compliance, and individual rights support. The incremental effort is manageable because the foundation is already in place.
+
+If HIPAA is more urgent (because you're already handling PHI), start there and pursue SOC 2 shortly after. Most of your HIPAA controls will map directly to SOC 2 criteria, reducing the SOC 2 preparation timeline significantly.
+
+## Enforcement Reality
+
+Understanding enforcement differences helps calibrate your compliance investment.
+
+SOC 2 enforcement is entirely market-driven. A poor SOC 2 report may cost you a customer deal. A missing SOC 2 report may prevent you from being considered for enterprise contracts. But no government agency will fine you for not having a SOC 2 report or for having findings in one.
+
+HIPAA enforcement is regulatory and active. OCR conducts investigations based on complaints, breach reports, and periodic audits. Settlements regularly reach six and seven figures. The HIPAA Breach Notification Rule ensures that breaches become public, adding reputational damage to financial penalties. Criminal enforcement, while less common, can result in personal liability for responsible individuals.
+
+This enforcement asymmetry means that HIPAA gaps carry existential risk in a way that SOC 2 gaps typically don't. If you're handling PHI, HIPAA compliance isn't a nice-to-have — it's risk management against financial penalties that can threaten the viability of a small or mid-sized company.
+
+## Making the Decision
+
+The decision tree is straightforward: Does your software access, store, process, or transmit protected health information? If yes, you need HIPAA compliance. Do your customers (healthcare or otherwise) require a SOC 2 report? If yes, you need SOC 2. If both conditions are true, you need both.
+
+Don't assume that SOC 2 "covers" HIPAA or that HIPAA compliance makes SOC 2 unnecessary. They serve different purposes, produce different deliverables, and carry different consequences. The overlap is real and valuable for efficiency, but they're distinct programs that require distinct attention.
+
+The [SecurityDocs Complete Bundle](/products/complete-bundle) includes policy templates and evidence checklists that address SOC 2 requirements, providing a foundation that companies can extend with HIPAA-specific documentation as they enter the healthcare market. Starting with a solid SOC 2 foundation makes the path to dual compliance significantly shorter.

@@ -1,0 +1,224 @@
+---
+title: "SOC 2 Access Control: MFA, RBAC, and User Access Management"
+excerpt: "Implement SOC 2 access control requirements for CC6.1-CC6.3. Covers MFA, RBAC design, provisioning, deprovisioning, quarterly reviews, and privileged access."
+date: "2026-01-27"
+category: "SOC 2 Compliance"
+readTime: "15 min read"
+author: "SecurityDocs Team"
+---
+
+Access control is the single most common area where SOC 2 audits surface findings. Year after year, auditors report the same issues: former employees with active accounts, admin access granted to people who don't need it, missing MFA on critical systems, and no evidence of periodic access reviews. These aren't edge cases — they're the norm for companies that haven't built a deliberate access management program.
+
+SOC 2 access control requirements under CC6.1, CC6.2, and CC6.3 establish the framework for how organizations manage who can access what, how identities are verified, and how access rights change over time. The requirements are straightforward in concept but demanding in execution, because access control touches every system, every employee, and every process in your organization.
+
+The practical reality is that getting access control right doesn't require expensive IAM platforms or a dedicated security team. What it requires is clear policies, consistent processes, and the discipline to follow them every single time someone joins, changes roles, or leaves. This guide covers each component of SOC 2 access control — from MFA implementation to privileged access management — with specific guidance on what auditors expect and how to build controls that actually work.
+
+## What CC6.1, CC6.2, and CC6.3 Require
+
+The SOC 2 Trust Services Criteria break access control into three related criteria, each addressing a different aspect of the access lifecycle.
+
+**CC6.1** addresses logical and physical access controls. It requires that the entity implements logical access security software, infrastructure, and architectures over protected information assets to protect them from security events. For most SaaS companies, the physical access component is handled by your cloud provider (AWS, GCP, or Azure), whose own SOC 2 report covers physical data center security. Your responsibility is logical access — user accounts, permissions, authentication, and network access.
+
+**CC6.2** focuses on user registration and authorization. Before granting access, the entity registers and authorizes new internal and external users whose access is administered by the entity. This means you need a documented process for provisioning access, and that process must include proper authorization before access is granted. No one should be able to create their own account on a production system without going through a defined workflow.
+
+**CC6.3** addresses the management of access to protected assets. The entity authorizes, modifies, or removes access to data, software, functions, and other protected information assets based on roles, responsibilities, or the system design and changes, giving consideration to the concepts of least privilege and segregation of duties. This is where RBAC, access reviews, and deprovisioning come into play.
+
+Together, these three criteria create a complete access control lifecycle: authenticate users reliably (CC6.1), provision access through a controlled process (CC6.2), and manage access on an ongoing basis with regular reviews and timely removal (CC6.3). Auditors evaluate all three, and weaknesses in any area can result in findings on your SOC 2 report.
+
+## Multi-Factor Authentication: The Non-Negotiable Control
+
+MFA is no longer optional for SOC 2. While the Trust Services Criteria don't explicitly mandate MFA by name, every auditor considers it a baseline expectation for accessing systems that store or process sensitive data. Showing up to a SOC 2 audit without MFA on your critical systems is like showing up to a driving test without a seatbelt — technically the test covers many things, but you've already failed.
+
+### Where MFA Must Be Enabled
+
+At minimum, MFA should be enabled on every system where your team authenticates. The critical systems include your identity provider (Okta, Azure AD, Google Workspace), cloud infrastructure console (AWS, GCP, Azure), source code repositories (GitHub, GitLab, Bitbucket), CI/CD pipelines, production server access (SSH, RDP, bastion hosts), database access tools, customer data stores, email and communication platforms, and your corporate VPN.
+
+The most efficient approach is to centralize authentication through an identity provider (IdP) that enforces MFA, then connect all other systems to that IdP via SAML or OIDC. This way, MFA is enforced once at the IdP level and applies to every connected application. Users authenticate through the IdP, the IdP verifies their second factor, and a SAML assertion grants access to the target application.
+
+### MFA Methods: Not All Second Factors Are Equal
+
+Auditors accept various MFA methods, but some are stronger than others. Hardware security keys (YubiKey, Titan) are the gold standard — they're phishing-resistant and can't be intercepted remotely. Authenticator apps (Google Authenticator, Authy, Microsoft Authenticator) generate time-based one-time passwords and are widely accepted. Push notifications through apps like Duo or Okta Verify are convenient and reasonably secure, though susceptible to MFA fatigue attacks if not configured with number matching.
+
+SMS-based MFA is the weakest option. SIM swapping attacks, SS7 vulnerabilities, and social engineering make SMS codes interceptable. Most auditors still accept SMS MFA, but some will note it as a weakness, and if you're in a high-risk industry like [fintech](/blog/soc2-for-fintech), stronger methods may be expected. If you currently use SMS MFA, plan a migration path to authenticator apps or hardware keys.
+
+For [evidence collection](/blog/soc2-evidence-collection-process), capture screenshots of your IdP's MFA policy showing that MFA is required (not optional) for all users. Also capture a user listing showing MFA enrollment status — your auditor will want to verify that no users are exempted from the MFA requirement.
+
+### Handling MFA Exceptions
+
+Sometimes legitimate exceptions arise — a service account that authenticates via API key rather than interactive login, or a legacy system that doesn't support MFA. Document every exception in an MFA exception register that includes the system name, the reason MFA can't be enabled, compensating controls in place (IP restrictions, enhanced monitoring, short-lived credentials), the risk owner who approved the exception, and a review date to reassess whether the exception is still necessary.
+
+Auditors accept documented, risk-assessed exceptions. What they don't accept is systems without MFA that nobody noticed or decided to address.
+
+## Role-Based Access Control (RBAC) Design
+
+RBAC is the framework that determines what each user can do within your systems. Instead of assigning permissions to individual users, you define roles (like "Developer," "DevOps Engineer," "Support Agent," "Administrator") and assign permissions to those roles. Users receive access by being assigned to roles, not by having individual permissions configured.
+
+### Why RBAC Matters for SOC 2
+
+Auditors love RBAC because it makes access control auditable. Instead of reviewing hundreds of individual user permissions, they can review a handful of role definitions, verify that the roles have appropriate permissions, and then confirm that users are assigned to the correct roles. Without RBAC, access reviews become nearly impossible at scale, and proving least privilege becomes an exercise in reviewing every user's individual configuration.
+
+RBAC also enforces consistency. When a new developer joins the team, they receive the "Developer" role with the same permissions as every other developer. There's no risk of one developer accidentally getting production database write access because someone copy-pasted permissions from an admin account.
+
+### Designing Your Roles
+
+Start with the principle of least privilege: each role should have the minimum permissions necessary to perform its job function. A common mistake is creating roles that are too broad, effectively granting everyone near-admin access.
+
+For a typical SaaS company, the role structure might look like:
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Role</th>
+        <th className="text-left py-3 px-4 font-semibold">Infrastructure Access</th>
+        <th className="text-left py-3 px-4 font-semibold">Application Access</th>
+        <th className="text-left py-3 px-4 font-semibold">Data Access</th>
+        <th className="text-left py-3 px-4 font-semibold">Production Access</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Developer</td>
+        <td className="py-3 px-4">Dev/staging environments</td>
+        <td className="py-3 px-4">Full application code</td>
+        <td className="py-3 px-4">Test data only</td>
+        <td className="py-3 px-4">Read-only logs</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">DevOps / SRE</td>
+        <td className="py-3 px-4">All environments</td>
+        <td className="py-3 px-4">Deployment tooling</td>
+        <td className="py-3 px-4">Production data (operational)</td>
+        <td className="py-3 px-4">Full (with change management)</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Support Agent</td>
+        <td className="py-3 px-4">None</td>
+        <td className="py-3 px-4">Support tools only</td>
+        <td className="py-3 px-4">Customer data (read-only, scoped)</td>
+        <td className="py-3 px-4">None</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Engineering Manager</td>
+        <td className="py-3 px-4">Dev/staging environments</td>
+        <td className="py-3 px-4">Full application code</td>
+        <td className="py-3 px-4">Test data only</td>
+        <td className="py-3 px-4">Read-only logs</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Administrator</td>
+        <td className="py-3 px-4">All environments</td>
+        <td className="py-3 px-4">All applications</td>
+        <td className="py-3 px-4">All data</td>
+        <td className="py-3 px-4">Full</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Executive</td>
+        <td className="py-3 px-4">None</td>
+        <td className="py-3 px-4">Business intelligence tools</td>
+        <td className="py-3 px-4">Aggregated reports</td>
+        <td className="py-3 px-4">None</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+The Administrator role deserves special attention. Admin accounts should be rare — typically limited to one or two people plus a break-glass emergency account. More on privileged access management below.
+
+### Implementing RBAC Across Your Stack
+
+Consistent RBAC implementation requires mapping your role definitions to specific permissions in each system. In AWS, this means IAM policies attached to IAM groups or roles. In GitHub, it's team-level permissions. In your application, it's whatever permission system your codebase uses.
+
+The key challenge is keeping role definitions synchronized across systems. When the "Developer" role is updated to include access to a new monitoring tool, that change needs to be reflected in the monitoring tool's access configuration, not just in your RBAC documentation. Many companies use infrastructure-as-code tools like Terraform to manage access configurations across cloud providers, which creates an auditable trail of access changes and prevents configuration drift.
+
+Document your RBAC design in a role matrix that maps each role to its permissions in every system. This document becomes a primary piece of [evidence for your auditor](/blog/soc2-evidence-collection-process) and the reference point for access reviews.
+
+## Access Provisioning and Deprovisioning
+
+How access is granted and removed is just as important as what access is granted. SOC 2 requires a controlled provisioning process that ensures access is authorized before it's granted and a deprovisioning process that ensures access is removed promptly when it's no longer needed.
+
+### Provisioning: The Onboarding Workflow
+
+When a new employee joins, their manager (or HR) should submit an access request that specifies the person's role and the systems they need access to. Someone with appropriate authority — typically the employee's manager or a system owner — approves the request. Then IT or the employee themselves (through an automated workflow) provisions the access according to the role definition.
+
+The approval step is critical. Auditors will sample new hires during the audit period and ask to see the access request and approval for each one. If access was granted without documented approval — even if the access was appropriate — that's a finding.
+
+Automation helps enormously here. Identity providers like Okta and Azure AD support automated provisioning through SCIM, which can automatically create accounts in connected applications when a user is added to a group. This reduces provisioning errors and creates an automatic audit trail. Our guide on [security tools for SOC 2](/blog/security-tools-for-soc2-compliance) covers IdP options for companies at different stages.
+
+### Deprovisioning: The Critical Window
+
+Deprovisioning is where most companies get caught. An employee leaves, and their access to some systems is removed within hours, but their access to others lingers for days, weeks, or months. When your auditor pulls a list of terminated employees and cross-references it with active accounts across your systems, any gap becomes a finding.
+
+The standard expectation is that access is removed within 24 hours of termination. For involuntary terminations, access should be revoked immediately — ideally before the employee is informed of the termination.
+
+Build a deprovisioning checklist that covers every system where employees have accounts. When someone leaves, work through the entire checklist. Better yet, centralize authentication through an IdP so that disabling the IdP account immediately cuts off access to all connected applications.
+
+Don't forget about less obvious access points: shared passwords (which should be rotated when someone who knew them leaves), API keys the employee may have generated, SSH keys they added to servers, OAuth tokens connecting personal tools to company systems, and access to third-party tools where they created individual accounts outside the IdP.
+
+### Role Changes: The Forgotten Transition
+
+When employees change roles within the company — a developer promoted to engineering manager, a support agent moving to sales — their access should be updated to match their new role. This means removing access they no longer need, not just adding new access. Over time, employees who have changed roles multiple times can accumulate permissions far beyond what their current role requires, violating least privilege.
+
+Build role-change reviews into your HR workflow. When a role change is processed, trigger an access review that removes previous role permissions and grants new role permissions. Auditors specifically look for permission accumulation, and it's one of the [common findings](/blog/common-soc2-audit-findings) they flag.
+
+## Quarterly Access Reviews
+
+SOC 2 requires periodic access reviews to verify that current access rights are appropriate. Most organizations conduct these quarterly, which aligns with auditor expectations and provides a manageable review cadence.
+
+### What the Review Covers
+
+A quarterly access review examines every user account in your critical systems and verifies that the account is still needed (the person is still employed and still in a role that requires this access), the access level is appropriate (permissions match the person's current role), and no unauthorized accounts exist (no accounts that weren't provisioned through your standard process).
+
+The review should cover, at minimum, your cloud infrastructure (AWS, GCP, Azure), your application's production environment, your source code repositories, your CI/CD system, any databases or data stores, your identity provider, and any systems containing customer data.
+
+### Running the Review
+
+For each system, generate a list of all active accounts and their permissions. Send this list to the system owner or the appropriate manager for review. They should confirm each account's continued necessity and verify that permission levels are correct. Flag any accounts that should be removed or modified, and track remediation to completion.
+
+Document the review with the date it was conducted, who performed it, what systems were reviewed, what findings were identified, and what actions were taken to remediate findings. This documentation is primary evidence for your auditor.
+
+Keep the review focused and efficient. If you have 50 users across 10 systems, that's 500 account-permission pairs to review. Automate the data collection (pull user lists from APIs rather than manually screenshotting each system) and provide reviewers with clear templates that make the review process fast.
+
+If you're [preparing for SOC 2 within 90 days](/blog/soc2-preparation-90-days), conducting at least one access review before the audit starts is essential. It demonstrates that the control is operational and gives you a chance to catch and remediate issues before the auditor finds them.
+
+## Privileged Access Management
+
+Privileged accounts — those with administrative, root, or elevated access to critical systems — require additional controls because they represent the highest risk. A compromised privileged account can access, modify, or delete any data in the system. Auditors scrutinize privileged access closely.
+
+### Minimizing Privileged Accounts
+
+The first principle of privileged access management is minimizing the number of privileged accounts. Every admin account is a potential attack vector. Review your systems and determine the minimum number of people who truly need administrative access to each one. For most startups, two to three administrators per critical system is sufficient — enough for redundancy without unnecessary exposure.
+
+Remove standing admin access where possible. Instead of giving engineers permanent admin accounts, implement just-in-time (JIT) access where elevated permissions are granted for a specific time window, with a reason documented, and automatically revoked when the window expires. AWS supports this through temporary security credentials via STS AssumeRole. Tools like Teleport and StrongDM provide JIT access to servers and databases.
+
+### Break-Glass Accounts
+
+Every organization needs emergency access procedures for situations where normal access mechanisms fail — the IdP is down, the sole administrator is unreachable, or a critical incident requires immediate access. Break-glass (or emergency access) accounts provide this safety net.
+
+A break-glass account is a highly privileged account whose credentials are stored securely (in a physical safe, a sealed envelope, or a secrets manager with separate authentication) and used only in genuine emergencies. Access to the break-glass account should trigger an alert, and every use must be documented with the reason for access, the actions taken, and a post-incident review.
+
+Your auditor will ask about emergency access procedures. Having a documented break-glass process with monitoring shows maturity. Not having one suggests you haven't thought through failure scenarios.
+
+### Monitoring Privileged Activity
+
+All actions taken with privileged accounts should be logged and monitored. Enable audit logging on every system where admin access exists, and feed those logs into your [monitoring system](/blog/soc2-logging-monitoring). Set up alerts for unusual privileged activity: admin logins outside business hours, bulk data exports, permission changes, and security setting modifications.
+
+Regularly review privileged access logs — at least quarterly, alongside your standard access reviews. Look for privileged accounts that are being used for routine tasks (a sign that someone is using their admin account as their daily account) and for any unauthorized use of break-glass accounts.
+
+## Building Your SOC 2 Access Control Evidence Package
+
+When audit time comes, your auditor will request a comprehensive set of evidence related to access controls. Having this ready in advance makes the audit smoother and faster.
+
+Your evidence package should include your access control policy documenting your organization's requirements for authentication, authorization, provisioning, deprovisioning, and reviews. It should include IdP configuration showing MFA enforcement, password policies, and session timeout settings. Include your RBAC documentation — the role matrix mapping roles to permissions across all systems.
+
+Provide provisioning evidence showing access requests and approvals for users added during the audit period. Provide deprovisioning evidence showing account removal within 24 hours for any employees who left during the audit period. Include quarterly access review documentation for each review conducted during the period. Finally, include privileged access inventory listing all admin accounts and justification for each.
+
+Building this evidence package from scratch takes significant time. The [Evidence Bundle](/products/evidence) includes templates for access review worksheets, provisioning/deprovisioning logs, and privileged access inventories, giving you a structured starting point rather than a blank page.
+
+## Getting Access Control Right From Day One
+
+Access control is one of those areas where getting it right from the beginning is dramatically easier than fixing it later. Once employees are accustomed to broad access and informal provisioning, tightening controls feels like taking something away — which creates resistance and friction.
+
+Start with a centralized identity provider that enforces MFA on everything. Define clear roles with least-privilege permissions before you start granting access. Build provisioning and deprovisioning into your HR workflows so they happen automatically. Schedule quarterly access reviews and treat them as non-negotiable operational tasks, not administrative busywork.
+
+The companies that breeze through the access control portion of their SOC 2 audit are the ones that built these practices into their culture early. They're not scrambling to revoke old accounts or document ad-hoc permission grants. They have clean, consistent access records because they followed a clean, consistent process from the start. That's the goal, and everything in this guide is designed to help you get there.

@@ -1,0 +1,238 @@
+---
+title: "SOC 2 Backup and Disaster Recovery: Requirements and Implementation"
+excerpt: "Meet SOC 2 backup requirements under A1.2 and A1.3. Covers RPO/RTO, backup frequency, DR planning, annual testing, and cloud backup best practices."
+date: "2026-01-30"
+category: "SOC 2 Compliance"
+readTime: "14 min read"
+author: "SecurityDocs Team"
+---
+
+Backups are one of those controls that feel boring until they're the only thing standing between your company and a complete data loss event. SOC 2 backup requirements exist because auditors have seen what happens when organizations skip them — or worse, when organizations think they have backups but have never tested a restore. A backup that can't be restored is just a waste of storage.
+
+The Availability Trust Service Criteria, specifically A1.2 and A1.3, require organizations to maintain environmental protections, data backups, and recovery infrastructure that support the ongoing operation of the system. If your SOC 2 report scope includes the Availability criterion (and for most SaaS companies, it should), your auditor will examine your backup strategy, disaster recovery plan, and — critically — your evidence that you've actually tested both.
+
+This guide covers everything you need to meet SOC 2 backup requirements: defining your RPO and RTO, implementing backup procedures that match your risk profile, building a disaster recovery plan your auditor will accept, and testing it all to prove it actually works. The goal isn't just passing the audit — it's building resilience that protects your business and your customers' data when something inevitably goes wrong.
+
+## Understanding A1.2 and A1.3: SOC 2 Backup Requirements
+
+The Availability criterion in SOC 2 addresses system uptime, recovery, and resilience. Two sub-criteria are directly relevant to backups and disaster recovery.
+
+**A1.2** requires that environmental protections, software, data backup processes, and recovery infrastructure are designed, developed, implemented, operated, maintained, and monitored to meet the entity's availability objectives. This is the criterion that mandates you have backups, that those backups are monitored, and that the backup infrastructure itself is maintained.
+
+**A1.3** requires that recovery plan procedures support system recovery to meet the entity's availability objectives. This is where disaster recovery planning and testing come in. Having backups is necessary but not sufficient — you also need a documented plan for using those backups to restore operations, and evidence that you've tested that plan.
+
+Together, A1.2 and A1.3 create a complete picture: you must back up your data (A1.2), and you must be able to recover from those backups within acceptable timeframes (A1.3). Auditors evaluate both sides. Companies that have automated daily backups but no documented recovery plan — or that have a beautiful DR plan but have never tested it — will receive findings.
+
+Before implementing backups and DR, connect these requirements to your [risk assessment](/blog/soc2-risk-assessment-process). Your risk register should identify data loss and system unavailability as risks, and your backup and DR controls should be the mitigations mapped to those risks. This risk-based approach satisfies your auditor and ensures your backup strategy is proportional to actual business risks.
+
+## RPO and RTO: Defining Your Recovery Objectives
+
+Two metrics drive every backup and disaster recovery decision: Recovery Point Objective (RPO) and Recovery Time Objective (RTO). Getting these right determines your backup frequency, your recovery architecture, and ultimately whether your customers experience acceptable downtime during an incident.
+
+**Recovery Point Objective (RPO)** answers the question: how much data can you afford to lose? If your RPO is 1 hour, that means you can tolerate losing up to 1 hour of data. Your backups must run at least hourly to meet this objective. If your RPO is 24 hours, daily backups suffice. If your RPO is zero (no data loss acceptable), you need real-time replication rather than periodic backups.
+
+**Recovery Time Objective (RTO)** answers the question: how quickly do you need to be back online? If your RTO is 4 hours, that means the entire recovery process — detecting the incident, initiating recovery, restoring data, verifying functionality — must complete within 4 hours.
+
+### Setting Appropriate RPO and RTO
+
+RPO and RTO should be driven by business requirements, not arbitrary numbers. Talk to your stakeholders and understand the actual impact of data loss and downtime. A B2B SaaS product that processes real-time financial transactions has very different requirements than an internal project management tool.
+
+Consider these factors when setting your objectives:
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Factor</th>
+        <th className="text-left py-3 px-4 font-semibold">Impact on RPO</th>
+        <th className="text-left py-3 px-4 font-semibold">Impact on RTO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Transaction volume</td>
+        <td className="py-3 px-4">Higher volume = lower RPO (more data at risk per hour)</td>
+        <td className="py-3 px-4">Higher volume = lower RTO (more customers affected)</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Data re-creation difficulty</td>
+        <td className="py-3 px-4">Hard to re-create data = lower RPO</td>
+        <td className="py-3 px-4">N/A</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Revenue impact of downtime</td>
+        <td className="py-3 px-4">N/A</td>
+        <td className="py-3 px-4">Higher revenue impact = lower RTO</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Contractual SLAs</td>
+        <td className="py-3 px-4">May dictate maximum RPO</td>
+        <td className="py-3 px-4">May dictate maximum RTO</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Regulatory requirements</td>
+        <td className="py-3 px-4">May mandate specific retention and recovery standards</td>
+        <td className="py-3 px-4">May mandate maximum recovery times</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Customer expectations</td>
+        <td className="py-3 px-4">Customers expect recent data = lower RPO</td>
+        <td className="py-3 px-4">Customers expect fast recovery = lower RTO</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+For most SaaS companies pursuing SOC 2, an RPO of 1-4 hours and an RTO of 4-8 hours is a reasonable starting point. These objectives are achievable with standard cloud infrastructure and don't require exotic replication architectures.
+
+Document your RPO and RTO in your disaster recovery plan and reference them in your [system description](/blog/soc2-system-description-guide). Your auditor will review these objectives and evaluate whether your backup frequency and recovery procedures are aligned with them. If your RPO is 1 hour but your backups run daily, that's a gap the auditor will flag.
+
+## Implementing Your Backup Strategy
+
+With RPO and RTO defined, you can design a backup strategy that meets those objectives within your budget and operational constraints. The strategy should address what gets backed up, how often, where backups are stored, how long they're retained, and how their integrity is verified.
+
+### What Needs to Be Backed Up
+
+Everything that your system needs to function and that can't be quickly regenerated from scratch should be backed up. This includes production databases (the obvious one), application configuration and environment variables, infrastructure-as-code files and deployment configurations, encryption keys and secrets (backed up to a separate secure location), user-uploaded files and media, audit logs and monitoring data, and DNS and network configurations.
+
+Don't forget about data that lives outside your primary infrastructure. Customer data stored in third-party services, email archives, wiki and documentation content, and project management data may all need backup consideration, even if the responsibility is partially shared with the vendor.
+
+### Backup Frequency and Types
+
+Your backup frequency must meet or exceed your RPO. If your RPO is 4 hours, you need backups at least every 4 hours. In practice, running backups more frequently than your RPO provides a safety margin.
+
+Three types of backups work together in most strategies:
+
+**Full backups** capture everything. They take the longest and consume the most storage, but they're the simplest to restore from. Most organizations run full backups daily or weekly.
+
+**Incremental backups** capture only changes since the last backup (full or incremental). They're fast and storage-efficient but require the full backup chain to restore — if any backup in the chain is corrupted, the restore may fail.
+
+**Continuous replication** (also called streaming replication or change data capture) captures changes in real-time or near-real-time. Cloud databases like AWS RDS support automated backups with point-in-time recovery, which effectively provides continuous backup with the ability to restore to any second within the retention window.
+
+For most SOC 2-bound SaaS companies, a combination of automated cloud database backups (with point-in-time recovery enabled) and daily full backups of other data stores provides strong coverage. Cloud database backups with point-in-time recovery give you an effective RPO of minutes at low cost — which is one of the best values in cloud infrastructure.
+
+### Backup Storage and Geographic Separation
+
+Backups stored in the same location as your primary data are vulnerable to the same disasters. A fire, flood, or region-wide cloud outage that destroys your primary data could also destroy your backups. SOC 2 auditors expect to see geographic separation between your primary data and your backups.
+
+At minimum, store backups in a different availability zone from your primary data. For stronger protection, store backups in a different region. Cross-region backup is straightforward in all major cloud providers: AWS S3 cross-region replication, GCP multi-region storage, and Azure geo-redundant storage all provide geographic separation with minimal configuration.
+
+Consider the regulatory implications of backup location. If your customers' data must remain within specific geographic boundaries (EU data residency requirements, for example), your backup regions must comply with those same requirements. Cross-region doesn't mean cross-continent if your contracts restrict data location.
+
+### Backup Encryption and Access Control
+
+Backups contain all the same sensitive data as your production systems, so they require the same protections. Encrypt all backups at rest using AES-256 — this typically happens automatically with cloud provider backup services, but verify it's enabled. Restrict access to backup systems and stored backups to the minimum number of people necessary. Your general development team shouldn't have access to backup storage.
+
+Log and monitor access to backups. If someone downloads or restores a backup outside of a DR event, that access should be tracked and reviewed. Unauthorized backup access is a significant security event.
+
+### Backup Retention
+
+Define a retention policy that specifies how long backups are kept before they're deleted. Retention requirements depend on regulatory obligations, contractual requirements, and business needs.
+
+A common retention schedule is: daily backups retained for 30 days, weekly backups retained for 90 days, and monthly backups retained for 1 year. Adjust these periods based on your specific requirements — [fintech companies](/blog/soc2-for-fintech) or healthcare organizations may have longer mandatory retention periods.
+
+Document your retention policy and verify that automated deletion is working correctly. Backups that should have been deleted but weren't can create data privacy issues. Backups that were deleted too early can leave you without recovery options.
+
+## Building Your Disaster Recovery Plan
+
+A disaster recovery (DR) plan is the documented procedure your team follows to restore operations after a significant disruption. The plan should be detailed enough that someone unfamiliar with the usual recovery team could follow it — because in a real disaster, the usual people may not be available.
+
+### DR Plan Components
+
+A SOC 2-ready disaster recovery plan should include:
+
+**Scope and objectives** — what systems and data the plan covers, the RPO and RTO for each system, and the conditions under which the plan is activated.
+
+**Roles and responsibilities** — who is the incident commander, who performs the technical recovery, who communicates with customers, and who makes the decision to fail over to a backup environment. Include backup personnel for each role — if the primary person is unreachable, who takes over?
+
+**Contact information** — phone numbers, email addresses, and alternative communication channels (what happens if Slack is down?) for all team members, key vendors, and customer contacts. Keep this updated — outdated contact lists are a classic DR plan failure.
+
+**Recovery procedures** — step-by-step instructions for restoring each critical system. These should be specific enough to follow under pressure: "Restore the production database from the most recent RDS snapshot in us-east-1, verify row counts against the last known good count, update the application's database connection string in Parameter Store, and run the data integrity check script at /ops/scripts/verify_db.sh." Vague instructions like "restore the database" aren't sufficient.
+
+**Communication plan** — templates for internal communications (status updates to the team), customer communications (incident notifications and status page updates), and external communications (if the incident is severe enough to warrant public disclosure).
+
+**Failover procedures** — if you maintain a standby environment in a secondary region, document how to redirect traffic to it. Include DNS changes, load balancer updates, and any configuration differences between primary and secondary environments.
+
+**Return to normal operations** — after the incident is resolved, how do you fail back to the primary environment? This is often overlooked but critical — you don't want to run on your DR environment indefinitely.
+
+### Prioritizing System Recovery
+
+Not all systems need to be recovered simultaneously. Define a recovery priority list that sequences restoration based on business impact:
+
+**Tier 1 (immediate):** Core systems that must be restored first — the primary database, authentication services, and the customer-facing application. Target: within RTO.
+
+**Tier 2 (short-term):** Supporting systems that are important but not immediately customer-facing — internal tools, monitoring and alerting, CI/CD pipelines. Target: within 2x RTO.
+
+**Tier 3 (extended):** Systems that can tolerate longer outages — analytics, internal documentation, development environments. Target: within 1 week.
+
+This prioritization helps your recovery team focus on what matters most when they're under pressure and working with limited resources.
+
+## Annual DR Testing: The Requirement Everyone Postpones
+
+Having a disaster recovery plan is necessary. Knowing that it actually works is what SOC 2 requires. A1.3 explicitly requires that recovery procedures support system recovery, and the only way to demonstrate that is through testing.
+
+Auditors expect to see at least annual DR testing, with documented results. Many companies treat this as a checkbox exercise — running a superficial test, noting that "everything worked," and filing the results. A better approach is treating DR testing as a genuine learning opportunity that reveals gaps in your plan before a real disaster exposes them.
+
+### Types of DR Tests
+
+**Tabletop exercise** — the recovery team walks through the DR plan verbally, discussing each step and identifying questions or gaps. This is the simplest test type and a good starting point, but it doesn't verify that technical procedures actually work.
+
+**Component test** — individual recovery procedures are tested in isolation. Restore a database from backup and verify the data. Fail over DNS to the secondary region and verify traffic routing. Test each component without triggering a full DR event.
+
+**Full simulation** — simulate a disaster scenario end-to-end. This might mean pretending that your primary region is unavailable and executing the complete recovery plan, from incident detection through system restoration and customer communication. Full simulations are the most thorough test type but also the most disruptive and resource-intensive.
+
+For SOC 2 purposes, conducting at least one full simulation or comprehensive component test annually is expected. Supplement this with tabletop exercises before major infrastructure changes. The results don't need to be perfect — in fact, tests that reveal problems are arguably more valuable than tests where everything goes smoothly, because they identify gaps you can fix before a real incident.
+
+### Documenting Test Results
+
+Document every DR test with the date, scope, participants, test scenario, step-by-step results (what worked, what didn't), any deviations from the plan, actual recovery times compared to RTO targets, findings and recommended improvements, and remediation plan for any issues discovered.
+
+This documentation serves as primary [evidence for your auditor](/blog/soc2-evidence-collection-process). Auditors will review your most recent test results and verify that findings were addressed. If your last DR test revealed that database restoration took 6 hours against a 4-hour RTO, the auditor will ask what you've done to improve that — and expect to see a follow-up test demonstrating improvement.
+
+## Cloud-Specific Backup Considerations
+
+Each major cloud provider offers backup capabilities with different features and configurations. Understanding these is essential for implementing backups efficiently.
+
+### AWS Backup Capabilities
+
+AWS provides multiple backup mechanisms. **RDS automated backups** create daily snapshots and capture transaction logs for point-in-time recovery, with a configurable retention period up to 35 days. **AWS Backup** is a centralized service that manages backups across RDS, DynamoDB, EBS, EFS, and S3, with backup plans that define frequency, retention, and cross-region copy rules. **S3 versioning** maintains previous versions of objects, providing a form of backup for file storage. **S3 cross-region replication** copies objects to a bucket in another region automatically.
+
+Enable AWS Backup with a backup plan that covers all critical resources. Set up cross-region copy rules for geographic separation. Enable S3 versioning on all buckets containing important data. Monitor backup job status through AWS Backup's dashboard and configure SNS notifications for backup failures.
+
+### GCP Backup Capabilities
+
+Google Cloud offers **Cloud SQL automated backups** with point-in-time recovery, **persistent disk snapshots** for VM storage, **Cloud Storage with multi-regional or dual-regional configurations** for geographic redundancy, and the **Backup and DR Service** for centralized backup management.
+
+### Azure Backup Capabilities
+
+Azure provides **Azure Backup** as a centralized service for VMs, SQL databases, file shares, and blob storage. **Azure SQL automated backups** include point-in-time recovery with configurable retention. **Geo-redundant storage (GRS)** replicates data to a secondary region automatically.
+
+Regardless of your cloud provider, the principles are the same: enable automated backups with appropriate frequency, store backups in a geographically separate location, encrypt them, test restoration regularly, and monitor for backup failures.
+
+## Common Backup and DR Mistakes That Cause Audit Findings
+
+The [most common SOC 2 audit findings](/blog/common-soc2-audit-findings) related to backups and disaster recovery fall into predictable categories.
+
+The first and most damaging mistake is **never testing restores**. Backups run successfully every day, but nobody has ever restored one. When the auditor asks for evidence of DR testing, there is none. This is a finding every time, and it calls into question whether your backups are actually usable.
+
+The second mistake is **undefined or unrealistic RPO/RTO**. Either the organization hasn't documented RPO and RTO at all, or they've set targets they can't actually meet. An RTO of 1 hour sounds great, but if your database restore takes 3 hours, the target is meaningless. Auditors compare your stated objectives to your demonstrated capabilities — if there's a gap, that's a finding.
+
+The third mistake is **incomplete backup scope**. The database is backed up, but configuration files, secrets, infrastructure definitions, and uploaded files are not. When a real disaster occurs, restoring just the database isn't enough to get back online — you also need everything else that makes the system work.
+
+The fourth mistake is **no backup monitoring**. Backup jobs fail silently, and nobody notices until a restore is needed. By the time the failure is discovered, days or weeks of data may be unrecoverable. Configure alerts for backup failures and review backup job status as part of your regular operations.
+
+The fifth mistake is **outdated DR plans**. The plan was written two years ago and references infrastructure that no longer exists, team members who have left the company, and procedures for systems that have been replaced. An outdated DR plan can be worse than no plan at all, because the team may follow incorrect procedures during a crisis. Review and update your DR plan at least annually — ideally as part of your DR testing exercise.
+
+## Building Your Backup and DR Evidence Package
+
+When your auditor examines A1.2 and A1.3, they'll request specific evidence. Preparing this package in advance streamlines the audit process significantly.
+
+Your evidence package should include your backup policy documenting frequency, retention, encryption, and geographic separation requirements. Include backup configuration screenshots showing automated backup settings for each critical system, including retention periods and encryption. Provide backup monitoring evidence — dashboards or reports showing backup job success rates and any failures with remediation. Include your disaster recovery plan as a complete, current document. Provide DR test results with the most recent test documentation, including the scenario, results, findings, and remediation actions. Finally, include RPO/RTO documentation showing how your stated objectives align with your backup frequency and demonstrated recovery times.
+
+The [Complete Bundle](/products/complete-bundle) at $549.95 includes backup policy templates, DR plan frameworks, and DR test documentation templates. These give you a structured starting point that covers all the elements auditors expect, so you can focus on customizing them to your environment rather than building everything from scratch.
+
+## Making Backup and DR Part of Your Operations
+
+Backup and disaster recovery shouldn't be treated as audit artifacts that you dust off once a year. They should be integrated into your operational routine. Monitor backup jobs daily. Review backup reports weekly. Update the DR plan when infrastructure changes. Test recovery quarterly (even if SOC 2 only requires annual testing). Treat backup and DR with the same seriousness as your production deployment pipeline — because when something goes wrong, your backups are your production deployment pipeline.
+
+The companies that handle backup and DR audit requirements effortlessly are the ones that treat these practices as operational essentials rather than compliance obligations. They know their RPO and RTO because they've tested them. They know their backups work because they've restored them. And when the auditor asks for evidence, they simply pull it from their existing operational records rather than scrambling to produce documentation after the fact. That level of operational maturity is achievable for any company, regardless of size — it just requires commitment to treating backup and disaster recovery as the critical infrastructure that it is.

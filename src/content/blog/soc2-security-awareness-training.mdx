@@ -1,0 +1,192 @@
+---
+title: "SOC 2 Security Awareness Training: Requirements and Implementation"
+excerpt: "Everything you need to know about SOC 2 security awareness training. Covers CC1.4/CC1.5 requirements, training content, delivery methods, tracking, and phishing simulations."
+date: "2026-01-06"
+category: "SOC 2 Compliance"
+readTime: "17 min read"
+author: "SecurityDocs Team"
+---
+
+SOC 2 security awareness training is one of those requirements that sounds straightforward until you start digging into what your auditor actually expects. Yes, you need to train your employees on security. But the Trust Service Criteria go further than a single onboarding video and an annual checkbox quiz. Your auditor wants to see a structured program with defined content, regular delivery, documented completion, and evidence that it's working — not just that it happened.
+
+The good news is that building an effective security awareness training program doesn't require a massive budget or a dedicated training team. Plenty of companies with fewer than 50 employees run programs that satisfy their auditors and genuinely reduce security risk. The key is understanding exactly what the criteria require, choosing the right delivery method for your team's size and culture, and setting up evidence collection from day one.
+
+This guide covers the specific Trust Service Criteria that drive training requirements, what content your program needs to include, how to deliver training effectively, how to track and document completion for audit, and how phishing simulations fit into the picture.
+
+## What the Trust Service Criteria Actually Require
+
+Security awareness training requirements in SOC 2 come primarily from two Common Criteria points:
+
+**CC1.4 — The entity demonstrates a commitment to attract, develop, and retain competent individuals in alignment with objectives.** This criterion requires that employees have the knowledge and skills to fulfill their security responsibilities. Training is one of the primary ways you demonstrate this commitment.
+
+**CC1.5 — The entity holds individuals accountable for their internal control responsibilities in the pursuit of objectives.** This criterion requires that employees understand their security responsibilities and that there are consequences for failing to meet them. Training establishes the baseline of what employees are expected to know and do.
+
+Beyond these anchor criteria, training touches several other areas. CC2.2 requires that security-relevant information is communicated internally. CC7.2 expects that personnel can identify and report security events. CC9.4 addresses business disruption risk, which training programs should cover.
+
+What this means practically is that your training program needs to accomplish three things: educate employees on your security policies and their individual responsibilities, give them the knowledge to recognize and report security threats, and create a documented record that this education happened. Your auditor will test all three.
+
+## Training Content Requirements
+
+Your training program needs to cover specific topics to satisfy the Trust Service Criteria. The exact content will vary based on your industry, technology stack, and threat profile, but certain topics are universal.
+
+### Security Policies and Acceptable Use
+
+Every employee needs to understand the security policies that govern their work. This doesn't mean reading every policy word for word — it means understanding the key requirements that affect their daily responsibilities. What are the password requirements? What constitutes acceptable use of company devices? What data can and can't be shared externally? How should they handle customer data?
+
+This is where your [written SOC 2 policies](/blog/writing-soc2-policies) directly feed into your training program. If your policies require employees to lock their workstations when stepping away, use approved file-sharing tools, and report suspected security incidents within a specific timeframe, your training needs to cover those requirements explicitly.
+
+### Phishing and Social Engineering
+
+Phishing remains the most common initial attack vector for organizations of every size. Your training program needs to teach employees how to recognize phishing emails, social engineering phone calls, and other manipulation attempts. Cover the basics — checking sender addresses, hovering over links before clicking, being suspicious of urgency and authority pressure tactics — but also address more sophisticated attacks like spear-phishing that references real projects, colleagues, or company events.
+
+Go beyond "don't click suspicious links" and teach employees what to do when they encounter a suspected phishing attempt. Who do they report it to? Do they forward it to a security alias? Do they flag it in Slack? The reporting channel matters less than having one and making sure everyone knows about it.
+
+### Data Handling and Classification
+
+Employees need to understand what types of data your organization handles, how each type should be treated, and what the consequences of mishandling are. If you process customer PII, employees should know what PII includes, where it can be stored, how it should be transmitted, and what happens if it's exposed.
+
+Training should also cover the practical aspects: don't put customer data in Slack messages, don't download production database exports to your laptop, don't email spreadsheets containing customer information to external parties without encryption. These seem obvious, but they're the exact scenarios that cause data incidents.
+
+### Incident Reporting
+
+Your training must teach employees how to recognize a potential security incident and how to report it. A security incident isn't just a data breach — it includes things like a lost or stolen laptop, an employee clicking a phishing link, unauthorized access to a system, or an application behaving unexpectedly.
+
+Employees need to know what constitutes a reportable event, the reporting channel (email alias, Slack channel, ticketing system, or phone number), the expected timeframe for reporting, and that there are no penalties for reporting false positives. If employees are afraid they'll get in trouble for reporting something that turns out to be nothing, they'll stop reporting — and that's far more dangerous than a few false alarms.
+
+### Physical Security
+
+Even for fully remote companies, physical security awareness matters. Training should cover securing workstations in public spaces, protecting devices during travel, being cautious with screen visibility in coffee shops and airports, and reporting lost or stolen equipment immediately. For companies with office space, add visitor management, badge access, tailgating prevention, and clean desk practices.
+
+### Password and Authentication Practices
+
+Cover your organization's specific password requirements, why those requirements exist, and how to use approved password managers. If you've implemented multi-factor authentication, train employees on how to set it up, what to do if they lose their second factor, and why MFA matters. Teach them to never share passwords, never reuse passwords across services, and never store passwords in plain text files or sticky notes.
+
+### Remote Work Security
+
+For teams with remote or hybrid employees, training should address home network security basics, VPN usage requirements, approved devices and software, and how to handle sensitive conversations in shared living spaces. Remote work expands the attack surface in ways that office-based work doesn't, and employees need to understand their role in managing that expanded surface.
+
+## Delivery Methods That Work
+
+How you deliver security awareness training matters almost as much as what you deliver. The right method depends on your company size, culture, and budget.
+
+### Onboarding Training
+
+New hire training is the easiest requirement to satisfy because it fits naturally into your onboarding process. Every new employee should complete security awareness training during their first week — ideally before they receive access to production systems or customer data.
+
+Onboarding training can be a live session led by your security lead or engineering manager, a recorded presentation that new hires watch independently, or an interactive module in a learning management system. The format matters less than three things: it covers the required content, the new hire acknowledges completion, and you can prove it happened six months later when the auditor asks.
+
+### Annual Refresher Training
+
+SOC 2 expects security awareness training to be repeated at least annually. The annual refresher should cover the same core topics as onboarding but updated to reflect any policy changes, new threats, or incidents that occurred during the year. It's also an opportunity to address any areas where you've seen weakness — if phishing simulation click rates are high, double down on phishing recognition training.
+
+Annual training can be delivered as a company-wide session, a series of shorter modules spread over a few weeks, or a combination of recorded content and live Q&A. Some companies make annual training an event — a "security awareness week" with daily topics, quizzes, and prizes for participation. Others keep it simple with a single presentation and a quiz.
+
+### Ongoing Micro-Training
+
+While SOC 2 only requires onboarding and annual training, supplementing with shorter, more frequent touchpoints significantly improves retention and demonstrates a mature security culture. Monthly security tips in Slack, brief articles in an internal newsletter, or five-minute training videos on specific topics keep security top of mind without consuming significant time.
+
+These micro-training moments also create additional evidence of your commitment to security education, which auditors view favorably even though they're not strictly required.
+
+### Phishing Simulations
+
+Phishing simulations test whether your training is actually working by sending realistic but harmless phishing emails to employees and tracking who clicks. This is one of the most effective ways to identify training gaps and to demonstrate to your auditor that you're not just teaching about phishing — you're verifying that employees can recognize it.
+
+A basic phishing simulation program sends simulated phishing emails at regular intervals — monthly or quarterly works well. Employees who click are directed to a brief training module explaining what they missed. Aggregate results are tracked over time to measure improvement.
+
+Several tools make phishing simulations accessible to smaller companies: KnowBe4, Proofpoint Security Awareness, and GoPhish (open source) are common choices. The tool you choose matters less than consistency in running simulations and acting on the results.
+
+When setting up phishing simulations, start with moderately difficult scenarios and increase sophistication over time. Avoid gotcha-style simulations designed to trick even security professionals — they breed resentment rather than learning. The goal is education, not embarrassment.
+
+Track these metrics from your simulations: click rate (percentage of employees who clicked the phishing link), report rate (percentage who reported the simulation to the security team), and completion rate for any remedial training assigned to clickers. Your auditor will want to see these metrics trending in the right direction.
+
+## Tracking Completion and Collecting Evidence
+
+Completion tracking is where many training programs fail the audit test. Delivering great training content means nothing if you can't prove who completed it and when. Your [evidence collection process](/blog/soc2-evidence-collection-process) for training should be established before you deliver the first session.
+
+### What Your Auditor Will Request
+
+During a SOC 2 audit, your auditor will typically request evidence of training completion for all employees during the audit period. Specifically, they'll want:
+
+A roster of all employees who were required to complete training, with a list showing who completed it and the completion date. Any employees who didn't complete training should have a documented explanation — they were on leave, they were hired in the last week of the audit period, or they were terminated before the training deadline.
+
+Evidence that training content covers the required topics. This could be a table of contents, an agenda, slide deck, or course outline. The auditor needs to verify that your training addresses security policies, incident reporting, data handling, and the other required topics — not just that "training happened."
+
+Evidence that new hires completed onboarding training within a reasonable timeframe after their start date. If your policy says "within the first week," the auditor will check that training completion dates fall within seven days of start dates.
+
+For phishing simulations, results showing the program is running regularly and that metrics are being tracked. Not every employee needs to pass every simulation, but the program should show evidence of regular cadence and follow-up on failures.
+
+### Tracking Methods by Company Size
+
+**For teams under 25 employees:** A spreadsheet tracking employee name, start date, onboarding training completion date, and annual training completion date works fine. Store signed acknowledgment forms (physical or electronic) alongside the spreadsheet. This approach is low-tech but auditable.
+
+**For teams of 25-100 employees:** Consider a lightweight LMS (Learning Management System) like Trainual, Lessonly, or even Google Classroom. These tools automate assignment, track completion, and generate reports that simplify evidence collection. The annual cost is typically a few hundred to a couple thousand dollars.
+
+**For teams over 100 employees:** A dedicated security awareness platform like KnowBe4 or Proofpoint combines training delivery, completion tracking, and phishing simulations in a single platform. These tools generate the exact reports auditors want, reducing evidence collection to a few button clicks.
+
+Regardless of which method you use, archive evidence at the time it's generated. Don't wait until audit season to reconstruct training records from memory and scattered emails. Set a quarterly reminder to export completion reports and store them in your evidence repository.
+
+## Building Your Training Program Step by Step
+
+For companies starting from zero, here's a practical sequence that gets you audit-ready without overwhelming your team.
+
+### Month 1: Establish the Foundation
+
+Define your training policy. Document what training is required, when it must be completed, who is responsible for delivery, and how completion is tracked. This policy becomes part of your [SOC 2 policy library](/blog/writing-soc2-policies) and the anchor your auditor references.
+
+Develop or select your training content. You can build your own using internal presentations, curate content from reputable sources, or purchase pre-built modules from a security awareness vendor. Whichever approach you choose, ensure it covers every required topic area outlined earlier in this guide.
+
+Set up your tracking mechanism — spreadsheet, LMS, or security awareness platform — and test it by running through the complete training workflow yourself.
+
+### Month 2: Deliver Initial Training
+
+Roll out training to all current employees. Frame it positively: this is about building a security-conscious culture, not checking a compliance box. Give employees a reasonable deadline — two weeks is typical — and send reminders as the deadline approaches.
+
+Collect acknowledgments from every employee confirming they completed the training and understand their responsibilities. These acknowledgments are critical audit evidence.
+
+Address any employees who missed the deadline. Document follow-up actions and escalation if needed. An employee who consistently refuses to complete required training is a compliance risk, and your policy should address how that's handled.
+
+### Month 3: Launch Phishing Simulations
+
+With baseline training complete, launch your first phishing simulation. Start with a moderate-difficulty scenario — something that looks like a typical phishing email but includes recognizable warning signs like an unusual sender domain, a sense of urgency, or a request to click an unfamiliar link.
+
+Document the results: total emails sent, click rate, report rate, and any remedial training assigned. This becomes your baseline for measuring improvement over time.
+
+### Ongoing: Maintain the Cadence
+
+After the initial rollout, your training program runs on a repeating cycle. New hires complete onboarding training during their first week. All employees complete annual refresher training during a defined window (many companies use January or the anniversary of their first SOC 2 audit). Phishing simulations run monthly or quarterly. Micro-training touchpoints happen periodically between formal sessions.
+
+## Common Pitfalls That Generate Findings
+
+Training-related findings show up regularly in SOC 2 audits. Here are the patterns that cause problems, based on the issues we cover in our guide to [common audit findings](/blog/common-soc2-audit-findings).
+
+### Incomplete Completion Records
+
+The most frequent training finding isn't bad content — it's missing proof. A company delivered excellent training but can't produce a complete roster showing who attended. Or they have a completion spreadsheet but it's missing three employees who joined mid-year. The fix is simple: treat completion tracking with the same rigor as the training itself.
+
+### New Hire Gaps
+
+Companies that onboard employees without security training and plan to "catch them up later" create audit gaps. If your policy says training happens during the first week and an employee's training completion date is six weeks after their start date, that's a finding. Build security training into your onboarding checklist as a blocking prerequisite for system access.
+
+### Static Content Year Over Year
+
+Using identical training content year after year signals to your auditor that the program isn't being actively maintained. Update your content annually to reflect policy changes, new threats, lessons from any security incidents, and results from phishing simulations. Even small updates demonstrate that the program is alive.
+
+### No Connection to Policy
+
+Training that covers generic security topics without referencing your organization's specific policies creates a disconnect. Your employees need to know your password requirements, your incident reporting process, and your data handling rules — not just industry best practices in the abstract. Tie every training module back to the specific policy it supports.
+
+## Measuring Training Effectiveness
+
+Running training and tracking completion satisfies the minimum SOC 2 requirement, but demonstrating effectiveness elevates your compliance posture and genuinely reduces risk.
+
+Track phishing simulation click rates over time. A declining click rate demonstrates that training is changing behavior, not just filling seats. Track the number of security incidents reported by employees — an increase in reporting often indicates better awareness, not more incidents.
+
+After each training session, conduct a brief assessment — a quiz, a scenario-based exercise, or a practical demonstration. This serves dual purposes: it reinforces the learning, and it creates evidence that employees actually absorbed the content rather than just sitting through the presentation.
+
+Survey employees annually about their confidence in handling security situations. Questions like "would you know what to do if you received a suspicious email?" and "do you know how to report a security incident?" give you qualitative data to complement your quantitative metrics.
+
+## Getting Started Without Overcomplicating It
+
+If you're building a SOC 2 security awareness training program on a startup budget, keep it simple. Start with a well-structured presentation covering all required topics, deliver it live or as a recording, track completion in a spreadsheet, and run quarterly phishing simulations using an affordable tool. This minimal approach satisfies audit requirements and gives you a foundation to build on.
+
+As part of your broader [SOC 2 preparation](/blog/soc2-preparation-90-days), security awareness training should be one of the first programs you establish. It's relatively easy to implement, it creates visible audit evidence, and it builds the security culture that makes every other control easier to maintain. Don't overthink the delivery method or agonize over the perfect training content. Get something structured in place, track completion rigorously, and improve iteratively based on phishing simulation results and audit feedback.
