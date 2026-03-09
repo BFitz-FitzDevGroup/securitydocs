@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { BlackFridayBanner } from '@/components/campaign/BlackFridayBanner';
 import "./globals.css";
 
@@ -59,6 +60,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <BlackFridayBanner />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
