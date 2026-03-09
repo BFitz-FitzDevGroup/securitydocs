@@ -443,14 +443,14 @@ const ResourcesHubPage = () => {
             Can't find what youyou'reapos;re looking for? We're here to help with your SOC 2 compliance journey.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/contact" 
+            <a
+              href="/contact"
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors text-sm"
             >
               Contact Support
             </a>
-            <a 
-              href="/resources/faq" 
+            <a
+              href="/resources/faq"
               className="bg-white hover:bg-slate-100 text-slate-700 px-6 py-2 rounded-lg font-medium border border-slate-300 transition-colors text-sm"
             >
               View FAQ
