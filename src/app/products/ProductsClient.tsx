@@ -56,6 +56,22 @@ export function ProductsClient() {
   return (
     <PageLayout showBreadcrumb breadcrumbPath={breadcrumbPath}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Free Sample Callout */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg px-6 py-4 mb-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-slate-700 text-sm sm:text-base">
+            Want to see the quality before you buy? Download a free sample Information Security Policy template.
+          </p>
+          <a
+            href="/downloads/information-security-policy-sample.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 font-medium text-sm whitespace-nowrap inline-flex items-center"
+          >
+            Download Free Sample
+            <span className="ml-1">&rarr;</span>
+          </a>
+        </div>
+
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-slate-900 mb-4">

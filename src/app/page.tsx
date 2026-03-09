@@ -277,6 +277,38 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Free Sample Banner */}
+      <section className="py-12 bg-blue-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold text-slate-900 mb-3">
+            Not Ready to Buy? Start with a Free Sample
+          </h2>
+          <p className="text-slate-600 mb-6">
+            Download our free Information Security Policy template or SOC 2 Compliance Checklist — no email required.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/downloads/information-security-policy-sample.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
+            >
+              Download Sample Policy
+              <Download className="w-5 h-5 ml-2" />
+            </a>
+            <a
+              href="/downloads/soc2-compliance-checklist.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white hover:bg-slate-50 text-slate-700 px-6 py-3 rounded-lg font-semibold border border-slate-300 transition-colors inline-flex items-center justify-center"
+            >
+              Download Free Checklist
+              <Download className="w-5 h-5 ml-2" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-16 bg-slate-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

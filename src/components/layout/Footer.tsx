@@ -84,6 +84,11 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/resources/information-security-policy-template" className="text-slate-400 hover:text-white transition-colors">
+                  Free Sample Policy
+                </Link>
+              </li>
+              <li>
                 <Link href="/resources/faq" className="text-slate-400 hover:text-white transition-colors">
                   FAQ
                 </Link>
