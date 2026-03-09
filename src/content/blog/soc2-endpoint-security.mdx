@@ -1,0 +1,238 @@
+---
+title: "SOC 2 Endpoint Security: MDM, EDR, and Device Management Requirements"
+excerpt: "Meet SOC 2 endpoint security requirements with the right MDM and EDR tools. Learn what auditors expect for device management, encryption, and monitoring."
+date: "2026-04-07"
+category: "SOC 2 Compliance"
+readTime: "13 min read"
+author: "SecurityDocs Team"
+---
+
+SOC 2 endpoint security is where compliance meets the reality of how your team actually works. Your policies might say that all company devices must be encrypted, running current software, and monitored by security tools. But proving that to an auditor — across every laptop, every workstation, and potentially every mobile device in your organization — requires more than policies. It requires tooling that enforces those policies and generates the evidence your auditor needs to see.
+
+The Trust Services Criteria don't use the word "endpoint" specifically, but CC6.8 addresses the security of information assets including the devices your team uses to access production systems and customer data. When your auditor asks about endpoint security, they're really asking several related questions: Do you know what devices have access to your systems? Are those devices encrypted? Are they running current software? Are they protected against malware? Can you prove all of this with evidence?
+
+If you're early in your SOC 2 journey, endpoint security can feel like an expensive and complex undertaking. The good news is that the tools have matured significantly, the cloud-based options are affordable even for small teams, and most of what you need can be deployed in a matter of days rather than months. This guide covers what SOC 2 actually requires for endpoint security, the tools that satisfy those requirements across different budgets, and how to collect the evidence your auditor will request.
+
+## What CC6.8 Requires for Endpoint Security
+
+CC6.8 focuses on preventing and detecting unauthorized software on information assets. In practice, this extends to the broader management and security of the devices (endpoints) that your team uses to access systems and data within your SOC 2 scope.
+
+Your auditor will evaluate endpoint security across several dimensions. First, they'll want to see that you maintain an inventory of devices that access systems in scope. You need to know what devices exist, who owns them, and what their current security posture is. Second, they'll look for evidence that devices meet your security baseline — encryption enabled, software current, security tools installed. Third, they'll verify that you have the ability to detect and respond to threats on endpoints. And fourth, they'll check that you can enforce your endpoint security requirements remotely, which matters especially for distributed teams.
+
+The depth of your endpoint security program should match your risk profile. A company where employees access production databases directly from their laptops has a different risk profile than a company where all production access goes through a bastion host and employees only access a web-based admin console. Both need endpoint security, but the controls and evidence expectations differ.
+
+## Mobile Device Management
+
+Mobile Device Management (MDM) is the foundation of your endpoint security program. MDM gives you visibility into your device fleet and the ability to enforce security configurations remotely. For SOC 2 purposes, MDM provides two critical capabilities: automated enforcement of your security baseline and audit evidence that those configurations are actually applied.
+
+### What MDM Enforces
+
+A properly configured MDM solution enforces your endpoint security policies without relying on individual employees to configure their own devices correctly. The core configurations that your MDM should enforce for SOC 2 include disk encryption, which means FileVault on macOS and BitLocker on Windows, enabled and verified on every enrolled device. Your MDM should also enforce screen lock policies requiring automatic screen lock after a defined period of inactivity, typically five to fifteen minutes. Passcode requirements ensure device unlock requires a strong passcode or biometric authentication.
+
+Beyond the basics, MDM should manage operating system updates by enforcing or strongly encouraging timely installation of OS updates, particularly security patches. Firewall configuration ensures the host-based firewall is enabled on all devices. Application restrictions can prevent installation of unauthorized software or, less restrictively, maintain an inventory of installed software for review. And remote wipe capability enables you to erase a device remotely if it's lost, stolen, or if the employee's access needs to be revoked, which is critical for [access control](/blog/soc2-access-control) during offboarding.
+
+### MDM Tool Comparison
+
+The MDM market has several strong options, and the right choice depends on your device fleet composition, team size, and budget.
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Feature</th>
+        <th className="text-left py-3 px-4 font-semibold">Jamf Pro</th>
+        <th className="text-left py-3 px-4 font-semibold">Kandji</th>
+        <th className="text-left py-3 px-4 font-semibold">Mosyle</th>
+        <th className="text-left py-3 px-4 font-semibold">Microsoft Intune</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Platform support</td>
+        <td className="py-3 px-4">macOS, iOS (primary)</td>
+        <td className="py-3 px-4">macOS, iOS</td>
+        <td className="py-3 px-4">macOS, iOS</td>
+        <td className="py-3 px-4">Windows, macOS, iOS, Android</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Starting price</td>
+        <td className="py-3 px-4">~$9/device/mo</td>
+        <td className="py-3 px-4">~$5/device/mo</td>
+        <td className="py-3 px-4">~$4/device/mo</td>
+        <td className="py-3 px-4">$8/user/mo (M365 E3)</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Best for</td>
+        <td className="py-3 px-4">Apple-only fleets, deep macOS control</td>
+        <td className="py-3 px-4">Apple-first startups, compliance focus</td>
+        <td className="py-3 px-4">Budget-conscious Apple shops</td>
+        <td className="py-3 px-4">Mixed OS fleets, Microsoft shops</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">SOC 2 compliance features</td>
+        <td className="py-3 px-4">Strong — compliance templates, detailed reporting</td>
+        <td className="py-3 px-4">Strong — pre-built compliance blueprints</td>
+        <td className="py-3 px-4">Good — solid policy enforcement and reporting</td>
+        <td className="py-3 px-4">Strong — conditional access, compliance policies</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Disk encryption enforcement</td>
+        <td className="py-3 px-4">FileVault enforcement + key escrow</td>
+        <td className="py-3 px-4">FileVault enforcement + key escrow</td>
+        <td className="py-3 px-4">FileVault enforcement + key escrow</td>
+        <td className="py-3 px-4">BitLocker + FileVault enforcement</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50">
+        <td className="py-3 px-4 font-medium">Compliance reporting</td>
+        <td className="py-3 px-4">Detailed device compliance dashboards</td>
+        <td className="py-3 px-4">Built-in compliance status per device</td>
+        <td className="py-3 px-4">Compliance and security dashboards</td>
+        <td className="py-3 px-4">Compliance dashboard + conditional access</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+For Apple-only environments, which are common among SaaS startups, Jamf Pro and Kandji are the leading choices. Jamf has deeper macOS management capabilities built over nearly two decades, while Kandji has a more modern interface and was built with compliance use cases in mind. Mosyle offers strong functionality at a lower price point and is worth evaluating for budget-conscious teams.
+
+For mixed-OS environments, Microsoft Intune is the practical choice, particularly if you're already using Microsoft 365. Intune manages Windows, macOS, iOS, and Android devices from a single console and integrates with Azure Active Directory for conditional access policies that tie device compliance to system access.
+
+### MDM Deployment
+
+Rolling out MDM to an existing team requires communication and planning. Employees sometimes view MDM as surveillance, so be transparent about what the MDM can and cannot see. Most modern MDM solutions can see device name, OS version, encryption status, and installed applications. They cannot see personal files, browsing history, or personal email content. Being upfront about this distinction builds trust and reduces pushback.
+
+For new employees, configure devices with your MDM profile before issuing them. For existing employees, provide clear enrollment instructions and a reasonable timeline for completion. Track enrollment status and follow up with anyone who hasn't enrolled by the deadline.
+
+### Zero-Touch Deployment
+
+The gold standard for device provisioning is zero-touch deployment, where a new device is shipped directly from the manufacturer to the employee, and upon first boot the device automatically enrolls in your MDM and configures itself according to your security baseline. Apple Business Manager enables this workflow for macOS and iOS devices, and Windows Autopilot provides similar capability for Windows.
+
+Zero-touch deployment is worth the setup investment because it ensures that every device that enters your environment meets your security baseline from its first moment of operation. There's no window where an unenrolled device is accessing company systems, and there's no reliance on employees to self-enroll. For SOC 2, this eliminates a category of evidence gaps that plague companies relying on manual enrollment.
+
+The setup process involves registering your organization with Apple Business Manager or Windows Autopilot, linking your MDM to the manufacturer's enrollment program, defining your security baseline configuration, and testing the flow with a pilot device before rolling it out broadly. Most organizations can complete this setup within a week.
+
+## Endpoint Detection and Response
+
+While MDM handles device configuration and management, Endpoint Detection and Response (EDR) handles threat detection on those devices. EDR continuously monitors endpoints for suspicious activity, provides real-time alerting, and enables investigation and response when threats are detected.
+
+### EDR vs Traditional Antivirus
+
+Traditional antivirus relies primarily on signature-based detection — comparing files against a database of known malware. This approach misses novel malware, fileless attacks, and sophisticated threats that don't match known signatures.
+
+EDR takes a behavioral approach. Rather than looking for known bad files, EDR monitors system behavior for suspicious patterns: a process encrypting large numbers of files (possible ransomware), a user process making unusual network connections (possible command and control), a script executing with elevated privileges that doesn't match normal patterns (possible exploitation), or credential dumping techniques that indicate lateral movement.
+
+For SOC 2, EDR provides significantly stronger evidence of endpoint protection than traditional antivirus. Auditors want to see that you can detect threats, not just block known malware.
+
+### EDR Tool Selection
+
+EDR tools range from enterprise-grade platforms costing tens of thousands per year to more accessible options that work well for smaller teams.
+
+**CrowdStrike Falcon** is widely regarded as the gold standard for EDR. It provides excellent detection capabilities, cloud-native architecture, and strong SOC 2 evidence through its compliance dashboards and reporting. However, it's priced for enterprise budgets, typically starting at $15 to $25 per endpoint per month for the packages that include the detection and response capabilities most relevant to SOC 2.
+
+**SentinelOne** is a strong alternative that offers comparable detection capabilities at a somewhat lower price point. Its autonomous response capability can automatically contain threats without human intervention, which is valuable for small teams without dedicated security operations.
+
+**Microsoft Defender for Endpoint** is included in Microsoft 365 E5 licenses and provides capable EDR functionality for organizations already invested in the Microsoft ecosystem. If you're paying for E5 licensing anyway, Defender is a cost-effective EDR choice. Its integration with Intune provides a unified view of device compliance and threat status.
+
+**For budget-conscious teams,** the minimum viable approach is to deploy Microsoft Defender (included with Windows) or Apple's built-in XProtect and Gatekeeper, combined with a lightweight EDR agent. Some compliance platforms like Vanta and Drata integrate with osquery-based endpoint monitoring to provide basic behavioral detection and compliance evidence at lower cost than full EDR platforms.
+
+### EDR Evidence for Auditors
+
+Your EDR deployment should generate evidence that demonstrates coverage and operational effectiveness. Key evidence artifacts include a coverage report showing EDR is deployed on all endpoints within scope — any device without EDR coverage is a gap your auditor will flag. Alert investigation records demonstrate that when EDR generates alerts, your team investigates them within defined timeframes. Threat detection examples show the EDR is actively monitoring and detecting suspicious behavior, even if the detections are false positives that were investigated and resolved. And configuration documentation shows what the EDR is configured to monitor and how alerts are routed.
+
+## Disk Encryption
+
+Full-disk encryption is one of the most straightforward endpoint security controls and one of the most consistently verified by auditors. If a device containing customer data is lost or stolen, encryption ensures the data is protected even if the device can't be remotely wiped.
+
+### FileVault (macOS)
+
+FileVault provides full-disk encryption for macOS devices using XTS-AES-128 encryption. When deployed through MDM, FileVault can be automatically enabled during device setup, and the recovery key can be escrowed to your MDM server. This escrow ensures that if an employee forgets their password, IT can recover the device without losing data.
+
+Your MDM compliance dashboard should show FileVault status for every enrolled device. A device that reports FileVault as disabled is non-compliant and should be flagged for immediate remediation.
+
+### BitLocker (Windows)
+
+BitLocker provides equivalent full-disk encryption for Windows devices. When managed through Intune or Group Policy, BitLocker can be automatically enabled and recovery keys stored in Azure Active Directory or your MDM platform.
+
+For Windows environments, ensure that BitLocker is using TPM-based authentication rather than password-only authentication. TPM-based BitLocker ties the encryption to the device's hardware security module, providing stronger protection. For detailed encryption requirements beyond disk encryption, including data-in-transit and key management, see our [encryption standards guide](/blog/soc2-encryption-standards).
+
+### Encryption Evidence
+
+Your auditor will want to see evidence that encryption is enabled on all devices in scope. The most efficient way to provide this is through your MDM compliance dashboard showing encryption status across your device fleet. A single screenshot showing 100% encryption compliance across all enrolled devices is compelling evidence. If any devices show as non-compliant, have documentation of your remediation process and timeline.
+
+## Software Inventory and Patch Management
+
+Keeping software current is both a security practice and a SOC 2 requirement. Unpatched software with known vulnerabilities is one of the most common attack vectors, and auditors expect to see evidence of timely patching.
+
+### Authorized Software
+
+Maintaining an inventory of software installed on your devices helps you understand your attack surface and identify unauthorized applications. Your MDM can report installed applications across your device fleet, providing visibility into what's running on company devices.
+
+For SOC 2, you don't necessarily need a formal software allowlist (though it's a strong control if you can implement it). At minimum, you need visibility into installed software and the ability to identify and address unauthorized applications. If your MDM shows that an employee installed a remote desktop tool that wasn't approved, you should have a process for evaluating and either approving or removing it.
+
+### Patch Timelines
+
+Define patch timelines based on vulnerability severity. A reasonable approach that satisfies most auditors includes critical security patches applied within 14 days of release, high-severity patches applied within 30 days, and medium and low-severity patches applied within 90 days, typically as part of regular update cycles.
+
+Your MDM can enforce or encourage update installation. Some organizations configure MDM to automatically install critical security updates after a brief deferral period, giving employees time to save work before the update applies. Others use MDM to notify employees of required updates and escalate to automated installation if the update isn't applied within the defined timeline.
+
+### Patch Compliance Reports
+
+Generate monthly patch compliance reports showing the update status across your device fleet. These reports serve as ongoing evidence that your patch management process is operating effectively. If compliance dips below your target (most organizations aim for 95% or higher), document the remediation actions taken to bring non-compliant devices current.
+
+## Contractors and BYOD
+
+Contractors and bring-your-own-device policies create additional complexity for endpoint security because you have less control over devices you don't own.
+
+### Contractor Devices
+
+If contractors access systems within your SOC 2 scope, their devices need to meet your security baseline. You have several options for managing this.
+
+**Company-owned devices for contractors** is the most controlled approach. Issue company-owned, MDM-enrolled devices to contractors and treat them identically to employee devices. This is the cleanest solution from a compliance perspective but adds hardware cost.
+
+**MDM enrollment for contractor-owned devices** allows contractors to use their own hardware while still enforcing your security baseline through MDM enrollment. Some contractors resist this because they use the same device for multiple clients, and each client's MDM profile could conflict. Be transparent about what the MDM can and cannot see on their personal device.
+
+**Minimum security requirements without MDM** is the least controlled approach but may be appropriate for contractors with limited access. Define minimum requirements including disk encryption, current OS, antivirus, and screen lock, and require contractors to attest to compliance. This provides weaker evidence than MDM verification but may be acceptable for low-risk contractor access.
+
+### When to Prohibit BYOD
+
+Some organizations allow employees to use personal devices for work (BYOD). For SOC 2, BYOD creates evidence challenges because you can't easily verify the security posture of devices you don't manage.
+
+Consider prohibiting BYOD and providing company-owned devices when employees access production systems or customer data directly from their devices, when your customer contracts require managed endpoints, when your risk assessment identifies BYOD as a significant risk, or when your team is small enough that the hardware cost of providing devices is manageable.
+
+If you do allow BYOD, your MDM needs to support BYOD enrollment with appropriate privacy boundaries, and your policy needs to clearly define what the organization can and cannot do with the personal device. Many MDM solutions support containerized management on BYOD devices, where the MDM manages a work partition without visibility into personal data.
+
+## Evidence Collection for Endpoint Security
+
+Organizing your endpoint security evidence proactively makes audit season significantly smoother. Here's what your auditor will request and how to prepare it.
+
+**Device enrollment report** from your MDM showing all company devices are enrolled and managed. This report should include the device name, assigned user, enrollment date, and compliance status. Devices that are enrolled but non-compliant should have documented remediation timelines.
+
+**Encryption compliance report** showing disk encryption status across all enrolled devices. Your MDM dashboard typically provides this as a standard report. Export it monthly and retain it as ongoing evidence.
+
+**Patch compliance report** showing OS and software update status across your fleet. Highlight any devices that are behind on critical security patches and document your remediation efforts.
+
+**EDR coverage report** confirming that endpoint detection and response agents are deployed on all devices in scope. Any gaps in coverage should be documented with remediation plans.
+
+**Software inventory** from your MDM showing installed applications across your device fleet. This demonstrates visibility into your endpoint software environment and the ability to identify unauthorized applications.
+
+**Policy documentation** including your endpoint security policy, acceptable use policy, and BYOD policy if applicable. These documents should reflect your actual practices and be reviewed at least annually.
+
+For a comprehensive overview of [security tools that support SOC 2 compliance](/blog/security-tools-for-soc2-compliance) beyond endpoint security, our tools guide covers the full landscape of categories and options.
+
+Endpoint security is one of those areas where a small investment in tooling pays large dividends in both security and audit readiness. A properly configured MDM and EDR deployment generates most of the evidence your auditor needs automatically, reducing the manual effort of evidence collection and providing continuous rather than point-in-time compliance verification. Our [Asset Management Policy](/products/asset-management-policy) provides the documented foundation for your endpoint security program, and it's included in the [Complete Bundle](/products/complete-bundle) alongside all the policies and documentation you need for SOC 2 compliance.
+
+## Common Endpoint Security Gaps in SOC 2 Audits
+
+Based on patterns from SOC 2 audits, these endpoint security gaps frequently result in findings.
+
+**Incomplete device enrollment.** If your MDM shows 45 enrolled devices but your employee roster suggests 52 devices should be enrolled, your auditor will ask about the seven missing devices. Maintain a reconciliation between your MDM enrollment and your employee and contractor roster. Devices that aren't enrolled should either be enrolled promptly or documented with an explanation (such as a server that doesn't leave the office, or a device pending enrollment for a new hire who started this week).
+
+**No evidence of encryption verification.** Having a policy that requires disk encryption isn't enough. Your auditor needs evidence that encryption is actually enabled on every device. Monthly MDM compliance exports showing encryption status provide this evidence. If you're not running MDM, you're left relying on employee attestation, which is significantly weaker evidence.
+
+**EDR coverage gaps.** If some devices have EDR installed and others don't, your auditor will flag the gap. Common causes include contractor devices that weren't included in the EDR deployment, devices where the EDR agent was uninstalled or stopped running, and new devices that were provisioned without EDR. Your EDR dashboard should show coverage percentage, and any gaps should have documented remediation plans.
+
+**Stale patch compliance.** A patch compliance report showing that 30% of your devices are running an OS version that's two major releases behind suggests your patch management process isn't working. Auditors expect to see timely patching with clear remediation for non-compliant devices. If employees defer updates indefinitely, your MDM should be configured to enforce installation after a reasonable deferral period.
+
+**No offboarding device procedures.** When an employee leaves the company, their device should be wiped and returned, or at minimum the company data and MDM profile should be removed. If your auditor asks about device handling during offboarding and you don't have a defined process, this is a finding that affects both endpoint security and access control. Document your device return process and integrate it with your broader offboarding checklist.
+
+Start with MDM — it's the foundation everything else builds on. Get encryption enforced, get visibility into your device fleet, and then layer EDR and patch management on top. Within a few weeks, you'll have an endpoint security program that satisfies your auditor and genuinely protects your organization.

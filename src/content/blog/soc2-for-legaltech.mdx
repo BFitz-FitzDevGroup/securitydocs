@@ -1,0 +1,261 @@
+---
+title: "SOC 2 for Legal Tech Companies: Compliance Guide for Attorney-Client Data"
+excerpt: "Legal tech companies handle uniquely sensitive data protected by attorney-client privilege. Learn how to build a SOC 2 program that addresses legal industry requirements."
+date: "2026-05-19"
+category: "Industry Compliance"
+readTime: "13 min read"
+author: "SecurityDocs Team"
+---
+
+Legal technology companies occupy a unique position in the compliance landscape. The data you handle isn't just sensitive — it's privileged. Attorney-client privilege, work product doctrine, and legal professional privilege create layers of protection around legal data that go beyond typical data security obligations. When a law firm trusts your platform with case files, communications, contracts, or litigation documents, they're trusting you with information that has explicit legal protections — protections that, if breached, can have consequences far more severe than a typical data incident.
+
+This reality makes SOC 2 compliance both more important and more nuanced for legal tech companies than for most other SaaS categories. Law firms and legal departments don't just want to see a SOC 2 report because it's on a procurement checklist. They need assurance that your security controls are adequate to protect privileged information, because a failure to protect that information can result in waived privilege, malpractice claims, regulatory sanctions, and irreparable harm to their clients' cases.
+
+SOC 2 provides the framework for demonstrating this assurance, but a generic SOC 2 program designed for any SaaS company won't fully address the concerns that legal industry customers bring to the conversation. This guide covers the specific considerations that legal tech companies need to address in their SOC 2 programs, from data handling and access controls to the Trust Services Criteria most relevant to legal data protection.
+
+## Why Legal Tech Companies Need SOC 2
+
+The business case for SOC 2 in legal tech is more compelling than in almost any other vertical. Law firms are among the most security-conscious buyers in the SaaS market, and their procurement processes reflect that.
+
+### Law Firm Procurement Requirements
+
+Large law firms — particularly AmLaw 100 and AmLaw 200 firms — have sophisticated security review processes. Their information security teams evaluate every vendor that will access firm systems or data. SOC 2 Type II reports are typically a baseline requirement, not a differentiator. Without a current SOC 2 report, your product won't make it past the initial security screening at most large firms.
+
+Mid-size and smaller firms may not have dedicated security teams, but they're increasingly aware of cybersecurity risks and vendor security requirements. Many follow guidance from their malpractice insurers, bar associations, and industry groups that recommend or require vendor security assessments. A SOC 2 report satisfies these requirements and demonstrates professionalism that resonates with legal buyers.
+
+### Corporate Legal Departments
+
+Corporate legal departments — in-house counsel teams at enterprises — operate under their parent company's vendor security policies. If the enterprise requires SOC 2 reports from vendors, that requirement extends to tools used by the legal department. These procurement processes tend to be even more rigorous than law firm processes because they're governed by enterprise information security policies designed for the company's entire vendor portfolio.
+
+### Regulatory and Ethical Obligations
+
+Lawyers have ethical obligations to protect client information. ABA Model Rule 1.6(c) requires lawyers to "make reasonable efforts to prevent the inadvertent or unauthorized disclosure of, or unauthorized access to, information relating to the representation of a client." State bar associations have issued ethics opinions clarifying that this obligation extends to the technology tools lawyers use. When a law firm selects your legal tech product, they're relying on your security controls to help them meet their own ethical obligations.
+
+This ethical dimension elevates the importance of your SOC 2 program beyond a sales tool. Your security controls directly enable your customers' compliance with their professional responsibilities. That's a higher standard than most SaaS companies face, and your SOC 2 program should reflect it.
+
+## Trust Services Criteria for Legal Tech
+
+While Security (CC series) is the foundation for every SOC 2 report, legal tech companies typically need to include additional Trust Services Criteria to address the full range of legal data protection concerns.
+
+### Security (Required)
+
+The Security criteria are the baseline for every SOC 2 engagement. For legal tech companies, the security controls need to address the specific threats to legal data — unauthorized access to privileged communications, data exfiltration of case files, and interception of attorney-client communications. Standard security controls apply, but the implementation details should reflect the sensitivity of legal data.
+
+### Confidentiality (Strongly Recommended)
+
+The Confidentiality criteria address how you protect confidential information throughout its lifecycle — from collection through retention to disposal. For legal tech companies, this is critical because virtually all the data you handle is confidential by nature. Attorney-client communications, litigation strategy documents, contract drafts, and case materials are all confidential information that your customers expect to remain protected.
+
+Including the Confidentiality criteria in your SOC 2 scope demonstrates that you've specifically considered how confidential information is classified, protected, and disposed of — controls that directly address law firm concerns about privilege protection.
+
+### Availability (Recommended)
+
+Legal work is time-sensitive. Court filing deadlines, statute of limitations, transaction closing dates, and hearing schedules create hard deadlines that can't be moved. If your platform is unavailable when a lawyer needs to access case files for a filing deadline or review documents before a hearing, the consequences can be severe — missed deadlines, sanctions, and malpractice exposure.
+
+The Availability criteria address uptime commitments, disaster recovery, and business continuity — all of which are important to legal customers who depend on your platform for time-critical work.
+
+### Processing Integrity (Situational)
+
+If your platform processes legal data in ways that produce outputs your customers rely on — document comparison, contract analysis, e-discovery processing, billing calculations, or AI-powered legal research — the Processing Integrity criteria may be relevant. These criteria address whether your system processing is complete, valid, accurate, and timely. Legal customers who rely on your platform's outputs for decision-making need assurance that those outputs are accurate.
+
+## Data Handling Controls for Privileged Information
+
+The way you handle legal data needs to reflect its privileged nature. Standard data handling controls are a starting point, but legal tech companies need to address several additional considerations.
+
+### Data Segregation
+
+Law firms handle matters for different clients, and information from one client's matters must not be accessible to other clients — or even to other matters within the same firm in some cases (ethical walls). Your platform needs to enforce data segregation at the application level, ensuring that each firm's data is isolated from other firms' data, and supporting intra-firm isolation when required.
+
+For SOC 2, document your data segregation architecture — how data is logically or physically separated, how access controls enforce segregation, and how you test and verify that segregation is maintained. If you use a multi-tenant architecture (which most SaaS platforms do), describe the technical controls that prevent cross-tenant data access.
+
+### Ethical Walls (Information Barriers)
+
+Ethical walls are a concept specific to the legal industry. When a law firm represents clients with potentially conflicting interests, the firm must implement information barriers that prevent lawyers working on one client's matters from accessing information about the conflicting client's matters. If your platform supports matter management, document management, or communication, you may need to support ethical wall functionality.
+
+For SOC 2, if your platform includes ethical wall features, include them in your control description. Demonstrate that the feature works as designed through testing and that access controls enforce the information barriers reliably.
+
+### Data Retention and Legal Hold
+
+Legal data has specific retention requirements that differ from standard data lifecycle management. Litigation hold obligations require that potentially relevant data be preserved when litigation is anticipated — even if that data would otherwise be deleted per your standard retention schedule. Your platform may need to support legal hold functionality that prevents deletion of specified data regardless of retention policies.
+
+Document how your platform handles data retention, how legal holds are implemented if applicable, and what happens to data when a customer's subscription ends. Law firms need to know that their data won't be deleted prematurely (violating legal hold obligations) or retained indefinitely (creating unnecessary risk exposure).
+
+### Encryption Requirements
+
+Encrypt all legal data at rest and in transit. This is standard for SOC 2, but for legal tech the implementation details matter. Use AES-256 or equivalent for data at rest and TLS 1.2 or higher for data in transit. Manage encryption keys using a key management service rather than storing them alongside the encrypted data. If you offer customer-managed encryption keys (CMEK), document the feature and the customer's responsibilities for key management.
+
+Some law firms and legal departments require specific encryption standards based on their own security policies or regulatory requirements. Being able to document your encryption approach in detail — including key management, rotation policies, and algorithm specifications — helps you respond to these requirements efficiently.
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Legal Data Category</th>
+        <th className="text-left py-3 px-4 font-semibold">Sensitivity Level</th>
+        <th className="text-left py-3 px-4 font-semibold">Key SOC 2 Controls</th>
+        <th className="text-left py-3 px-4 font-semibold">Additional Considerations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Attorney-client communications</td>
+        <td className="py-3 px-4">Critical — privileged</td>
+        <td className="py-3 px-4">Encryption, access control, audit logging</td>
+        <td className="py-3 px-4">Privilege waiver risk if disclosed</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Case files and litigation documents</td>
+        <td className="py-3 px-4">Critical — work product</td>
+        <td className="py-3 px-4">Data segregation, retention controls, legal hold</td>
+        <td className="py-3 px-4">May be subject to litigation hold obligations</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Contract drafts and negotiations</td>
+        <td className="py-3 px-4">High — confidential</td>
+        <td className="py-3 px-4">Version control, access logging, data segregation</td>
+        <td className="py-3 px-4">Disclosure could affect deal outcomes</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Client PII and financial data</td>
+        <td className="py-3 px-4">High — regulated</td>
+        <td className="py-3 px-4">Encryption, access control, data minimization</td>
+        <td className="py-3 px-4">May trigger additional regulatory requirements</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50">
+        <td className="py-3 px-4 font-medium">Billing and matter management data</td>
+        <td className="py-3 px-4">Moderate — operational</td>
+        <td className="py-3 px-4">Access control, backup, availability</td>
+        <td className="py-3 px-4">May reveal case strategy through billing patterns</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Access Control for Legal Tech Platforms
+
+Access control is critical for legal tech because unauthorized access to legal data can have consequences beyond a security incident — it can waive attorney-client privilege, compromise litigation strategy, or create conflicts of interest.
+
+### Role-Based Access Control
+
+Implement granular role-based access control that maps to how legal organizations actually work. A paralegal needs different access than a partner. An associate on one matter needs access to that matter's documents but not to other matters' documents. An administrator needs platform configuration access but may not need access to document contents.
+
+Define roles that reflect legal organizational structures — partner, associate, paralegal, legal secretary, IT administrator, billing administrator — and map appropriate permissions to each role. Support custom roles for firms with non-standard organizational structures.
+
+### Matter-Level Access Control
+
+Many legal tech platforms organize data around matters or cases. Access control should operate at the matter level, allowing firms to control which users have access to which matters. This is essential for ethical wall compliance and for basic information governance within the firm.
+
+For SOC 2, document how matter-level access control works, how access is granted and revoked, and how you verify that access controls are enforced. If your platform supports matter-level access, include it in your control descriptions and demonstrate its operation during your audit.
+
+### Audit Logging for Legal Data Access
+
+Every access to legal data should be logged with sufficient detail to answer who accessed what, when, and from where. These audit logs serve multiple purposes: they provide evidence for your SOC 2 controls, they support your customers' own compliance obligations, and they create an evidentiary record that can demonstrate whether privileged information was accessed by unauthorized parties.
+
+Log retention for legal data access logs should be longer than your standard log retention period. Legal matters can span years or decades, and your customers may need access logs for active matters long after the data was accessed. Discuss log retention with your legal customers and ensure your retention period meets their needs.
+
+### Your Internal Team's Access to Customer Data
+
+One of the most sensitive topics for legal tech customers is whether your employees can access their data. Law firms need to know who at your company can see their privileged communications and case files. The answer should be "as few people as possible, under controlled circumstances, with full logging."
+
+Implement controls that limit employee access to customer data to specific roles (support engineers, on-call responders) with justified need, require approval for accessing customer data in production, log all employee access to customer data with reason codes, review employee access to customer data regularly, and provide customers with access logs upon request.
+
+Document these controls prominently in your SOC 2 system description and be prepared to discuss them in detail with legal customers during security reviews.
+
+## Incident Response for Legal Data
+
+Security incidents involving legal data require additional response steps beyond a standard incident response plan. A breach of privileged information has legal implications that standard incident response doesn't address.
+
+### Privilege Implications
+
+When a security incident potentially exposes privileged information, your incident response process needs to assess the privilege implications immediately. Was privileged information actually accessed or just potentially exposed? Which clients' privileged information was affected? Has the privilege been waived as a result of the disclosure? What notification obligations exist under applicable bar rules and data protection regulations?
+
+These questions require legal expertise, which means your [incident response plan](/blog/soc2-incident-response-requirements) should include escalation to legal counsel whenever an incident potentially affects privileged information. Document this escalation path and test it through tabletop exercises.
+
+### Customer Notification
+
+Law firms need to know about incidents affecting their data quickly so they can assess the impact on their own clients and obligations. Your incident notification process for legal tech should provide faster notification than standard SaaS incident response — ideally within twenty-four hours of confirming that customer data was affected. Include in your notification the scope of the potential exposure, the types of data potentially affected, the actions you've taken to contain and remediate the incident, and your recommendations for any steps the customer should take.
+
+### Regulatory Notification
+
+Depending on the jurisdictions involved and the types of data affected, you may have regulatory notification obligations beyond customer notification. State data breach notification laws, GDPR, and sector-specific regulations may apply. Your incident response plan should identify applicable notification requirements and include them in your response procedures.
+
+## Positioning Your SOC 2 Report for Legal Buyers
+
+Legal buyers evaluate SOC 2 reports differently than general enterprise buyers. Understanding what they focus on helps you prepare a report that addresses their specific concerns.
+
+### What Legal Buyers Look For
+
+When a law firm's information security team reviews your SOC 2 report, they focus on data handling and access controls — how you protect the confidentiality and integrity of customer data, who can access it, and how access is controlled. They examine your encryption practices, looking for strong encryption at rest and in transit. They review your incident response procedures, paying attention to notification timelines and privilege protection. They evaluate your personnel security controls, including background checks, training, and access revocation procedures. And they look for Confidentiality criteria inclusion, which signals that you've specifically addressed confidential information handling.
+
+### Security Questionnaire Preparation
+
+In addition to your SOC 2 report, law firms typically send security questionnaires with legal-industry-specific questions. Common questions include how you handle privileged information, whether you support ethical walls, what your data retention and deletion practices are, whether you've had security incidents involving legal data, and what jurisdiction-specific data protection measures you implement.
+
+Prepare standard responses to these questions and update them whenever your security practices change. Having polished, detailed responses ready demonstrates program maturity and speeds up the procurement process.
+
+### Competitive Differentiation
+
+In the legal tech market, SOC 2 compliance is increasingly table stakes for enterprise sales. The opportunity for differentiation lies in the depth and quality of your program. Including Confidentiality and Availability criteria when competitors only cover Security demonstrates a more mature program. Offering detailed data handling documentation that addresses privilege concerns shows legal industry awareness. Providing customer-facing audit logs and access reports adds tangible value that legal buyers appreciate.
+
+## Penetration Testing and Vulnerability Management
+
+Legal tech buyers frequently ask about your penetration testing program, and many require annual penetration tests as a condition of doing business. Law firms' information security teams are particularly focused on penetration testing because they deal with adversarial scenarios daily — litigation opponents, corporate espionage, and nation-state actors targeting high-profile legal matters.
+
+### Annual Penetration Testing
+
+Conduct annual penetration tests by qualified third-party testers. Your penetration test should cover external network testing (internet-facing services), web application testing (your platform's user-facing interfaces), API testing (your platform's programmatic interfaces), and social engineering testing (phishing and pretexting scenarios targeting your team).
+
+Share penetration test executive summaries with legal buyers upon request. Most firms expect to see evidence that you test your defenses regularly and remediate findings promptly. A penetration test report with findings that were remediated within thirty days demonstrates a mature security posture.
+
+### Continuous Vulnerability Management
+
+Beyond annual penetration testing, implement continuous vulnerability management that includes regular vulnerability scanning of infrastructure and applications, dependency scanning for known vulnerabilities in third-party libraries, container scanning if you use containerized deployments, and a defined SLA for vulnerability remediation based on severity — critical vulnerabilities within twenty-four to forty-eight hours, high within one week, medium within thirty days.
+
+Document your vulnerability management program and include vulnerability remediation metrics in your SOC 2 evidence. Legal buyers want to see not just that you scan for vulnerabilities but that you fix them in a timely manner.
+
+### Bug Bounty Programs
+
+Consider implementing a bug bounty program or vulnerability disclosure policy. These programs demonstrate that you welcome external security research and respond constructively to reported vulnerabilities. For legal tech companies, a bug bounty program signals confidence in your security posture and a commitment to continuous improvement.
+
+## Business Continuity and Disaster Recovery
+
+Legal work is time-sensitive in ways that make availability and data durability critical concerns. Missing a court filing deadline because your platform was down isn't just an inconvenience — it can constitute malpractice.
+
+### Recovery Time and Recovery Point Objectives
+
+Define recovery time objectives (RTO) and recovery point objectives (RPO) that reflect the criticality of legal workflows. For most legal tech platforms, an RTO of four hours or less and an RPO of one hour or less are appropriate. Document these objectives, test your ability to meet them through regular disaster recovery exercises, and share the results with customers who ask.
+
+### Geographic Redundancy
+
+Implement geographic redundancy for your infrastructure so that a single data center failure doesn't affect platform availability. Multi-region deployment, cross-region database replication, and automated failover provide the resilience that legal customers require. Document your infrastructure architecture and availability design in your SOC 2 system description.
+
+### Backup and Data Durability
+
+Legal data often needs to be preserved for years or decades. Your [backup and disaster recovery](/blog/soc2-backup-disaster-recovery) program should ensure that data is backed up frequently, backups are encrypted and stored in a geographically separate location, backup restoration is tested regularly, and backup retention aligns with your customers' data retention requirements.
+
+## Legal Tech-Specific Compliance Considerations
+
+Beyond SOC 2, legal tech companies may face additional compliance requirements depending on their product category and target market.
+
+### E-Discovery Compliance
+
+If your platform is used for electronic discovery, you may need to address specific e-discovery standards and requirements. The Electronic Discovery Reference Model (EDRM), Federal Rules of Civil Procedure rules on electronically stored information, and state-specific e-discovery rules all create obligations that your platform may need to support. While these aren't SOC 2 requirements, addressing them in your compliance documentation demonstrates legal industry expertise.
+
+### International Legal Data
+
+Law firms increasingly handle cross-border matters that involve data from multiple jurisdictions. If your platform stores or processes data for international law firms or matters, you need to address data residency requirements, cross-border transfer mechanisms, and jurisdiction-specific data protection regulations. Document your data center locations, data transfer practices, and the mechanisms you use to comply with cross-border data transfer requirements.
+
+### AI and Legal Data
+
+If your legal tech product uses artificial intelligence or machine learning — an increasingly common feature in contract analysis, legal research, document review, and predictive analytics — you face additional questions from legal buyers. They want to know whether their data is used to train models, whether AI-generated outputs could expose information from other clients' data, how you prevent data leakage between tenants in AI processing, and what the accuracy and reliability of AI-generated outputs are.
+
+Address these questions in your security documentation and be prepared to discuss them during security reviews. The intersection of AI and privileged data is a topic of active discussion in the legal industry, and legal buyers are increasingly sophisticated in their questions about AI data handling.
+
+## Building Your Legal Tech SOC 2 Program
+
+Building a SOC 2 program that addresses legal industry requirements doesn't require starting from scratch. The foundation is the same as any SOC 2 program — security controls, documentation, evidence collection, and audit preparation. The legal tech-specific elements layer on top of this foundation.
+
+Start with your policies and procedures. Ensure your information security policy addresses privileged information handling. Ensure your [access control policy](/blog/soc2-access-control) covers matter-level access and ethical walls if applicable. Ensure your incident response plan includes privilege assessment and legal escalation procedures. Ensure your data handling procedures address legal data retention, legal hold, and secure disposal.
+
+Our [Complete Bundle](/products/complete-bundle) provides the policy and documentation foundation for your SOC 2 program, with templates that you can customize to address legal tech-specific requirements. Starting with professionally written templates saves weeks of documentation work and ensures your policies cover the control areas your auditor will examine. Layer your legal industry-specific controls on top of these templates to create a program that satisfies both SOC 2 requirements and the elevated expectations of legal industry buyers.
+
+For guidance on choosing an auditor who understands your industry, our [auditor selection guide](/blog/how-to-choose-soc2-auditor) covers the evaluation criteria that matter most, including industry experience and Trust Services Criteria expertise. An auditor with legal tech or professional services experience will better understand the unique aspects of your compliance program and provide more relevant guidance throughout the audit process.

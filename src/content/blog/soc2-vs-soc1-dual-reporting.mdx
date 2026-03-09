@@ -1,0 +1,251 @@
+---
+title: "SOC 1 vs SOC 2: Key Differences and When You Need Both Reports"
+excerpt: "SOC 1 and SOC 2 serve different purposes but some companies need both. Learn the key differences, which report your customers need, and how to manage dual reporting."
+date: "2026-06-09"
+category: "SOC 2 Compliance"
+readTime: "13 min read"
+author: "SecurityDocs Team"
+---
+
+The question "Do we need SOC 1 or SOC 2?" comes up constantly in compliance conversations, and the answer isn't always one or the other. Some companies need both, and understanding why — and how to manage dual reporting efficiently — can save significant time and money.
+
+SOC 1 and SOC 2 are both audit frameworks developed by the AICPA, and they share structural similarities that make them easy to confuse. Both involve independent auditor examination of your controls. Both come in Type I (point-in-time design assessment) and Type II (operational effectiveness over a period) variants. Both produce reports that your customers use to evaluate your security and operational practices. But they serve fundamentally different purposes, address different audiences, and cover different control domains.
+
+Getting the distinction right matters because pursuing the wrong report wastes money and time without satisfying your customers' actual requirements. Pursuing both when you only need one doubles your compliance investment unnecessarily. And pursuing neither when you need one leaves you unable to close deals with customers that require independent assurance. This guide clarifies the differences, helps you determine which reports you need, and covers how to manage dual reporting efficiently if you need both.
+
+## What SOC 1 Covers
+
+SOC 1 (formally known as SSAE 18 or, historically, SAS 70) focuses on internal controls over financial reporting (ICFR). It's designed for service organizations whose services affect their customers' financial statements.
+
+### The Financial Reporting Connection
+
+The key concept behind SOC 1 is financial reporting relevance. When your customers' financial auditors evaluate their financial statements, they need to consider whether the services you provide could affect the accuracy or completeness of those financial statements. If your services process financial transactions, calculate financial figures, or manage data that flows into financial reports, your customers' auditors need assurance about your controls.
+
+For example, if you provide payroll processing services, your customers' financial auditors need to know that your payroll calculations are accurate, that direct deposits are processed correctly, and that tax withholdings are computed properly. Errors in these processes would create misstatements in your customers' financial statements. A SOC 1 report provides the assurance those auditors need.
+
+### Control Objectives
+
+Unlike SOC 2, which uses standardized Trust Services Criteria, SOC 1 control objectives are custom — they're specific to the services you provide and the financial reporting risks they create. A payroll processor's SOC 1 might include control objectives around payroll calculation accuracy, tax withholding compliance, direct deposit processing integrity, and payroll reporting completeness. A payment processor's SOC 1 might focus on transaction authorization, settlement accuracy, and fraud detection.
+
+You work with your auditor to define control objectives that are relevant to your services and the financial reporting risks they address. This customization makes SOC 1 directly relevant to your customers' needs but also means there's no standard checklist — the controls are tailored to your specific service.
+
+### Who Needs Your SOC 1 Report
+
+SOC 1 reports are primarily used by your customers' external financial auditors (CPAs performing financial statement audits), your customers' internal audit teams evaluating financial controls, and regulatory examiners (particularly in financial services) who evaluate financial reporting controls.
+
+If your customers' auditors are asking about your controls over financial reporting — or if your customers' procurement teams mention "SAS 70" or "SSAE 18" — they're looking for a SOC 1 report.
+
+## What SOC 2 Covers
+
+SOC 2 focuses on controls relevant to security, availability, processing integrity, confidentiality, and privacy — the Trust Services Criteria. It's designed for service organizations that handle sensitive data or provide services where security and operational controls matter to customers.
+
+### The Trust Services Criteria
+
+SOC 2 uses a standardized set of criteria rather than custom control objectives. The Security criteria (Common Criteria) are required for every SOC 2 engagement and cover access control, system operations, change management, risk management, monitoring, and incident response. Availability, Processing Integrity, Confidentiality, and Privacy are optional criteria that you include based on your customers' concerns and the nature of your services.
+
+This standardization makes SOC 2 more comparable across organizations — customers can evaluate your SOC 2 report against a known framework — but less specifically tailored to your unique services than a SOC 1 report would be.
+
+### Who Needs Your SOC 2 Report
+
+SOC 2 reports are primarily used by your customers' security and compliance teams evaluating vendor risk, procurement teams assessing vendor security posture, enterprise buyers with security requirements in their vendor policies, and regulated industries (healthcare, financial services, government) with specific vendor security requirements.
+
+If your customers' security teams are asking about your security controls, requesting completion of security questionnaires, or referencing the Trust Services Criteria — they're looking for a SOC 2 report.
+
+## Key Differences Between SOC 1 and SOC 2
+
+Understanding the specific differences helps you determine which report is appropriate for your situation.
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Dimension</th>
+        <th className="text-left py-3 px-4 font-semibold">SOC 1</th>
+        <th className="text-left py-3 px-4 font-semibold">SOC 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Primary focus</td>
+        <td className="py-3 px-4">Internal controls over financial reporting (ICFR)</td>
+        <td className="py-3 px-4">Security, availability, processing integrity, confidentiality, privacy</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Control framework</td>
+        <td className="py-3 px-4">Custom control objectives specific to your services</td>
+        <td className="py-3 px-4">Standardized Trust Services Criteria (AICPA)</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Primary audience</td>
+        <td className="py-3 px-4">Financial auditors, internal audit, financial regulators</td>
+        <td className="py-3 px-4">Security teams, procurement, compliance officers</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Report distribution</td>
+        <td className="py-3 px-4">Restricted — typically under NDA to customers and their auditors</td>
+        <td className="py-3 px-4">Restricted — typically under NDA to current and prospective customers</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Report types</td>
+        <td className="py-3 px-4">Type I (design) and Type II (design + operating effectiveness)</td>
+        <td className="py-3 px-4">Type I (design) and Type II (design + operating effectiveness)</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Typical cost</td>
+        <td className="py-3 px-4">$20,000–$80,000 depending on complexity</td>
+        <td className="py-3 px-4">$20,000–$100,000 depending on scope and criteria</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50">
+        <td className="py-3 px-4 font-medium">Common industries</td>
+        <td className="py-3 px-4">Payroll, payment processing, financial services, benefits administration</td>
+        <td className="py-3 px-4">SaaS, cloud services, data processing, technology companies broadly</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### A Simple Decision Framework
+
+The simplest way to determine which report you need is to ask: "Do my services affect my customers' financial statements?"
+
+If your services process financial transactions, calculate financial figures, manage financial data, or otherwise affect the numbers that appear in your customers' financial statements — you likely need a SOC 1. If your services handle sensitive data, provide technology infrastructure, or offer SaaS products where security and operational controls matter — you likely need a SOC 2. If your services do both — process financial transactions and handle sensitive data in a technology context — you may need both.
+
+### Common Misconceptions
+
+Several misconceptions about SOC 1 and SOC 2 lead companies to pursue the wrong report.
+
+**"SOC 1 is the basic version and SOC 2 is the advanced version."** This is wrong. SOC 1 and SOC 2 are not different levels of the same framework — they're different frameworks for different purposes. A SOC 1 report from a payroll company is not inferior to a SOC 2 report. They cover different things.
+
+**"We process payments, so we need SOC 1."** Not necessarily. If you're a SaaS company that accepts credit card payments for your own service, you don't need SOC 1 — your payment processing doesn't affect your customers' financial statements. You might need PCI DSS compliance for the payment processing, and SOC 2 for your overall service security.
+
+**"SOC 2 covers everything SOC 1 covers."** It doesn't. SOC 2 addresses security, availability, and related criteria. SOC 1 addresses controls over financial reporting. A SOC 2 report doesn't satisfy a customer's auditor who needs assurance about your financial reporting controls, and a SOC 1 report doesn't satisfy a customer's security team who needs assurance about your security controls.
+
+**"We can just get SOC 2 and it will satisfy everyone."** Only if all your customers' concerns are about security and operations. If some customers (or their auditors) need financial reporting assurance, SOC 2 alone won't suffice.
+
+## When You Need Both Reports
+
+Dual reporting — maintaining both SOC 1 and SOC 2 — is necessary when your customers have both financial reporting and security concerns, and different stakeholders within those customers need different reports.
+
+### Common Dual Reporting Scenarios
+
+**Payroll and HR tech companies** often need both reports. Their services process payroll transactions (financial reporting relevance, SOC 1) and handle sensitive employee data (security and privacy, SOC 2). The payroll customer's CFO and financial auditors need the SOC 1. The same customer's CISO and security team need the SOC 2.
+
+**Benefits administration platforms** process benefits payments and premium calculations (SOC 1) while handling sensitive employee health and financial data (SOC 2). **Financial data aggregation services** process financial transaction data (SOC 1) while providing technology platforms that need security assurance (SOC 2).
+
+**Payment processors and fintech companies** process financial transactions on behalf of customers (SOC 1) while operating technology platforms that handle sensitive financial data (SOC 2). For [fintech companies](/blog/soc2-for-fintech), understanding both requirements is critical for serving financial institution customers.
+
+**Trust companies and fund administrators** calculate net asset values and process fund transactions (SOC 1) while managing technology systems that store sensitive investor information (SOC 2).
+
+### Confirming the Need
+
+Before committing to dual reporting, confirm that you actually need both reports. Ask your customers specifically what report they need and who is requesting it. A customer's security team asking for "a SOC report" usually means SOC 2. A customer's finance team or external auditor asking for "a SOC report" might mean SOC 1. Clarify before investing in the wrong report.
+
+Survey your customer base to understand the demand. If ninety percent of your customers need SOC 2 and only five percent need SOC 1, you might prioritize SOC 2 and address SOC 1 customers individually until the volume justifies the investment. If the split is more even, pursue both reports.
+
+## Managing Dual Reporting Efficiently
+
+Maintaining two SOC reports doesn't have to mean double the work. With proper planning, you can leverage significant overlap between the two engagements.
+
+### Control Overlap
+
+SOC 1 and SOC 2 share a meaningful set of underlying controls. Access management controls — user provisioning, authentication, authorization, and deprovisioning — are relevant to both financial reporting controls (SOC 1) and security controls (SOC 2). Change management controls — code review, testing, deployment processes — support both financial calculation accuracy (SOC 1) and system security (SOC 2). Monitoring and logging controls provide evidence for both frameworks. Incident response processes address both financial processing disruptions (SOC 1) and security incidents (SOC 2).
+
+This overlap means that implementing controls for one report provides partial coverage for the other. The incremental effort for the second report is less than building both from scratch.
+
+### Using the Same Auditor
+
+The most effective efficiency strategy for dual reporting is using the same audit firm for both engagements. A single firm that performs both audits can coordinate the examination timeline to minimize disruption, share evidence and testing results between engagements where applicable, align observation periods so both reports cover the same timeframe, provide a single team that understands your full control environment, and offer bundled pricing that's lower than two separate engagements.
+
+The cost savings from a single auditor performing both examinations typically range from fifteen to twenty-five percent compared to using separate auditors. Beyond cost savings, the coordination benefit is significant — a single auditor team that understands your complete control environment provides better guidance and more efficient testing.
+
+### Aligned Observation Periods
+
+If possible, align the observation periods for both reports so they cover the same timeframe. This alignment means the evidence you collect serves both reports — access review evidence, change management records, incident response documentation, and monitoring data are collected once and used for both examinations. Misaligned observation periods create duplicate evidence collection efforts for the overlapping controls.
+
+### Integrated Evidence Collection
+
+Build your evidence collection process to serve both reports simultaneously. When you perform an access review, document it in a way that satisfies both the SOC 1 control objective for access management and the SOC 2 criteria for logical access controls. When you document a change management process, capture the details that SOC 1 requires for financial processing accuracy and the details that SOC 2 requires for security and change control.
+
+This integrated approach requires understanding the specific evidence requirements for both reports and designing your documentation to cover both sets of requirements. Work with your auditor to identify where evidence can be shared and where the requirements differ.
+
+### Unified System Description
+
+While SOC 1 and SOC 2 have different system description requirements, the underlying information is largely the same — your infrastructure, your services, your organizational structure, your processes. Create a base system description that covers the common elements, and add the report-specific sections (control objectives for SOC 1, Trust Services Criteria mapping for SOC 2) as separate layers. This approach ensures consistency between reports and reduces the documentation effort.
+
+## Cost Considerations for Dual Reporting
+
+Dual reporting is more expensive than a single report, but proper management keeps the incremental cost reasonable.
+
+### Audit Fees
+
+With the same auditor performing both examinations, typical pricing for dual reporting ranges from $40,000 to $120,000 for both reports, compared to $20,000 to $80,000 for a single SOC 1 and $20,000 to $100,000 for a single SOC 2. The combined fee is typically thirty to forty percent less than the sum of two independent engagements.
+
+### Internal Effort
+
+The internal effort for dual reporting is typically forty to sixty percent more than a single report, not double. The overlap in controls, evidence, and preparation means the incremental effort for the second report is significant but manageable. Budget for additional coordination time, additional evidence collection for controls unique to one report, and additional review cycles for two sets of audit documentation.
+
+### Reducing Dual Reporting Costs
+
+If cost is a concern, consider strategies that reduce the overall investment. Start with the report that addresses your most immediate customer needs and add the second report in a subsequent audit cycle. This staggers the cost and allows you to leverage the first report's implementation for the second. Use a readiness assessment rather than a full audit for the report with lower customer demand, providing informal assurance while you prepare for the full examination. Negotiate aggressively with your auditor on bundled pricing — auditors know that dual engagements are more efficient for them, and they should pass some of that efficiency to you.
+
+Our guide on [SOC 2 compliance costs](/blog/soc2-compliance-costs) provides detailed cost breakdowns that help you budget for your compliance program, whether you're pursuing SOC 2 alone or managing dual reporting.
+
+## Transitioning Between Reports
+
+Sometimes companies start with one report and later need the other. Understanding how to manage transitions helps you plan for evolving customer requirements.
+
+### Adding SOC 1 to an Existing SOC 2 Program
+
+If you already have a SOC 2 program and need to add SOC 1, you're in a strong position. Many of the controls you've already implemented — access management, change management, monitoring, incident response — are relevant to SOC 1 as well. The incremental work involves defining SOC 1-specific control objectives with your auditor that map to the financial reporting aspects of your service, implementing any additional controls specific to financial processing accuracy that aren't covered by your existing SOC 2 controls, documenting the financial reporting relevance of your services in the SOC 1 system description, and collecting evidence specific to the SOC 1 control objectives.
+
+The transition typically takes three to six months from decision to first SOC 1 examination, assuming your existing SOC 2 controls are mature.
+
+### Adding SOC 2 to an Existing SOC 1 Program
+
+If you have a SOC 1 program and need to add SOC 2, the transition is similar but with a broader scope expansion. SOC 2's Trust Services Criteria cover areas that SOC 1 typically doesn't — risk assessment, security monitoring, vulnerability management, vendor management, and security awareness training. You'll need to implement controls for each applicable Trust Services Criterion, create documentation (policies, procedures, standards) that covers the SOC 2 control domains, configure evidence collection for SOC 2-specific controls, and potentially bring additional systems into scope that are relevant to security but weren't relevant to financial reporting.
+
+This transition typically takes six to twelve months because the SOC 2 criteria cover a broader set of controls than most SOC 1 engagements.
+
+### Dropping a Report
+
+If customer demand for one report diminishes — perhaps you've moved away from financial transaction processing and SOC 1 is no longer relevant — you can discontinue the report. Before dropping a report, verify that no current customers or contracts require it. Communicate the change to affected customers with appropriate notice. Confirm with your auditor that the remaining report provides appropriate coverage.
+
+Dropping an unneeded report reduces costs and simplifies your compliance program. Just ensure that the remaining report satisfies all your customers' assurance needs.
+
+## Regulatory Considerations
+
+Certain regulatory environments have specific expectations about SOC reports that influence your decision.
+
+### Financial Services Regulators
+
+Bank examiners, SEC examiners, and insurance regulators often have specific expectations about SOC reports from service providers. If your customers include banks, broker-dealers, insurance companies, or investment advisers, their regulators may require SOC 1 reports for services that affect financial reporting, and they may have expectations about the specific control objectives and testing procedures your SOC 1 report should cover.
+
+Engage with your auditor about regulatory expectations in your target market. An auditor with financial services experience can help you design control objectives that satisfy both customer needs and regulatory expectations.
+
+### Healthcare Regulations
+
+If your services involve healthcare data, your customers may need assurance about both financial reporting (SOC 1 for claims processing, benefits administration) and security and privacy ([SOC 2 for HIPAA compliance](/blog/soc2-hipaa-comparison), data protection). Healthcare customers increasingly require SOC 2 with Confidentiality and Privacy criteria to address HIPAA-related concerns, potentially in addition to SOC 1 for financial processing.
+
+### International Considerations
+
+SOC reports are primarily a US framework, though they're increasingly recognized internationally. If you serve customers outside the US, they may request ISO 27001 certification instead of or in addition to SOC 2. Some international customers accept SOC 2 reports; others require local equivalents. Understanding your target market's expectations helps you invest in the right combination of certifications and audit reports.
+
+## SOC 1 vs SOC 2 vs SOC 3
+
+While this guide focuses on SOC 1 and SOC 2, SOC 3 occasionally comes up in discussions and is worth addressing briefly.
+
+SOC 3 is essentially a public-facing summary of a SOC 2 report. It contains the same auditor's opinion as a SOC 2 report but without the detailed system description, control descriptions, and test results. SOC 3 reports can be freely distributed — posted on your website, included in marketing materials — without restrictions.
+
+SOC 3 reports are rarely sufficient on their own because they lack the detail that customers need for vendor evaluation. However, they can be useful as a marketing tool — posting a SOC 3 seal on your website signals compliance to prospects before they request the full SOC 2 report.
+
+A SOC 3 report requires a SOC 2 examination — you can't get a SOC 3 without going through the SOC 2 process. The incremental cost of adding a SOC 3 to an existing SOC 2 engagement is typically $2,000 to $5,000.
+
+## Making the Decision
+
+Deciding between SOC 1, SOC 2, or both comes down to understanding your customers' needs and the nature of your services. Talk to your customers and prospects directly. Ask their security teams, their procurement teams, and if possible, their financial auditors which report they need and why. The answer will tell you which investment to make.
+
+If you're uncertain, start with SOC 2. The Security criteria address the concerns that most customers — across all industries — care about. If financial reporting concerns emerge from specific customers, you can add SOC 1 based on demonstrated demand rather than speculation.
+
+For companies that need both reports, invest in the coordination and planning that makes dual reporting efficient. Use the same auditor, align observation periods, integrate evidence collection, and leverage the control overlap between frameworks. The investment in efficient dual reporting pays for itself through reduced audit costs, less internal effort, and the ability to satisfy both security and financial assurance requirements for your customers.
+
+Our [Complete Bundle](/products/complete-bundle) provides the policy and documentation foundation for your compliance program, whether you're pursuing SOC 2 alone or building toward dual reporting. The policies, procedures, and templates cover the control areas common to both SOC 1 and SOC 2, giving you a documentation foundation that supports either or both engagements. For guidance on selecting the right auditor for your needs — particularly important when considering dual reporting — our [auditor selection guide](/blog/how-to-choose-soc2-auditor) covers evaluation criteria including experience with both SOC 1 and SOC 2 engagements.

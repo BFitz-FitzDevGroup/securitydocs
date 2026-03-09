@@ -1,0 +1,312 @@
+---
+title: "SOC 2 Incident Response Requirements: Building a Program That Satisfies Auditors"
+excerpt: "Learn what SOC 2 requires for incident response under CC7.3-CC7.5. Build a program that detects, responds to, and recovers from security incidents."
+date: "2026-03-24"
+category: "SOC 2 Compliance"
+readTime: "14 min read"
+author: "SecurityDocs Team"
+---
+
+SOC 2 incident response is one of those areas where companies tend to procrastinate until their auditor starts asking questions. You know you need an incident response plan. You might even have a rough document sitting in Google Drive from when your CTO drafted something at 2 AM before a customer security questionnaire was due. But having a document and having a program are very different things, and your auditor knows the difference.
+
+The Trust Services Criteria covering incident response — CC7.3, CC7.4, and CC7.5 — require more than a plan on paper. They require that you can detect security events, respond to them with a defined process, and recover operations afterward. More importantly, they require evidence that you've actually tested these capabilities, not just documented them.
+
+This guide walks through exactly what SOC 2 requires for incident response, how to build a program that genuinely works, and how to collect the evidence your auditor will request. If you're feeling overwhelmed by incident response requirements, you're not alone — this is one of the [most commonly cited gaps in SOC 2 audits](/blog/common-soc2-audit-findings). But it's also one of the most straightforward to fix once you understand what's actually expected.
+
+## What SOC 2 Means by "Incident"
+
+Before diving into requirements, let's clarify what constitutes a security incident in the SOC 2 context. This matters because many companies either define incidents too narrowly (only counting confirmed breaches) or too broadly (treating every failed login as an incident), and both approaches create problems.
+
+In SOC 2 terms, a security incident is any event that compromises or has the potential to compromise the confidentiality, integrity, or availability of your systems or the data they process. This includes confirmed breaches, but it also includes near-misses, unauthorized access attempts that succeeded but were caught before damage occurred, and system outages that affected customer operations.
+
+**Confirmed security incidents** include unauthorized access to customer data, malware infection on a production system, a compromised employee account used to access systems, data exfiltration whether intentional or accidental, and ransomware attacks.
+
+**Events that may qualify as incidents** depending on severity include extended service outages affecting customers, successful phishing attacks against employees even if no systems were compromised, discovery of a critical vulnerability in production systems, unauthorized changes to production infrastructure, and loss or theft of a company device containing sensitive data.
+
+**Events that typically don't qualify** as incidents but should still be logged include routine failed login attempts, automated vulnerability scan findings that are patched in normal course, spam emails blocked by filters, and port scans detected by your firewall.
+
+The key distinction is whether the event has the potential to affect the security commitments you've made in your system description. Your incident classification criteria should map to your specific environment and the Trust Service Criteria you've selected. A SaaS company that includes Availability in their scope needs to treat significant outages as incidents. A company focused only on Security criteria might classify the same outage differently.
+
+## Understanding CC7.3, CC7.4, and CC7.5
+
+SOC 2 organizes incident response requirements across three related criteria. Understanding each one helps you build a program that covers all the bases without overcomplicating things.
+
+### CC7.3 — Detection and Monitoring
+
+CC7.3 requires that your organization has procedures to detect security events that could affect your ability to meet your service commitments. This criterion connects directly to your [logging and monitoring infrastructure](/blog/soc2-logging-monitoring) — you can't respond to incidents you don't know about.
+
+What CC7.3 requires in practice is that you have monitoring systems that generate alerts when anomalous or potentially malicious activity occurs. This includes intrusion detection capabilities, log analysis and correlation, application-level monitoring for security events, and alerting mechanisms that notify the right people when something requires attention.
+
+The detection piece is where many companies fall short. They have monitoring for operational issues (application errors, performance degradation) but lack security-specific detection. Your auditor will want to see that your monitoring covers both operational and security domains, and that security alerts are routed to people who can evaluate and respond to them.
+
+Detection also requires defined thresholds and criteria. What triggers an alert? Who receives it? What's the expected response time? These parameters should be documented and consistently applied. An alert that fires but sits unacknowledged in a Slack channel for three days doesn't satisfy CC7.3.
+
+### CC7.4 — Response Activities
+
+CC7.4 is the heart of incident response. It requires that your organization has defined procedures for responding to detected security events. This includes identifying the incident, containing it, eradicating the root cause, and communicating with affected parties.
+
+The key elements auditors look for under CC7.4 include a documented incident response plan with clearly defined roles and responsibilities, classification criteria that determine how incidents are prioritized and escalated, containment procedures that limit damage while you investigate, communication templates and notification procedures for internal and external stakeholders, and evidence that the plan has been tested through exercises or real incident response.
+
+CC7.4 also requires that you evaluate each incident to determine whether it constitutes a breach requiring external notification. This evaluation should consider legal requirements, contractual obligations, and the nature and scope of the data involved.
+
+### CC7.5 — Recovery Activities
+
+CC7.5 focuses on what happens after the immediate threat is contained. It requires procedures for restoring operations, verifying system integrity, and implementing changes to prevent recurrence.
+
+Recovery under CC7.5 includes restoring affected systems to a known good state, validating that the threat has been fully eradicated, implementing permanent fixes rather than just temporary containment, conducting post-incident analysis to identify root causes and improvement opportunities, and updating controls, procedures, or monitoring based on lessons learned.
+
+The post-incident review is particularly important to auditors. It demonstrates that your organization learns from incidents and continuously improves its security posture. A company that experiences incidents but never updates its controls or procedures based on those experiences has a maturity problem that auditors will note.
+
+## Building Your Incident Response Plan
+
+Your incident response plan is the documented foundation of your program. It doesn't need to be a 50-page manual that nobody reads — it needs to be clear, practical, and actionable enough that someone can follow it during a 3 AM incident without extensive interpretation.
+
+### Roles and Responsibilities
+
+Every incident response plan needs clearly defined roles. At minimum, you need the following functions covered, though in a small company one person may fill multiple roles.
+
+**Incident Commander** owns the overall response effort. They make decisions about escalation, coordinate between teams, and serve as the single point of authority during an incident. In small companies, this is typically the CTO or VP of Engineering. The incident commander doesn't need to be the most technical person — they need to be someone who can make decisions under pressure and coordinate communication.
+
+**Technical Lead** directs the technical investigation and remediation. They determine the scope of the incident, identify the root cause, and oversee containment and eradication activities. This is usually a senior engineer or security team member who understands your infrastructure deeply.
+
+**Communications Lead** manages all internal and external communications during the incident. They draft customer notifications, coordinate with legal counsel on regulatory notifications, and ensure consistent messaging. In smaller organizations, this might be the CEO or a co-founder.
+
+**Scribe** documents everything that happens during the incident in real time. This role is often underestimated, but incident documentation is critical both for your own post-mortem analysis and for your auditor. Timestamps, decisions, actions taken, and outcomes should all be recorded as they happen, not reconstructed from memory days later.
+
+For each role, document the primary person, at least one backup, and how to reach them outside business hours. If your incident commander is unreachable during a weekend incident, you need a clear escalation path.
+
+### Classification and Severity Criteria
+
+Not every incident requires the same response. Your plan should define severity levels that drive response timelines, escalation paths, and communication requirements.
+
+A practical four-level classification works well for most organizations.
+
+**Critical (Severity 1)** incidents involve confirmed unauthorized access to customer data, active data exfiltration, ransomware or destructive malware in production, or complete loss of service availability. These require immediate response with all hands on deck, executive notification within 30 minutes, and customer communication within the timeline specified in your contracts or privacy commitments.
+
+**High (Severity 2)** incidents include unauthorized access to internal systems containing sensitive data, successful compromise of an employee account with elevated privileges, partial service outage affecting a subset of customers, or discovery of an actively exploited vulnerability in production. These require response within one hour during business hours, executive notification within two hours, and customer communication as warranted by impact.
+
+**Medium (Severity 3)** incidents encompass successful phishing attacks against employees where no system compromise is confirmed, detection of malware on an endpoint that was contained before spreading, unauthorized configuration changes to production systems, and loss of a company device that may contain sensitive data. These require response within four business hours and manager notification.
+
+**Low (Severity 4)** incidents are security events that were blocked by existing controls but indicate attempted compromise, minor policy violations by employees, and vulnerability discoveries that don't indicate active exploitation. These require documentation and review during the next business day.
+
+Your classification criteria should be specific enough to reduce ambiguity. During an incident is not the time for philosophical debates about whether something is Severity 2 or Severity 3. The criteria should make the classification obvious in most cases, with the incident commander making judgment calls on edge cases.
+
+### Escalation Procedures
+
+Your escalation procedures define who gets notified at each severity level and when. Document these as a clear matrix.
+
+<div className="overflow-x-auto my-8">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-100 border-b-2">
+        <th className="text-left py-3 px-4 font-semibold">Severity</th>
+        <th className="text-left py-3 px-4 font-semibold">Response Time</th>
+        <th className="text-left py-3 px-4 font-semibold">Notified Roles</th>
+        <th className="text-left py-3 px-4 font-semibold">Customer Notification</th>
+        <th className="text-left py-3 px-4 font-semibold">External Notification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Critical (S1)</td>
+        <td className="py-3 px-4">Immediate</td>
+        <td className="py-3 px-4">Incident Commander, Technical Lead, Communications Lead, CEO</td>
+        <td className="py-3 px-4">Within contractual SLA (typically 24-72 hours)</td>
+        <td className="py-3 px-4">Legal assessment for regulatory requirements</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">High (S2)</td>
+        <td className="py-3 px-4">Within 1 hour</td>
+        <td className="py-3 px-4">Incident Commander, Technical Lead, Engineering Manager</td>
+        <td className="py-3 px-4">If customer impact confirmed</td>
+        <td className="py-3 px-4">As warranted by investigation</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50 border-b">
+        <td className="py-3 px-4 font-medium">Medium (S3)</td>
+        <td className="py-3 px-4">Within 4 hours</td>
+        <td className="py-3 px-4">On-call engineer, Engineering Manager</td>
+        <td className="py-3 px-4">Typically not required</td>
+        <td className="py-3 px-4">Typically not required</td>
+      </tr>
+      <tr className="odd:bg-white even:bg-gray-50">
+        <td className="py-3 px-4 font-medium">Low (S4)</td>
+        <td className="py-3 px-4">Next business day</td>
+        <td className="py-3 px-4">Security team or designated engineer</td>
+        <td className="py-3 px-4">Not required</td>
+        <td className="py-3 px-4">Not required</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Include specific contact methods for each escalation level. During a critical incident, you don't want someone searching for phone numbers. Document primary contact methods (phone, PagerDuty, Slack) and backup methods for each role.
+
+### Communication Templates
+
+Pre-written communication templates save precious time during incidents and ensure consistent, professional messaging. Prepare templates for at least these scenarios.
+
+**Internal incident declaration** notifies your team that an incident is in progress, identifies the incident commander, establishes the communication channel (usually a dedicated Slack channel or video bridge), and sets expectations for the initial response.
+
+**Customer notification — initial** acknowledges the incident, describes the known impact in plain language, outlines what you're doing about it, commits to a follow-up timeline, and provides a contact point for customer questions. This template should be reviewed by legal counsel before you need it.
+
+**Customer notification — update** provides new information about the investigation, updates the expected resolution timeline, and describes any actions customers should take.
+
+**Customer notification — resolution** confirms the incident is resolved, summarizes what happened without unnecessary technical detail, describes what you've done to prevent recurrence, and thanks customers for their patience.
+
+**Regulatory notification** follows jurisdiction-specific requirements for breach notification. Work with legal counsel to prepare templates that meet the requirements of states where you operate and any industry-specific regulations that apply. Many jurisdictions require notification within 30 to 72 days of discovering a breach, and some require notification within 24 hours.
+
+These templates don't replace legal review during an actual incident — they provide a starting point that can be customized quickly rather than drafted from scratch under pressure.
+
+## The SOC 2 Incident Response Lifecycle
+
+When an incident occurs, your team should follow a structured lifecycle that moves from detection through resolution and learning. Each phase has specific activities and documentation requirements.
+
+### Phase 1 — Detection and Triage
+
+Detection begins when a security event is identified through any channel: automated monitoring alerts, employee reports, customer complaints, external notifications (such as a researcher reporting a vulnerability), or third-party breach notifications affecting your vendors.
+
+The first responder's job is triage — quickly assessing the event to determine whether it's a genuine incident, classifying its severity, and initiating the appropriate response. Triage should happen fast. For potential Critical or High severity events, the triage decision should be made within 15 minutes. When in doubt, escalate. It's far better to stand down from a false alarm than to under-respond to a real incident.
+
+During triage, document the initial detection source, the timestamp of detection, a preliminary assessment of scope, the classification decision and rationale, and who was notified.
+
+### Phase 2 — Containment
+
+Containment limits the damage while you investigate. The goal is to stop the bleeding without destroying evidence or causing additional disruption.
+
+**Short-term containment** actions are immediate steps to prevent further damage. These might include isolating affected systems from the network, disabling compromised user accounts, blocking malicious IP addresses at the firewall, taking affected services offline if necessary to prevent data loss, and revoking compromised credentials or API keys.
+
+**Long-term containment** involves putting temporary fixes in place so that affected systems can be brought back into limited operation while you work on permanent remediation. This might include deploying patched versions of affected services, implementing additional monitoring on affected systems, enabling enhanced logging for forensic purposes, and restricting access to affected systems to essential personnel.
+
+A critical principle during containment: preserve evidence. Don't wipe systems, delete logs, or redeploy over affected infrastructure before you've captured the forensic data you need for investigation. Take snapshots, copy logs, and preserve disk images before making changes.
+
+### Phase 3 — Eradication
+
+Eradication removes the root cause of the incident from your environment. This is where investigation findings translate into permanent fixes.
+
+Eradication activities include identifying and removing all instances of malicious code, closing the vulnerability or misconfiguration that enabled the incident, resetting all potentially compromised credentials, verifying that backdoors haven't been established for persistent access, patching or updating affected systems, and reviewing access logs to confirm the scope of unauthorized access.
+
+Eradication should be thorough rather than fast. Rushing this phase risks leaving the attacker with persistent access or missing affected systems that haven't been identified yet. Better to take an extra day for thorough eradication than to declare the incident resolved only to discover continued compromise a week later.
+
+### Phase 4 — Recovery
+
+Recovery restores normal operations with confidence that the threat has been eliminated.
+
+Recovery activities include restoring systems from clean backups or verified clean states, validating system integrity through testing and monitoring, gradually restoring full access and functionality, monitoring restored systems closely for signs of reinfection, and confirming with customers that services are fully operational.
+
+Recovery should be monitored carefully. Increased logging and alerting on recovered systems for 30 to 90 days after restoration helps catch any persistent threats that survived eradication.
+
+### Phase 5 — Post-Incident Review
+
+The post-incident review, commonly called a post-mortem or retrospective, is arguably the most important phase from a SOC 2 perspective. It demonstrates that your organization learns from incidents and improves its controls.
+
+Conduct the post-incident review within one to two weeks of the incident resolution, while memories are fresh but emotions have cooled. The review should produce a written report that covers a timeline of events from detection through resolution, root cause analysis explaining how and why the incident occurred, an assessment of what worked well in the response, identification of what didn't work well or could be improved, specific action items for preventing recurrence, updates to controls, procedures, or monitoring based on lessons learned, and owner and deadline assignment for each action item.
+
+This review should not be a blame exercise. If your culture punishes people for incidents, you'll get fewer reported incidents — not fewer actual incidents. The goal is organizational learning, not individual accountability.
+
+Your auditor will want to see post-incident review documentation for any incidents that occurred during your observation period. They'll also look for evidence that action items from reviews were actually completed, not just documented and forgotten.
+
+## Communication and Notification Requirements
+
+How you communicate during and after an incident matters both for your customer relationships and your compliance obligations.
+
+### Internal Communication
+
+During an incident, establish a single source of truth for communication. A dedicated Slack channel or incident bridge works well. The incident commander should provide regular status updates (at least every 30 to 60 minutes for Critical incidents) so that everyone involved has current information.
+
+Keep a running incident log in a shared document. This log should capture every significant action, decision, and communication with timestamps. This serves double duty — it keeps the team informed during the incident and provides the documentation your auditor will review later.
+
+### Customer Notification
+
+Your customer notification obligations come from three sources: your contracts (look for breach notification clauses in MSAs and DPAs), your privacy policy commitments, and applicable regulations.
+
+Most enterprise contracts require notification within 24 to 72 hours of discovering a breach that affects the customer's data. Some contracts are more specific about what triggers notification, what information must be included, and how notification must be delivered.
+
+When notifying customers, be honest about what happened without unnecessary technical detail that creates confusion. Describe the impact to their data specifically. Explain what you've done to address the issue. Commit to a timeline for follow-up information. Provide a contact point for questions.
+
+Resist the urge to minimize or use weasel language. Customers and their security teams will see through it, and it damages trust more than the incident itself. Direct, honest communication during an incident can actually strengthen customer relationships.
+
+### Regulatory Notification
+
+Data breach notification laws vary by jurisdiction and data type. In the United States, all 50 states have breach notification laws with varying requirements for timing, content, and method of notification. HIPAA requires notification to affected individuals within 60 days and to HHS within the same timeframe (or annually for breaches affecting fewer than 500 individuals). GDPR requires notification to the supervisory authority within 72 hours and to affected individuals without undue delay when the breach poses a high risk.
+
+Work with legal counsel before an incident to understand your notification obligations based on the data you handle and where your customers and users are located. During an incident is not the time to research breach notification requirements from scratch.
+
+## Tabletop Exercises — Testing Your Plan
+
+An untested incident response plan is just a document. Tabletop exercises prove that your team can actually execute the plan, and they're one of the strongest pieces of evidence you can provide to your auditor.
+
+### Why Auditors Care About Testing
+
+Your auditor doesn't just want to see that you have an incident response plan — they want evidence that the plan works. CC7.4 specifically addresses the organization's ability to respond to identified security incidents, and the most credible evidence of this ability is a documented exercise where your team practiced the response.
+
+Testing also reveals gaps that look fine on paper but fail in practice. Maybe your escalation procedure lists a phone number that no one answers on weekends. Maybe your containment procedures assume access to a tool that requires VPN, but VPN is part of the affected system. Maybe your communication template references a customer notification email that was never set up. These gaps are far better discovered during a practice exercise than during a real incident.
+
+### How to Run a Tabletop Exercise
+
+A tabletop exercise is a facilitated discussion where your incident response team walks through a simulated scenario. No systems are actually affected — the team discusses how they would respond to a hypothetical incident, making decisions and following procedures as if it were real.
+
+**Preparation** takes about two hours. Select a realistic scenario relevant to your business (a compromised employee account, a ransomware attempt, a customer data exposure, or a vendor breach). Write up the scenario in stages — initial detection, investigation findings that reveal the scope, complications that test your escalation procedures, and resolution. Assign a facilitator who will present the scenario and inject new information as the exercise progresses.
+
+**Execution** takes one to two hours. Gather your incident response team in a room or video call. The facilitator presents the initial scenario and asks the team to respond as they would during a real incident. Who gets notified? What's the first action? How do you classify the severity? As the team works through the scenario, the facilitator introduces new information that escalates or changes the situation.
+
+**Documentation** captures the exercise for your audit evidence. Record the date, participants, scenario description, decisions made, procedures followed, gaps identified, and action items for improvement. This documentation serves as evidence that you've tested your incident response capability.
+
+### Exercise Frequency and Evidence
+
+Run tabletop exercises at least annually. Quarterly exercises are better if your team and schedule allow it. Vary the scenarios to cover different types of incidents — don't practice the same ransomware scenario every time.
+
+After each exercise, update your incident response plan based on what you learned. Document the changes and the reasoning behind them. This cycle of testing, learning, and improving is exactly what auditors want to see.
+
+## Evidence Your Auditor Will Request
+
+When your auditor evaluates your incident response program, they'll request specific documentation. Having this organized and accessible speeds up the audit process and demonstrates program maturity.
+
+### Plan Documentation
+
+Your auditor will want to review your written incident response plan, including roles and responsibilities, classification criteria, escalation procedures, communication templates, and notification requirements. They'll check that the plan is current (reviewed and updated within the past year), approved by management, and distributed to relevant personnel.
+
+### Testing Evidence
+
+Evidence of tabletop exercises includes exercise reports documenting the scenario, participants, decisions, and findings. Your auditor will also look for evidence that findings from exercises led to plan updates — this demonstrates the continuous improvement cycle that CC7.5 requires.
+
+### Incident Records
+
+If any security incidents occurred during your observation period, your auditor will want to see complete incident records for each one. This includes the initial detection and triage documentation, the incident timeline, containment and eradication actions taken, communication records (internal and external), the post-incident review report, and evidence that remediation action items were completed.
+
+If no incidents occurred during your observation period, your auditor will note this and focus more heavily on your plan documentation and testing evidence. No incidents is fine — it doesn't indicate a problem. But it does mean your plan and exercises need to be particularly thorough since there's no real-world evidence of your response capability.
+
+### Monitoring and Detection Evidence
+
+Your auditor will want to see evidence that your detection capabilities are operational. This connects to your [evidence collection process](/blog/soc2-evidence-collection-process) and includes screenshots or exports from monitoring and alerting tools, alert configuration showing what events trigger notifications, evidence that alerts are acknowledged and investigated within defined timeframes, and log retention demonstrating that you maintain logs for the required period.
+
+## Common Incident Response Gaps
+
+Based on patterns from SOC 2 audits, these are the incident response gaps that most frequently result in audit findings.
+
+**No formal incident response plan.** Some companies rely on tribal knowledge — the team knows what to do because they've handled incidents before. This doesn't satisfy SOC 2 requirements. You need a written plan that anyone on the team can follow.
+
+**Plan exists but hasn't been tested.** A plan that sits in a document repository without ever being exercised provides limited assurance. If you haven't run a tabletop exercise, your auditor will note this as a gap.
+
+**No on-call or after-hours coverage.** Incidents don't respect business hours. If your plan doesn't address how incidents are detected and responded to outside of 9 to 5, your auditor will question your detection and response capabilities.
+
+**Missing post-incident reviews.** If incidents occurred during your observation period but you didn't conduct post-incident reviews, this is a significant finding. It suggests you're not learning from incidents or improving your controls.
+
+**Incomplete incident documentation.** Incident records that lack timelines, classification rationale, or documentation of actions taken indicate an immature response process. Your auditor needs to see that incidents were handled systematically, not ad hoc.
+
+**No notification procedures.** Your plan should address customer and regulatory notification requirements. If an incident occurs and you haven't evaluated whether notification is required, this is both a compliance gap and a legal risk.
+
+## Building Incident Response Maturity Over Time
+
+Your incident response program doesn't need to be perfect on day one. What matters is that you have a solid foundation and a commitment to continuous improvement.
+
+**Year one** focuses on establishing the basics: a documented plan, defined roles, classification criteria, and at least one tabletop exercise. Most companies pursuing SOC 2 for the first time can establish this foundation within the [90-day preparation timeline](/blog/soc2-preparation-90-days).
+
+**Year two** builds on the foundation by incorporating lessons from your first year of operations and your initial audit. Update your plan based on audit feedback, increase exercise frequency, refine classification criteria based on real events, and improve detection capabilities based on gaps identified during the year.
+
+**Year three and beyond** focuses on optimization. Automate detection and response where possible. Integrate incident response with your broader security operations. Build playbooks for common incident types. Invest in tools that improve detection speed and response coordination.
+
+The organizations that do incident response well share a common trait: they treat every incident and every exercise as a learning opportunity. They update their plans. They improve their detection. They train their people. This continuous improvement cycle is exactly what SOC 2 is designed to encourage.
+
+Getting your incident response plan documented properly is one of the most impactful steps you can take toward SOC 2 readiness. Our [Incident Response Plan Policy](/products/incident-response-plan-policy) provides a professionally written policy template that covers all the elements your auditor expects to see, while our [Incident Response Program Template](/products/incident-response-program-template) gives you the operational framework for executing the plan. Both are included in our [Complete Bundle](/products/complete-bundle) alongside all the other policies and documentation you need for SOC 2 compliance.
+
+Incident response can feel overwhelming when you're looking at it as a blank page. But the requirements are clear, the structure is well-defined, and once you've built the foundation, maintaining and improving your program becomes part of your normal operational rhythm. Start with a documented plan, test it with a tabletop exercise, and iterate from there. That's all your auditor is really asking for.
